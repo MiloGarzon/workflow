@@ -234,7 +234,7 @@
   function setPane(p) {
     document.body.dataset.pane = p;
     document.querySelectorAll('#tabbar button').forEach(b => b.classList.toggle('on', b.dataset.pane === p));
-    if (p === 'preview') requestAnimationFrame(applyZoom);
+    if (p === 'preview') { if (isNarrow()) state.zoom = 'fit'; requestAnimationFrame(() => { applyZoom(); highlightPreview(true); }); }
   }
   function select(id) {
     if (isNarrow() && document.body.dataset.pane === 'sections') setPane('editor');
@@ -497,9 +497,25 @@
     const keepScroll = renderEditor._last === state.sel;
     renderEditor._last = state.sel;
     ed.innerHTML = '';
+    ed.append(mobileNav());
     if (state.sel === 'project') renderProjectEditor(ed);
     else { const s = secById(state.sel); if (s) renderSectionEditor(ed, s); else { state.sel = 'project'; renderProjectEditor(ed); } }
     if (keepScroll) ed.scrollTop = st; else ed.scrollTop = 0;
+  }
+
+  // phone / iPad: previous–next sheet and a shortcut to the preview
+  function mobileNav() {
+    const ids = ['project', ...P().sections.map(s => s.id)];
+    const i = Math.max(0, ids.indexOf(state.sel));
+    const s = secById(state.sel);
+    const go = d => { const n = ids[i + d]; if (n) select(n); };
+    return h('div', { class: 'm-nav' },
+      h('button', { title: 'Hoja anterior', disabled: i === 0 ? '' : null, onclick: () => go(-1) }, '‹'),
+      h('div', { class: 'm-mid' },
+        h('b', {}, s ? (s.title || 'Sin título') : 'Proyecto'),
+        h('small', {}, s ? `Hoja ${i} de ${ids.length - 1}${s.hidden ? ' · apagada' : ''}` : 'Datos generales')),
+      h('button', { title: 'Hoja siguiente', disabled: i === ids.length - 1 ? '' : null, onclick: () => go(1) }, '›'),
+      h('button', { class: 'm-pv', onclick: () => setPane('preview') }, 'Ver PDF'));
   }
 
   // ================= preview =================
@@ -542,7 +558,7 @@
     const pv = $('#pvPages');
     const maxW = Math.max(612, ...[...pv.children].map(p => p._dims ? p._dims.w : 612));
     let z = state.zoom;
-    if (z === 'fit') z = Math.min(1.4, Math.max(0.3, ($('#pvScroll').clientWidth - 56) / maxW));
+    if (z === 'fit') z = Math.min(1.4, Math.max(0.3, ($('#pvScroll').clientWidth - (isNarrow() ? 28 : 56)) / maxW));
     pv.style.zoom = z;
     $('#zoomVal').textContent = Math.round(z * 100) + '%';
   }
