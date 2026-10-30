@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="FF Workflow">
+<meta name="theme-color" content="#0C0E0D">
+<link rel="manifest" href="manifest.json">
+<title>FilmFlow Workflow</title>
+<link rel="icon" href="brand-icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="doc.css?v=6">
+<link rel="stylesheet" href="app.css?v=6">
+</head>
+<body>
+<div id="app">
+  <header class="toolbar">
+    <div class="tb-brand"><span class="tb-logo"></span><div><div class="tb-name">Workflow Studio</div><div class="tb-file" id="fileName">—</div></div></div>
+    <div class="tb-group">
+      <button class="tb-btn" data-cmd="library" title="Mis proyectos (⌘P)"><span>▦</span><em>Mis proyectos</em></button>
+      <button class="tb-btn" data-cmd="new" title="Nuevo proyecto (⌘N)"><span>＋</span><em>Nuevo</em></button>
+      <button class="tb-btn" data-cmd="save" title="Guardar ahora (⌘S)"><span>↓</span><em>Guardar</em></button>
+    </div>
+    <div class="tb-spacer"></div>
+    <div class="seg" id="themeSeg" title="Modo del documento">
+      <button data-theme="dark"><i class="dot dark"></i><em>Oscuro</em></button>
+      <button data-theme="light"><i class="dot light"></i><em>Claro</em></button>
+    </div>
+    <button class="tb-btn primary" data-cmd="export" title="Exportar PDF (⌘E)"><span>⇩</span><em>Exportar PDF</em></button>
+  </header>
+  <aside class="sidebar">
+    <div class="sb-item" id="projItem"><span class="sb-ic">⚙</span><div><div class="sb-t">Proyecto</div><div class="sb-s">Datos, portada y estilo</div></div></div>
+    <div class="sb-label">Secciones <span id="secCount"></span></div>
+    <div class="sb-list" id="secList"></div>
+    <div class="sb-add"><button id="addSecBtn">＋ Añadir sección</button></div>
+  </aside>
+  <main class="editor" id="editor"></main>
+  <section class="preview">
+    <div class="pv-bar">
+      <span id="pvInfo">—</span>
+      <div class="pv-zoom"><button data-z="-">−</button><span id="zoomVal">100%</span><button data-z="+">＋</button><button data-z="fit">Ajustar</button></div>
+    </div>
+    <div class="pv-scroll" id="pvScroll"><div class="pv-pages" id="pvPages"></div></div>
+  </section>
+  <nav class="tabbar" id="tabbar">
+    <button data-pane="sections"><b>☰</b>Secciones</button>
+    <button data-pane="editor"><b>✎</b>Editar</button>
+    <button data-pane="preview"><b>▯</b>Vista previa</button>
+  </nav>
+</div>
+<div id="exportRoot"></div>
+<div class="toast" id="toast"></div>
+<div class="pop" id="pop"></div>
+<script src="defaults.js?v=6"></script>
+<script src="web.js?v=6"></script>
+<script src="renderer.js?v=6"></script>
+<script src="app.js?v=6"></script>
+</body>
+</html>
