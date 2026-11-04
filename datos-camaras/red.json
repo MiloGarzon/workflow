@@ -1,0 +1,4771 @@
+{
+ "convention": "RED's own Recording Time tool (reddigitalcinema.com/tools, data file tools-20250813.json, Svelte source in cms.reddigitalcinema.com/.../tools.frag.html) computes: data rate MB/s = W x H x factor/8 x fps / ratio / 1e6 (x2 with HDRx/Extended Highlights), with factor = 14 bits/photosite for all DRAGON, HELIUM, GEMINI, MONSTRO, KOMODO and V-RAPTOR cameras and 12 for SCARLET MYSTERIUM-X / RED ONE. So REDCODE ratio is relative to 14-bit raw: bpp = 14/ratio (12/ratio for Mysterium-X), NOT 16/ratio. Record time in the tool adds 5% overhead (rate x 1.05) and treats GB as 1024 MB (KOMODO: 1000). Verification 1 (DSMC3 presets = fixed ratios HQ 3.5:1, MQ 5:1, LQ 8:1, ELQ 11-15:1 by resolution): RED V-RAPTOR [X] guide 8K 17:9 24P HQ 425 MB/s; model 8192*4320*14/8*24/1e6/3.5 = 424.7 MB/s; MQ 298 (297.3), LQ 186 (185.8), ELQ 100 (99.1 at 15:1); 6K 17:9 24P 239/168/105/65 = 238.9/167.2/104.5/64.3(13:1). V-RAPTOR XL guide prints the same x1.05 (446/312/195/104). Verification 2 (DSMC2 ratios): DSMC2 MONSTRO/HELIUM spec min REDCODE at 300 MB/s media: 8K FF 24fps 5:1, 60fps 12:1, 4K FF 24fps 2:1, 60fps 3:1 -> 14-bit model needs 4.72, 11.8, 1.18, 2.95 (ceil = 5,12,2,3 exactly, treating 300 MB/s as MiB/s); 16-bit would give 6:1 at 8K24. EPIC DRAGON 6K FF 24fps 4:1 / 60fps 10:1 at 200 MB/s also matches 14-bit. 8K 24fps 5:1 example: 297.3 MB/s = 2378 Mb/s, bpp 2.8. Real R3D files are VBR and average around (often slightly below) these nominal values.",
+ "duplicate_name_note": "User list had 'Weapon (Dragon 6K)' twice. Weapon Dragon 6K S35 and Weapon Dragon 8K VV are both included; if the duplicate was meant to be a different model, the likely candidates are Weapon Helium 8K S35 (covered by red-helium) or Weapon Monstro 8K VV (covered by red-monstro).",
+ "cameras": [
+  {
+   "id": "red-vraptor-s35",
+   "name": "RED V-Raptor 8K S35",
+   "exists": true,
+   "sensor": "V-Raptor 8K S35 (26.21x13.82mm, 8192x4320)",
+   "resolutions": [
+    {
+     "key": "8k-17x9",
+     "name": "8K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 150
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9 (UHD-2)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5 (2x ana)",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "7k-17x9",
+     "name": "7K 17:9",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 140
+    },
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 160
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 200
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 192
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 300
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 480
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.0031,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P HQ = 425 MB/s = 3400 Mb/s -> bpp 4.0031. Matches RED tool model 14 bit/px / 3.5:1. S35 uses the same per-pixel model in RED's tool (camera vRaptorS35, dsmc3 presets); the 8K table itself was published in the [X] VV guide.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8069,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P MQ = 298 MB/s = 2384 Mb/s -> bpp 2.8069. Matches RED tool model 14 bit/px / 5:1. S35 uses the same per-pixel model in RED's tool (camera vRaptorS35, dsmc3 presets); the 8K table itself was published in the [X] VV guide.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7519,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P LQ = 186 MB/s = 1488 Mb/s -> bpp 1.7519. Matches RED tool model 14 bit/px / 8:1. S35 uses the same per-pixel model in RED's tool (camera vRaptorS35, dsmc3 presets); the 8K table itself was published in the [X] VV guide.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 0.9419,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P ELQ = 100 MB/s = 800 Mb/s -> bpp 0.9419. Matches RED tool model 14 bit/px / 15:1 at 8K (11-15 by resolution). S35 uses the same per-pixel model in RED's tool (camera vRaptorS35, dsmc3 presets); the 8K table itself was published in the [X] VV guide.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ (proxy)",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0215/955-0215_V1.4_Rev-B%20RED%20PS,%20V-RAPTOR%208K%20S35%20Operation%20Guide/Content/C_TechSpecs/Specs_V-RAPTOR.htm. 800 MB/s CFexpress Type B. HQ/MQ/LQ up to 8K60; LQ to 8K120. ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-vraptor-vv",
+   "name": "RED V-Raptor 8K VV",
+   "exists": true,
+   "sensor": "V-Raptor 8K VV (40.96x21.6mm, 8192x4320, rolling shutter)",
+   "resolutions": [
+    {
+     "key": "8k-17x9",
+     "name": "8K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 150
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9 (UHD-2)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5 (2x ana)",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "7k-17x9",
+     "name": "7K 17:9",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 140
+    },
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 160
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 200
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 192
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 300
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 480
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.0031,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P HQ = 425 MB/s = 3400 Mb/s -> bpp 4.0031. Matches RED tool model 14 bit/px / 3.5:1. Original V-RAPTOR VV guide R3D page not fetched; RED tool (camera vRaptor) uses identical model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8069,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P MQ = 298 MB/s = 2384 Mb/s -> bpp 2.8069. Matches RED tool model 14 bit/px / 5:1. Original V-RAPTOR VV guide R3D page not fetched; RED tool (camera vRaptor) uses identical model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7519,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P LQ = 186 MB/s = 1488 Mb/s -> bpp 1.7519. Matches RED tool model 14 bit/px / 8:1. Original V-RAPTOR VV guide R3D page not fetched; RED tool (camera vRaptor) uses identical model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 0.9419,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P ELQ = 100 MB/s = 800 Mb/s -> bpp 0.9419. Matches RED tool model 14 bit/px / 15:1 at 8K (11-15 by resolution). Original V-RAPTOR VV guide R3D page not fetched; RED tool (camera vRaptor) uses identical model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ (proxy)",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Sold as 'V-RAPTOR 8K VV + 6K S35 Dual Format'. Specs: https://docs.red.com/955-0199/955-0199_V1.2_Rev_A_RED_PS_V-RAPTOR_Operation_Guide/Content/C_TechSpecs/Specs_V-RAPTOR.htm (7K/6K/5K 2.4:1 max fps there slightly lower, e.g. 6K 2.4:1 198).  ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-vraptor-x-vv",
+   "name": "RED V-Raptor [X] 8K VV",
+   "exists": true,
+   "sensor": "V-Raptor [X] 8K VV global shutter",
+   "resolutions": [
+    {
+     "key": "8k-17x9",
+     "name": "8K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 150
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9 (UHD-2)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5 (2x ana)",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "7k-17x9",
+     "name": "7K 17:9",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 140
+    },
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 160
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 200
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 192
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 300
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 480
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.0031,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P HQ = 425 MB/s = 3400 Mb/s -> bpp 4.0031. Matches RED tool model 14 bit/px / 3.5:1.",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8069,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P MQ = 298 MB/s = 2384 Mb/s -> bpp 2.8069. Matches RED tool model 14 bit/px / 5:1.",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7519,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P LQ = 186 MB/s = 1488 Mb/s -> bpp 1.7519. Matches RED tool model 14 bit/px / 8:1.",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 0.9419,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P ELQ = 100 MB/s = 800 Mb/s -> bpp 0.9419. Matches RED tool model 14 bit/px / 15:1 at 8K (11-15 by resolution).",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ (proxy)",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0225/955-0225_V1.7+Rev-A+RED+PS,+V-RAPTOR+%5BX%5D+8K+VV+Operation+Guide+HTML/Content/C_TechSpecs/Specs_V-RAPTOR%20[X].htm. Same res/fps as V-Raptor VV. Extended Highlights/Phantom Track doubles data rate (RED tool hdrx factor 2). ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-vraptor-xe",
+   "name": "RED V-Raptor XE 8K VV",
+   "exists": true,
+   "sensor": "V-Raptor XE 8K VV global shutter (same 8K VV GS sensor class as [X])",
+   "resolutions": [
+    {
+     "key": "8k-17x9",
+     "name": "8K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 75
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "7k-17x9",
+     "name": "7K 17:9",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 70
+    },
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 80
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.0031,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P HQ = 425 MB/s = 3400 Mb/s -> bpp 4.0031. Matches RED tool model 14 bit/px / 3.5:1. XE guide R3D table not fetched; RED tool lists XE (vRaptorXE) with the same dsmc3 model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8069,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P MQ = 298 MB/s = 2384 Mb/s -> bpp 2.8069. Matches RED tool model 14 bit/px / 5:1. XE guide R3D table not fetched; RED tool lists XE (vRaptorXE) with the same dsmc3 model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7519,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P LQ = 186 MB/s = 1488 Mb/s -> bpp 1.7519. Matches RED tool model 14 bit/px / 8:1. XE guide R3D table not fetched; RED tool lists XE (vRaptorXE) with the same dsmc3 model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 0.9419,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P ELQ = 100 MB/s = 800 Mb/s -> bpp 0.9419. Matches RED tool model 14 bit/px / 15:1 at 8K (11-15 by resolution). XE guide R3D table not fetched; RED tool lists XE (vRaptorXE) with the same dsmc3 model.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ (proxy)",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Real model: announced Sept 2025, streamlined/lower-cost V-RAPTOR [X] (Canon RF / Nikon Z mounts), max 8K 60p, 6K 80p, 4K 120p, 2K 240p. Specs: https://docs.red.com/955-0233/955-0233_V2.1%20Rev-A%20RED%20PS,%20V-RAPTOR%20XE%20Operation%20Guide%20HTML/Content/B_TechSpecs/Specs_V-RAPTOR%20XE.htm ; news: https://www.newsshooter.com/2025/11/12/red-tech-arsenal-welcoming-v-raptor-xe/.  ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-vraptor-xl-s35",
+   "name": "RED V-Raptor XL 8K S35",
+   "exists": true,
+   "sensor": "V-Raptor 8K S35",
+   "resolutions": [
+    {
+     "key": "8k-17x9",
+     "name": "8K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 150
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9 (UHD-2)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5 (2x ana)",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "7k-17x9",
+     "name": "7K 17:9",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 140
+    },
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 160
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 200
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 192
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 300
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 480
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.0031,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P HQ = 425 MB/s = 3400 Mb/s -> bpp 4.0031. Matches RED tool model 14 bit/px / 3.5:1. XL S35 not in RED tool; same sensor/codec as V-Raptor 8K S35. XL VV guide publishes 1.05x higher values (446/312/195/104 MB/s at 8K24).",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": true
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8069,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P MQ = 298 MB/s = 2384 Mb/s -> bpp 2.8069. Matches RED tool model 14 bit/px / 5:1. XL S35 not in RED tool; same sensor/codec as V-Raptor 8K S35. XL VV guide publishes 1.05x higher values (446/312/195/104 MB/s at 8K24).",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": true
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7519,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P LQ = 186 MB/s = 1488 Mb/s -> bpp 1.7519. Matches RED tool model 14 bit/px / 8:1. XL S35 not in RED tool; same sensor/codec as V-Raptor 8K S35. XL VV guide publishes 1.05x higher values (446/312/195/104 MB/s at 8K24).",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": true
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 0.9419,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P ELQ = 100 MB/s = 800 Mb/s -> bpp 0.9419. Matches RED tool model 14 bit/px / 15:1 at 8K (11-15 by resolution). XL S35 not in RED tool; same sensor/codec as V-Raptor 8K S35. XL VV guide publishes 1.05x higher values (446/312/195/104 MB/s at 8K24).",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": true
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ (proxy)",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Exists (retail SKUs e.g. Abelcine/Adorama; RED doc page not fetched). Data assumed identical to V-Raptor 8K S35. ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-vraptor-xl-vv",
+   "name": "RED V-Raptor XL 8K VV",
+   "exists": true,
+   "sensor": "V-Raptor 8K VV",
+   "resolutions": [
+    {
+     "key": "8k-17x9",
+     "name": "8K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 150
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9 (UHD-2)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5 (2x ana)",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "7k-17x9",
+     "name": "7K 17:9",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 140
+    },
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 160
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 200
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 192
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 300
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 480
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.0031,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P HQ = 425 MB/s = 3400 Mb/s -> bpp 4.0031. Matches RED tool model 14 bit/px / 3.5:1.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8069,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P MQ = 298 MB/s = 2384 Mb/s -> bpp 2.8069. Matches RED tool model 14 bit/px / 5:1.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7519,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P LQ = 186 MB/s = 1488 Mb/s -> bpp 1.7519. Matches RED tool model 14 bit/px / 8:1.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 0.9419,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P ELQ = 100 MB/s = 800 Mb/s -> bpp 0.9419. Matches RED tool model 14 bit/px / 15:1 at 8K (11-15 by resolution).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json) ; https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ (proxy)",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "XL op guide R3D table (https://docs.red.com/955-0203/955-0203_V1.3%20Rev-B%20RED%20PS,%20V-RAPTOR%20XL%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm) lists 446/312/195/104 MB/s (8K) and 251/176/110/68 (6K) at 24P = exactly 1.05x the [X]/KOMODO table, i.e. RED's tool record-time overhead factor; use it as the storage-planning value if you want headroom. Specs: https://docs.red.com/955-0203/955-0203_V1.3+Rev-B+RED+PS,+V-RAPTOR+XL+8K+VV+Operation+Guide+HTML/Content/C_TechSpecs/Specs_V-RAPTOR_XL.htm ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-vraptor-xl-x-vv",
+   "name": "RED V-Raptor XL [X] 8K VV",
+   "exists": true,
+   "sensor": "V-Raptor [X] 8K VV global shutter",
+   "resolutions": [
+    {
+     "key": "8k-17x9",
+     "name": "8K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 150
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9 (UHD-2)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5 (2x ana)",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 120
+    },
+    {
+     "key": "7k-17x9",
+     "name": "7K 17:9",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 140
+    },
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 160
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 200
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 192
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 300
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 480
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.0031,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P HQ = 425 MB/s = 3400 Mb/s -> bpp 4.0031. Matches RED tool model 14 bit/px / 3.5:1.",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8069,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P MQ = 298 MB/s = 2384 Mb/s -> bpp 2.8069. Matches RED tool model 14 bit/px / 5:1.",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7519,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P LQ = 186 MB/s = 1488 Mb/s -> bpp 1.7519. Matches RED tool model 14 bit/px / 8:1.",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 0.9419,
+     "res": "8k-17x9",
+     "ref": "RED op guide (V-RAPTOR [X] 8K VV, R3D Quality): 8K 17:9 24P ELQ = 100 MB/s = 800 Mb/s -> bpp 0.9419. Matches RED tool model 14 bit/px / 15:1 at 8K (11-15 by resolution).",
+     "source": "https://docs.red.com/955-0225/955-0225_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20[X]%208K%20VV%20Operation%20Guide%20HTML/Content/4_Menus/b_ProjSet/R3D_Quality.htm ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ (proxy)",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0227/955-0227_V1.7%20Rev-A%20RED%20PS,%20V-RAPTOR%20XL%20%5BX%5D%208K%20VV%20Operation%20Guide%20HTML/Content/B_TechSpecs/Specs_V-RAPTOR_XL%20[X].htm. HQ/MQ/LQ/ELQ to 8K60; LQ/ELQ to 8K120. ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-komodo-6k",
+   "name": "RED Komodo 6K",
+   "exists": true,
+   "sensor": "Komodo 6K S35 global shutter (6144x3240)",
+   "resolutions": [
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 40
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 50
+    },
+    {
+     "key": "6k-16x9",
+     "name": "6K 16:9",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": 40
+    },
+    {
+     "key": "6k-6x5",
+     "name": "6K 6:5 (2x ana)",
+     "w": 3888,
+     "h": 3240,
+     "maxfps": 40
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 48
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.002,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P HQ = 239 MB/s = 1912 Mb/s -> bpp 4.002 (model 14/3.5:1).",
+     "source": "https://docs.red.com/955-0196/955-0196_V1.7%20Rev-B%20RED%20PS,%20KOMODO%20Operation%20Guide%20HTML/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8131,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P MQ = 168 MB/s = 1344 Mb/s -> bpp 2.8131 (model 14/5:1).",
+     "source": "https://docs.red.com/955-0196/955-0196_V1.7%20Rev-B%20RED%20PS,%20KOMODO%20Operation%20Guide%20HTML/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7582,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P LQ = 105 MB/s = 840 Mb/s -> bpp 1.7582 (model 14/8:1).",
+     "source": "https://docs.red.com/955-0196/955-0196_V1.7%20Rev-B%20RED%20PS,%20KOMODO%20Operation%20Guide%20HTML/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 1.0884,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P ELQ = 65 MB/s = 520 Mb/s -> bpp 1.0884 (model 14/~13:1 at 6K).",
+     "source": "https://docs.red.com/955-0196/955-0196_V1.7%20Rev-B%20RED%20PS,%20KOMODO%20Operation%20Guide%20HTML/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0196_v1.6/Content/A_TechSpecs/Specs_KOMODO_6K.htm. 280 MB/s CFast 2.0. Older guide v1.6 gave ~175 MB/s MQ / ~110 LQ at 6K 23.98. NOTE: RED's online tool uses different KOMODO preset bounds (HQ min 2:1, ELQ max 13:1) and the 280 MB/s cap, so at 6K24 HQ it reports ~280 MB/s, not the guide's 239; guide values used here."
+  },
+  {
+   "id": "red-komodo-x",
+   "name": "RED Komodo-X",
+   "exists": true,
+   "sensor": "Komodo-X 6K S35 global shutter (6144x3240)",
+   "resolutions": [
+    {
+     "key": "6k-17x9",
+     "name": "6K 17:9",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 80
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "6k-16x9",
+     "name": "6K 16:9",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": 80
+    },
+    {
+     "key": "6k-6x5",
+     "name": "6K 6:5 (2x ana)",
+     "w": 3888,
+     "h": 3240,
+     "maxfps": 80
+    },
+    {
+     "key": "5k-17x9",
+     "name": "5K 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-17x9",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "2k-17x9",
+     "name": "2K 17:9",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-hq",
+     "name": "REDCODE HQ",
+     "bpp": 4.002,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P HQ = 239 MB/s = 1912 Mb/s -> bpp 4.002 (model 14/3.5:1).",
+     "source": "https://docs.red.com/955-0219/955-0219_V2.0+Rev-A+RED+PS,+KOMODO-X+Operation+Guide/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-mq",
+     "name": "REDCODE MQ",
+     "bpp": 2.8131,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P MQ = 168 MB/s = 1344 Mb/s -> bpp 2.8131 (model 14/5:1).",
+     "source": "https://docs.red.com/955-0219/955-0219_V2.0+Rev-A+RED+PS,+KOMODO-X+Operation+Guide/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-lq",
+     "name": "REDCODE LQ",
+     "bpp": 1.7582,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P LQ = 105 MB/s = 840 Mb/s -> bpp 1.7582 (model 14/8:1).",
+     "source": "https://docs.red.com/955-0219/955-0219_V2.0+Rev-A+RED+PS,+KOMODO-X+Operation+Guide/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    },
+    {
+     "key": "r3d-elq",
+     "name": "REDCODE ELQ",
+     "bpp": 1.0884,
+     "res": "6k-17x9",
+     "ref": "RED op guide (R3D Quality): 6K 17:9 24P ELQ = 65 MB/s = 520 Mb/s -> bpp 1.0884 (model 14/~13:1 at 6K).",
+     "source": "https://docs.red.com/955-0219/955-0219_V2.0+Rev-A+RED+PS,+KOMODO-X+Operation+Guide/Content/4_Menus/02_ProjSet/R3D_Quality.htm",
+     "estimated": false
+    }
+   ],
+   "ratios": null,
+   "fixed": [
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "4096x2160",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "4096x2160",
+     "maxfps": 80,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0219/955-0219_V1.0%20Rev-A%20RED%20PS,%20KOMODO-X%20Operation%20Guide/Content/A_TechSpecs/Specs_KOMODO-X.htm ; ProRes per RED product page https://red.com/komodo-x (4444 XQ to 4K60, 4444 to 4K80, 422 family to 4K120). 560 MB/s CFexpress Type B. ELQ ratio in RED's tool depends on pixel count: >27.1MP 15:1, >19.9MP 14:1, >13.8MP 13:1, >8.8MP 12:1, else 11:1 (bpp 0.93-1.27); HQ/MQ/LQ are constant 3.5/5/8:1 (bpp 4.0/2.8/1.75) unless the 800 MB/s (KOMODO-X 560, KOMODO 280) ceiling forces a higher ratio, in which case the preset becomes unavailable at that fps."
+  },
+  {
+   "id": "red-monstro",
+   "name": "RED Weapon / DSMC2 Monstro 8K VV",
+   "exists": true,
+   "sensor": "Monstro 8K VV (40.96x21.6mm)",
+   "resolutions": [
+    {
+     "key": "8k-ff",
+     "name": "8K Full Format 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 75
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "7k-ff",
+     "name": "7K FF",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 60
+    },
+    {
+     "key": "6k-ff",
+     "name": "6K FF",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 75
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQX 12-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR 444 12-bit",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD 444/HQX 10-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0170/DSMC2MONSTROOperationGuide/en-us/Content/A_TechSpecs/Specs_DSMC2_MONSTRO.htm. MINI-MAG up to 300 MB/s (480GB+) / 225 MB/s (120/240GB). Min ratios: 8K FF 24fps 5:1, 60fps 12:1; 4K FF 24fps 2:1, 60fps 3:1. Sold as WEAPON 8K VV, later renamed DSMC2 MONSTRO 8K VV."
+  },
+  {
+   "id": "red-helium",
+   "name": "RED Epic-W / Weapon Helium 8K S35",
+   "exists": true,
+   "sensor": "Helium 8K S35 (29.9x15.77mm)",
+   "resolutions": [
+    {
+     "key": "8k-ff",
+     "name": "8K Full Format 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 75
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "7k-ff",
+     "name": "7K FF",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 60
+    },
+    {
+     "key": "6k-ff",
+     "name": "6K FF",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 75
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQX 12-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR 444 12-bit",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD 444/HQX 10-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0171_v7.0/DSMC2HELIUMOperationGuide/Content/A_TechSpecs/Specs_DSMC2_HELIUM.htm. Same res/fps/min-ratio table as Monstro; ProRes/DNx 4K limited to 29.97fps (also DNxHR/HD LB). EPIC-W HELIUM and WEAPON HELIUM share this sensor and data model (renamed DSMC2 HELIUM)."
+  },
+  {
+   "id": "red-gemini",
+   "name": "RED Epic-W Gemini 5K S35",
+   "exists": true,
+   "sensor": "Gemini 5K S35 dual-ISO (30.72x18mm, 5120x3000)",
+   "resolutions": [
+    {
+     "key": "5k-fh",
+     "name": "5K Full Height 1.7:1",
+     "w": 5120,
+     "h": 3000,
+     "maxfps": 75
+    },
+    {
+     "key": "5k-fh-6x5",
+     "name": "5K Full Height 6:5",
+     "w": 3600,
+     "h": 3000,
+     "maxfps": 75
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K Full Format 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Check: Gemini spec lists 5K FF 24fps min 2:1 and 5K FF 96fps 8:1 at 300 MB/s; 14-bit model gives 1.85->2 and 7.38->8. Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQX 12-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR 444 12-bit",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD 444/HQX 10-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0172_v7.0/DSMC2GEMINIOperationGuide/Content/A_TechSpecs/Specs_DSMC2_GEMINI.htm. ProRes/DNx 4K to 29.97fps, 2K to 120fps."
+  },
+  {
+   "id": "red-ranger-monstro",
+   "name": "RED Ranger Monstro 8K VV",
+   "exists": true,
+   "sensor": "Monstro 8K VV",
+   "resolutions": [
+    {
+     "key": "8k-ff",
+     "name": "8K Full Format 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 75
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "7k-ff",
+     "name": "7K FF",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 60
+    },
+    {
+     "key": "6k-ff",
+     "name": "6K FF",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 75
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQX 12-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR 444 12-bit",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD 444/HQX 10-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "RED tool groups 'RANGER / DSMC2 MONSTRO' (same sensor, 300 MB/s). ProRes/DNx list taken from DSMC2 Monstro page; Ranger-specific page not fetched."
+  },
+  {
+   "id": "red-ranger-helium",
+   "name": "RED Ranger Helium 8K S35",
+   "exists": true,
+   "sensor": "Helium 8K S35",
+   "resolutions": [
+    {
+     "key": "8k-ff",
+     "name": "8K Full Format 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 75
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "7k-ff",
+     "name": "7K FF",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 60
+    },
+    {
+     "key": "6k-ff",
+     "name": "6K FF",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 75
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQX 12-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR 444 12-bit",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD 444/HQX 10-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "RED tool groups 'RANGER / DSMC2 HELIUM'. ProRes/DNx from DSMC2 Helium page."
+  },
+  {
+   "id": "red-ranger-gemini",
+   "name": "RED Ranger Gemini 5K S35",
+   "exists": true,
+   "sensor": "Gemini 5K S35",
+   "resolutions": [
+    {
+     "key": "5k-fh",
+     "name": "5K Full Height 1.7:1",
+     "w": 5120,
+     "h": 3000,
+     "maxfps": 75
+    },
+    {
+     "key": "5k-fh-6x5",
+     "name": "5K Full Height 6:5",
+     "w": 3600,
+     "h": 3000,
+     "maxfps": 75
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K Full Format 17:9",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified: RED spec pages list min REDCODE at 300 MB/s media: MONSTRO/HELIUM 8K FF 24fps 5:1, 8K FF 60fps 12:1, 4K FF 24fps 2:1, 4K FF 60fps 3:1; 14-bit model gives 4.72->5, 11.8->12, 1.18->2, 2.95->3 (taking 300 MB/s as 300 MiB/s); a 16-bit model would require 6:1 at 8K24 (wrong).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQX 12-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR 444 12-bit",
+     "res": "2048x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD 444/HQX 10-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 120,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "RED tool groups 'RANGER / DSMC2 GEMINI'. ProRes/DNx from DSMC2 Gemini page."
+  },
+  {
+   "id": "red-epic-dragon",
+   "name": "RED Epic Dragon 6K",
+   "exists": true,
+   "sensor": "Dragon 6K S35 (30.7x15.8mm, 6144x3160)",
+   "resolutions": [
+    {
+     "key": "6k-ff",
+     "name": "6K Full Format",
+     "w": 6144,
+     "h": 3160,
+     "maxfps": 75
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Verified on this camera: RED lists 6K FF (6144x3160) 24fps 4:1 and 60fps 10:1 with 200 MB/s MINI-MAG; 14-bit model gives 3.89->4 and 9.72->10 (200 MiB/s); 16-bit would need 5:1. EPIC DRAGON itself is not in RED's current tool.",
+     "source": "https://support.reddigitalcinema.com/hc/en-us/articles/360011398413-EPIC-DRAGON-Specs ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [],
+   "notes": "DSMC1 (EPIC). Specs: https://docs.red.com/955-0156/EPICSCARLETOperationGuide/en-us/Content/A_TechSpecs/Specs_EPIC_DRAGON.htm. No in-camera ProRes/DNx. Media: up to 200 MB/s MINI-MAG 480GB+, 170 MB/s MINI-MAG 120/240GB or REDMAG 1.8\". Ratio range 2:1-22:1 per RED support page."
+  },
+  {
+   "id": "red-scarlet-dragon",
+   "name": "RED Scarlet Dragon",
+   "exists": true,
+   "sensor": "Dragon 6K S35 (Scarlet-limited)",
+   "resolutions": [
+    {
+     "key": "6k-ff",
+     "name": "6K Full Format (burst)",
+     "w": 6144,
+     "h": 3160,
+     "maxfps": 12
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 48
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 75
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 75
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET DRAGON min 6:1, 72 MB/s output cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 6,
+    "max": 22
+   },
+   "fixed": [],
+   "notes": "DSMC1. Specs: https://docs.red.com/955-0156/EPICSCARLETOperationGuide/en-us/Content/A_TechSpecs/Specs_SCARLET_DRAGON.htm. Up to 72 MB/s (MINI-MAG or REDMAG 1.8\"). 6K only in 12fps burst. No ProRes."
+  },
+  {
+   "id": "red-weapon-dragon-6k",
+   "name": "RED Weapon Dragon 6K S35",
+   "exists": true,
+   "sensor": "Dragon 6K S35",
+   "resolutions": [
+    {
+     "key": "6k-ff",
+     "name": "6K Full Format",
+     "w": 6144,
+     "h": 3160,
+     "maxfps": 75
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: DSMC2 DRAGON-X (same 6K Dragon class) min 2:1; DRAGON-X spec lists 6K FF 24fps 3:1 / 60fps 7:1 at 300 MB/s, 14-bit model gives 2.59->3, 6.48->7.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444 XQ",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 4444",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQX 12-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR 444 12-bit",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD 444/HQX 10-bit",
+     "res": "1920x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Renamed DSMC2 DRAGON 6K S35. Specs (magnesium WEAPON 6K): https://docs.red.com/955-0177_v7.4/DSMC2_DRAGON_7_4/en-us/Content/A_TechSpecs/Specs_WEAPON_6K_MG.htm (lists 225 MB/s MINI-MAG; carbon fibre WEAPON 6K / DRAGON-X list 300 MB/s). Note RED tool lists DRAGON-X 6K FF as 6144x3240; RED spec pages say 6144x3160 (used here)."
+  },
+  {
+   "id": "red-weapon-dragon-8k-vv",
+   "name": "RED Weapon Dragon 8K VV",
+   "exists": true,
+   "sensor": "Dragon 8K VV (40.96x21.6mm, 8192x4320)",
+   "resolutions": [
+    {
+     "key": "8k-ff",
+     "name": "8K Full Format 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 75
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "7k-ff",
+     "name": "7K FF",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 60
+    },
+    {
+     "key": "6k-ff",
+     "name": "6K FF",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 75
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K FF",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "res": null,
+     "ref": "bpp = 14/2 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). Not in RED's tool and no RED spec page found; assumes same 14-bit REDCODE model as other DSMC2 cameras.",
+     "source": "https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [],
+   "notes": "Renamed DSMC2 DRAGON 8K VV (v7.0.3). Resolution list assumed same as Monstro 8K VV (8K FF 60fps / 2.4:1 75fps per third-party listings; one source claims 75fps at 8K). ProRes/DNx options unverified (DSMC2 generally up to 4K) - left empty. Data from third-party (https://en.wikipedia.org/wiki/List_of_Red_Digital_Cinema_cameras)."
+  },
+  {
+   "id": "red-raven",
+   "name": "RED Raven 4.5K",
+   "exists": true,
+   "sensor": "Dragon 4.5K (23x10.8mm, 4608x2160)",
+   "resolutions": [
+    {
+     "key": "4.5k-ff",
+     "name": "4.5K Full Format",
+     "w": 4608,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4.5k-2.4",
+     "name": "4.5K 2.4:1",
+     "w": 4608,
+     "h": 1944,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "res": null,
+     "ref": "bpp = 14/3 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: RAVEN min 3:1, 140 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 3,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0127_v7.4/Raven-Operation-Guide/en-us/Content/A_TechSpecs/Specs_RAVEN.htm. Up to 140 MB/s RED MINI-MAG. ProRes/DNx 2K only, 60fps."
+  },
+  {
+   "id": "red-scarlet-w",
+   "name": "RED Scarlet-W 5K",
+   "exists": true,
+   "sensor": "Dragon 5K S35 (5120x2700)",
+   "resolutions": [
+    {
+     "key": "5k-ff",
+     "name": "5K Full Format",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 50
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "4.5k-ff",
+     "name": "4.5K FF",
+     "w": 4608,
+     "h": 2412,
+     "maxfps": 100
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 150
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "res": null,
+     "ref": "bpp = 14/4 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "res": null,
+     "ref": "bpp = 14/5 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "res": null,
+     "ref": "bpp = 14/6 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 14/7 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "res": null,
+     "ref": "bpp = 14/8 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "res": null,
+     "ref": "bpp = 14/10 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "res": null,
+     "ref": "bpp = 14/12 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 14/14 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "res": null,
+     "ref": "bpp = 14/16 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "res": null,
+     "ref": "bpp = 14/18 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "res": null,
+     "ref": "bpp = 14/22 (RED Recording Time tool: MB/s = W*H*14/8*fps/ratio/1e6). RED tool: SCARLET-W min 4:1, 170 MB/s cap.",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": false
+    }
+   ],
+   "ratios": {
+    "min": 4,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "codec": "ProRes 422",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 HQ",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "ProRes 422 LT",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR SQ 8-bit",
+     "res": "4096x2160",
+     "maxfps": 30,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHR HQ/SQ 8-bit",
+     "res": "2048x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    },
+    {
+     "codec": "DNxHD HQ/SQ 8-bit",
+     "res": "1920x1080",
+     "maxfps": 60,
+     "mbps": null,
+     "note": "rate not published by RED; use Apple ProRes white paper rates"
+    }
+   ],
+   "notes": "Specs: https://docs.red.com/955-0116_v7.4/SCARLET_DRAGON_7_4/en-us/Content/A_TechSpecs/Specs_SW_5K.htm. Up to 170 MB/s RED MINI-MAG."
+  },
+  {
+   "id": "red-scarlet-mx",
+   "name": "RED Scarlet MX (Scarlet-X)",
+   "exists": true,
+   "sensor": "Mysterium-X 5K S35 (5120x2700)",
+   "resolutions": [
+    {
+     "key": "5k-ff",
+     "name": "5K Full Format",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 12
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": 12
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K FF",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K UHD 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1708,
+     "maxfps": 30
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K FF",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": 48
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K FF",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 60
+    },
+    {
+     "key": "1080p",
+     "name": "1080p 16:9",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.4,
+     "res": null,
+     "ref": "bpp = 12/5 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.0,
+     "res": null,
+     "ref": "bpp = 12/6 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 1.7143,
+     "res": null,
+     "ref": "bpp = 12/7 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.5,
+     "res": null,
+     "ref": "bpp = 12/8 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.2,
+     "res": null,
+     "ref": "bpp = 12/10 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.0,
+     "res": null,
+     "ref": "bpp = 12/12 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 0.8571,
+     "res": null,
+     "ref": "bpp = 12/14 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.75,
+     "res": null,
+     "ref": "bpp = 12/16 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.6667,
+     "res": null,
+     "ref": "bpp = 12/18 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.5455,
+     "res": null,
+     "ref": "bpp = 12/22 (RED Recording Time tool: MB/s = W*H*12/8*fps/ratio/1e6). RED tool uses 12 bits/px (factor 12) for SCARLET MYSTERIUM-X, min 5:1, 55 MB/s cap. RED's 2011 spec sheet quoted REDCODE 3:1-18:1 (third-party reproduction).",
+     "source": "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    }
+   ],
+   "ratios": {
+    "min": 5,
+    "max": 18
+   },
+   "fixed": [],
+   "notes": "DSMC1. Original 2011 specs (5K FF 1-12fps, 4K 30fps, 3K 48, 2K 60, 1080p 60) from third-party reproductions and RED DSMC guide on manualslib (https://www.manualslib.com/manual/873170/Red-Epic.html?page=181). No in-camera ProRes. RED's tool lists 2:1-22:1 options but min 5:1; max uncertain (18:1 per launch sheet)."
+  }
+ ]
+}

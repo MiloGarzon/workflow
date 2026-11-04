@@ -1,0 +1,708 @@
+{
+ "generated": "2026-11-04",
+ "cameras": [
+  {
+   "id": "apple-iphone17pro",
+   "name": "iPhone 17 Pro",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "2.8k",
+     "name": "2.8K (Action mode only)",
+     "w": null,
+     "h": null,
+     "maxfps": 60
+    },
+    {
+     "key": "1080p",
+     "name": "1080p HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "720p",
+     "name": "720p",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 30
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Native Camera app records ProRes 422 HQ (flavor not named on apple.com; confirmed by third-party sources and consistent with Apple's external-drive write-speed requirements). iPhone ProRes limits (Apple support 109041): built-in storage 4K up to 30 fps (256 GB+), 1080p up to 60 fps (25/30 only on 128 GB); 4K60 requires external SSD >=220 MB/s, 4K120 requires external SSD >=440 MB/s. Apple's 220/440 MB/s requirements match 422 HQ 4K at ~1768/~3536 Mb/s.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps (e.g. Blackmagic Camera); not the native Camera app \u2014 third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prraw",
+     "name": "ProRes RAW",
+     "bpp": 2.9527,
+     "res": [
+      "4k"
+     ],
+     "ref": "ESTIMATE. Apple ProRes RAW White Paper (May 2023) gives no numeric table, only that ProRes RAW rates 'generally fall between' two ProRes flavors; midpoint of 147 and 220 Mb/s at 1920x1080 29.97 (ProRes WP April 2022) = 183.5 Mb/s. ProRes RAW is constant-quality, so real rates vary with detail/noise. Apple lists ProRes RAW as a recorded format, 'enabled by compatible apps' (Final Cut Camera, third-party). Apple publishes no iPhone ProRes RAW resolution/fps limits; 4K assumed.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prraw-hq",
+     "name": "ProRes RAW HQ",
+     "bpp": 4.4251,
+     "res": [
+      "4k"
+     ],
+     "ref": "ESTIMATE. Apple ProRes RAW White Paper (May 2023) gives no numeric table, only that ProRes RAW HQ rates 'generally fall between' two ProRes flavors; midpoint of 220 and 330 Mb/s at 1920x1080 29.97 (ProRes WP April 2022) = 275.0 Mb/s. ProRes RAW is constant-quality, so real rates vary with detail/noise. Whether RAW vs RAW HQ is selectable depends on app; Apple publishes no iPhone-specific rate.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "hevc-4k",
+     "name": "HEVC 4K (Dolby Vision/SDR)",
+     "mbps": null,
+     "source": "https://support.apple.com/en-us/125090",
+     "ref": "Apple does not publish HEVC bitrates for iPhone. Left null."
+    },
+    {
+     "key": "h264-4k",
+     "name": "H.264 4K",
+     "mbps": null,
+     "source": "https://support.apple.com/en-us/125090",
+     "ref": "Apple does not publish H.264 bitrates for iPhone. Left null."
+    }
+   ],
+   "notes": "Apple tech specs: 4K Dolby Vision at 24/25/30/60 fps, 100/120 fps (Fusion Main camera only); 1080p at 25/30/60/120 fps (120 Fusion Main); slo-mo 1080p up to 240 fps and 4K up to 120 fps; 720p 30 fps; Cinematic mode up to 4K 30 fps; Action mode up to 2.8K 60 fps; spatial 1080p30. 'ProRes video recording up to 4K at 120 fps with external recording.' Formats: HEVC, H.264, ProRes, ProRes RAW. Apple Log 2 and ACES supported; Apple Log 2 is a gamma/encoding curve, not a codec, and does not change ProRes data rates. Genlock with third-party hardware. No 4K DCI, 6K or 8K recording listed. ",
+   "sources": [
+    "https://support.apple.com/en-us/125090",
+    "https://support.apple.com/en-us/109041",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf"
+   ]
+  },
+  {
+   "id": "apple-iphone18pro",
+   "name": "iPhone 18 Pro",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "2.8k",
+     "name": "2.8K (Action mode only)",
+     "w": null,
+     "h": null,
+     "maxfps": 60
+    },
+    {
+     "key": "1080p",
+     "name": "1080p HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "720p",
+     "name": "720p",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 30
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Native Camera app records ProRes 422 HQ (flavor not named on apple.com; confirmed by third-party sources and consistent with Apple's external-drive write-speed requirements). iPhone ProRes limits (Apple support 109041): built-in storage 4K up to 30 fps (256 GB+), 1080p up to 60 fps (25/30 only on 128 GB); 4K60 requires external SSD >=220 MB/s, 4K120 requires external SSD >=440 MB/s. Apple's 220/440 MB/s requirements match 422 HQ 4K at ~1768/~3536 Mb/s.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps (e.g. Blackmagic Camera); not the native Camera app \u2014 third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prraw",
+     "name": "ProRes RAW",
+     "bpp": 2.9527,
+     "res": [
+      "4k"
+     ],
+     "ref": "ESTIMATE. Apple ProRes RAW White Paper (May 2023) gives no numeric table, only that ProRes RAW rates 'generally fall between' two ProRes flavors; midpoint of 147 and 220 Mb/s at 1920x1080 29.97 (ProRes WP April 2022) = 183.5 Mb/s. ProRes RAW is constant-quality, so real rates vary with detail/noise. Apple lists ProRes RAW as a recorded format, 'enabled by compatible apps' (Final Cut Camera, third-party). Apple publishes no iPhone ProRes RAW resolution/fps limits; 4K assumed.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prraw-hq",
+     "name": "ProRes RAW HQ",
+     "bpp": 4.4251,
+     "res": [
+      "4k"
+     ],
+     "ref": "ESTIMATE. Apple ProRes RAW White Paper (May 2023) gives no numeric table, only that ProRes RAW HQ rates 'generally fall between' two ProRes flavors; midpoint of 220 and 330 Mb/s at 1920x1080 29.97 (ProRes WP April 2022) = 275.0 Mb/s. ProRes RAW is constant-quality, so real rates vary with detail/noise. Whether RAW vs RAW HQ is selectable depends on app; Apple publishes no iPhone-specific rate.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "hevc-4k",
+     "name": "HEVC 4K (Dolby Vision/SDR)",
+     "mbps": null,
+     "source": "https://support.apple.com/148590",
+     "ref": "Apple does not publish HEVC bitrates for iPhone. Left null."
+    },
+    {
+     "key": "h264-4k",
+     "name": "H.264 4K",
+     "mbps": null,
+     "source": "https://support.apple.com/148590",
+     "ref": "Apple does not publish H.264 bitrates for iPhone. Left null."
+    }
+   ],
+   "notes": "Apple tech specs: 4K Dolby Vision at 24/25/30/60 fps, 100/120 fps (Fusion Main camera only); 1080p at 25/30/60/120 fps (120 Fusion Main); slo-mo 1080p up to 240 fps and 4K up to 120 fps; 720p 30 fps; Cinematic mode up to 4K 60 fps; Action mode up to 2.8K 60 fps; spatial 1080p30. 'ProRes video recording up to 4K at 120 fps with external recording.' Formats: HEVC, H.264, ProRes, ProRes RAW. Apple Log 2 and ACES supported; Apple Log 2 is a gamma/encoding curve, not a codec, and does not change ProRes data rates. Genlock with third-party hardware. No 4K DCI, 6K or 8K recording listed. Released: Apple support tech-spec page 148590 lists 'Year introduced: 2026' and apple.com/iphone-18-pro/specs is live; exact on-sale date not shown on those pages. Video specs essentially identical to iPhone 17 Pro except Cinematic mode up to 4K60 (17 Pro: 4K30) and a variable-aperture 48MP main camera. Apple support 109041 (en-us) still lists only 15/16/17 Pro for ProRes tables; an Apple iPhone User Guide version adds 18 Pro to 4K120 external ProRes (and a one-time 'Configure Pro Video Storage' step). Treat 18 Pro ProRes limits as same as 17 Pro.",
+   "sources": [
+    "https://support.apple.com/148590",
+    "https://support.apple.com/en-us/109041",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf"
+   ]
+  },
+  {
+   "id": "dji-inspire3-x9",
+   "name": "DJI Inspire 3 (Zenmuse X9-8K Air)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "8k-dci",
+     "name": "FF 8.1K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-uhd",
+     "name": "FF 8K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-239",
+     "name": "FF 8K 2.39:1",
+     "w": 8192,
+     "h": 3424,
+     "maxfps": 75
+    },
+    {
+     "key": "4k-dci",
+     "name": "FF 4.1K 17:9 (also S35 4K 17:9 for ProRes 422 HQ/H.264)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k",
+     "name": "FF 4K 16:9 (also S35 4K 16:9 for ProRes 422 HQ/H.264)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "s35-5.5k",
+     "name": "S35 5.5K 17:9",
+     "w": 5568,
+     "h": 2952,
+     "maxfps": 60
+    },
+    {
+     "key": "s35-5.2k",
+     "name": "S35 5.2K 16:9",
+     "w": 5248,
+     "h": 2952,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "cdng",
+     "name": "CinemaDNG",
+     "bpp": 7.9933,
+     "res": [
+      "8k-dci",
+      "8k-uhd",
+      "4k-dci",
+      "4k",
+      "s35-5.5k",
+      "s35-5.2k"
+     ],
+     "resMaxfps": {
+      "8k-dci": 25,
+      "8k-uhd": 25,
+      "4k-dci": 100,
+      "4k": 100,
+      "s35-5.5k": 50,
+      "s35-5.2k": 50
+     },
+     "ref": "DJI Inspire 3 User Manual v3.0 (2024.09), Specifications > Recording Specifications table (values in MB/s = megabytes/s; x8 for Mb/s): CinemaDNG FF 4096x2160 25 fps = 221 MB/s = 1768 Mb/s; same ~8.0 bpp on all rows (e.g. 8192x4320 24 fps = 849 MB/s). Requires paid license. Manual's 3840x2160 75 fps cell reads '872MBps' (likely typo for ~622).",
+     "source": "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prraw-hi",
+     "name": "ProRes RAW (DJI high-rate tier, ~4 bpp)",
+     "bpp": 4.0148,
+     "res": [
+      "8k-dci",
+      "8k-uhd",
+      "4k-dci",
+      "4k",
+      "s35-5.5k",
+      "s35-5.2k"
+     ],
+     "resMaxfps": {
+      "8k-dci": 25,
+      "8k-uhd": 25,
+      "4k-dci": 100,
+      "4k": 100,
+      "s35-5.5k": 60,
+      "s35-5.2k": 60
+     },
+     "ref": "DJI Inspire 3 User Manual v3.0 (2024.09), Specifications > Recording Specifications table (values in MB/s = megabytes/s; x8 for Mb/s): ProRes RAW FF 4096x2160 25 fps = 111 MB/s = 888 Mb/s (~4.0 bpp; 8192x4320 24 fps = 425 MB/s same bpp). DJI's table labels the codec only 'ProRes RAW' (does not say RAW vs RAW HQ); ~4 bpp is above ProRes 422 HQ, consistent with Apple's RAW HQ range. Paid license.",
+     "source": "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prraw-lo",
+     "name": "ProRes RAW (DJI reduced-rate tier, ~2 bpp: 8K above 25 fps, 8K 2.39:1, 4K 120)",
+     "bpp": 2.0006,
+     "res": [
+      "8k-dci",
+      "8k-uhd",
+      "8k-239",
+      "4k-dci",
+      "4k"
+     ],
+     "resMaxfps": {
+      "8k-dci": 60,
+      "8k-uhd": 60,
+      "8k-239": 75,
+      "4k-dci": 120,
+      "4k": 120
+     },
+     "ref": "DJI Inspire 3 User Manual v3.0 (2024.09), Specifications > Recording Specifications table (values in MB/s = megabytes/s; x8 for Mb/s): ProRes RAW FF 8192x4320 60 fps = 531 MB/s = 4248 Mb/s (~2.0 bpp). Table shows halved per-frame rate for 8K at 29.97-60 fps (e.g. 29.97 fps = 265 MB/s vs 24 fps = 425 MB/s), for 8K 2.39:1 at 72/75 fps (505/526 MB/s) and for 4K at 119.88/120 fps (265/249 MB/s). Column mapping inferred from the text-extracted table; values check out at constant bpp.",
+     "source": "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5602,
+     "res": [
+      "8k-dci",
+      "8k-uhd",
+      "4k-dci",
+      "4k"
+     ],
+     "resMaxfps": {
+      "8k-dci": 30,
+      "8k-uhd": 30,
+      "4k-dci": 120,
+      "4k": 120
+     },
+     "ref": "DJI Inspire 3 User Manual v3.0 (2024.09), Specifications > Recording Specifications table (values in MB/s = megabytes/s; x8 for Mb/s): ProRes 422 HQ FF 4096x2160 29.97 fps = 118 MB/s = 944 Mb/s (matches Apple WP 943 Mb/s). S35 4K modes max 60 fps. Manual's 7680x4320 25 fps cell reads 396 MB/s (likely typo; ~367 expected). No license needed.",
+     "source": "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-4k-30",
+     "name": "H.264 4K/4.1K up to 30 fps",
+     "mbps": 152,
+     "source": "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+     "ref": "DJI Inspire 3 User Manual v3.0 (2024.09), Specifications > Recording Specifications table (values in MB/s = megabytes/s; x8 for Mb/s): 19 MB/s at 23.976-30 fps"
+    },
+    {
+     "key": "h264-4k-60",
+     "name": "H.264 4K/4.1K 48-60 fps",
+     "mbps": 208,
+     "source": "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+     "ref": "DJI Inspire 3 User Manual v3.0 (2024.09), Specifications > Recording Specifications table (values in MB/s = megabytes/s; x8 for Mb/s): 26 MB/s at 48-60 fps"
+    },
+    {
+     "key": "h264-4k-120",
+     "name": "H.264 4K/4.1K 72-120 fps (FF only, S&Q)",
+     "mbps": 304,
+     "source": "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+     "ref": "DJI Inspire 3 User Manual v3.0 (2024.09), Specifications > Recording Specifications table (values in MB/s = megabytes/s; x8 for Mb/s): 38 MB/s at 72-120 fps"
+    }
+   ],
+   "notes": "Frame-rate columns: 23.976/24/25/29.97/30/48/50/59.94/60, and 72/75/96/100/119.88/120 in S&Q mode. CinemaDNG and ProRes RAW need a paid license key; recorded to DJI PROSSD. No H.265 on X9-8K Air (video formats: MOV, CinemaDNG). dji.com/inspire-3/specs shows resolutions only as an image; values taken from the manual.",
+   "sources": [
+    "https://dl.djicdn.com/downloads/inspire_3/20241016UM/DJI_Inspire_3_User_Manual_V3.0_EN.pdf",
+    "https://www.dji.com/inspire-3/specs"
+   ]
+  },
+  {
+   "id": "dji-inspire2-x7",
+   "name": "DJI Inspire 2 + Zenmuse X7",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "6k-dci",
+     "name": "6K 17:9",
+     "w": 6016,
+     "h": 3200,
+     "maxfps": 30
+    },
+    {
+     "key": "6k",
+     "name": "5.8K 16:9",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": 30
+    },
+    {
+     "key": "5.4k",
+     "name": "5.4K 17:9 (crop)",
+     "w": 5440,
+     "h": 2880,
+     "maxfps": 24
+    },
+    {
+     "key": "5.1k",
+     "name": "5.1K 16:9 (crop)",
+     "w": 5120,
+     "h": 2880,
+     "maxfps": 24
+    },
+    {
+     "key": "5.2k-244",
+     "name": "5.2K 2.44:1",
+     "w": 5280,
+     "h": 2160,
+     "maxfps": 48
+    },
+    {
+     "key": "4k-dci",
+     "name": "C4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 59.94
+    },
+    {
+     "key": "3.9k-dci",
+     "name": "3.9K 17:9 crop",
+     "w": 3944,
+     "h": 2088,
+     "maxfps": 59.94
+    },
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 59.94
+    },
+    {
+     "key": "3.7k",
+     "name": "3.7K 16:9 crop",
+     "w": 3712,
+     "h": 2088,
+     "maxfps": 59.94
+    },
+    {
+     "key": "3.8k-244",
+     "name": "3840x1572 2.44:1",
+     "w": 3840,
+     "h": 1572,
+     "maxfps": 30
+    },
+    {
+     "key": "2.7k",
+     "name": "2.7K (H.264/H.265)",
+     "w": 2720,
+     "h": 1530,
+     "maxfps": 59.94
+    },
+    {
+     "key": "2.7k-pr",
+     "name": "2.7K (ProRes)",
+     "w": 2704,
+     "h": 1520,
+     "maxfps": 59.94
+    },
+    {
+     "key": "2k-dci",
+     "name": "2K DCI",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 59.94
+    },
+    {
+     "key": "1080p",
+     "name": "1080p",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 59.94
+    }
+   ],
+   "codecs": [
+    {
+     "key": "cdng",
+     "name": "CinemaDNG",
+     "bpp": 7.6878,
+     "res": [
+      "6k-dci",
+      "6k",
+      "5.4k",
+      "5.1k",
+      "5.2k-244",
+      "4k-dci",
+      "3.9k-dci",
+      "4k",
+      "3.7k"
+     ],
+     "resMaxfps": {
+      "6k-dci": 30,
+      "6k": 30,
+      "5.4k": 24,
+      "5.1k": 24,
+      "5.2k-244": 48,
+      "4k-dci": 48,
+      "3.9k-dci": 59.94,
+      "4k": 48,
+      "3.7k": 59.94
+     },
+     "ref": "ESTIMATE (upper bound). X7 manual gives only 'maximum bitrate of 4.44 Gbps' for CinemaDNG/ProRes on CINESSD and no per-mode rates; bpp = 4.44e9/(6016*3200*30) at the top 6K 30 fps mode. 14-bit at 23.976, 12-bit otherwise. Lossless-compressed so real rate varies; at 23.976 14-bit the same cap would imply ~9.6 bpp. Requires Inspire 2 CinemaDNG license + CINESSD.",
+     "source": "https://dl.djicdn.com/downloads/zenmuse+x7/20180718/Zenmuse+X7+User+Manual+EN+v1.4.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prraw",
+     "name": "ProRes RAW",
+     "bpp": 2.9527,
+     "res": [
+      "6k-dci",
+      "6k",
+      "5.4k",
+      "5.1k",
+      "4k-dci",
+      "4k"
+     ],
+     "ref": "ESTIMATE. Apple ProRes RAW White Paper (May 2023) gives no numeric table, only that ProRes RAW rates 'generally fall between' two ProRes flavors; midpoint of 147 and 220 Mb/s at 1920x1080 29.97 (ProRes WP April 2022) = 183.5 Mb/s. ProRes RAW is constant-quality, so real rates vary with detail/noise. X7 modes (manual v1.4): 6016x3200 / 5760x3240 up to 30 fps, 5440x2880 / 5120x2880 up to 24, 4096x2160 / 3840x2160 47.95/48 only. Requires DJI GO 4 update + license.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prraw-hq",
+     "name": "ProRes RAW HQ",
+     "bpp": 4.4251,
+     "res": [
+      "6k-dci",
+      "6k"
+     ],
+     "ref": "ESTIMATE. Apple ProRes RAW White Paper (May 2023) gives no numeric table, only that ProRes RAW HQ rates 'generally fall between' two ProRes flavors; midpoint of 220 and 330 Mb/s at 1920x1080 29.97 (ProRes WP April 2022) = 275.0 Mb/s. ProRes RAW is constant-quality, so real rates vary with detail/noise. X7 manual: RAW HQ only 6016x3200 and 5760x3240 at 23.976 fps.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_RAW.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "5.2k-244",
+      "4k-dci",
+      "4k",
+      "2.7k-pr",
+      "2k-dci",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). X7 manual: 5280x2160, 4096x2160, 3840x2160 up to 30 fps; 2704x1520, 2048x1080, 1920x1080 at 47.95-59.94 fps. Cross-check: Inspire 2 manual X5S spec lists 3840x2160 30p 422 HQ @900 Mb/s (WP: 884).",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 8.0456,
+     "res": [
+      "4k",
+      "2k-dci",
+      "1080p"
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 4444 XQ 1920x1080 29.97p = 500 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). X7 manual: 3840x2160 up to 30 fps; 2048x1080 and 1920x1080 at 47.95-59.94 fps. Cross-check: Inspire 2 X5S spec 3840x2160 30p 4444 XQ @2.0 Gb/s (WP: 1989).",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-max",
+     "name": "H.264 (all modes, max)",
+     "mbps": 100,
+     "source": "https://fstoppers.com/aerial/what-are-differences-between-dji-zenmuse-x5s-and-x7-cameras-and-which-one-should-199965",
+     "ref": "THIRD-PARTY: X7 manual and DJI support page give no H.264/H.265 bitrate; 100 Mb/s max per third-party reviews/retailers. For reference, DJI's Inspire 2 manual gives X5S H.264 as 100 Mb/s at 4K, 80 at 2.7K30, 60 at 1080p30 \u2014 X7 sub-4K rates may also be lower than 100.",
+     "thirdParty": true
+    },
+    {
+     "key": "h265-max",
+     "name": "H.265 (all modes, max)",
+     "mbps": 100,
+     "source": "https://fstoppers.com/aerial/what-are-differences-between-dji-zenmuse-x5s-and-x7-cameras-and-which-one-should-199965",
+     "ref": "THIRD-PARTY: see H.264 entry. X5S H.265 per DJI manual: 100 Mb/s 4K, 65 Mb/s 2.7K30, 50 Mb/s 1080p30.",
+     "thirdParty": true
+    }
+   ],
+   "notes": "Source: Zenmuse X7 User Manual v1.4 (2018.07), Recording specifications. CINESSD codecs: CinemaDNG, ProRes RAW, ProRes RAW HQ, ProRes 422 HQ, ProRes 4444 XQ (require Inspire 2 license keys). MicroSD: H.264 (4096/3840/2720/1920 up to 59.94 fps; 3840x1572 up to 30) and H.265 (4096/3840/1920/2720/3840x1572 up to 30; 2720 and 1920 also 47.95/59.94). Manual lists H.264/H.265 frame rates as 23.976/24/29.97/30 and 47.95/59.94 (no 25/50). Max CINESSD bitrate 4.44 Gb/s. Higher-fps modes crop the sensor.",
+   "sources": [
+    "https://dl.djicdn.com/downloads/zenmuse+x7/20180718/Zenmuse+X7+User+Manual+EN+v1.4.pdf",
+    "https://www.dji.com/global/support/product/zenmuse-x7",
+    "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf"
+   ]
+  },
+  {
+   "id": "dji-mavic2pro",
+   "name": "DJI Mavic 2 Pro",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 30
+    },
+    {
+     "key": "2.7k",
+     "name": "2.7K",
+     "w": 2688,
+     "h": 1512,
+     "maxfps": 60
+    },
+    {
+     "key": "1080p",
+     "name": "FHD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [],
+   "fixed": [
+    {
+     "key": "h264-max",
+     "name": "H.264 (max)",
+     "mbps": 100,
+     "source": "https://www.dji.com/mavic-2/info",
+     "ref": "DJI Mavic 2 specs: Max Video Bitrate 100Mbps; MP4/MOV (MPEG-4 AVC/H.264, HEVC/H.265)"
+    },
+    {
+     "key": "h265-max",
+     "name": "H.265 (max)",
+     "mbps": 100,
+     "source": "https://www.dji.com/mavic-2/info",
+     "ref": "DJI Mavic 2 specs: Max Video Bitrate 100Mbps (single max figure for both codecs)"
+    }
+   ],
+   "notes": "DJI specs: 4K 3840x2160 24/25/30p; 2.7K 2688x1512 24/25/30/48/50/60p; FHD 1920x1080 24/25/30/48/50/60/120p. Dlog-M 10-bit and HLG 10-bit HDR (10-bit uses H.265). No ProRes/CinemaDNG. DJI publishes only the 100 Mb/s maximum, not per-mode rates.",
+   "sources": [
+    "https://www.dji.com/mavic-2/info"
+   ]
+  }
+ ]
+}

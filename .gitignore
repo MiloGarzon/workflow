@@ -1,0 +1,8 @@
+# Compilados (app, dmg, zip) — se generan con build.sh / make-dmg.sh
+build/
+
+# PDFs de ejemplo (material de clientes, no publicar)
+ejemplos/*.pdf
+
+# macOS
+.DS_Store

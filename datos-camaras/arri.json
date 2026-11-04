@@ -1,0 +1,2398 @@
+{
+ "source_note": "Primary source: ARRI Formats & Data Rate Calculator v2.6.4 (https://tools.arri.com/fileadmin/adapps/afdc/index.html); numbers read from its embedded dataset https://tools.arri.com/fileadmin/adapps/afdc/js/data-embed.js (header: generated 2026-05-26). bpp = bytes_per_frame*8/(file W*H); Mbps@24 = bytes_per_frame*24*8/1e6 (FDRC formula, audio excluded).",
+ "cameras": [
+  {
+   "id": "arri-alexa35",
+   "name": "ARRI ALEXA 35",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "4p6k_3x2_open_gate_4608x3164",
+     "name": "4.6K 3:2 Open Gate (4608x3164)",
+     "w": 4608,
+     "h": 3164,
+     "maxfps": 75,
+     "sensor_mode": "4.6K 3:2 Open Gate",
+     "format": "super35"
+    },
+    {
+     "key": "4p6k_16x9_4608x2592",
+     "name": "4.6K 16:9 (4608x2592)",
+     "w": 4608,
+     "h": 2592,
+     "maxfps": 75,
+     "sensor_mode": "4.6K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_4096x2304",
+     "name": "4K 16:9 (4096x2304)",
+     "w": 4096,
+     "h": 2304,
+     "maxfps": 120,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "3p8k_16x9_3840x2160",
+     "name": "3.8K 16:9 → UHD (3840 x 2160)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120,
+     "sensor_mode": "3.8K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_2x1_4096x2048",
+     "name": "4K 2:1 (4096x2048)",
+     "w": 4096,
+     "h": 2048,
+     "maxfps": 120,
+     "sensor_mode": "4K 2:1",
+     "format": "super35"
+    },
+    {
+     "key": "3p3k_6x5_3328x2790",
+     "name": "3.3K 6:5 (3328x2790)",
+     "w": 3328,
+     "h": 2790,
+     "maxfps": 100,
+     "sensor_mode": "3.3K 6:5",
+     "format": "super35"
+    },
+    {
+     "key": "3k_1x1_3072x3072",
+     "name": "3K 1:1 (3072x3072)",
+     "w": 3072,
+     "h": 3072,
+     "maxfps": 100,
+     "sensor_mode": "3K 1:1",
+     "format": "super35"
+    },
+    {
+     "key": "4p6k_16x9_4096x2304",
+     "name": "4.6K 16:9 → 4K (4096 x 2304)",
+     "w": 4096,
+     "h": 2304,
+     "maxfps": 75,
+     "sensor_mode": "4.6K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_3840x2160",
+     "name": "4K 16:9 → UHD (3840 x 2160)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_2048x1152",
+     "name": "4K 16:9 → 2K (2048 x 1152)",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 120,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_1920x1080",
+     "name": "4K 16:9 → HD (1920 x 1080)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "3p3k_6x5_3840x1608",
+     "name": "3.3K 6:5 → 3.8K 2.39:1 Ana. 2x",
+     "w": 3840,
+     "h": 1608,
+     "maxfps": 90,
+     "sensor_mode": "3.3K 6:5",
+     "format": "super35",
+     "squeeze": 2
+    },
+    {
+     "key": "3k_1x1_3840x1920",
+     "name": "3K 1:1 → 3.8K 2:1 Ana 2x",
+     "w": 3840,
+     "h": 1920,
+     "maxfps": 100,
+     "sensor_mode": "3K 1:1",
+     "format": "super35",
+     "squeeze": 2
+    },
+    {
+     "key": "2p7k_8x9_3840x2160",
+     "name": "2.7K 8:9 → UHD 16:9 Ana 2x",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 100,
+     "sensor_mode": "2.7K 8:9",
+     "format": "super35",
+     "squeeze": 2
+    },
+    {
+     "key": "2k_16x9_s16_2048x1152",
+     "name": "2K 16:9 S16 (2048x1152)",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 120,
+     "sensor_mode": "2K 16:9 S16",
+     "format": "super35"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "arriraw",
+     "name": "ARRIRAW",
+     "bpp": 12.7409,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4p6k_16x9_4608x2592",
+      "4k_16x9_4096x2304",
+      "3p8k_16x9_3840x2160",
+      "4k_2x1_4096x2048",
+      "3p3k_6x5_3328x2790",
+      "3k_1x1_3072x3072"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 23219804 bytes/frame -> 4458.2 Mb/s at 24 fps (557.3 MB/s); bpp=12.7409. bpp across modes 12.7409-12.774; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 12.7409,
+       "bytes_per_frame": 23219804,
+       "mbps_24": 4458.2,
+       "maxfps": 75
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 12.7481,
+       "bytes_per_frame": 19032748,
+       "mbps_24": 3654.3,
+       "maxfps": 75
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 12.7645,
+       "bytes_per_frame": 15057612,
+       "mbps_24": 2891.1,
+       "maxfps": 120
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 12.7731,
+       "bytes_per_frame": 13243186,
+       "mbps_24": 2542.7,
+       "maxfps": 120
+      },
+      "4k_2x1_4096x2048": {
+       "bpp": 12.774,
+       "bytes_per_frame": 13394542,
+       "mbps_24": 2571.8,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 12.7642,
+       "bytes_per_frame": 14814618,
+       "mbps_24": 2844.4,
+       "maxfps": 100
+      },
+      "3k_1x1_3072x3072": {
+       "bpp": 12.7645,
+       "bytes_per_frame": 15057612,
+       "mbps_24": 2891.1,
+       "maxfps": 100
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "arriraw_hde",
+     "name": "ARRIRAW HDE",
+     "bpp": 6.3704,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4p6k_16x9_4608x2592",
+      "4k_16x9_4096x2304",
+      "3p8k_16x9_3840x2160",
+      "4k_2x1_4096x2048",
+      "3p3k_6x5_3328x2790",
+      "3k_1x1_3072x3072"
+     ],
+     "ref": "ESTIMATE: ARRI FDRC shows ARRIRAW-HDE GB/h as ARRIRAW GB/h x hde_multiplier (0.5 for this camera); 4.6K 3:2 Open Gate (4608x3164) 24 fps ~= 2229.1 Mb/s. HDE is lossless/variable-rate, so real files vary with image content. The multiplier is the FDRC's own approximation; ARRI marketing commonly cites roughly 40% smaller files (not re-verified here). No fixed ARRI-published HDE Mb/s found.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": true,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 6.3704,
+       "mbps_24": 2229.1,
+       "maxfps": 75
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 6.3741,
+       "mbps_24": 1827.2,
+       "maxfps": 75
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 6.3822,
+       "mbps_24": 1445.5,
+       "maxfps": 120
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 6.3865,
+       "mbps_24": 1271.3,
+       "maxfps": 120
+      },
+      "4k_2x1_4096x2048": {
+       "bpp": 6.387,
+       "mbps_24": 1285.9,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 6.3821,
+       "mbps_24": 1422.2,
+       "maxfps": 100
+      },
+      "3k_1x1_3072x3072": {
+       "bpp": 6.3822,
+       "mbps_24": 1445.5,
+       "maxfps": 100
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "pr4444xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 9.0083,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4k_16x9_4096x2304",
+      "4k_2x1_4096x2048",
+      "3p3k_6x5_3328x2790",
+      "3k_1x1_3072x3072",
+      "4p6k_16x9_4096x2304",
+      "4k_16x9_3840x2160",
+      "4k_16x9_2048x1152",
+      "4k_16x9_1920x1080",
+      "3p3k_6x5_3840x1608",
+      "3k_1x1_3840x1920",
+      "2p7k_8x9_3840x2160",
+      "2k_16x9_s16_2048x1152"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 16417365 bytes/frame -> 3152.1 Mb/s at 24 fps (394.0 MB/s); bpp=9.0083. bpp across modes 7.8473-9.4838; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 9.0083,
+       "bytes_per_frame": 16417365,
+       "mbps_24": 3152.1,
+       "maxfps": 60
+      },
+      "4p6k_16x9_4096x2304": {
+       "bpp": 7.8473,
+       "bytes_per_frame": 9257057,
+       "mbps_24": 1777.4,
+       "maxfps": 75
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 9.0526,
+       "bytes_per_frame": 10678869,
+       "mbps_24": 2050.3,
+       "maxfps": 100
+      },
+      "4k_16x9_3840x2160": {
+       "bpp": 9.0672,
+       "bytes_per_frame": 9400917,
+       "mbps_24": 1805.0,
+       "maxfps": 120
+      },
+      "4k_16x9_2048x1152": {
+       "bpp": 9.4187,
+       "bytes_per_frame": 2777685,
+       "mbps_24": 533.3,
+       "maxfps": 120
+      },
+      "4k_16x9_1920x1080": {
+       "bpp": 9.4838,
+       "bytes_per_frame": 2458197,
+       "mbps_24": 472.0,
+       "maxfps": 120
+      },
+      "4k_2x1_4096x2048": {
+       "bpp": 7.8557,
+       "bytes_per_frame": 8237328,
+       "mbps_24": 1581.6,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 9.0526,
+       "bytes_per_frame": 10506837,
+       "mbps_24": 2017.3,
+       "maxfps": 75
+      },
+      "3p3k_6x5_3840x1608": {
+       "bpp": 9.1179,
+       "bytes_per_frame": 7037525,
+       "mbps_24": 1351.2,
+       "maxfps": 90
+      },
+      "3k_1x1_3072x3072": {
+       "bpp": 7.8473,
+       "bytes_per_frame": 9257057,
+       "mbps_24": 1777.4,
+       "maxfps": 90
+      },
+      "3k_1x1_3840x1920": {
+       "bpp": 7.8654,
+       "bytes_per_frame": 7248795,
+       "mbps_24": 1391.8,
+       "maxfps": 100
+      },
+      "2p7k_8x9_3840x2160": {
+       "bpp": 7.8559,
+       "bytes_per_frame": 8144956,
+       "mbps_24": 1563.8,
+       "maxfps": 100
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 8.059,
+       "bytes_per_frame": 2376710,
+       "mbps_24": 456.3,
+       "maxfps": 120
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "pr4444",
+     "name": "ProRes 4444",
+     "bpp": 6.0281,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4k_16x9_4096x2304",
+      "4k_2x1_4096x2048",
+      "3p3k_6x5_3328x2790",
+      "3k_1x1_3072x3072",
+      "4p6k_16x9_4096x2304",
+      "4k_16x9_3840x2160",
+      "4k_16x9_2048x1152",
+      "4k_16x9_1920x1080",
+      "3p3k_6x5_3840x1608",
+      "3k_1x1_3840x1920",
+      "2p7k_8x9_3840x2160",
+      "2k_16x9_s16_2048x1152"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 10986069 bytes/frame -> 2109.3 Mb/s at 24 fps (263.7 MB/s); bpp=6.0281. bpp across modes 5.2567-6.5129; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 6.0281,
+       "bytes_per_frame": 10986069,
+       "mbps_24": 2109.3,
+       "maxfps": 60
+      },
+      "4p6k_16x9_4096x2304": {
+       "bpp": 5.2567,
+       "bytes_per_frame": 6201079,
+       "mbps_24": 1190.6,
+       "maxfps": 75
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 6.0734,
+       "bytes_per_frame": 7164501,
+       "mbps_24": 1375.6,
+       "maxfps": 100
+      },
+      "4k_16x9_3840x2160": {
+       "bpp": 6.0885,
+       "bytes_per_frame": 6312533,
+       "mbps_24": 1212.0,
+       "maxfps": 120
+      },
+      "4k_16x9_2048x1152": {
+       "bpp": 6.4326,
+       "bytes_per_frame": 1897045,
+       "mbps_24": 364.2,
+       "maxfps": 120
+      },
+      "4k_16x9_1920x1080": {
+       "bpp": 6.5129,
+       "bytes_per_frame": 1688149,
+       "mbps_24": 324.1,
+       "maxfps": 120
+      },
+      "4k_2x1_4096x2048": {
+       "bpp": 5.2651,
+       "bytes_per_frame": 5520903,
+       "mbps_24": 1060.0,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 6.0741,
+       "bytes_per_frame": 7049813,
+       "mbps_24": 1353.6,
+       "maxfps": 75
+      },
+      "3p3k_6x5_3840x1608": {
+       "bpp": 6.1354,
+       "bytes_per_frame": 4735573,
+       "mbps_24": 909.2,
+       "maxfps": 90
+      },
+      "3k_1x1_3072x3072": {
+       "bpp": 5.2567,
+       "bytes_per_frame": 6201079,
+       "mbps_24": 1190.6,
+       "maxfps": 90
+      },
+      "3k_1x1_3840x1920": {
+       "bpp": 5.2744,
+       "bytes_per_frame": 4860852,
+       "mbps_24": 933.3,
+       "maxfps": 100
+      },
+      "2p7k_8x9_3840x2160": {
+       "bpp": 5.2631,
+       "bytes_per_frame": 5456809,
+       "mbps_24": 1047.7,
+       "maxfps": 100
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 5.4682,
+       "bytes_per_frame": 1612650,
+       "mbps_24": 309.6,
+       "maxfps": 120
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "pr422hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 4.0481,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4k_16x9_4096x2304",
+      "4k_2x1_4096x2048",
+      "3p3k_6x5_3328x2790",
+      "3k_1x1_3072x3072",
+      "4p6k_16x9_4096x2304",
+      "4k_16x9_3840x2160",
+      "4k_16x9_2048x1152",
+      "4k_16x9_1920x1080",
+      "3p3k_6x5_3840x1608",
+      "3k_1x1_3840x1920",
+      "2p7k_8x9_3840x2160",
+      "2k_16x9_s16_2048x1152"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 7377493 bytes/frame -> 1416.5 Mb/s at 24 fps (177.1 MB/s); bpp=4.0481. bpp across modes 3.527-4.5218; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 4.0481,
+       "bytes_per_frame": 7377493,
+       "mbps_24": 1416.5,
+       "maxfps": 60
+      },
+      "4p6k_16x9_4096x2304": {
+       "bpp": 3.527,
+       "bytes_per_frame": 4160652,
+       "mbps_24": 798.8,
+       "maxfps": 75
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 4.0908,
+       "bytes_per_frame": 4825685,
+       "mbps_24": 926.5,
+       "maxfps": 100
+      },
+      "4k_16x9_3840x2160": {
+       "bpp": 4.1092,
+       "bytes_per_frame": 4260437,
+       "mbps_24": 818.0,
+       "maxfps": 120
+      },
+      "4k_16x9_2048x1152": {
+       "bpp": 4.4604,
+       "bytes_per_frame": 1315413,
+       "mbps_24": 252.6,
+       "maxfps": 120
+      },
+      "4k_16x9_1920x1080": {
+       "bpp": 4.5218,
+       "bytes_per_frame": 1172053,
+       "mbps_24": 225.0,
+       "maxfps": 120
+      },
+      "4k_2x1_4096x2048": {
+       "bpp": 3.5368,
+       "bytes_per_frame": 3708635,
+       "mbps_24": 712.1,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 4.0943,
+       "bytes_per_frame": 4751957,
+       "mbps_24": 912.4,
+       "maxfps": 75
+      },
+      "3p3k_6x5_3840x1608": {
+       "bpp": 4.156,
+       "bytes_per_frame": 3207765,
+       "mbps_24": 615.9,
+       "maxfps": 90
+      },
+      "3k_1x1_3072x3072": {
+       "bpp": 3.527,
+       "bytes_per_frame": 4160652,
+       "mbps_24": 798.8,
+       "maxfps": 90
+      },
+      "3k_1x1_3840x1920": {
+       "bpp": 3.5467,
+       "bytes_per_frame": 3268685,
+       "mbps_24": 627.6,
+       "maxfps": 100
+      },
+      "2p7k_8x9_3840x2160": {
+       "bpp": 3.5347,
+       "bytes_per_frame": 3664739,
+       "mbps_24": 703.6,
+       "maxfps": 100
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 3.732,
+       "bytes_per_frame": 1100610,
+       "mbps_24": 211.3,
+       "maxfps": 120
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    }
+   ],
+   "fixed": [],
+   "notes": "Data from ARRI Formats & Data Rate Calculator (FDRC) v2.6.4 embedded dataset (generated 2026-05-26). Data rate is constant bytes/frame x fps (FDRC: Mb/s = bytes_per_frame*fps*8/1e6), so bpp is fps-independent. maxfps = highest value FDRC lists across Compact Drive 1TB/2TB (ARRIRAW on 1TB drives is lower, e.g. 4.6K OG 35 fps). FDRC lists only ProRes 422 HQ/4444/4444 XQ + ARRIRAW for ALEXA 35 (no ProRes 422/LT, no ARRICORE). ARRICORE remains ALEXA 35 Xtreme-only per ARRI SUP 5.1.0 notes (third-party report, Newsshooter); not re-verified for SUP 6.2.0. In ProRes, the 4.6K 16:9 sensor mode records 4K (4096x2304) downsampled. Anamorphic ProRes entries record a 2x-squeezed file. ProRes is VBR in practice; FDRC uses Apple target rates."
+  },
+  {
+   "id": "arri-alexa35-xtreme",
+   "name": "ARRI ALEXA 35 Xtreme",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "4p6k_3x2_open_gate_4608x3164",
+     "name": "4.6K 3:2 Open Gate (4608x3164)",
+     "w": 4608,
+     "h": 3164,
+     "maxfps": 120,
+     "sensor_mode": "4.6K 3:2 Open Gate",
+     "format": "super35"
+    },
+    {
+     "key": "4p6k_16x9_4608x2592",
+     "name": "4.6K 16:9 (4608x2592)",
+     "w": 4608,
+     "h": 2592,
+     "maxfps": 150,
+     "sensor_mode": "4.6K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_4096x2304",
+     "name": "4K 16:9 (4096x2304)",
+     "w": 4096,
+     "h": 2304,
+     "maxfps": 150,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "3p8k_16x9_3840x2160",
+     "name": "3.8K 16:9 → UHD (3840 x 2160)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 150,
+     "sensor_mode": "3.8K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "3p8k_2p39x1_3840x1608",
+     "name": "3.8K 2.39:1 (3840x1608)",
+     "w": 3840,
+     "h": 1608,
+     "maxfps": 240,
+     "sensor_mode": "3.8K 2.39:1",
+     "format": "super35"
+    },
+    {
+     "key": "3p3k_6x5_3328x2790",
+     "name": "3.3K 6:5 (3328x2790)",
+     "w": 3328,
+     "h": 2790,
+     "maxfps": 120,
+     "sensor_mode": "3.3K 6:5",
+     "format": "super35"
+    },
+    {
+     "key": "2k_16x9_s16_2048x1152",
+     "name": "2K 16:9 S16 (2048x1152)",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 330,
+     "sensor_mode": "2K 16:9 S16",
+     "format": "super35"
+    },
+    {
+     "key": "hd_16x9_s16_1920x1080",
+     "name": "HD 16:9 S16 (1920x1080)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 330,
+     "sensor_mode": "HD 16:9 S16",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_3840x2160",
+     "name": "4K 16:9 → UHD (3840 x 2160)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 150,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_2048x1152",
+     "name": "4K 16:9 → 2K (2048 x 1152)",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 150,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "4k_16x9_1920x1080",
+     "name": "4K 16:9 → HD (1920 x 1080)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 150,
+     "sensor_mode": "4K 16:9",
+     "format": "super35"
+    },
+    {
+     "key": "3p3k_6x5_3840x1608",
+     "name": "3.3K 6:5 → 3.8K 2.39:1 Ana. 2x",
+     "w": 3840,
+     "h": 1608,
+     "maxfps": 120,
+     "sensor_mode": "3.3K 6:5",
+     "format": "super35",
+     "squeeze": 2
+    }
+   ],
+   "codecs": [
+    {
+     "key": "arriraw",
+     "name": "ARRIRAW",
+     "bpp": 13.0786,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4p6k_16x9_4608x2592",
+      "4k_16x9_4096x2304",
+      "3p8k_16x9_3840x2160",
+      "3p8k_2p39x1_3840x1608",
+      "3p3k_6x5_3328x2790",
+      "2k_16x9_s16_2048x1152",
+      "hd_16x9_s16_1920x1080"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 23835221 bytes/frame -> 4576.4 Mb/s at 24 fps (572.0 MB/s); bpp=13.0786. bpp across modes 13.0786-13.5608; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 13.0786,
+       "bytes_per_frame": 23835221,
+       "mbps_24": 4576.4,
+       "maxfps": 80
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 13.0978,
+       "bytes_per_frame": 19554901,
+       "mbps_24": 3754.5,
+       "maxfps": 80
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 13.122,
+       "bytes_per_frame": 15479381,
+       "mbps_24": 2972.0,
+       "maxfps": 125
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 13.1403,
+       "bytes_per_frame": 13623893,
+       "mbps_24": 2615.8,
+       "maxfps": 140
+      },
+      "3p8k_2p39x1_3840x1608": {
+       "bpp": 13.1882,
+       "bytes_per_frame": 10179157,
+       "mbps_24": 1954.4,
+       "maxfps": 190
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 13.1252,
+       "bytes_per_frame": 15233621,
+       "mbps_24": 2924.9,
+       "maxfps": 120
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 13.4881,
+       "bytes_per_frame": 3977813,
+       "mbps_24": 763.7,
+       "maxfps": 330
+      },
+      "hd_16x9_s16_1920x1080": {
+       "bpp": 13.5608,
+       "bytes_per_frame": 3514965,
+       "mbps_24": 674.9,
+       "maxfps": 330
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "arriraw_hde",
+     "name": "ARRIRAW HDE",
+     "bpp": 6.5393,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4p6k_16x9_4608x2592",
+      "4k_16x9_4096x2304",
+      "3p8k_16x9_3840x2160",
+      "3p8k_2p39x1_3840x1608",
+      "3p3k_6x5_3328x2790",
+      "2k_16x9_s16_2048x1152",
+      "hd_16x9_s16_1920x1080"
+     ],
+     "ref": "ESTIMATE: ARRI FDRC shows ARRIRAW-HDE GB/h as ARRIRAW GB/h x hde_multiplier (0.5 for this camera); 4.6K 3:2 Open Gate (4608x3164) 24 fps ~= 2288.2 Mb/s. HDE is lossless/variable-rate, so real files vary with image content. The multiplier is the FDRC's own approximation; ARRI marketing commonly cites roughly 40% smaller files (not re-verified here). No fixed ARRI-published HDE Mb/s found.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": true,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 6.5393,
+       "mbps_24": 2288.2,
+       "maxfps": 80
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 6.5489,
+       "mbps_24": 1877.2,
+       "maxfps": 80
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 6.561,
+       "mbps_24": 1486.0,
+       "maxfps": 125
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 6.5701,
+       "mbps_24": 1307.9,
+       "maxfps": 140
+      },
+      "3p8k_2p39x1_3840x1608": {
+       "bpp": 6.5941,
+       "mbps_24": 977.2,
+       "maxfps": 190
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 6.5626,
+       "mbps_24": 1462.5,
+       "maxfps": 120
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 6.744,
+       "mbps_24": 381.9,
+       "maxfps": 330
+      },
+      "hd_16x9_s16_1920x1080": {
+       "bpp": 6.7804,
+       "mbps_24": 337.4,
+       "maxfps": 330
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "arricore",
+     "name": "ARRICORE",
+     "bpp": 5.8865,
+     "res": [
+      "4p6k_3x2_open_gate_4608x3164",
+      "4p6k_16x9_4608x2592",
+      "4k_16x9_4096x2304",
+      "3p8k_16x9_3840x2160",
+      "3p8k_2p39x1_3840x1608",
+      "3p3k_6x5_3328x2790",
+      "2k_16x9_s16_2048x1152",
+      "hd_16x9_s16_1920x1080"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 10728021 bytes/frame -> 2059.8 Mb/s at 24 fps (257.5 MB/s); bpp=5.8865. bpp across modes 5.8865-6.4742; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 5.8865,
+       "bytes_per_frame": 10728021,
+       "mbps_24": 2059.8,
+       "maxfps": 120,
+       "maxfps_overdrive": 165
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 5.8961,
+       "bytes_per_frame": 8802901,
+       "mbps_24": 1690.2,
+       "maxfps": 150,
+       "maxfps_overdrive": 200
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 6.1047,
+       "bytes_per_frame": 7201365,
+       "mbps_24": 1382.7,
+       "maxfps": 150,
+       "maxfps_overdrive": 210
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 5.9384,
+       "bytes_per_frame": 6156885,
+       "mbps_24": 1182.1,
+       "maxfps": 150,
+       "maxfps_overdrive": 240
+      },
+      "3p8k_2p39x1_3840x1608": {
+       "bpp": 5.9868,
+       "bytes_per_frame": 4620885,
+       "mbps_24": 887.2,
+       "maxfps": 240,
+       "maxfps_overdrive": 240
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 6.1517,
+       "bytes_per_frame": 7139925,
+       "mbps_24": 1370.9,
+       "maxfps": 120,
+       "maxfps_overdrive": 210
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 6.4742,
+       "bytes_per_frame": 1909333,
+       "mbps_24": 366.6,
+       "maxfps": 330,
+       "maxfps_overdrive": 660
+      },
+      "hd_16x9_s16_1920x1080": {
+       "bpp": 6.3549,
+       "bytes_per_frame": 1647189,
+       "mbps_24": 316.3,
+       "maxfps": 330,
+       "maxfps_overdrive": 660
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "pr4444xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 9.0083,
+     "res": null,
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 16417365 bytes/frame -> 3152.1 Mb/s at 24 fps (394.0 MB/s); bpp=9.0083. bpp across modes 9.0083-9.4838; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 9.0083,
+       "bytes_per_frame": 16417365,
+       "mbps_24": 3152.1,
+       "maxfps": 120
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 9.0265,
+       "bytes_per_frame": 13476437,
+       "mbps_24": 2587.5,
+       "maxfps": 150
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 9.0526,
+       "bytes_per_frame": 10678869,
+       "mbps_24": 2050.3,
+       "maxfps": 150
+      },
+      "4k_16x9_3840x2160": {
+       "bpp": 9.0672,
+       "bytes_per_frame": 9400917,
+       "mbps_24": 1805.0,
+       "maxfps": 150
+      },
+      "4k_16x9_2048x1152": {
+       "bpp": 9.4187,
+       "bytes_per_frame": 2777685,
+       "mbps_24": 533.3,
+       "maxfps": 150
+      },
+      "4k_16x9_1920x1080": {
+       "bpp": 9.4838,
+       "bytes_per_frame": 2458197,
+       "mbps_24": 472.0,
+       "maxfps": 150
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 9.0672,
+       "bytes_per_frame": 9400917,
+       "mbps_24": 1805.0,
+       "maxfps": 150
+      },
+      "3p8k_2p39x1_3840x1608": {
+       "bpp": 9.1179,
+       "bytes_per_frame": 7037525,
+       "mbps_24": 1351.2,
+       "maxfps": 240
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 9.0526,
+       "bytes_per_frame": 10506837,
+       "mbps_24": 2017.3,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3840x1608": {
+       "bpp": 9.1179,
+       "bytes_per_frame": 7037525,
+       "mbps_24": 1351.2,
+       "maxfps": 120
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 9.4187,
+       "bytes_per_frame": 2777685,
+       "mbps_24": 533.3,
+       "maxfps": 330
+      },
+      "hd_16x9_s16_1920x1080": {
+       "bpp": 9.4838,
+       "bytes_per_frame": 2458197,
+       "mbps_24": 472.0,
+       "maxfps": 330
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "pr4444",
+     "name": "ProRes 4444",
+     "bpp": 6.0281,
+     "res": null,
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 10986069 bytes/frame -> 2109.3 Mb/s at 24 fps (263.7 MB/s); bpp=6.0281. bpp across modes 6.0281-6.5129; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 6.0281,
+       "bytes_per_frame": 10986069,
+       "mbps_24": 2109.3,
+       "maxfps": 120
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 6.047,
+       "bytes_per_frame": 9028181,
+       "mbps_24": 1733.4,
+       "maxfps": 150
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 6.0734,
+       "bytes_per_frame": 7164501,
+       "mbps_24": 1375.6,
+       "maxfps": 150
+      },
+      "4k_16x9_3840x2160": {
+       "bpp": 6.0885,
+       "bytes_per_frame": 6312533,
+       "mbps_24": 1212.0,
+       "maxfps": 150
+      },
+      "4k_16x9_2048x1152": {
+       "bpp": 6.4326,
+       "bytes_per_frame": 1897045,
+       "mbps_24": 364.2,
+       "maxfps": 150
+      },
+      "4k_16x9_1920x1080": {
+       "bpp": 6.5129,
+       "bytes_per_frame": 1688149,
+       "mbps_24": 324.1,
+       "maxfps": 150
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 6.0885,
+       "bytes_per_frame": 6312533,
+       "mbps_24": 1212.0,
+       "maxfps": 150
+      },
+      "3p8k_2p39x1_3840x1608": {
+       "bpp": 6.1354,
+       "bytes_per_frame": 4735573,
+       "mbps_24": 909.2,
+       "maxfps": 240
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 6.0741,
+       "bytes_per_frame": 7049813,
+       "mbps_24": 1353.6,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3840x1608": {
+       "bpp": 6.1354,
+       "bytes_per_frame": 4735573,
+       "mbps_24": 909.2,
+       "maxfps": 120
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 6.4326,
+       "bytes_per_frame": 1897045,
+       "mbps_24": 364.2,
+       "maxfps": 330
+      },
+      "hd_16x9_s16_1920x1080": {
+       "bpp": 6.5129,
+       "bytes_per_frame": 1688149,
+       "mbps_24": 324.1,
+       "maxfps": 330
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    },
+    {
+     "key": "pr422hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 4.0481,
+     "res": null,
+     "ref": "ARRI FDRC v2.6.4: 4.6K 3:2 Open Gate (4608x3164) = 7377493 bytes/frame -> 1416.5 Mb/s at 24 fps (177.1 MB/s); bpp=4.0481. bpp across modes 4.0481-4.5218; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p6k_3x2_open_gate_4608x3164": {
+       "bpp": 4.0481,
+       "bytes_per_frame": 7377493,
+       "mbps_24": 1416.5,
+       "maxfps": 120
+      },
+      "4p6k_16x9_4608x2592": {
+       "bpp": 4.0662,
+       "bytes_per_frame": 6070869,
+       "mbps_24": 1165.6,
+       "maxfps": 150
+      },
+      "4k_16x9_4096x2304": {
+       "bpp": 4.0908,
+       "bytes_per_frame": 4825685,
+       "mbps_24": 926.5,
+       "maxfps": 150
+      },
+      "4k_16x9_3840x2160": {
+       "bpp": 4.1092,
+       "bytes_per_frame": 4260437,
+       "mbps_24": 818.0,
+       "maxfps": 150
+      },
+      "4k_16x9_2048x1152": {
+       "bpp": 4.4604,
+       "bytes_per_frame": 1315413,
+       "mbps_24": 252.6,
+       "maxfps": 150
+      },
+      "4k_16x9_1920x1080": {
+       "bpp": 4.5218,
+       "bytes_per_frame": 1172053,
+       "mbps_24": 225.0,
+       "maxfps": 150
+      },
+      "3p8k_16x9_3840x2160": {
+       "bpp": 4.1092,
+       "bytes_per_frame": 4260437,
+       "mbps_24": 818.0,
+       "maxfps": 150
+      },
+      "3p8k_2p39x1_3840x1608": {
+       "bpp": 4.156,
+       "bytes_per_frame": 3207765,
+       "mbps_24": 615.9,
+       "maxfps": 240
+      },
+      "3p3k_6x5_3328x2790": {
+       "bpp": 4.0943,
+       "bytes_per_frame": 4751957,
+       "mbps_24": 912.4,
+       "maxfps": 120
+      },
+      "3p3k_6x5_3840x1608": {
+       "bpp": 4.156,
+       "bytes_per_frame": 3207765,
+       "mbps_24": 615.9,
+       "maxfps": 120
+      },
+      "2k_16x9_s16_2048x1152": {
+       "bpp": 4.4604,
+       "bytes_per_frame": 1315413,
+       "mbps_24": 252.6,
+       "maxfps": 330
+      },
+      "hd_16x9_s16_1920x1080": {
+       "bpp": 4.5218,
+       "bytes_per_frame": 1172053,
+       "mbps_24": 225.0,
+       "maxfps": 330
+      }
+     },
+     "ref_mode": "4p6k_3x2_open_gate_4608x3164"
+    }
+   ],
+   "fixed": [],
+   "notes": "Data from ARRI FDRC v2.6.4 embedded dataset. Xtreme adds ARRICORE (RGB codec; launched beta July 2025, out of beta with SUP 5.1.0) and higher frame rates (330 fps full DR, up to 660 fps with Sensor Overdrive at 11 stops). Per-codec maxfps in 'byRes'; ARRICORE also has Sensor Overdrive max fps ('maxfps_overdrive'). FDRC ARRIRAW bytes/frame for Xtreme are ~2.7% larger than ALEXA 35 for the same mode (13.08 vs 12.74 bpp at 4.6K OG); reproduced as published. Xtreme ProRes can record 4.6K 16:9 natively (ALEXA 35 downsamples to 4K)."
+  },
+  {
+   "id": "arri-alexa65",
+   "name": "ARRI ALEXA 65",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "open_gate_6560x3100",
+     "name": "65 Open Gate (6560x3100)",
+     "w": 6560,
+     "h": 3100,
+     "maxfps": 60,
+     "sensor_mode": "Open Gate",
+     "format": "_65mm"
+    },
+    {
+     "key": "5p1k_16x9_5120x2880",
+     "name": "5.1K 16:9 (5120x2880)",
+     "w": 5120,
+     "h": 2880,
+     "maxfps": 60,
+     "sensor_mode": "5.1K 16:9",
+     "format": "_65mm"
+    },
+    {
+     "key": "4p3k_3x2_4320x2880",
+     "name": "4.3K 3:2 (4320x2880)",
+     "w": 4320,
+     "h": 2880,
+     "maxfps": 60,
+     "sensor_mode": "4.3K 3:2",
+     "format": "large_format"
+    },
+    {
+     "key": "4k_uhd_3840x2160",
+     "name": "4K UHD (3840x2160)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60,
+     "sensor_mode": "4K UHD",
+     "format": "large_format"
+    },
+    {
+     "key": "lf_open_gate_4448x3096",
+     "name": "LF Open Gate (4448x3096)",
+     "w": 4448,
+     "h": 3096,
+     "maxfps": 60,
+     "sensor_mode": "LF Open Gate",
+     "format": "large_format"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "arriraw",
+     "name": "ARRIRAW",
+     "bpp": 12.0173,
+     "res": null,
+     "ref": "ARRI FDRC v2.6.4: 65 Open Gate (6560x3100) = 30548096 bytes/frame -> 5865.2 Mb/s at 24 fps (733.1 MB/s); bpp=12.0173. bpp across modes 12.006-12.0173; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "open_gate_6560x3100": {
+       "bpp": 12.0173,
+       "bytes_per_frame": 30548096,
+       "mbps_24": 5865.2,
+       "maxfps": 60
+      },
+      "5p1k_16x9_5120x2880": {
+       "bpp": 12.0104,
+       "bytes_per_frame": 22137496,
+       "mbps_24": 4250.4,
+       "maxfps": 60
+      },
+      "4p3k_3x2_4320x2880": {
+       "bpp": 12.0091,
+       "bytes_per_frame": 18676496,
+       "mbps_24": 3585.9,
+       "maxfps": 60
+      },
+      "4k_uhd_3840x2160": {
+       "bpp": 12.006,
+       "bytes_per_frame": 12447839,
+       "mbps_24": 2390.0,
+       "maxfps": 60
+      },
+      "lf_open_gate_4448x3096": {
+       "bpp": 12.01,
+       "bytes_per_frame": 20673768,
+       "mbps_24": 3969.4,
+       "maxfps": 60
+      }
+     },
+     "ref_mode": "open_gate_6560x3100"
+    },
+    {
+     "key": "arriraw_hde",
+     "name": "ARRIRAW HDE",
+     "bpp": 7.2104,
+     "res": null,
+     "ref": "ESTIMATE: ARRI FDRC shows ARRIRAW-HDE GB/h as ARRIRAW GB/h x hde_multiplier (0.6 for this camera); 65 Open Gate (6560x3100) 24 fps ~= 3519.1 Mb/s. HDE is lossless/variable-rate, so real files vary with image content. The multiplier is the FDRC's own approximation; ARRI marketing commonly cites roughly 40% smaller files (not re-verified here). No fixed ARRI-published HDE Mb/s found.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": true,
+     "byRes": {
+      "open_gate_6560x3100": {
+       "bpp": 7.2104,
+       "mbps_24": 3519.1,
+       "maxfps": 60
+      },
+      "5p1k_16x9_5120x2880": {
+       "bpp": 7.2062,
+       "mbps_24": 2550.2,
+       "maxfps": 60
+      },
+      "4p3k_3x2_4320x2880": {
+       "bpp": 7.2055,
+       "mbps_24": 2151.5,
+       "maxfps": 60
+      },
+      "4k_uhd_3840x2160": {
+       "bpp": 7.2036,
+       "mbps_24": 1434.0,
+       "maxfps": 60
+      },
+      "lf_open_gate_4448x3096": {
+       "bpp": 7.206,
+       "mbps_24": 2381.6,
+       "maxfps": 60
+      }
+     },
+     "ref_mode": "open_gate_6560x3100"
+    }
+   ],
+   "fixed": [],
+   "notes": "Data from ARRI FDRC v2.6.4. ALEXA 65 records ARRIRAW only (uncompressed; Codex SXR/Vault). FDRC mode names: 'Open Gate' (6560x3100, ARRI elsewhere calls it 65 Open Gate / 6.5K), '5.1K 16:9', '4.3K 3:2', '4K UHD', 'LF Open Gate'. FDRC lists max 60 fps for all modes (ARRI spec: up to 60 fps in Open Gate; some crops may allow higher on newer SUPs - not verified). ARRIRAW HDE: FDRC hde_multiplier 0.6 (estimate)."
+  },
+  {
+   "id": "arri-alexa265",
+   "name": "ARRI ALEXA 265",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "6p5k_2p12x1_open_gate_6560x3100",
+     "name": "6.5K 2.12:1 Open Gate (6560x3100)",
+     "w": 6560,
+     "h": 3100,
+     "maxfps": 60,
+     "sensor_mode": "6.5K 2.12:1 Open Gate",
+     "format": "_65mm"
+    },
+    {
+     "key": "6p5k_2p12x1_open_gate_5120x3100",
+     "name": "6.5K 2.12:1 Open Gate → 5.1K (5120x3100)",
+     "w": 5120,
+     "h": 3100,
+     "maxfps": 60,
+     "sensor_mode": "6.5K 2.12:1 Open Gate",
+     "format": "_65mm"
+    },
+    {
+     "key": "6p5k_2p12x1_open_gate_4448x3096",
+     "name": "6.5K 2.12:1 Open Gate → 4.5K (4448x3096)",
+     "w": 4448,
+     "h": 3096,
+     "maxfps": 60,
+     "sensor_mode": "6.5K 2.12:1 Open Gate",
+     "format": "_65mm"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "arriraw",
+     "name": "ARRIRAW",
+     "bpp": 11.7774,
+     "res": null,
+     "ref": "ARRI FDRC v2.6.4: 6.5K 2.12:1 Open Gate (6560x3100) = 29938096 bytes/frame -> 5748.1 Mb/s at 24 fps (718.5 MB/s); bpp=11.7774. bpp across modes 11.7774-11.8054; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "6p5k_2p12x1_open_gate_6560x3100": {
+       "bpp": 11.7774,
+       "bytes_per_frame": 29938096,
+       "mbps_24": 5748.1,
+       "maxfps": 60
+      },
+      "6p5k_2p12x1_open_gate_5120x3100": {
+       "bpp": 11.7931,
+       "bytes_per_frame": 23397496,
+       "mbps_24": 4492.3,
+       "maxfps": 60
+      },
+      "6p5k_2p12x1_open_gate_4448x3096": {
+       "bpp": 11.8054,
+       "bytes_per_frame": 20321496,
+       "mbps_24": 3901.7,
+       "maxfps": 60
+      }
+     },
+     "ref_mode": "6p5k_2p12x1_open_gate_6560x3100"
+    },
+    {
+     "key": "arriraw_hde",
+     "name": "ARRIRAW HDE",
+     "bpp": 7.0664,
+     "res": null,
+     "ref": "ESTIMATE: ARRI FDRC shows ARRIRAW-HDE GB/h as ARRIRAW GB/h x hde_multiplier (0.6 for this camera); 6.5K 2.12:1 Open Gate (6560x3100) 24 fps ~= 3448.9 Mb/s. HDE is lossless/variable-rate, so real files vary with image content. The multiplier is the FDRC's own approximation; ARRI marketing commonly cites roughly 40% smaller files (not re-verified here). No fixed ARRI-published HDE Mb/s found.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": true,
+     "byRes": {
+      "6p5k_2p12x1_open_gate_6560x3100": {
+       "bpp": 7.0664,
+       "mbps_24": 3448.9,
+       "maxfps": 60
+      },
+      "6p5k_2p12x1_open_gate_5120x3100": {
+       "bpp": 7.0759,
+       "mbps_24": 2695.4,
+       "maxfps": 60
+      },
+      "6p5k_2p12x1_open_gate_4448x3096": {
+       "bpp": 7.0832,
+       "mbps_24": 2341.0,
+       "maxfps": 60
+      }
+     },
+     "ref_mode": "6p5k_2p12x1_open_gate_6560x3100"
+    }
+   ],
+   "fixed": [],
+   "notes": "Data from ARRI FDRC v2.6.4. ALEXA 265 (2025, compact 65 mm successor) records ARRIRAW only per FDRC. Modes: 6.5K 2.12:1 Open Gate sensor mode with 6.5K (6560x3100), 5.1K (5120x3100) and 4.5K (4448x3096, LF-equivalent) recording resolutions; FDRC max 60 fps. ARRIRAW HDE via FDRC hde_multiplier 0.6 (estimate)."
+  },
+  {
+   "id": "arri-alexa-mini",
+   "name": "ARRI ALEXA Mini",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "16x9_2p8k_2880x1620",
+     "name": "16:9 2.8K",
+     "w": 2880,
+     "h": 1620,
+     "maxfps": 48,
+     "sensor_mode": "16:9 2.8K",
+     "format": "super35"
+    },
+    {
+     "key": "open_gate_3p4k_3424x2202",
+     "name": "Open Gate 3.4K",
+     "w": 3424,
+     "h": 2202,
+     "maxfps": 30,
+     "sensor_mode": "Open Gate 3.4K",
+     "format": "super35"
+    },
+    {
+     "key": "4x3_2p8k_og_3p4k_3424x2202",
+     "name": "4:3 2.8K (OG 3.4K)",
+     "w": 3424,
+     "h": 2202,
+     "maxfps": 30,
+     "sensor_mode": "4:3 2.8K (OG 3.4K)",
+     "format": "super35"
+    },
+    {
+     "key": "16x9_hd_anap_og_3p4k_3424x2202",
+     "name": "16:9 HD Ana. (OG 3.4K)",
+     "w": 3424,
+     "h": 2202,
+     "maxfps": 30,
+     "sensor_mode": "16:9 HD Ana. (OG 3.4K)",
+     "format": "super35",
+     "squeeze": 2
+    },
+    {
+     "key": "2p39x1_2k_anap_og_3p4k_3424x2202",
+     "name": "2.39:1 2K Ana. (OG 3.4K)",
+     "w": 3424,
+     "h": 2202,
+     "maxfps": 30,
+     "sensor_mode": "2.39:1 2K Ana. (OG 3.4K)",
+     "format": "super35",
+     "squeeze": 2
+    },
+    {
+     "key": "16x9_hd_1920x1080",
+     "name": "16:9 HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 200,
+     "sensor_mode": "16:9 HD",
+     "format": "super35"
+    },
+    {
+     "key": "16x9_s16_hd_1920x1080",
+     "name": "16:9 S16 HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 200,
+     "sensor_mode": "16:9 S16 HD",
+     "format": "super35"
+    },
+    {
+     "key": "16x9_hd_anap_1920x1080",
+     "name": "16:9 HD Ana.",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120,
+     "sensor_mode": "16:9 HD Ana.",
+     "format": "super35",
+     "squeeze": 2
+    },
+    {
+     "key": "16x9_2k_2048x1152",
+     "name": "16:9 2K",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 200,
+     "sensor_mode": "16:9 2K",
+     "format": "super35"
+    },
+    {
+     "key": "2p39x1_2k_anap_2048x858",
+     "name": "2.39:1 2K Ana.",
+     "w": 2048,
+     "h": 858,
+     "maxfps": 120,
+     "sensor_mode": "2.39:1 2K Ana.",
+     "format": "super35",
+     "squeeze": 2
+    },
+    {
+     "key": "16x9_3p2k_3200x1800",
+     "name": "16:9 3.2K",
+     "w": 3200,
+     "h": 1800,
+     "maxfps": 60,
+     "sensor_mode": "16:9 3.2K",
+     "format": "super35"
+    },
+    {
+     "key": "16x9_4k_uhd_3840x2160",
+     "name": "16:9 4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60,
+     "sensor_mode": "16:9 4K UHD",
+     "format": "super35"
+    },
+    {
+     "key": "4x3_2p8k_2944x2160",
+     "name": "4:3 2.8K",
+     "w": 2944,
+     "h": 2160,
+     "maxfps": 50,
+     "sensor_mode": "4:3 2.8K",
+     "format": "super35"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "arriraw",
+     "name": "ARRIRAW",
+     "bpp": 12.0016,
+     "res": [
+      "16x9_2p8k_2880x1620",
+      "open_gate_3p4k_3424x2202",
+      "4x3_2p8k_og_3p4k_3424x2202",
+      "16x9_hd_anap_og_3p4k_3424x2202",
+      "2p39x1_2k_anap_og_3p4k_3424x2202"
+     ],
+     "ref": "ARRI FDRC v2.6.4: Open Gate 3.4K (3424x2202) = 11311008 bytes/frame -> 2171.7 Mb/s at 24 fps (271.5 MB/s); bpp=12.0016. bpp across modes 12.0016-12.0016; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "16x9_2p8k_2880x1620": {
+       "bpp": 12.0016,
+       "bytes_per_frame": 6999351,
+       "mbps_24": 1343.9,
+       "maxfps": 48
+      },
+      "open_gate_3p4k_3424x2202": {
+       "bpp": 12.0016,
+       "bytes_per_frame": 11311008,
+       "mbps_24": 2171.7,
+       "maxfps": 30
+      },
+      "4x3_2p8k_og_3p4k_3424x2202": {
+       "bpp": 12.0016,
+       "bytes_per_frame": 11311008,
+       "mbps_24": 2171.7,
+       "maxfps": 30
+      },
+      "16x9_hd_anap_og_3p4k_3424x2202": {
+       "bpp": 12.0016,
+       "bytes_per_frame": 11311008,
+       "mbps_24": 2171.7,
+       "maxfps": 30
+      },
+      "2p39x1_2k_anap_og_3p4k_3424x2202": {
+       "bpp": 12.0016,
+       "bytes_per_frame": 11311008,
+       "mbps_24": 2171.7,
+       "maxfps": 30
+      }
+     },
+     "ref_mode": "open_gate_3p4k_3424x2202"
+    },
+    {
+     "key": "arriraw_hde",
+     "name": "ARRIRAW HDE",
+     "bpp": 7.201,
+     "res": [
+      "16x9_2p8k_2880x1620",
+      "open_gate_3p4k_3424x2202",
+      "4x3_2p8k_og_3p4k_3424x2202",
+      "16x9_hd_anap_og_3p4k_3424x2202",
+      "2p39x1_2k_anap_og_3p4k_3424x2202"
+     ],
+     "ref": "ESTIMATE: ARRI FDRC shows ARRIRAW-HDE GB/h as ARRIRAW GB/h x hde_multiplier (0.6 for this camera); Open Gate 3.4K (3424x2202) 24 fps ~= 1303.0 Mb/s. HDE is lossless/variable-rate, so real files vary with image content. The multiplier is the FDRC's own approximation; ARRI marketing commonly cites roughly 40% smaller files (not re-verified here). No fixed ARRI-published HDE Mb/s found.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": true,
+     "byRes": {
+      "16x9_2p8k_2880x1620": {
+       "bpp": 7.201,
+       "mbps_24": 806.3,
+       "maxfps": 48
+      },
+      "open_gate_3p4k_3424x2202": {
+       "bpp": 7.201,
+       "mbps_24": 1303.0,
+       "maxfps": 30
+      },
+      "4x3_2p8k_og_3p4k_3424x2202": {
+       "bpp": 7.201,
+       "mbps_24": 1303.0,
+       "maxfps": 30
+      },
+      "16x9_hd_anap_og_3p4k_3424x2202": {
+       "bpp": 7.201,
+       "mbps_24": 1303.0,
+       "maxfps": 30
+      },
+      "2p39x1_2k_anap_og_3p4k_3424x2202": {
+       "bpp": 7.201,
+       "mbps_24": 1303.0,
+       "maxfps": 30
+      }
+     },
+     "ref_mode": "open_gate_3p4k_3424x2202"
+    },
+    {
+     "key": "pr4444xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 8.96,
+     "res": [
+      "16x9_hd_1920x1080",
+      "16x9_s16_hd_1920x1080",
+      "16x9_hd_anap_1920x1080",
+      "16x9_2k_2048x1152",
+      "2p39x1_2k_anap_2048x858",
+      "16x9_3p2k_3200x1800",
+      "16x9_4k_uhd_3840x2160",
+      "4x3_2p8k_2944x2160"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 16:9 4K UHD (3840x2160) = 9289728 bytes/frame -> 1783.6 Mb/s at 24 fps (222.9 MB/s); bpp=8.96. bpp across modes 8.7652-8.96; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "16x9_hd_1920x1080": {
+       "bpp": 8.96,
+       "bytes_per_frame": 2322432,
+       "mbps_24": 445.9,
+       "maxfps": 120
+      },
+      "16x9_s16_hd_1920x1080": {
+       "bpp": 8.96,
+       "bytes_per_frame": 2322432,
+       "mbps_24": 445.9,
+       "maxfps": 120
+      },
+      "16x9_hd_anap_1920x1080": {
+       "bpp": 8.96,
+       "bytes_per_frame": 2322432,
+       "mbps_24": 445.9,
+       "maxfps": 120
+      },
+      "16x9_2k_2048x1152": {
+       "bpp": 8.96,
+       "bytes_per_frame": 2642412,
+       "mbps_24": 507.3,
+       "maxfps": 120
+      },
+      "2p39x1_2k_anap_2048x858": {
+       "bpp": 8.96,
+       "bytes_per_frame": 1968046,
+       "mbps_24": 377.9,
+       "maxfps": 120
+      },
+      "16x9_3p2k_3200x1800": {
+       "bpp": 8.96,
+       "bytes_per_frame": 6451200,
+       "mbps_24": 1238.6,
+       "maxfps": 30
+      },
+      "16x9_4k_uhd_3840x2160": {
+       "bpp": 8.96,
+       "bytes_per_frame": 9289728,
+       "mbps_24": 1783.6,
+       "maxfps": 30
+      },
+      "4x3_2p8k_2944x2160": {
+       "bpp": 8.7652,
+       "bytes_per_frame": 6967296,
+       "mbps_24": 1337.7,
+       "maxfps": 50
+      }
+     },
+     "ref_mode": "16x9_4k_uhd_3840x2160"
+    },
+    {
+     "key": "pr4444",
+     "name": "ProRes 4444",
+     "bpp": 5.9733,
+     "res": [
+      "16x9_hd_1920x1080",
+      "16x9_s16_hd_1920x1080",
+      "16x9_hd_anap_1920x1080",
+      "16x9_2k_2048x1152",
+      "2p39x1_2k_anap_2048x858",
+      "16x9_3p2k_3200x1800",
+      "16x9_4k_uhd_3840x2160",
+      "4x3_2p8k_2944x2160"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 16:9 4K UHD (3840x2160) = 6193152 bytes/frame -> 1189.1 Mb/s at 24 fps (148.6 MB/s); bpp=5.9733. bpp across modes 5.8435-5.9733; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "16x9_hd_1920x1080": {
+       "bpp": 5.9733,
+       "bytes_per_frame": 1548288,
+       "mbps_24": 297.3,
+       "maxfps": 200
+      },
+      "16x9_s16_hd_1920x1080": {
+       "bpp": 5.9733,
+       "bytes_per_frame": 1548288,
+       "mbps_24": 297.3,
+       "maxfps": 200
+      },
+      "16x9_hd_anap_1920x1080": {
+       "bpp": 5.9733,
+       "bytes_per_frame": 1548288,
+       "mbps_24": 297.3,
+       "maxfps": 120
+      },
+      "16x9_2k_2048x1152": {
+       "bpp": 5.9733,
+       "bytes_per_frame": 1761608,
+       "mbps_24": 338.2,
+       "maxfps": 200
+      },
+      "2p39x1_2k_anap_2048x858": {
+       "bpp": 5.9733,
+       "bytes_per_frame": 1312031,
+       "mbps_24": 251.9,
+       "maxfps": 120
+      },
+      "16x9_3p2k_3200x1800": {
+       "bpp": 5.9733,
+       "bytes_per_frame": 4300800,
+       "mbps_24": 825.8,
+       "maxfps": 60
+      },
+      "16x9_4k_uhd_3840x2160": {
+       "bpp": 5.9733,
+       "bytes_per_frame": 6193152,
+       "mbps_24": 1189.1,
+       "maxfps": 60
+      },
+      "4x3_2p8k_2944x2160": {
+       "bpp": 5.8435,
+       "bytes_per_frame": 4644864,
+       "mbps_24": 891.8,
+       "maxfps": 50
+      }
+     },
+     "ref_mode": "16x9_4k_uhd_3840x2160"
+    },
+    {
+     "key": "pr422hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.9822,
+     "res": [
+      "16x9_hd_1920x1080",
+      "16x9_s16_hd_1920x1080",
+      "16x9_hd_anap_1920x1080",
+      "16x9_2k_2048x1152",
+      "2p39x1_2k_anap_2048x858",
+      "16x9_3p2k_3200x1800",
+      "16x9_4k_uhd_3840x2160",
+      "4x3_2p8k_2944x2160"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 16:9 4K UHD (3840x2160) = 4128768 bytes/frame -> 792.7 Mb/s at 24 fps (99.1 MB/s); bpp=3.9822. bpp across modes 3.8957-3.9822; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "16x9_hd_1920x1080": {
+       "bpp": 3.9822,
+       "bytes_per_frame": 1032192,
+       "mbps_24": 198.2,
+       "maxfps": 200
+      },
+      "16x9_s16_hd_1920x1080": {
+       "bpp": 3.9822,
+       "bytes_per_frame": 1032192,
+       "mbps_24": 198.2,
+       "maxfps": 200
+      },
+      "16x9_hd_anap_1920x1080": {
+       "bpp": 3.9822,
+       "bytes_per_frame": 1032192,
+       "mbps_24": 198.2,
+       "maxfps": 120
+      },
+      "16x9_2k_2048x1152": {
+       "bpp": 3.9822,
+       "bytes_per_frame": 1174405,
+       "mbps_24": 225.5,
+       "maxfps": 200
+      },
+      "2p39x1_2k_anap_2048x858": {
+       "bpp": 3.9822,
+       "bytes_per_frame": 874687,
+       "mbps_24": 167.9,
+       "maxfps": 120
+      },
+      "16x9_3p2k_3200x1800": {
+       "bpp": 3.9822,
+       "bytes_per_frame": 2867200,
+       "mbps_24": 550.5,
+       "maxfps": 60
+      },
+      "16x9_4k_uhd_3840x2160": {
+       "bpp": 3.9822,
+       "bytes_per_frame": 4128768,
+       "mbps_24": 792.7,
+       "maxfps": 60
+      },
+      "4x3_2p8k_2944x2160": {
+       "bpp": 3.8957,
+       "bytes_per_frame": 3096576,
+       "mbps_24": 594.5,
+       "maxfps": 50
+      }
+     },
+     "ref_mode": "16x9_4k_uhd_3840x2160"
+    },
+    {
+     "key": "pr422",
+     "name": "ProRes 422",
+     "bpp": 2.6553,
+     "res": [
+      "16x9_hd_1920x1080",
+      "16x9_s16_hd_1920x1080",
+      "16x9_hd_anap_1920x1080",
+      "16x9_2k_2048x1152",
+      "2p39x1_2k_anap_2048x858",
+      "16x9_3p2k_3200x1800",
+      "16x9_4k_uhd_3840x2160",
+      "4x3_2p8k_2944x2160"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 16:9 4K UHD (3840x2160) = 2752992 bytes/frame -> 528.6 Mb/s at 24 fps (66.1 MB/s); bpp=2.6553. bpp across modes 2.5976-2.6553; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "16x9_hd_1920x1080": {
+       "bpp": 2.6553,
+       "bytes_per_frame": 688248,
+       "mbps_24": 132.1,
+       "maxfps": 200
+      },
+      "16x9_s16_hd_1920x1080": {
+       "bpp": 2.6553,
+       "bytes_per_frame": 688248,
+       "mbps_24": 132.1,
+       "maxfps": 200
+      },
+      "16x9_hd_anap_1920x1080": {
+       "bpp": 2.6553,
+       "bytes_per_frame": 688248,
+       "mbps_24": 132.1,
+       "maxfps": 120
+      },
+      "16x9_2k_2048x1152": {
+       "bpp": 2.6553,
+       "bytes_per_frame": 783073,
+       "mbps_24": 150.4,
+       "maxfps": 200
+      },
+      "2p39x1_2k_anap_2048x858": {
+       "bpp": 2.6553,
+       "bytes_per_frame": 583226,
+       "mbps_24": 112.0,
+       "maxfps": 120
+      },
+      "16x9_3p2k_3200x1800": {
+       "bpp": 2.6553,
+       "bytes_per_frame": 1911800,
+       "mbps_24": 367.1,
+       "maxfps": 60
+      },
+      "16x9_4k_uhd_3840x2160": {
+       "bpp": 2.6553,
+       "bytes_per_frame": 2752992,
+       "mbps_24": 528.6,
+       "maxfps": 60
+      },
+      "4x3_2p8k_2944x2160": {
+       "bpp": 2.5976,
+       "bytes_per_frame": 2064744,
+       "mbps_24": 396.4,
+       "maxfps": 50
+      }
+     },
+     "ref_mode": "16x9_4k_uhd_3840x2160"
+    }
+   ],
+   "fixed": [],
+   "notes": "Data from ARRI FDRC v2.6.4. ALEXA Mini (ALEV III Super 35). ARRIRAW recorded as 2.8K 16:9 (2880x1620) or Open Gate 3.4K (3424x2202; 4:3 2.8K and anamorphic ARRIRAW modes record the full 3424x2202 OG container with crop metadata). FDRC ProRes rates are a fixed bpp formula per flavor (constant ~3.98 bpp for 422 HQ etc.). FDRC dataset also contains ProRes 422 LT rates (1.849 bpp) but the camera's FDRC codec list omits LT, so it is excluded here (ARRI Mini spec sheets do list ProRes 422 LT - add if needed). ProRes 4444 XQ fps limits are lower (30 fps at 3.2K/UHD, 120 at HD). 4K UHD and 3.2K ProRes need the 4K UHD license; UHD is upsampled from 3.2K."
+  },
+  {
+   "id": "arri-alexa-mini-lf",
+   "name": "ARRI ALEXA Mini LF",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "4p5k_lf_3x2_open_gate_4p5k_4448x3096",
+     "name": "4.5K LF 3:2 Open Gate - 4.5K",
+     "w": 4448,
+     "h": 3096,
+     "maxfps": 40,
+     "sensor_mode": "4.5K LF 3:2 Open Gate - 4.5K",
+     "format": "large_format"
+    },
+    {
+     "key": "4p5k_lf_2p39x1_4p5k_4448x1856",
+     "name": "4.5K LF 2.39:1 - 4.5K",
+     "w": 4448,
+     "h": 1856,
+     "maxfps": 60,
+     "sensor_mode": "4.5K LF 2.39:1 - 4.5K",
+     "format": "large_format"
+    },
+    {
+     "key": "3p8k_lf_16x9_uhd_3840x2160",
+     "name": "3.8K LF 16:9 - UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60,
+     "sensor_mode": "3.8K LF 16:9 - UHD",
+     "format": "large_format"
+    },
+    {
+     "key": "2p8k_lf_1x1_2p8k_2880x2880",
+     "name": "2.8K LF 1:1 - 2.8K",
+     "w": 2880,
+     "h": 2880,
+     "maxfps": 60,
+     "sensor_mode": "2.8K LF 1:1 - 2.8K",
+     "format": "large_format"
+    },
+    {
+     "key": "3p4k_s35_3x2_3p4k_3424x2202",
+     "name": "3.4K S35 3:2 - 3.4K",
+     "w": 3424,
+     "h": 2202,
+     "maxfps": 60,
+     "sensor_mode": "3.4K S35 3:2 - 3.4K",
+     "format": "super35"
+    },
+    {
+     "key": "4p5k_lf_3x2_open_gate_4p5k_4480x3096",
+     "name": "4.5K LF 3:2 Open Gate - 4.5K",
+     "w": 4480,
+     "h": 3096,
+     "maxfps": 40,
+     "sensor_mode": "4.5K LF 3:2 Open Gate - 4.5K",
+     "format": "large_format"
+    },
+    {
+     "key": "4p5k_lf_2p39x1_4p5k_4480x1856",
+     "name": "4.5K LF 2.39:1 - 4.5K",
+     "w": 4480,
+     "h": 1856,
+     "maxfps": 60,
+     "sensor_mode": "4.5K LF 2.39:1 - 4.5K",
+     "format": "large_format"
+    },
+    {
+     "key": "4p3k_lf_16x9_uhd_3840x2160",
+     "name": "4.3K LF 16:9 - UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 48,
+     "sensor_mode": "4.3K LF 16:9 - UHD",
+     "format": "large_format"
+    },
+    {
+     "key": "4p3k_lf_16x9_hd_1920x1080",
+     "name": "4.3K LF 16:9 - HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 75,
+     "sensor_mode": "4.3K LF 16:9 - HD",
+     "format": "large_format"
+    },
+    {
+     "key": "3p8k_lf_16x9_2k_2048x1152",
+     "name": "3.8K LF 16:9 - 2K",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 90,
+     "sensor_mode": "3.8K LF 16:9 - 2K",
+     "format": "large_format"
+    },
+    {
+     "key": "3p8k_lf_16x9_hd_1920x1080",
+     "name": "3.8K LF 16:9 - HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 90,
+     "sensor_mode": "3.8K LF 16:9 - HD",
+     "format": "large_format"
+    },
+    {
+     "key": "2p8k_lf_1x1_2p8k_3072x2880",
+     "name": "2.8K LF 1:1 - 2.8K",
+     "w": 3072,
+     "h": 2880,
+     "maxfps": 60,
+     "sensor_mode": "2.8K LF 1:1 - 2.8K",
+     "format": "large_format"
+    },
+    {
+     "key": "3p2k_s35_16x9_3p2k_3200x1800",
+     "name": "3.2K S35 16:9 - 3.2K",
+     "w": 3200,
+     "h": 1800,
+     "maxfps": 75,
+     "sensor_mode": "3.2K S35 16:9 - 3.2K",
+     "format": "super35"
+    },
+    {
+     "key": "2p8k_s35_4x3_2p8k_3072x2160",
+     "name": "2.8K S35 4:3 - 2.8K",
+     "w": 3072,
+     "h": 2160,
+     "maxfps": 75,
+     "sensor_mode": "2.8K S35 4:3 - 2.8K",
+     "format": "super35"
+    },
+    {
+     "key": "2p8k_s35_16x9_hd_1920x1080",
+     "name": "2.8K S35 16:9 - HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 100,
+     "sensor_mode": "2.8K S35 16:9 - HD",
+     "format": "super35"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "arriraw",
+     "name": "ARRIRAW",
+     "bpp": 11.7236,
+     "res": [
+      "4p5k_lf_3x2_open_gate_4p5k_4448x3096",
+      "4p5k_lf_2p39x1_4p5k_4448x1856",
+      "3p8k_lf_16x9_uhd_3840x2160",
+      "2p8k_lf_1x1_2p8k_2880x2880",
+      "3p4k_s35_3x2_3p4k_3424x2202"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.5K LF 3:2 Open Gate - 4.5K (4448x3096) = 20180724 bytes/frame -> 3874.7 Mb/s at 24 fps (484.3 MB/s); bpp=11.7236. bpp across modes 11.7223-11.7241; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p5k_lf_3x2_open_gate_4p5k_4448x3096": {
+       "bpp": 11.7236,
+       "bytes_per_frame": 20180724,
+       "mbps_24": 3874.7,
+       "maxfps": 40
+      },
+      "4p5k_lf_2p39x1_4p5k_4448x1856": {
+       "bpp": 11.7233,
+       "bytes_per_frame": 12097704,
+       "mbps_24": 2322.8,
+       "maxfps": 60
+      },
+      "3p8k_lf_16x9_uhd_3840x2160": {
+       "bpp": 11.7223,
+       "bytes_per_frame": 12153648,
+       "mbps_24": 2333.5,
+       "maxfps": 60
+      },
+      "2p8k_lf_1x1_2p8k_2880x2880": {
+       "bpp": 11.7223,
+       "bytes_per_frame": 12153648,
+       "mbps_24": 2333.5,
+       "maxfps": 60
+      },
+      "3p4k_s35_3x2_3p4k_3424x2202": {
+       "bpp": 11.7241,
+       "bytes_per_frame": 11049408,
+       "mbps_24": 2121.5,
+       "maxfps": 60
+      }
+     },
+     "ref_mode": "4p5k_lf_3x2_open_gate_4p5k_4448x3096"
+    },
+    {
+     "key": "arriraw_hde",
+     "name": "ARRIRAW HDE",
+     "bpp": 7.0342,
+     "res": [
+      "4p5k_lf_3x2_open_gate_4p5k_4448x3096",
+      "4p5k_lf_2p39x1_4p5k_4448x1856",
+      "3p8k_lf_16x9_uhd_3840x2160",
+      "2p8k_lf_1x1_2p8k_2880x2880",
+      "3p4k_s35_3x2_3p4k_3424x2202"
+     ],
+     "ref": "ESTIMATE: ARRI FDRC shows ARRIRAW-HDE GB/h as ARRIRAW GB/h x hde_multiplier (0.6 for this camera); 4.5K LF 3:2 Open Gate - 4.5K (4448x3096) 24 fps ~= 2324.8 Mb/s. HDE is lossless/variable-rate, so real files vary with image content. The multiplier is the FDRC's own approximation; ARRI marketing commonly cites roughly 40% smaller files (not re-verified here). No fixed ARRI-published HDE Mb/s found.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": true,
+     "byRes": {
+      "4p5k_lf_3x2_open_gate_4p5k_4448x3096": {
+       "bpp": 7.0342,
+       "mbps_24": 2324.8,
+       "maxfps": 40
+      },
+      "4p5k_lf_2p39x1_4p5k_4448x1856": {
+       "bpp": 7.034,
+       "mbps_24": 1393.7,
+       "maxfps": 60
+      },
+      "3p8k_lf_16x9_uhd_3840x2160": {
+       "bpp": 7.0334,
+       "mbps_24": 1400.1,
+       "maxfps": 60
+      },
+      "2p8k_lf_1x1_2p8k_2880x2880": {
+       "bpp": 7.0334,
+       "mbps_24": 1400.1,
+       "maxfps": 60
+      },
+      "3p4k_s35_3x2_3p4k_3424x2202": {
+       "bpp": 7.0345,
+       "mbps_24": 1272.9,
+       "maxfps": 60
+      }
+     },
+     "ref_mode": "4p5k_lf_3x2_open_gate_4p5k_4448x3096"
+    },
+    {
+     "key": "pr4444xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 7.8584,
+     "res": [
+      "3p8k_lf_16x9_uhd_3840x2160",
+      "4p5k_lf_3x2_open_gate_4p5k_4480x3096",
+      "4p5k_lf_2p39x1_4p5k_4480x1856",
+      "4p3k_lf_16x9_uhd_3840x2160",
+      "4p3k_lf_16x9_hd_1920x1080",
+      "3p8k_lf_16x9_2k_2048x1152",
+      "3p8k_lf_16x9_hd_1920x1080",
+      "2p8k_lf_1x1_2p8k_3072x2880",
+      "3p2k_s35_16x9_3p2k_3200x1800",
+      "2p8k_s35_4x3_2p8k_3072x2160",
+      "2p8k_s35_16x9_hd_1920x1080"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.5K LF 3:2 Open Gate - 4.5K (4480x3096) = 13624663 bytes/frame -> 2615.9 Mb/s at 24 fps (327.0 MB/s); bpp=7.8584. bpp across modes 6.4865-7.8584; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p5k_lf_3x2_open_gate_4p5k_4480x3096": {
+       "bpp": 7.8584,
+       "bytes_per_frame": 13624663,
+       "mbps_24": 2615.9,
+       "maxfps": 40
+      },
+      "4p5k_lf_2p39x1_4p5k_4480x1856": {
+       "bpp": 7.8357,
+       "bytes_per_frame": 8144087,
+       "mbps_24": 1563.7,
+       "maxfps": 60
+      },
+      "4p3k_lf_16x9_uhd_3840x2160": {
+       "bpp": 7.7821,
+       "bytes_per_frame": 8068513,
+       "mbps_24": 1549.2,
+       "maxfps": 48
+      },
+      "4p3k_lf_16x9_hd_1920x1080": {
+       "bpp": 7.7936,
+       "bytes_per_frame": 2020097,
+       "mbps_24": 387.9,
+       "maxfps": 75
+      },
+      "3p8k_lf_16x9_uhd_3840x2160": {
+       "bpp": 7.7821,
+       "bytes_per_frame": 8068513,
+       "mbps_24": 1549.2,
+       "maxfps": 60
+      },
+      "3p8k_lf_16x9_2k_2048x1152": {
+       "bpp": 7.7993,
+       "bytes_per_frame": 2300098,
+       "mbps_24": 441.6,
+       "maxfps": 90
+      },
+      "3p8k_lf_16x9_hd_1920x1080": {
+       "bpp": 7.7936,
+       "bytes_per_frame": 2020097,
+       "mbps_24": 387.9,
+       "maxfps": 90
+      },
+      "2p8k_lf_1x1_2p8k_3072x2880": {
+       "bpp": 6.4865,
+       "bytes_per_frame": 7173513,
+       "mbps_24": 1377.3,
+       "maxfps": 60
+      },
+      "3p2k_s35_16x9_3p2k_3200x1800": {
+       "bpp": 7.7836,
+       "bytes_per_frame": 5604200,
+       "mbps_24": 1076.0,
+       "maxfps": 75
+      },
+      "2p8k_s35_4x3_2p8k_3072x2160": {
+       "bpp": 7.7839,
+       "bytes_per_frame": 6456296,
+       "mbps_24": 1239.6,
+       "maxfps": 75
+      },
+      "2p8k_s35_16x9_hd_1920x1080": {
+       "bpp": 7.7936,
+       "bytes_per_frame": 2020097,
+       "mbps_24": 387.9,
+       "maxfps": 100
+      }
+     },
+     "ref_mode": "4p5k_lf_3x2_open_gate_4p5k_4480x3096"
+    },
+    {
+     "key": "pr4444",
+     "name": "ProRes 4444",
+     "bpp": 5.3028,
+     "res": [
+      "3p8k_lf_16x9_uhd_3840x2160",
+      "4p5k_lf_3x2_open_gate_4p5k_4480x3096",
+      "4p5k_lf_2p39x1_4p5k_4480x1856",
+      "4p3k_lf_16x9_uhd_3840x2160",
+      "4p3k_lf_16x9_hd_1920x1080",
+      "3p8k_lf_16x9_2k_2048x1152",
+      "3p8k_lf_16x9_hd_1920x1080",
+      "2p8k_lf_1x1_2p8k_3072x2880",
+      "3p2k_s35_16x9_3p2k_3200x1800",
+      "2p8k_s35_4x3_2p8k_3072x2160",
+      "2p8k_s35_16x9_hd_1920x1080"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.5K LF 3:2 Open Gate - 4.5K (4480x3096) = 9193857 bytes/frame -> 1765.2 Mb/s at 24 fps (220.7 MB/s); bpp=5.3028. bpp across modes 4.3257-5.3028; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p5k_lf_3x2_open_gate_4p5k_4480x3096": {
+       "bpp": 5.3028,
+       "bytes_per_frame": 9193857,
+       "mbps_24": 1765.2,
+       "maxfps": 40
+      },
+      "4p5k_lf_2p39x1_4p5k_4480x1856": {
+       "bpp": 5.2411,
+       "bytes_per_frame": 5447426,
+       "mbps_24": 1045.9,
+       "maxfps": 60
+      },
+      "4p3k_lf_16x9_uhd_3840x2160": {
+       "bpp": 5.1894,
+       "bytes_per_frame": 5380390,
+       "mbps_24": 1033.0,
+       "maxfps": 48
+      },
+      "4p3k_lf_16x9_hd_1920x1080": {
+       "bpp": 5.2009,
+       "bytes_per_frame": 1348084,
+       "mbps_24": 258.8,
+       "maxfps": 75
+      },
+      "3p8k_lf_16x9_uhd_3840x2160": {
+       "bpp": 5.1894,
+       "bytes_per_frame": 5380390,
+       "mbps_24": 1033.0,
+       "maxfps": 60
+      },
+      "3p8k_lf_16x9_2k_2048x1152": {
+       "bpp": 5.2088,
+       "bytes_per_frame": 1536130,
+       "mbps_24": 294.9,
+       "maxfps": 90
+      },
+      "3p8k_lf_16x9_hd_1920x1080": {
+       "bpp": 5.2009,
+       "bytes_per_frame": 1348084,
+       "mbps_24": 258.8,
+       "maxfps": 90
+      },
+      "2p8k_lf_1x1_2p8k_3072x2880": {
+       "bpp": 4.3257,
+       "bytes_per_frame": 4783890,
+       "mbps_24": 918.5,
+       "maxfps": 60
+      },
+      "3p2k_s35_16x9_3p2k_3200x1800": {
+       "bpp": 5.1944,
+       "bytes_per_frame": 3740000,
+       "mbps_24": 718.1,
+       "maxfps": 75
+      },
+      "2p8k_s35_4x3_2p8k_3072x2160": {
+       "bpp": 5.1939,
+       "bytes_per_frame": 4308064,
+       "mbps_24": 827.1,
+       "maxfps": 75
+      },
+      "2p8k_s35_16x9_hd_1920x1080": {
+       "bpp": 5.2009,
+       "bytes_per_frame": 1348084,
+       "mbps_24": 258.8,
+       "maxfps": 100
+      }
+     },
+     "ref_mode": "4p5k_lf_3x2_open_gate_4p5k_4480x3096"
+    },
+    {
+     "key": "pr422hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5352,
+     "res": [
+      "3p8k_lf_16x9_uhd_3840x2160",
+      "4p5k_lf_3x2_open_gate_4p5k_4480x3096",
+      "4p5k_lf_2p39x1_4p5k_4480x1856",
+      "4p3k_lf_16x9_uhd_3840x2160",
+      "4p3k_lf_16x9_hd_1920x1080",
+      "3p8k_lf_16x9_2k_2048x1152",
+      "3p8k_lf_16x9_hd_1920x1080",
+      "2p8k_lf_1x1_2p8k_3072x2880",
+      "3p2k_s35_16x9_3p2k_3200x1800",
+      "2p8k_s35_4x3_2p8k_3072x2160",
+      "2p8k_s35_16x9_hd_1920x1080"
+     ],
+     "ref": "ARRI FDRC v2.6.4: 4.5K LF 3:2 Open Gate - 4.5K (4480x3096) = 6129238 bytes/frame -> 1176.8 Mb/s at 24 fps (147.1 MB/s); bpp=3.5352. bpp across modes 3.4607-3.5352; per-mode values in byRes.",
+     "source": "https://tools.arri.com/fileadmin/adapps/afdc/index.html",
+     "estimated": false,
+     "byRes": {
+      "4p5k_lf_3x2_open_gate_4p5k_4480x3096": {
+       "bpp": 3.5352,
+       "bytes_per_frame": 6129238,
+       "mbps_24": 1176.8,
+       "maxfps": 40
+      },
+      "4p5k_lf_2p39x1_4p5k_4480x1856": {
+       "bpp": 3.4941,
+       "bytes_per_frame": 3631617,
+       "mbps_24": 697.3,
+       "maxfps": 60
+      },
+      "4p3k_lf_16x9_uhd_3840x2160": {
+       "bpp": 3.4607,
+       "bytes_per_frame": 3588094,
+       "mbps_24": 688.9,
+       "maxfps": 48
+      },
+      "4p3k_lf_16x9_hd_1920x1080": {
+       "bpp": 3.4725,
+       "bytes_per_frame": 900079,
+       "mbps_24": 172.8,
+       "maxfps": 75
+      },
+      "3p8k_lf_16x9_uhd_3840x2160": {
+       "bpp": 3.4607,
+       "bytes_per_frame": 3588094,
+       "mbps_24": 688.9,
+       "maxfps": 60
+      },
+      "3p8k_lf_16x9_2k_2048x1152": {
+       "bpp": 3.4724,
+       "bytes_per_frame": 1024057,
+       "mbps_24": 196.6,
+       "maxfps": 90
+      },
+      "3p8k_lf_16x9_hd_1920x1080": {
+       "bpp": 3.4725,
+       "bytes_per_frame": 900079,
+       "mbps_24": 172.8,
+       "maxfps": 90
+      },
+      "2p8k_lf_1x1_2p8k_3072x2880": {
+       "bpp": 3.4618,
+       "bytes_per_frame": 3828494,
+       "mbps_24": 735.1,
+       "maxfps": 60
+      },
+      "3p2k_s35_16x9_3p2k_3200x1800": {
+       "bpp": 3.4669,
+       "bytes_per_frame": 2496200,
+       "mbps_24": 479.3,
+       "maxfps": 75
+      },
+      "2p8k_s35_4x3_2p8k_3072x2160": {
+       "bpp": 3.4629,
+       "bytes_per_frame": 2872276,
+       "mbps_24": 551.5,
+       "maxfps": 75
+      },
+      "2p8k_s35_16x9_hd_1920x1080": {
+       "bpp": 3.4725,
+       "bytes_per_frame": 900079,
+       "mbps_24": 172.8,
+       "maxfps": 100
+      }
+     },
+     "ref_mode": "4p5k_lf_3x2_open_gate_4p5k_4480x3096"
+    }
+   ],
+   "fixed": [],
+   "notes": "Data from ARRI FDRC v2.6.4. ALEXA Mini LF (ALEV III A3X LF). ProRes 4.5K LF Open Gate file is 4480x3096 (padded container), ARRIRAW is 4448x3096. FDRC lists ProRes 422 HQ/4444/4444 XQ + ARRIRAW (MXF/ARRIRAW, uncompressed; HDE via Codex). 2.8K LF 1:1 ProRes file is 3072x2880. Max fps values are FDRC's per-mode figures (Open Gate 40 fps)."
+  }
+ ]
+}

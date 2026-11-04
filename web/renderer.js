@@ -158,9 +158,12 @@
       const cams = b.cameras || [];
       let total = 0;
       const rows = cams.map(c => {
+        const rate = window.FFDefaults && FFDefaults.STORAGE.storageRate(c);
+        const tbph = rate ? rate.tbph : Number(c.tbph) || 0;
+        const codec = rate ? rate.label : c.codec || '';
         const [hh, mm] = String(c.hours || '0').split(':');
         const hrs = (Number(hh) || 0) + (Number(mm) || 0) / 60;
-        const perDay = hrs * (Number(c.tbph) || 0);
+        const perDay = hrs * tbph;
         const tot = perDay * (Number(c.days) || 0);
         total += tot;
         return `<div class="stor-row">
@@ -170,7 +173,7 @@
           <div class="tile"><span class="tl">Por día</span><span class="tv">${fmt(perDay)}<small>TB</small></span></div>
           <div class="tile acc"><span class="tl">Total</span><span class="tv">${fmt(tot, 2)}<small>TB</small></span></div>
         </div>
-        ${b.showFormula !== false ? `<div class="stor-formula">${fmt(c.days, 0)} días × ${fmt(perDay)} TB = <strong>${fmt(tot, 2)} TB</strong> · tiempo total ${fmt(hrs * (Number(c.days) || 0), 1)} h · ${fmt(c.tbph)} TB/h (${esc(c.codec || '')})</div>` : ''}`;
+        ${b.showFormula !== false ? `<div class="stor-formula">${fmt(c.days, 0)} días × ${fmt(perDay)} TB = <strong>${fmt(tot, 2)} TB</strong> · tiempo total ${fmt(hrs * (Number(c.days) || 0), 1)} h · ${fmt(tbph)} TB/h${codec ? ` (${esc(codec)})` : ''}</div>` : ''}`;
       }).join('');
       return {
         el: el(`<div class="${cls(b, 'storage')}"><div class="stor">${b.title ? `<div class="stor-t">${esc(b.title)}</div>` : ''}${rows}

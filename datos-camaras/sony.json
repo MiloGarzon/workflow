@@ -1,0 +1,3022 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps). For tables Sony labels '23.98/24.0p' the bpp is computed at 24.0 (Sony gives the same Mbps for both); XAVC values listed as 23.98p use 23.976. For codecs where Sony's Mbps differs by imager mode in ways that are not proportional to pixels (derived modes reuse the parent readout rate), use codec.rates[] (per mode) over the single bpp. 'external' on a codec means it is not recorded in the camera body.",
+ "not_existing": [],
+ "cameras": [
+  {
+   "id": "sony-venice2-8k",
+   "name": "Sony Venice 2 (8K)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "86k32",
+     "name": "8.6K 3:2",
+     "w": 8640,
+     "h": 5760,
+     "maxfps": 30
+    },
+    {
+     "key": "86k179",
+     "name": "8.6K 17:9",
+     "w": 8640,
+     "h": 4556,
+     "maxfps": 48
+    },
+    {
+     "key": "82k239",
+     "name": "8.2K 2.39:1",
+     "w": 8192,
+     "h": 3432,
+     "maxfps": 72
+    },
+    {
+     "key": "82k179",
+     "name": "8.2K 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "81k169",
+     "name": "8.1K 16:9",
+     "w": 8100,
+     "h": 4556,
+     "maxfps": 48
+    },
+    {
+     "key": "76k169",
+     "name": "7.6K 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "58k65",
+     "name": "5.8K 6:5",
+     "w": 5792,
+     "h": 4854,
+     "maxfps": 48
+    },
+    {
+     "key": "58k43",
+     "name": "5.8K 4:3",
+     "w": 5792,
+     "h": 4276,
+     "maxfps": 60
+    },
+    {
+     "key": "58k179",
+     "name": "5.8K 17:9",
+     "w": 5792,
+     "h": 3056,
+     "maxfps": 90
+    },
+    {
+     "key": "55k239",
+     "name": "5.5K 2.39:1",
+     "w": 5480,
+     "h": 2296,
+     "maxfps": 120
+    },
+    {
+     "key": "54k169",
+     "name": "5.4K 16:9",
+     "w": 5434,
+     "h": 3056,
+     "maxfps": 90
+    },
+    {
+     "key": "pr-4096",
+     "name": "ProRes 4096x2160 (4K DCI)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": null,
+     "note": "ProRes output size; max fps follows the imager mode (30-75)."
+    },
+    {
+     "key": "pr-3840",
+     "name": "ProRes 3840x2160 (UHD)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": null,
+     "note": "ProRes output size; max fps follows the imager mode (30-75)."
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xocn-xt",
+     "name": "X-OCN XT",
+     "bpp": 4.4751,
+     "res": [
+      "86k32",
+      "86k179",
+      "82k239",
+      "82k179",
+      "81k169",
+      "76k169",
+      "58k65",
+      "58k43",
+      "58k179",
+      "55k239",
+      "54k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'VENICE 2 23.98/24.0p Recording format in V2.0' table: X-OCN XT 8.6K 3:2 (8640x5760) 24p = 5345 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates are identical at 23.98 and 24.0 and scale linearly with fps (60p table = 2.5x). 7.6K 16:9, 8.1K 16:9 and 5.4K 16:9 carry the same Mbps as their parent readout (8.2K 17:9, 8.6K 17:9, 5.8K 17:9), so their bpp is higher.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "86k32",
+       "fps": 24,
+       "mbps": 5345,
+       "bpp": 4.4751
+      },
+      {
+       "res": "86k179",
+       "fps": 24,
+       "mbps": 4233,
+       "bpp": 4.4806
+      },
+      {
+       "res": "82k239",
+       "fps": 24,
+       "mbps": 3079,
+       "bpp": 4.5631
+      },
+      {
+       "res": "82k179",
+       "fps": 24,
+       "mbps": 3861,
+       "bpp": 4.5458
+      },
+      {
+       "res": "81k169",
+       "fps": 24,
+       "mbps": 4233,
+       "bpp": 4.7793
+      },
+      {
+       "res": "76k169",
+       "fps": 24,
+       "mbps": 3861,
+       "bpp": 4.8489
+      },
+      {
+       "res": "58k65",
+       "fps": 24,
+       "mbps": 3040,
+       "bpp": 4.5054
+      },
+      {
+       "res": "58k43",
+       "fps": 24,
+       "mbps": 2676,
+       "bpp": 4.502
+      },
+      {
+       "res": "58k179",
+       "fps": 24,
+       "mbps": 1919,
+       "bpp": 4.5173
+      },
+      {
+       "res": "55k239",
+       "fps": 24,
+       "mbps": 1446,
+       "bpp": 4.7886
+      },
+      {
+       "res": "54k169",
+       "fps": 24,
+       "mbps": 1919,
+       "bpp": 4.8149
+      }
+     ]
+    },
+    {
+     "key": "xocn-st",
+     "name": "X-OCN ST",
+     "bpp": 3.0626,
+     "res": [
+      "86k32",
+      "86k179",
+      "82k239",
+      "82k179",
+      "81k169",
+      "76k169",
+      "58k65",
+      "58k43",
+      "58k179",
+      "55k239",
+      "54k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'VENICE 2 23.98/24.0p Recording format in V2.0' table: X-OCN ST 8.6K 3:2 (8640x5760) 24p = 3658 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates are identical at 23.98 and 24.0 and scale linearly with fps (60p table = 2.5x). 7.6K 16:9, 8.1K 16:9 and 5.4K 16:9 carry the same Mbps as their parent readout (8.2K 17:9, 8.6K 17:9, 5.8K 17:9), so their bpp is higher.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "86k32",
+       "fps": 24,
+       "mbps": 3658,
+       "bpp": 3.0626
+      },
+      {
+       "res": "86k179",
+       "fps": 24,
+       "mbps": 2897,
+       "bpp": 3.0665
+      },
+      {
+       "res": "82k239",
+       "fps": 24,
+       "mbps": 2107,
+       "bpp": 3.1226
+      },
+      {
+       "res": "82k179",
+       "fps": 24,
+       "mbps": 2642,
+       "bpp": 3.1106
+      },
+      {
+       "res": "81k169",
+       "fps": 24,
+       "mbps": 2897,
+       "bpp": 3.2709
+      },
+      {
+       "res": "76k169",
+       "fps": 24,
+       "mbps": 2642,
+       "bpp": 3.318
+      },
+      {
+       "res": "58k65",
+       "fps": 24,
+       "mbps": 2080,
+       "bpp": 3.0826
+      },
+      {
+       "res": "58k43",
+       "fps": 24,
+       "mbps": 1832,
+       "bpp": 3.0821
+      },
+      {
+       "res": "58k179",
+       "fps": 24,
+       "mbps": 1313,
+       "bpp": 3.0908
+      },
+      {
+       "res": "55k239",
+       "fps": 24,
+       "mbps": 990,
+       "bpp": 3.2785
+      },
+      {
+       "res": "54k169",
+       "fps": 24,
+       "mbps": 1313,
+       "bpp": 3.2944
+      }
+     ]
+    },
+    {
+     "key": "xocn-lt",
+     "name": "X-OCN LT",
+     "bpp": 1.8043,
+     "res": [
+      "86k32",
+      "86k179",
+      "82k239",
+      "82k179",
+      "81k169",
+      "76k169",
+      "58k65",
+      "58k43",
+      "58k179",
+      "55k239",
+      "54k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'VENICE 2 23.98/24.0p Recording format in V2.0' table: X-OCN LT 8.6K 3:2 (8640x5760) 24p = 2155 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates are identical at 23.98 and 24.0 and scale linearly with fps (60p table = 2.5x). 7.6K 16:9, 8.1K 16:9 and 5.4K 16:9 carry the same Mbps as their parent readout (8.2K 17:9, 8.6K 17:9, 5.8K 17:9), so their bpp is higher.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "86k32",
+       "fps": 24,
+       "mbps": 2155,
+       "bpp": 1.8043
+      },
+      {
+       "res": "86k179",
+       "fps": 24,
+       "mbps": 1706,
+       "bpp": 1.8058
+      },
+      {
+       "res": "82k239",
+       "fps": 24,
+       "mbps": 1241,
+       "bpp": 1.8392
+      },
+      {
+       "res": "82k179",
+       "fps": 24,
+       "mbps": 1556,
+       "bpp": 1.832
+      },
+      {
+       "res": "81k169",
+       "fps": 24,
+       "mbps": 1706,
+       "bpp": 1.9262
+      },
+      {
+       "res": "76k169",
+       "fps": 24,
+       "mbps": 1556,
+       "bpp": 1.9541
+      },
+      {
+       "res": "58k65",
+       "fps": 24,
+       "mbps": 1225,
+       "bpp": 1.8155
+      },
+      {
+       "res": "58k43",
+       "fps": 24,
+       "mbps": 1079,
+       "bpp": 1.8153
+      },
+      {
+       "res": "58k179",
+       "fps": 24,
+       "mbps": 773,
+       "bpp": 1.8196
+      },
+      {
+       "res": "55k239",
+       "fps": 24,
+       "mbps": 583,
+       "bpp": 1.9307
+      },
+      {
+       "res": "54k169",
+       "fps": 24,
+       "mbps": 773,
+       "bpp": 1.9395
+      }
+     ]
+    },
+    {
+     "key": "prores-4444xq",
+     "name": "Apple ProRes 4444 XQ",
+     "bpp": 7.992,
+     "res": [
+      "pr-4096",
+      "pr-3840"
+     ],
+     "ref": "Apple ProRes White Paper (Apr 2022) target rates: 4096x2160 24p = 1697 Mbps, 3840x2160 24p = 1591 Mbps (bpp 7.9923). ProRes is VBR, so these are targets. Sony lists the flavors and 4K/UHD-only limit but no Mbps of its own.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "pr-4096",
+       "fps": 24,
+       "mbps": 1697,
+       "bpp": 7.992
+      },
+      {
+       "res": "pr-3840",
+       "fps": 24,
+       "mbps": 1591,
+       "bpp": 7.9923
+      }
+     ]
+    },
+    {
+     "key": "prores-4444",
+     "name": "Apple ProRes 4444",
+     "bpp": 5.3264,
+     "res": [
+      "pr-4096",
+      "pr-3840"
+     ],
+     "ref": "Apple ProRes White Paper (Apr 2022) target rates: 4096x2160 24p = 1131 Mbps, 3840x2160 24p = 1061 Mbps (bpp 5.3299). ProRes is VBR, so these are targets. Sony lists the flavors and 4K/UHD-only limit but no Mbps of its own.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "pr-4096",
+       "fps": 24,
+       "mbps": 1131,
+       "bpp": 5.3264
+      },
+      {
+       "res": "pr-3840",
+       "fps": 24,
+       "mbps": 1061,
+       "bpp": 5.3299
+      }
+     ]
+    },
+    {
+     "key": "prores-422hq",
+     "name": "Apple ProRes 422 HQ",
+     "bpp": 3.551,
+     "res": [
+      "pr-4096",
+      "pr-3840"
+     ],
+     "ref": "Apple ProRes White Paper (Apr 2022) target rates: 4096x2160 24p = 754 Mbps, 3840x2160 24p = 707 Mbps (bpp 3.5516). ProRes is VBR, so these are targets. Sony lists the flavors and 4K/UHD-only limit but no Mbps of its own.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "pr-4096",
+       "fps": 24,
+       "mbps": 754,
+       "bpp": 3.551
+      },
+      {
+       "res": "pr-3840",
+       "fps": 24,
+       "mbps": 707,
+       "bpp": 3.5516
+      }
+     ]
+    }
+   ],
+   "fixed": [],
+   "notes": "Internal recording to AXS cards: X-OCN XT/ST/LT at the full imager-mode size, and ProRes 4444 XQ / 4444 / 422 HQ only at 4096x2160 or 3840x2160. Imager modes, pixel sizes and max fps come from the Sony VENICE 2 Recording Formats sheet (sonycine.com). Several high-fps modes need AXS 1TB S66 cards (S48 cards top out lower). X-OCN Mbps come from the Sony X-OCN White Paper (v2.0/v3.0, firmware V2.0 tables); they match the sheet's AXS record times (e.g. 8.6K 3:2 24p XT, 23 min on 1TB). No internal XAVC.",
+   "sources": [
+    "https://77snszqv.media.zestyio.com/Sony_VENICE2_RecordingFormats.pdf",
+    "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ]
+  },
+  {
+   "id": "sony-venice2-6k",
+   "name": "Sony Venice 2 (6K)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "6k32",
+     "name": "6K 3:2",
+     "w": 6048,
+     "h": 4032,
+     "maxfps": 60
+    },
+    {
+     "key": "6k185",
+     "name": "6K 1.85:1",
+     "w": 6054,
+     "h": 3272,
+     "maxfps": 72
+    },
+    {
+     "key": "6k179",
+     "name": "6K 17:9",
+     "w": 6054,
+     "h": 3192,
+     "maxfps": 72
+    },
+    {
+     "key": "6k239",
+     "name": "6K 2.39:1",
+     "w": 6048,
+     "h": 2534,
+     "maxfps": 90
+    },
+    {
+     "key": "57k169",
+     "name": "5.7K 16:9",
+     "w": 5674,
+     "h": 3192,
+     "maxfps": 72
+    },
+    {
+     "key": "4k65",
+     "name": "4K 6:5",
+     "w": 4096,
+     "h": 3432,
+     "maxfps": 72
+    },
+    {
+     "key": "4k43",
+     "name": "4K 4:3",
+     "w": 4096,
+     "h": 3024,
+     "maxfps": 75,
+     "note": "Sony JP sheet prints 4096x3432 for 4K 4:3, an apparent copy error (same as 4K 6:5). Its 24.3x18.0 mm area works out to ~4096x3034, and 4096x3024 is the long-standing VENICE 4K 4:3 size."
+    },
+    {
+     "key": "4k179",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 110
+    },
+    {
+     "key": "4k239",
+     "name": "4K 2.39:1",
+     "w": 4096,
+     "h": 1716,
+     "maxfps": 120
+    },
+    {
+     "key": "38k169",
+     "name": "3.8K 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 110
+    },
+    {
+     "key": "pr-4096",
+     "name": "ProRes 4096x2160 (4K DCI)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": null,
+     "note": "ProRes output size"
+    },
+    {
+     "key": "pr-3840",
+     "name": "ProRes 3840x2160 (UHD)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": null,
+     "note": "ProRes output size"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xocn-xt",
+     "name": "X-OCN XT",
+     "bpp": 4.4955,
+     "res": [
+      "6k32",
+      "6k185",
+      "6k179",
+      "6k239",
+      "57k169",
+      "4k65",
+      "4k43",
+      "4k179",
+      "4k239",
+      "38k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'VENICE 2 with 6K image sensor 23.98/24.0p' table: X-OCN XT 6K 3:2 (6048x4032) 24p = 2631 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates are the same at 23.98 and 24.0 and scale linearly with fps. 5.7K 16:9 and 3.8K 16:9 carry the same Mbps as 6K 17:9 and 4K 17:9. The Sony table also lists 'SV' (surround view) variants of 4K 4:3, 4K 17:9 and 3.8K 16:9 at the same rates.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "6k32",
+       "fps": 24,
+       "mbps": 2631,
+       "bpp": 4.4955
+      },
+      {
+       "res": "6k185",
+       "fps": 24,
+       "mbps": 2143,
+       "bpp": 4.5077
+      },
+      {
+       "res": "6k179",
+       "fps": 24,
+       "mbps": 2091,
+       "bpp": 4.5086
+      },
+      {
+       "res": "6k239",
+       "fps": 24,
+       "mbps": 1665,
+       "bpp": 4.5267
+      },
+      {
+       "res": "57k169",
+       "fps": 24,
+       "mbps": 2091,
+       "bpp": 4.8105
+      },
+      {
+       "res": "4k65",
+       "fps": 24,
+       "mbps": 1525,
+       "bpp": 4.5201
+      },
+      {
+       "res": "4k43",
+       "fps": 24,
+       "mbps": 1342,
+       "bpp": 4.5144
+      },
+      {
+       "res": "4k179",
+       "fps": 24,
+       "mbps": 965,
+       "bpp": 4.5447
+      },
+      {
+       "res": "4k239",
+       "fps": 24,
+       "mbps": 770,
+       "bpp": 4.5646
+      },
+      {
+       "res": "38k169",
+       "fps": 24,
+       "mbps": 965,
+       "bpp": 4.8476
+      }
+     ]
+    },
+    {
+     "key": "xocn-st",
+     "name": "X-OCN ST",
+     "bpp": 3.0756,
+     "res": [
+      "6k32",
+      "6k185",
+      "6k179",
+      "6k239",
+      "57k169",
+      "4k65",
+      "4k43",
+      "4k179",
+      "4k239",
+      "38k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'VENICE 2 with 6K image sensor 23.98/24.0p' table: X-OCN ST 6K 3:2 (6048x4032) 24p = 1800 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates are the same at 23.98 and 24.0 and scale linearly with fps. 5.7K 16:9 and 3.8K 16:9 carry the same Mbps as 6K 17:9 and 4K 17:9. The Sony table also lists 'SV' (surround view) variants of 4K 4:3, 4K 17:9 and 3.8K 16:9 at the same rates.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "6k32",
+       "fps": 24,
+       "mbps": 1800,
+       "bpp": 3.0756
+      },
+      {
+       "res": "6k185",
+       "fps": 24,
+       "mbps": 1467,
+       "bpp": 3.0858
+      },
+      {
+       "res": "6k179",
+       "fps": 24,
+       "mbps": 1431,
+       "bpp": 3.0855
+      },
+      {
+       "res": "6k239",
+       "fps": 24,
+       "mbps": 1140,
+       "bpp": 3.0994
+      },
+      {
+       "res": "57k169",
+       "fps": 24,
+       "mbps": 1431,
+       "bpp": 3.2921
+      },
+      {
+       "res": "4k65",
+       "fps": 24,
+       "mbps": 1044,
+       "bpp": 3.0944
+      },
+      {
+       "res": "4k43",
+       "fps": 24,
+       "mbps": 919,
+       "bpp": 3.0915
+      },
+      {
+       "res": "4k179",
+       "fps": 24,
+       "mbps": 661,
+       "bpp": 3.113
+      },
+      {
+       "res": "4k239",
+       "fps": 24,
+       "mbps": 527,
+       "bpp": 3.1241
+      },
+      {
+       "res": "38k169",
+       "fps": 24,
+       "mbps": 661,
+       "bpp": 3.3205
+      }
+     ]
+    },
+    {
+     "key": "xocn-lt",
+     "name": "X-OCN LT",
+     "bpp": 1.8129,
+     "res": [
+      "6k32",
+      "6k185",
+      "6k179",
+      "6k239",
+      "57k169",
+      "4k65",
+      "4k43",
+      "4k179",
+      "4k239",
+      "38k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'VENICE 2 with 6K image sensor 23.98/24.0p' table: X-OCN LT 6K 3:2 (6048x4032) 24p = 1061 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates are the same at 23.98 and 24.0 and scale linearly with fps. 5.7K 16:9 and 3.8K 16:9 carry the same Mbps as 6K 17:9 and 4K 17:9. The Sony table also lists 'SV' (surround view) variants of 4K 4:3, 4K 17:9 and 3.8K 16:9 at the same rates.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "6k32",
+       "fps": 24,
+       "mbps": 1061,
+       "bpp": 1.8129
+      },
+      {
+       "res": "6k185",
+       "fps": 24,
+       "mbps": 864,
+       "bpp": 1.8174
+      },
+      {
+       "res": "6k179",
+       "fps": 24,
+       "mbps": 843,
+       "bpp": 1.8177
+      },
+      {
+       "res": "6k239",
+       "fps": 24,
+       "mbps": 671,
+       "bpp": 1.8243
+      },
+      {
+       "res": "57k169",
+       "fps": 24,
+       "mbps": 843,
+       "bpp": 1.9394
+      },
+      {
+       "res": "4k65",
+       "fps": 24,
+       "mbps": 615,
+       "bpp": 1.8229
+      },
+      {
+       "res": "4k43",
+       "fps": 24,
+       "mbps": 541,
+       "bpp": 1.8199
+      },
+      {
+       "res": "4k179",
+       "fps": 24,
+       "mbps": 389,
+       "bpp": 1.832
+      },
+      {
+       "res": "4k239",
+       "fps": 24,
+       "mbps": 310,
+       "bpp": 1.8377
+      },
+      {
+       "res": "38k169",
+       "fps": 24,
+       "mbps": 389,
+       "bpp": 1.9541
+      }
+     ]
+    },
+    {
+     "key": "prores-4444xq",
+     "name": "Apple ProRes 4444 XQ",
+     "bpp": 7.992,
+     "res": [
+      "pr-4096",
+      "pr-3840"
+     ],
+     "ref": "Apple ProRes White Paper (Apr 2022) target rates: 4096x2160 24p = 1697 Mbps, 3840x2160 24p = 1591 Mbps (bpp 7.9923). ProRes is VBR, so these are targets. Sony lists the flavors and 4K/UHD-only limit but no Mbps of its own.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "pr-4096",
+       "fps": 24,
+       "mbps": 1697,
+       "bpp": 7.992
+      },
+      {
+       "res": "pr-3840",
+       "fps": 24,
+       "mbps": 1591,
+       "bpp": 7.9923
+      }
+     ]
+    },
+    {
+     "key": "prores-4444",
+     "name": "Apple ProRes 4444",
+     "bpp": 5.3264,
+     "res": [
+      "pr-4096",
+      "pr-3840"
+     ],
+     "ref": "Apple ProRes White Paper (Apr 2022) target rates: 4096x2160 24p = 1131 Mbps, 3840x2160 24p = 1061 Mbps (bpp 5.3299). ProRes is VBR, so these are targets. Sony lists the flavors and 4K/UHD-only limit but no Mbps of its own.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "pr-4096",
+       "fps": 24,
+       "mbps": 1131,
+       "bpp": 5.3264
+      },
+      {
+       "res": "pr-3840",
+       "fps": 24,
+       "mbps": 1061,
+       "bpp": 5.3299
+      }
+     ]
+    },
+    {
+     "key": "prores-422hq",
+     "name": "Apple ProRes 422 HQ",
+     "bpp": 3.551,
+     "res": [
+      "pr-4096",
+      "pr-3840"
+     ],
+     "ref": "Apple ProRes White Paper (Apr 2022) target rates: 4096x2160 24p = 754 Mbps, 3840x2160 24p = 707 Mbps (bpp 3.5516). ProRes is VBR, so these are targets. Sony lists the flavors and 4K/UHD-only limit but no Mbps of its own.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "pr-4096",
+       "fps": 24,
+       "mbps": 754,
+       "bpp": 3.551
+      },
+      {
+       "res": "pr-3840",
+       "fps": 24,
+       "mbps": 707,
+       "bpp": 3.5516
+      }
+     ]
+    }
+   ],
+   "fixed": [],
+   "notes": "Imager modes and max fps come from Sony Japan's VENICE 2 (6K) recording format sheet (Jan 2025, firmware 3.0). Full-frame modes need the Full Frame license, and the 4K 6:5 / 4:3 anamorphic modes need the Anamorphic license. Internal codecs: X-OCN XT/ST/LT, plus ProRes 4444 XQ / 4444 / 422 HQ at 4K DCI or UHD only. The X-OCN rates are the same as the original VENICE (same 6K sensor), so the VENICE v3.0 brochure matches this table.",
+   "sources": [
+    "https://www.sony.jp/ls-camera/reference/pdf/VENICE_2_MPC-3626_recording_format.pdf",
+    "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ]
+  },
+  {
+   "id": "sony-venice1",
+   "name": "Sony Venice (1st gen, MPC-3610)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "6k32",
+     "name": "6K 3:2",
+     "w": 6048,
+     "h": 4032,
+     "maxfps": null,
+     "note": "Max fps not confirmed. In the v3.0 rate table 6K 3:2 has no 29.97p entry."
+    },
+    {
+     "key": "6k185",
+     "name": "6K 1.85:1",
+     "w": 6054,
+     "h": 3272,
+     "maxfps": null
+    },
+    {
+     "key": "6k179",
+     "name": "6K 17:9",
+     "w": 6054,
+     "h": 3192,
+     "maxfps": 72,
+     "note": "72 fps with the HFR license (firmware 5.0)"
+    },
+    {
+     "key": "6k239",
+     "name": "6K 2.39:1",
+     "w": 6048,
+     "h": 2534,
+     "maxfps": 90,
+     "note": "90 fps with the HFR license (firmware 5.0)"
+    },
+    {
+     "key": "57k169",
+     "name": "5.7K 16:9",
+     "w": 5674,
+     "h": 3192,
+     "maxfps": 72,
+     "note": "72 fps (firmware 6.0)"
+    },
+    {
+     "key": "4k65",
+     "name": "4K 6:5",
+     "w": 4096,
+     "h": 3432,
+     "maxfps": 72,
+     "note": "72 fps (firmware 6.0)"
+    },
+    {
+     "key": "4k43",
+     "name": "4K 4:3",
+     "w": 4096,
+     "h": 3024,
+     "maxfps": null
+    },
+    {
+     "key": "4k179",
+     "name": "4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 110
+    },
+    {
+     "key": "4k239",
+     "name": "4K 2.39:1",
+     "w": 4096,
+     "h": 1716,
+     "maxfps": 120,
+     "note": "HFR license (firmware 4.0+)"
+    },
+    {
+     "key": "38k169",
+     "name": "3.8K 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 110,
+     "note": "110 fps (firmware 6.0)"
+    },
+    {
+     "key": "xavc-4096",
+     "name": "XAVC 4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": null,
+     "note": "XAVC/SxS recording size for the 4K/6K DCI-family modes"
+    },
+    {
+     "key": "xavc-3840",
+     "name": "XAVC QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": null,
+     "note": "XAVC/SxS recording size for the 3.8K and 5.7K 16:9 modes"
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": null,
+     "note": "ProRes / MPEG HD on SxS"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xocn-xt",
+     "name": "X-OCN XT",
+     "bpp": 4.4955,
+     "res": [
+      "38k169",
+      "4k179",
+      "4k43",
+      "4k65",
+      "57k169",
+      "6k239",
+      "6k179",
+      "6k185",
+      "6k32"
+     ],
+     "ref": "Sony VENICE v3.0 brochure, 'Recording formats Version 3.0 firmware (Mbps) 23.98/24p' table (Sony document hosted by AFC): X-OCN XT 6K 3:2 (6048x4032) 24p = 2631 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates scale with fps (29.97p table, e.g. 6K 17:9 XT 2613). Recorded only with the AXS-R7 recorder docked to the camera. 4K 2.39:1 is not in the v3.0 table; VENICE 2 6K (same sensor) lists 770/527/310 Mbps.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "38k169",
+       "fps": 24,
+       "mbps": 965,
+       "bpp": 4.8476
+      },
+      {
+       "res": "4k179",
+       "fps": 24,
+       "mbps": 965,
+       "bpp": 4.5447
+      },
+      {
+       "res": "4k43",
+       "fps": 24,
+       "mbps": 1343,
+       "bpp": 4.5178
+      },
+      {
+       "res": "4k65",
+       "fps": 24,
+       "mbps": 1525,
+       "bpp": 4.5201
+      },
+      {
+       "res": "57k169",
+       "fps": 24,
+       "mbps": 2091,
+       "bpp": 4.8105
+      },
+      {
+       "res": "6k239",
+       "fps": 24,
+       "mbps": 1665,
+       "bpp": 4.5267
+      },
+      {
+       "res": "6k179",
+       "fps": 24,
+       "mbps": 2091,
+       "bpp": 4.5086
+      },
+      {
+       "res": "6k185",
+       "fps": 24,
+       "mbps": 2143,
+       "bpp": 4.5077
+      },
+      {
+       "res": "6k32",
+       "fps": 24,
+       "mbps": 2631,
+       "bpp": 4.4955
+      }
+     ],
+     "external": "AXS-R7 docking recorder"
+    },
+    {
+     "key": "xocn-st",
+     "name": "X-OCN ST",
+     "bpp": 3.0756,
+     "res": [
+      "38k169",
+      "4k179",
+      "4k43",
+      "4k65",
+      "57k169",
+      "6k239",
+      "6k179",
+      "6k185",
+      "6k32"
+     ],
+     "ref": "Sony VENICE v3.0 brochure, 'Recording formats Version 3.0 firmware (Mbps) 23.98/24p' table (Sony document hosted by AFC): X-OCN ST 6K 3:2 (6048x4032) 24p = 1800 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates scale with fps (29.97p table, e.g. 6K 17:9 XT 2613). Recorded only with the AXS-R7 recorder docked to the camera. 4K 2.39:1 is not in the v3.0 table; VENICE 2 6K (same sensor) lists 770/527/310 Mbps.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "38k169",
+       "fps": 24,
+       "mbps": 660,
+       "bpp": 3.3155
+      },
+      {
+       "res": "4k179",
+       "fps": 24,
+       "mbps": 660,
+       "bpp": 3.1083
+      },
+      {
+       "res": "4k43",
+       "fps": 24,
+       "mbps": 919,
+       "bpp": 3.0915
+      },
+      {
+       "res": "4k65",
+       "fps": 24,
+       "mbps": 1044,
+       "bpp": 3.0944
+      },
+      {
+       "res": "57k169",
+       "fps": 24,
+       "mbps": 1431,
+       "bpp": 3.2921
+      },
+      {
+       "res": "6k239",
+       "fps": 24,
+       "mbps": 1140,
+       "bpp": 3.0994
+      },
+      {
+       "res": "6k179",
+       "fps": 24,
+       "mbps": 1431,
+       "bpp": 3.0855
+      },
+      {
+       "res": "6k185",
+       "fps": 24,
+       "mbps": 1467,
+       "bpp": 3.0858
+      },
+      {
+       "res": "6k32",
+       "fps": 24,
+       "mbps": 1800,
+       "bpp": 3.0756
+      }
+     ],
+     "external": "AXS-R7 docking recorder"
+    },
+    {
+     "key": "xocn-lt",
+     "name": "X-OCN LT",
+     "bpp": 1.8129,
+     "res": [
+      "38k169",
+      "4k179",
+      "4k43",
+      "4k65",
+      "57k169",
+      "6k239",
+      "6k179",
+      "6k185",
+      "6k32"
+     ],
+     "ref": "Sony VENICE v3.0 brochure, 'Recording formats Version 3.0 firmware (Mbps) 23.98/24p' table (Sony document hosted by AFC): X-OCN LT 6K 3:2 (6048x4032) 24p = 1061 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Rates scale with fps (29.97p table, e.g. 6K 17:9 XT 2613). Recorded only with the AXS-R7 recorder docked to the camera. 4K 2.39:1 is not in the v3.0 table; VENICE 2 6K (same sensor) lists 770/527/310 Mbps.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "38k169",
+       "fps": 24,
+       "mbps": 389,
+       "bpp": 1.9541
+      },
+      {
+       "res": "4k179",
+       "fps": 24,
+       "mbps": 389,
+       "bpp": 1.832
+      },
+      {
+       "res": "4k43",
+       "fps": 24,
+       "mbps": 541,
+       "bpp": 1.8199
+      },
+      {
+       "res": "4k65",
+       "fps": 24,
+       "mbps": 615,
+       "bpp": 1.8229
+      },
+      {
+       "res": "57k169",
+       "fps": 24,
+       "mbps": 843,
+       "bpp": 1.9394
+      },
+      {
+       "res": "6k239",
+       "fps": 24,
+       "mbps": 671,
+       "bpp": 1.8243
+      },
+      {
+       "res": "6k179",
+       "fps": 24,
+       "mbps": 843,
+       "bpp": 1.8177
+      },
+      {
+       "res": "6k185",
+       "fps": 24,
+       "mbps": 864,
+       "bpp": 1.8174
+      },
+      {
+       "res": "6k32",
+       "fps": 24,
+       "mbps": 1061,
+       "bpp": 1.8129
+      }
+     ],
+     "external": "AXS-R7 docking recorder"
+    },
+    {
+     "key": "sonyraw",
+     "name": "Sony RAW (16-bit)",
+     "bpp": 4.4411,
+     "res": [
+      "4k179",
+      "38k169"
+     ],
+     "ref": "Sony VENICE v3.0 table: RAW (AXS-R7) 4K 17:9 and 3.8K 16:9 at 23.98/24p = 943 Mbps (29.97p = 1,178). Not available in 6K modes.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false,
+     "external": "AXS-R7 docking recorder",
+     "rates": [
+      {
+       "res": "4k179",
+       "fps": 24,
+       "mbps": 943,
+       "bpp": 4.4411
+      },
+      {
+       "res": "38k169",
+       "fps": 24,
+       "mbps": 943,
+       "bpp": 4.7371
+      }
+     ]
+    },
+    {
+     "key": "xavc-4k-c480",
+     "name": "XAVC 4K Class480",
+     "bpp": 1.8084,
+     "res": [
+      "xavc-4096",
+      "xavc-3840"
+     ],
+     "ref": "Sony VENICE v3.0 table: XAVC 4K / QFHD Class480 at 23.98/24p = 384 Mbps; 29.97p = 480 Mbps (so it scales with fps). Max 29.97p. QFHD uses the same Mbps, so its bpp is 1.929.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "xavc-4096",
+       "fps": 24,
+       "mbps": 384,
+       "bpp": 1.8084
+      },
+      {
+       "res": "xavc-3840",
+       "fps": 24,
+       "mbps": 384,
+       "bpp": 1.929
+      }
+     ]
+    },
+    {
+     "key": "xavc-4k-c300",
+     "name": "XAVC 4K Class300",
+     "bpp": 1.1303,
+     "res": [
+      "xavc-4096",
+      "xavc-3840"
+     ],
+     "ref": "Sony VENICE v3.0 table: XAVC 4K / QFHD Class300 at 23.98/24p = 240 Mbps; 29.97p = 300 Mbps (up to 59.94p). QFHD uses the same Mbps.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "xavc-4096",
+       "fps": 24,
+       "mbps": 240,
+       "bpp": 1.1303
+      },
+      {
+       "res": "xavc-3840",
+       "fps": 24,
+       "mbps": 240,
+       "bpp": 1.2056
+      }
+     ]
+    },
+    {
+     "key": "prores-4444-hd",
+     "name": "Apple ProRes 4444 (HD)",
+     "bpp": 5.3048,
+     "res": [
+      "hd"
+     ],
+     "ref": "HD ProRes 4444 was added in firmware 5.0, recording to SxS PRO+ up to 30p. Sony gives no Mbps; the rate is Apple's target of 264 Mbps at 1920x1080 24p.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-422hq-hd",
+     "name": "Apple ProRes 422 HQ (HD)",
+     "bpp": 3.5365,
+     "res": [
+      "hd"
+     ],
+     "ref": "Sony VENICE v3.0 table: HD ProRes 422 HQ 23.98/24p = 176 Mbps, 29.97p = 220 Mbps (matches Apple).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-422-hd",
+     "name": "Apple ProRes 422 (HD)",
+     "bpp": 2.351,
+     "res": [
+      "hd"
+     ],
+     "ref": "Sony VENICE v3.0 table: HD ProRes 422 23.98/24p = 117 Mbps, 29.97p = 147 Mbps.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-proxy-hd",
+     "name": "Apple ProRes 422 Proxy (HD)",
+     "bpp": 0.7234,
+     "res": [
+      "hd"
+     ],
+     "ref": "Sony VENICE v3.0 table: HD ProRes 422 Proxy 23.98/24p = 36 Mbps, 29.97p = 45 Mbps.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "mpeg-hd422",
+     "name": "MPEG HD422 1920x1080 (all frame rates)",
+     "mbps": 50,
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf"
+    }
+   ],
+   "notes": "The camera body records only XAVC 4K/QFHD (Class480/300), HD ProRes and MPEG HD, all to SxS PRO+. ProRes is HD-only on VENICE 1, with no 4K ProRes. X-OCN XT/ST/LT and Sony RAW need the AXS-R7 recorder docked to the camera (marked 'external'), which for a full-res VENICE 1 OCF is the normal configuration. X-OCN XT, 5.7K and 6K 2.39:1 arrived in v3.0. HFR came in v4.0-6.0 with a paid license: 6K 2.39:1 to 90 fps and 6K 17:9 to 72 (v5.0), 5.7K 16:9 and 4K 6:5 to 72 and 3.8K to 110 (v6.0). Max fps for 6K 3:2, 6K 1.85:1 and 4K 4:3 not confirmed, left null.",
+   "sources": [
+    "https://www.afcinema.com/IMG/pdf/c/0/f/venice-extension-system-cbk-3610xs-290119.pdf",
+    "https://pro.sony/en_DZ/press/venice-continues-evolve-high-frame-rate-90fps-6k-mea",
+    "https://sonycine.com/articles/sony-venice-firmware-v6-00-officially-released",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ]
+  },
+  {
+   "id": "sony-fx9",
+   "name": "Sony PXW-FX9",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60,
+     "note": "60p max in FF 5K crop / S35 4K; 30p max in FF 6K"
+    },
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60,
+     "note": "Listed in the FX9 spec sheet's imager-mode lines; no separate Mbps given"
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 180,
+     "note": "S&Q up to 180 fps (FF 2K), recorded at max 59.94p"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-4k",
+     "name": "XAVC-I 4K (4:2:2 10-bit)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd",
+      "dci"
+     ],
+     "ref": "Sony JP FX9 spec sheet: XAVC-I QFHD 23.98p max 240 Mbps (VBR). XAVC-I 4K is VBR with a stated maximum: 240 (23.98p), 250 (25p), 300 (29.97p), 500 (50p), 600 (59.94p) Mbps. These scale linearly with fps (bpp ~1.207 at QFHD). DCI 4K is assumed to use the same Mbps as on FX6/FX3/FX5, giving bpp 1.1314 at DCI.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      },
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314,
+       "estimated": true
+      }
+     ]
+    },
+    {
+     "key": "raw-ext",
+     "name": "16-bit RAW output (external recorder via XDCA-FX9)",
+     "bpp": null,
+     "res": null,
+     "external": "XDCA-FX9 + third-party recorder",
+     "ref": "RAW is not recorded internally. Data rate depends on the external recorder/codec (e.g. ProRes RAW), so it is left null.",
+     "source": null,
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavci-hd-2398",
+     "name": "XAVC-I HD 23.98p",
+     "mbps": 89,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavci-hd-25",
+     "name": "XAVC-I HD 25p / 50i",
+     "mbps": 112,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavci-hd-2997",
+     "name": "XAVC-I HD 29.97p / 59.94i",
+     "mbps": 111,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavci-hd-50",
+     "name": "XAVC-I HD 50p",
+     "mbps": 223,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavci-hd-5994",
+     "name": "XAVC-I HD 59.94p",
+     "mbps": 222,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavcl-qfhd-30",
+     "name": "XAVC-L QFHD 23.98/25/29.97p",
+     "mbps": 100,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavcl-qfhd-60",
+     "name": "XAVC-L QFHD 50/59.94p",
+     "mbps": 150,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavcl-hd-50",
+     "name": "XAVC-L HD50 (all rates)",
+     "mbps": 50,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavcl-hd-35",
+     "name": "XAVC-L HD35 (all rates)",
+     "mbps": 35,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "xavcl-hd-25",
+     "name": "XAVC-L HD25 (50i/59.94i)",
+     "mbps": 25,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    },
+    {
+     "key": "mpeg-hd422",
+     "name": "MPEG HD422 1920x1080",
+     "mbps": 50,
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+    }
+   ],
+   "notes": "Imager modes are FF 6K (oversampled to 4K, max 30p), FF 5K crop / S35 4K (max 60p), FF 2K (S&Q to 180 fps) and S35 2K (to 120 fps). The OCF is XAVC-I/L at QFHD/DCI 4K/HD; the sensor size is never recorded. HD XAVC-I is CBG and does not scale linearly with fps, so it is listed as fixed entries. The spec sheet's 128 GB XQD record times (e.g. QFHD 23.98p ~54 min) are conservative and imply about 30% more than the nominal rates. FX9 has no internal X-OCN or ProRes.",
+   "sources": [
+    "https://www.sony.jp/products/catalog/SPC_PXW-FX9.pdf"
+   ]
+  },
+  {
+   "id": "sony-fx6",
+   "name": "Sony FX6 (ILME-FX6)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120,
+     "note": "S&Q up to 120 fps in 4K (about 10% crop at 120)"
+    },
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240,
+     "note": "S&Q up to 240 fps"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-4k",
+     "name": "XAVC-I 4K (4:2:2 10-bit)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd",
+      "dci"
+     ],
+     "ref": "Sony FX6 spec/support article 00253978: XAVC-I DCI 4K / QFHD max 240 Mbps (23.98/24p), 250 (25p), 300 (29.97p), 500 (50p), 600 (59.94p), VBR. Same Mbps for DCI and QFHD, so DCI bpp = 1.1314. I could not fetch the Sony page directly (HTTP 403); the values come from Sony regional pages via the search index and match the FX9 sheet and the FX3/FX5 help guides.",
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ]
+    },
+    {
+     "key": "raw-ext",
+     "name": "16-bit RAW over 12G-SDI (external recorder)",
+     "bpp": null,
+     "res": null,
+     "external": "SDI RAW 4128x2192 to e.g. Atomos (ProRes RAW)",
+     "ref": "Sony lists SDI RAW 4128x2192 at 23.98-59.94p (16-bit) as an output only. The file rate depends on the recorder codec, so it is null.",
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavci-hd-2398",
+     "name": "XAVC-I HD 23.98p",
+     "mbps": 89,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavci-hd-25",
+     "name": "XAVC-I HD 25p",
+     "mbps": 112,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavci-hd-2997",
+     "name": "XAVC-I HD 29.97p",
+     "mbps": 111,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavci-hd-50",
+     "name": "XAVC-I HD 50p",
+     "mbps": 223,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavci-hd-5994",
+     "name": "XAVC-I HD 59.94p",
+     "mbps": 222,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavcl-qfhd-30",
+     "name": "XAVC-L QFHD 23.98/25/29.97p",
+     "mbps": 100,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavcl-qfhd-60",
+     "name": "XAVC-L QFHD 50/59.94p",
+     "mbps": 150,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavcl-hd-50",
+     "name": "XAVC-L HD 50",
+     "mbps": 50,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    },
+    {
+     "key": "xavcl-hd-35",
+     "name": "XAVC-L HD 35",
+     "mbps": 35,
+     "source": "https://www.sony.ca/en/electronics/support/articles/00253978"
+    }
+   ],
+   "notes": "Internal recording is XAVC-I and XAVC-L only (CFexpress Type A / SDXC). There is no internal RAW, X-OCN or ProRes. 4K 120 fps is S&Q (recorded at the project frame rate, so the bitrate follows the project fps). Caveat: all FX6 rates are from Sony regional spec/support pages seen through the search index, because Sony's sites returned HTTP 403. They match the FX9 spec sheet exactly. Third-party Netflix production guide confirms DCI/QFHD XAVC-I and SDI RAW 4096x2160 output.",
+   "sources": [
+    "https://www.sony.ca/en/electronics/support/articles/00253978",
+    "https://ymcinema.com/wp-content/uploads/2020/12/Camera-Production-Guide-Sony-FX6.pdf"
+   ]
+  },
+  {
+   "id": "sony-fx3",
+   "name": "Sony FX3 (ILME-FX3)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120,
+     "note": "120p only in XAVC HS / XAVC S Long GOP. XAVC S-I max 59.94p."
+    },
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60,
+     "note": "XAVC S-I DCI 4K needs firmware 3.00+"
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240,
+     "note": "S&Q to 240 fps; 119.88p recording in XAVC S HD"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K / DCI 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd",
+      "dci"
+     ],
+     "ref": "Sony Help Guide 'Movie Settings': XAVC S-I 4K 23.98p = 240M, 29.97p/25p = 300M/250M, 59.94p/50p = 600M/500M (3840x2160). DCI 4K uses the same Mbps (24.00p also 240M), so DCI bpp = 1.1314.",
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      },
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      }
+     ]
+    },
+    {
+     "key": "raw-ext",
+     "name": "16-bit RAW over HDMI (external recorder)",
+     "bpp": null,
+     "res": null,
+     "external": "HDMI RAW 4264x2408 to e.g. Atomos (ProRes RAW) / Blackmagic (BRAW)",
+     "ref": "Sony Help Guide: RAW output image size 4264x2408, 23.98-59.94p. Not recorded internally, and the rate depends on the recorder codec.",
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1002078215.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavcsi-hd-2398",
+     "name": "XAVC S-I HD 23.98p",
+     "mbps": 89,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-25",
+     "name": "XAVC S-I HD 25p",
+     "mbps": 93,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-2997",
+     "name": "XAVC S-I HD 29.97p",
+     "mbps": 111,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-50",
+     "name": "XAVC S-I HD 50p",
+     "mbps": 185,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-5994",
+     "name": "XAVC S-I HD 59.94p",
+     "mbps": 222,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-24-422",
+     "name": "XAVC HS 4K 23.98p 100M 4:2:2 10-bit",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-24-50",
+     "name": "XAVC HS 4K 23.98p 50M",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-24-30",
+     "name": "XAVC HS 4K 23.98p 30M 4:2:0",
+     "mbps": 30,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-200",
+     "name": "XAVC HS 4K 50/59.94p 200M 4:2:2 10-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-150",
+     "name": "XAVC HS 4K 50/59.94p 150M 4:2:0 10-bit",
+     "mbps": 150,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-100",
+     "name": "XAVC HS 4K 50/59.94p 100M 4:2:2",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-75",
+     "name": "XAVC HS 4K 50/59.94p 75M 4:2:0",
+     "mbps": 75,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-45",
+     "name": "XAVC HS 4K 50/59.94p 45M 4:2:0",
+     "mbps": 45,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-120-280",
+     "name": "XAVC HS 4K 100/119.88p 280M 4:2:2 10-bit",
+     "mbps": 280,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-120-200",
+     "name": "XAVC HS 4K 100/119.88p 200M 4:2:0 10-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-24-100",
+     "name": "XAVC S 4K 23.98p 100M (4:2:2 10-bit or 4:2:0 8-bit)",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-24-60",
+     "name": "XAVC S 4K 23.98p 60M 4:2:0 8-bit",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-30-140",
+     "name": "XAVC S 4K 25/29.97p 140M 4:2:2 10-bit",
+     "mbps": 140,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-30-100",
+     "name": "XAVC S 4K 25/29.97p 100M 4:2:0 8-bit",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-30-60",
+     "name": "XAVC S 4K 25/29.97p 60M 4:2:0 8-bit",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-60-200",
+     "name": "XAVC S 4K 50/59.94p 200M 4:2:2 10-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-60-150",
+     "name": "XAVC S 4K 50/59.94p 150M 4:2:0 8-bit",
+     "mbps": 150,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-120-280",
+     "name": "XAVC S 4K 100/119.88p 280M 4:2:2 10-bit",
+     "mbps": 280,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-120-200",
+     "name": "XAVC S 4K 100/119.88p 200M 4:2:0 8-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 23.98-59.94p 50M",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 50/59.94p 25M 4:2:0 8-bit",
+     "mbps": 25,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 25/29.97p 16M 4:2:0 8-bit",
+     "mbps": 16,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-120-100",
+     "name": "XAVC S HD 100/119.88p 100M",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-120-60",
+     "name": "XAVC S HD 100/119.88p 60M",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html"
+    }
+   ],
+   "notes": "All rates come from the official Sony Help Guide 'Movie Settings' page. Internal recording: XAVC S-I (Intra), XAVC HS (H.265 Long GOP, 4K only) and XAVC S (H.264 Long GOP), to CFexpress Type A / SD. There is no internal RAW or ProRes. Long-GOP rates are fixed per setting and do not scale with fps, so they are listed as fixed entries. HD S-I is not proportional to fps (89/93/111/185/222). There is also a hardware refresh, the ILME-FX3A (Help Guide ilc/2510), with the same codec structure.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1000868278.html",
+    "https://helpguide.sony.net/ilc/2210/v1/en/contents/TP1002078215.html"
+   ]
+  },
+  {
+   "id": "sony-fx5",
+   "name": "Sony FX5 (ILME-FX5 / FX5B)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "ff5k32",
+     "name": "FF 5K 3:2 (Open Gate)",
+     "w": 4992,
+     "h": 3328,
+     "maxfps": 60,
+     "note": "X-OCN only at launch, up to 59.94p project rate. Sony says XAVC S-I 3:2 and higher X-OCN frame rates come in a future update."
+    },
+    {
+     "key": "ff5k169",
+     "name": "FF 5K 16:9",
+     "w": 4992,
+     "h": 2808,
+     "maxfps": 120,
+     "note": "X-OCN up to 59.94p. XAVC recorded at 3840x2160 / 1920x1080, 4K to 120 fps"
+    },
+    {
+     "key": "ff5k179",
+     "name": "FF 5K 17:9",
+     "w": 4992,
+     "h": 2632,
+     "maxfps": 120,
+     "note": "X-OCN up to 59.94p. XAVC S-I recorded at 4096x2160"
+    },
+    {
+     "key": "ffc45k169",
+     "name": "FFc 4.5K 16:9",
+     "w": 4552,
+     "h": 2560,
+     "maxfps": 120,
+     "note": "XAVC at 3840x2160. External HDMI RAW source mode"
+    },
+    {
+     "key": "ffc45k179",
+     "name": "FFc 4.5K 17:9",
+     "w": 4552,
+     "h": 2400,
+     "maxfps": 120,
+     "note": "XAVC S-I at 4096x2160. External HDMI RAW source mode"
+    },
+    {
+     "key": "ffc38k169",
+     "name": "FFc 3.8K 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60,
+     "note": "X-OCN mode"
+    },
+    {
+     "key": "s35-32k169",
+     "name": "S35 3.2K 16:9",
+     "w": 3264,
+     "h": 1836,
+     "maxfps": 240,
+     "note": "XAVC 1920x1080 only, to 240 fps"
+    },
+    {
+     "key": "xavc-4096",
+     "name": "XAVC 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "xavc-3840",
+     "name": "XAVC 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "xavc-1920",
+     "name": "XAVC 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xocn-lt",
+     "name": "X-OCN LT",
+     "bpp": 1.8083,
+     "res": [
+      "ff5k32",
+      "ff5k179",
+      "ff5k169",
+      "ffc38k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'FX5 Recording Bitrate (23.98p/24.00p)' table: X-OCN LT FF 5K 3:2 (Open Gate) (4992x3328) 24p = 721 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Linear with fps (59.94p table: LT 1801/1521/1427/904). Matches the Help Guide record times on a 960 GB VPG400 card (e.g. 5K 3:2 LT 24p, 174 min). Sony's figure for 5K 17:9 is higher than 5K 16:9 even though 17:9 has fewer pixels (4992x2632 vs 4992x2808), so use the per-mode rates.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "ff5k32",
+       "fps": 24,
+       "mbps": 721,
+       "bpp": 1.8083
+      },
+      {
+       "res": "ff5k179",
+       "fps": 24,
+       "mbps": 609,
+       "bpp": 1.9313
+      },
+      {
+       "res": "ff5k169",
+       "fps": 24,
+       "mbps": 571,
+       "bpp": 1.6973
+      },
+      {
+       "res": "ffc38k169",
+       "fps": 24,
+       "mbps": 362,
+       "bpp": 1.8185
+      }
+     ]
+    },
+    {
+     "key": "xocn-c1",
+     "name": "X-OCN C1",
+     "bpp": 1.3468,
+     "res": [
+      "ff5k32",
+      "ff5k179",
+      "ff5k169",
+      "ffc38k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'FX5 Recording Bitrate (23.98p/24.00p)' table: X-OCN C1 FF 5K 3:2 (Open Gate) (4992x3328) 24p = 537 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Linear with fps (59.94p table: LT 1801/1521/1427/904). Matches the Help Guide record times on a 960 GB VPG400 card (e.g. 5K 3:2 LT 24p, 174 min). Sony's figure for 5K 17:9 is higher than 5K 16:9 even though 17:9 has fewer pixels (4992x2632 vs 4992x2808), so use the per-mode rates.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "ff5k32",
+       "fps": 24,
+       "mbps": 537,
+       "bpp": 1.3468
+      },
+      {
+       "res": "ff5k179",
+       "fps": 24,
+       "mbps": 453,
+       "bpp": 1.4366
+      },
+      {
+       "res": "ff5k169",
+       "fps": 24,
+       "mbps": 425,
+       "bpp": 1.2633
+      },
+      {
+       "res": "ffc38k169",
+       "fps": 24,
+       "mbps": 270,
+       "bpp": 1.3563
+      }
+     ]
+    },
+    {
+     "key": "xocn-c2",
+     "name": "X-OCN C2",
+     "bpp": 1.0759,
+     "res": [
+      "ff5k32",
+      "ff5k179",
+      "ff5k169",
+      "ffc38k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'FX5 Recording Bitrate (23.98p/24.00p)' table: X-OCN C2 FF 5K 3:2 (Open Gate) (4992x3328) 24p = 429 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Linear with fps (59.94p table: LT 1801/1521/1427/904). Matches the Help Guide record times on a 960 GB VPG400 card (e.g. 5K 3:2 LT 24p, 174 min). Sony's figure for 5K 17:9 is higher than 5K 16:9 even though 17:9 has fewer pixels (4992x2632 vs 4992x2808), so use the per-mode rates.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "ff5k32",
+       "fps": 24,
+       "mbps": 429,
+       "bpp": 1.0759
+      },
+      {
+       "res": "ff5k179",
+       "fps": 24,
+       "mbps": 363,
+       "bpp": 1.1512
+      },
+      {
+       "res": "ff5k169",
+       "fps": 24,
+       "mbps": 340,
+       "bpp": 1.0106
+      },
+      {
+       "res": "ffc38k169",
+       "fps": 24,
+       "mbps": 216,
+       "bpp": 1.0851
+      }
+     ]
+    },
+    {
+     "key": "xavc-si",
+     "name": "XAVC S-I (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "xavc-4096",
+      "xavc-3840"
+     ],
+     "ref": "Sony FX5 Help Guide [Video Format]/[Quality]/[Bit Rate]: XAVC S-I 4096x2160 and 3840x2160 both 240 (23.98/24p), 250 (25p), 300 (29.97p), 500 (50p), 600 (59.94p) Mbps. Same Mbps for both sizes, so DCI bpp = 1.1314. HD S-I is in fixed[].",
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "xavc-3840",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "xavc-4096",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      },
+      {
+       "res": "xavc-3840",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ]
+    },
+    {
+     "key": "raw-ext",
+     "name": "RAW over HDMI (external recorder)",
+     "bpp": null,
+     "res": [
+      "ffc45k169",
+      "ffc45k179"
+     ],
+     "external": "HDMI RAW, FFc 4.5K modes only",
+     "ref": "Sony Help Guide: external RAW output requires FFc 4.5K 17:9 or 16:9. The rate depends on the recorder, so it is null.",
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/rec_format.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavcsi-hd-2398",
+     "name": "XAVC S-I HD 23.98p",
+     "mbps": 89,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsi-hd-25",
+     "name": "XAVC S-I HD 25p",
+     "mbps": 93,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsi-hd-2997",
+     "name": "XAVC S-I HD 29.97p",
+     "mbps": 111,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsi-hd-50",
+     "name": "XAVC S-I HD 50p",
+     "mbps": 185,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsi-hd-5994",
+     "name": "XAVC S-I HD 59.94p",
+     "mbps": 222,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl422-4k-24-h",
+     "name": "XAVC HS-L 422 4K 23.98p High",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl422-4k-24-m",
+     "name": "XAVC HS-L 422 4K 23.98p Mid/Low",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl420-4k-24-h",
+     "name": "XAVC HS-L 420 4K 23.98p High",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl420-4k-24-m",
+     "name": "XAVC HS-L 420 4K 23.98p Mid",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl420-4k-24-l",
+     "name": "XAVC HS-L 420 4K 23.98p Low",
+     "mbps": 30,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl422-4k-60-h",
+     "name": "XAVC HS-L 422 4K 50/59.94p High",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl422-4k-60-m",
+     "name": "XAVC HS-L 422 4K 50/59.94p Mid/Low",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl420-4k-60-h",
+     "name": "XAVC HS-L 420 4K 50/59.94p High",
+     "mbps": 150,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl420-4k-60-m",
+     "name": "XAVC HS-L 420 4K 50/59.94p Mid",
+     "mbps": 75,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl420-4k-60-l",
+     "name": "XAVC HS-L 420 4K 50/59.94p Low",
+     "mbps": 45,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl422-4k-120",
+     "name": "XAVC HS-L 422 4K 100/119.88p",
+     "mbps": 280,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavchsl420-4k-120",
+     "name": "XAVC HS-L 420 4K 100/119.88p",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl422-4k-24",
+     "name": "XAVC S-L 422 4K 23.98p",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl422-4k-30",
+     "name": "XAVC S-L 422 4K 25/29.97p",
+     "mbps": 140,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl422-4k-60",
+     "name": "XAVC S-L 422 4K 50/59.94p",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl422-4k-120",
+     "name": "XAVC S-L 422 4K 100/119.88p",
+     "mbps": 280,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl420-4k-30-h",
+     "name": "XAVC S-L 420 4K 23.98-29.97p High",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl420-4k-30-m",
+     "name": "XAVC S-L 420 4K 23.98-29.97p Mid/Low",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl420-4k-60",
+     "name": "XAVC S-L 420 4K 50/59.94p",
+     "mbps": 150,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl420-4k-120",
+     "name": "XAVC S-L 420 4K 100/119.88p",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl422-hd",
+     "name": "XAVC S-L 422 HD (23.98-59.94p)",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl420-hd-h",
+     "name": "XAVC S-L 420 HD High (23.98-59.94p)",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl420-hd-120-h",
+     "name": "XAVC S-L 420 HD 100/119.88p High",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    },
+    {
+     "key": "xavcsl420-hd-120-m",
+     "name": "XAVC S-L 420 HD 100/119.88p Mid/Low",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html"
+    }
+   ],
+   "notes": "The FX5 exists. Sony announced it on 22 Jul 2026 and it shipped Aug 2026. ILME-FX5 comes with the XLR handle; ILME-FX5B is the body only. Effective sensor size is approx. 16.6 MP full frame. It is the first FX-series camera with internal X-OCN, in three profiles: LT, C1 and C2 (no ST/XT). Imager-mode pixel sizes are from the Help Guide 'Configuring Basic Operation' page. X-OCN is available in FF 5K 3:2/17:9/16:9 and FFc 3.8K 16:9 at project rates up to 59.94 (no S&Q). Media: CFexpress Type A (VPG400 for X-OCN) or SD. There is no ProRes.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2630/v1/en/contents/basic_action.html",
+    "https://helpguide.sony.net/ilc/2630/v1/en/contents/video_quality_setting.html",
+    "https://helpguide.sony.net/ilc/2630/v1/en/contents/clip_recordingplayback_time.html",
+    "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf"
+   ]
+  },
+  {
+   "id": "sony-fx30",
+   "name": "Sony FX30 (ILME-FX30)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120,
+     "note": "120p only in XAVC HS / XAVC S Long GOP. XAVC S-I max 59.94p. FX30: 4K 120p uses a 1.6x crop."
+    },
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60,
+     "note": "XAVC S-I DCI 4K needs firmware 2.00+"
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240,
+     "note": "S&Q to 240 fps; 119.88p recording in XAVC S HD"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K / DCI 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd",
+      "dci"
+     ],
+     "ref": "Sony Help Guide 'Movie Settings': XAVC S-I 4K 23.98p = 240M, 29.97p/25p = 300M/250M, 59.94p/50p = 600M/500M (3840x2160). DCI 4K uses the same Mbps (24.00p also 240M), so DCI bpp = 1.1314.",
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      },
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      }
+     ]
+    },
+    {
+     "key": "raw-ext",
+     "name": "16-bit RAW over HDMI (external recorder)",
+     "bpp": null,
+     "res": null,
+     "external": "HDMI RAW 4672x2628 to e.g. Atomos (ProRes RAW) / Blackmagic (BRAW)",
+     "ref": "Sony Help Guide: RAW output image size 4672x2628, 23.98-59.94p. Not recorded internally, and the rate depends on the recorder codec.",
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1002078215.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavcsi-hd-2398",
+     "name": "XAVC S-I HD 23.98p",
+     "mbps": 89,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-25",
+     "name": "XAVC S-I HD 25p",
+     "mbps": 93,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-2997",
+     "name": "XAVC S-I HD 29.97p",
+     "mbps": 111,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-50",
+     "name": "XAVC S-I HD 50p",
+     "mbps": 185,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcsi-hd-5994",
+     "name": "XAVC S-I HD 59.94p",
+     "mbps": 222,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-24-422",
+     "name": "XAVC HS 4K 23.98p 100M 4:2:2 10-bit",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-24-50",
+     "name": "XAVC HS 4K 23.98p 50M",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-24-30",
+     "name": "XAVC HS 4K 23.98p 30M 4:2:0",
+     "mbps": 30,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-200",
+     "name": "XAVC HS 4K 50/59.94p 200M 4:2:2 10-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-150",
+     "name": "XAVC HS 4K 50/59.94p 150M 4:2:0 10-bit",
+     "mbps": 150,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-100",
+     "name": "XAVC HS 4K 50/59.94p 100M 4:2:2",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-75",
+     "name": "XAVC HS 4K 50/59.94p 75M 4:2:0",
+     "mbps": 75,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-60-45",
+     "name": "XAVC HS 4K 50/59.94p 45M 4:2:0",
+     "mbps": 45,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-120-280",
+     "name": "XAVC HS 4K 100/119.88p 280M 4:2:2 10-bit",
+     "mbps": 280,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavchs-4k-120-200",
+     "name": "XAVC HS 4K 100/119.88p 200M 4:2:0 10-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-24-100",
+     "name": "XAVC S 4K 23.98p 100M (4:2:2 10-bit or 4:2:0 8-bit)",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-24-60",
+     "name": "XAVC S 4K 23.98p 60M 4:2:0 8-bit",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-30-140",
+     "name": "XAVC S 4K 25/29.97p 140M 4:2:2 10-bit",
+     "mbps": 140,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-30-100",
+     "name": "XAVC S 4K 25/29.97p 100M 4:2:0 8-bit",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-30-60",
+     "name": "XAVC S 4K 25/29.97p 60M 4:2:0 8-bit",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-60-200",
+     "name": "XAVC S 4K 50/59.94p 200M 4:2:2 10-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-60-150",
+     "name": "XAVC S 4K 50/59.94p 150M 4:2:0 8-bit",
+     "mbps": 150,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-120-280",
+     "name": "XAVC S 4K 100/119.88p 280M 4:2:2 10-bit",
+     "mbps": 280,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-4k-120-200",
+     "name": "XAVC S 4K 100/119.88p 200M 4:2:0 8-bit",
+     "mbps": 200,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 23.98-59.94p 50M",
+     "mbps": 50,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 50/59.94p 25M 4:2:0 8-bit",
+     "mbps": 25,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 25/29.97p 16M 4:2:0 8-bit",
+     "mbps": 16,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-120-100",
+     "name": "XAVC S HD 100/119.88p 100M",
+     "mbps": 100,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    },
+    {
+     "key": "xavcs-hd-120-60",
+     "name": "XAVC S HD 100/119.88p 60M",
+     "mbps": 60,
+     "source": "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html"
+    }
+   ],
+   "notes": "All rates come from the official Sony Help Guide 'Movie Settings' page. Internal recording: XAVC S-I (Intra), XAVC HS (H.265 Long GOP, 4K only) and XAVC S (H.264 Long GOP), to CFexpress Type A / SD. There is no internal RAW or ProRes. Long-GOP rates are fixed per setting and do not scale with fps, so they are listed as fixed entries. HD S-I is not proportional to fps (89/93/111/185/222). The FX30 is APS-C/Super 35 (6K oversampled to 4K). Its codec table is identical to the FX3's in the Help Guide.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1000868278.html",
+    "https://helpguide.sony.net/ilc/2220/v1/en/contents/TP1002078215.html"
+   ]
+  },
+  {
+   "id": "sony-burano",
+   "name": "Sony Burano (MPC-2610)",
+   "exists": true,
+   "resolutions": [
+    {
+     "key": "ff86k169",
+     "name": "FF 8.6K 16:9",
+     "w": 8632,
+     "h": 4856,
+     "maxfps": 30
+    },
+    {
+     "key": "ff86k179",
+     "name": "FF 8.6K 17:9",
+     "w": 8632,
+     "h": 4552,
+     "maxfps": 30
+    },
+    {
+     "key": "ffc6k169",
+     "name": "FFc 6K 16:9",
+     "w": 6052,
+     "h": 3404,
+     "maxfps": 60
+    },
+    {
+     "key": "ffc6k179",
+     "name": "FFc 6K 17:9",
+     "w": 6052,
+     "h": 3192,
+     "maxfps": 60
+    },
+    {
+     "key": "ff58k65",
+     "name": "FF 5.8K 6:5",
+     "w": 5828,
+     "h": 4856,
+     "maxfps": 30,
+     "note": "X-OCN only (anamorphic)"
+    },
+    {
+     "key": "ffc38k169",
+     "name": "FFc 3.8K 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "s3558k169",
+     "name": "S35 5.8K 16:9",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": 60
+    },
+    {
+     "key": "s3558k179",
+     "name": "S35 5.8K 17:9",
+     "w": 5760,
+     "h": 3036,
+     "maxfps": 60
+    },
+    {
+     "key": "s3543k43",
+     "name": "S35 4.3K 4:3",
+     "w": 4256,
+     "h": 3192,
+     "maxfps": 60,
+     "note": "X-OCN only"
+    },
+    {
+     "key": "s35c4k179",
+     "name": "S35c 4K 17:9",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "s35c38k169",
+     "name": "S35c 3.8K 16:9",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "s3519k169",
+     "name": "S35 1.9K 16:9",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "xavc-8192",
+     "name": "XAVC H 8192x4320",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 30,
+     "note": "From FF 8.6K 17:9"
+    },
+    {
+     "key": "xavc-7680",
+     "name": "XAVC H 7680x4320",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 30,
+     "note": "From FF 8.6K 16:9 (no 24.00p)"
+    },
+    {
+     "key": "xavc-4096",
+     "name": "XAVC 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "xavc-3840",
+     "name": "XAVC 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "xavc-1920",
+     "name": "XAVC 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xocn-lt",
+     "name": "X-OCN LT",
+     "bpp": 1.8012,
+     "res": [
+      "ff86k169",
+      "ff86k179",
+      "ffc6k169",
+      "ffc6k179",
+      "s3558k169",
+      "s3558k179",
+      "s35c4k179",
+      "ff58k65",
+      "s3543k43",
+      "ffc38k169",
+      "s35c38k169",
+      "s3519k169"
+     ],
+     "ref": "Sony X-OCN White Paper v3.0, 'BURANO Recording Bitrate (23.98p/24.00p)': X-OCN LT FF 8.6K 16:9 (8632x4856) 24p = 1812 Mbps. bpp computed from that mode; per-mode Sony figures in rates[] (use these where modes differ). Linear with fps (59.94p: FFc 6K 16:9 = 2,235). Modes Sony does not tabulate (5.8K 6:5, 4.3K 4:3, the 3.8K modes and 1.9K) are estimated at the mean tabulated bpp of 1.8089 and flagged estimated in rates[].",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false,
+     "rates": [
+      {
+       "res": "ff86k169",
+       "fps": 24,
+       "mbps": 1812,
+       "bpp": 1.8012
+      },
+      {
+       "res": "ff86k179",
+       "fps": 24,
+       "mbps": 1699,
+       "bpp": 1.8016
+      },
+      {
+       "res": "ffc6k169",
+       "fps": 24,
+       "mbps": 894,
+       "bpp": 1.8082
+      },
+      {
+       "res": "ffc6k179",
+       "fps": 24,
+       "mbps": 838,
+       "bpp": 1.8075
+      },
+      {
+       "res": "s3558k169",
+       "fps": 24,
+       "mbps": 813,
+       "bpp": 1.8151
+      },
+      {
+       "res": "s3558k179",
+       "fps": 24,
+       "mbps": 762,
+       "bpp": 1.8156
+      },
+      {
+       "res": "s35c4k179",
+       "fps": 24,
+       "mbps": 385,
+       "bpp": 1.8132
+      },
+      {
+       "res": "ff58k65",
+       "fps": 24,
+       "mbps": 1229,
+       "bpp": 1.8094,
+       "estimated": true
+      },
+      {
+       "res": "s3543k43",
+       "fps": 24,
+       "mbps": 590,
+       "bpp": 1.8096,
+       "estimated": true
+      },
+      {
+       "res": "ffc38k169",
+       "fps": 24,
+       "mbps": 360,
+       "bpp": 1.8084,
+       "estimated": true
+      },
+      {
+       "res": "s35c38k169",
+       "fps": 24,
+       "mbps": 360,
+       "bpp": 1.8084,
+       "estimated": true
+      },
+      {
+       "res": "s3519k169",
+       "fps": 24,
+       "mbps": 90,
+       "bpp": 1.8084,
+       "estimated": true
+      }
+     ]
+    },
+    {
+     "key": "xavc-hi-hq",
+     "name": "XAVC H-I HQ (H.265 Intra, 8K)",
+     "bpp": 1.1371,
+     "res": [
+      "xavc-8192",
+      "xavc-7680"
+     ],
+     "ref": "Derived: Sony BURANO Operating Instructions record-time table (960 GB CFexpress Type B VPG400, single clip). Effective capacity is calibrated at 940 GB from X-OCN LT clips of known Mbps. Values are effective file rates, including audio and overhead. 8192x4320 and 7680x4320 have the same record times, so the Mbps is resolution-independent: 23.98p 130 min ≈ 964 Mbps, 29.97p 104 min ≈ 1206 Mbps. This matches the widely reported nominal 1,200 Mbps at 8K 30p (retailer copy). bpp is from 8192x4320 at 29.97.",
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "rates": [
+      {
+       "res": "xavc-8192",
+       "fps": 23.976,
+       "mbps": 964,
+       "bpp": 1.1361
+      },
+      {
+       "res": "xavc-8192",
+       "fps": 29.97,
+       "mbps": 1206,
+       "bpp": 1.1371
+      },
+      {
+       "res": "xavc-7680",
+       "fps": 29.97,
+       "mbps": 1206,
+       "bpp": 1.2129
+      }
+     ]
+    },
+    {
+     "key": "xavc-hi-sq",
+     "name": "XAVC H-I SQ (H.265 Intra, 8K)",
+     "bpp": 0.7628,
+     "res": [
+      "xavc-8192",
+      "xavc-7680"
+     ],
+     "ref": "Derived: Sony BURANO Operating Instructions record-time table (960 GB CFexpress Type B VPG400, single clip). Effective capacity is calibrated at 940 GB from X-OCN LT clips of known Mbps. Values are effective file rates, including audio and overhead. 23.98p 194 min ≈ 646 Mbps, 29.97p 155 min ≈ 809 Mbps (nominal reported as 800 Mbps at 8K 30p).",
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "rates": [
+      {
+       "res": "xavc-8192",
+       "fps": 23.976,
+       "mbps": 646,
+       "bpp": 0.7613
+      },
+      {
+       "res": "xavc-8192",
+       "fps": 29.97,
+       "mbps": 809,
+       "bpp": 0.7628
+      }
+     ]
+    },
+    {
+     "key": "xavc-i-4k",
+     "name": "XAVC-I 4K (4:2:2 10-bit)",
+     "bpp": 1.1974,
+     "res": [
+      "xavc-4096",
+      "xavc-3840"
+     ],
+     "ref": "Derived: Sony BURANO Operating Instructions record-time table (960 GB CFexpress Type B VPG400, single clip). Effective capacity is calibrated at 940 GB from X-OCN LT clips of known Mbps. Values are effective file rates, including audio and overhead. 4096x2160 and 3840x2160 have the same times: 23.98p 494 min ≈ 254, 25p ≈ 265, 29.97p ≈ 316, 50p ≈ 520, 59.94p ≈ 624 Mbps. Sony's nominal XAVC-I family maxima are 240/250/300/500/600 Mbps, so the effective figures run ~4-6% higher.",
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "rates": [
+      {
+       "res": "xavc-4096",
+       "fps": 23.976,
+       "mbps": 254,
+       "bpp": 1.1974
+      },
+      {
+       "res": "xavc-3840",
+       "fps": 23.976,
+       "mbps": 254,
+       "bpp": 1.2772
+      },
+      {
+       "res": "xavc-3840",
+       "fps": 59.94,
+       "mbps": 624,
+       "bpp": 1.2551
+      }
+     ]
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavc-hl-8k",
+     "name": "XAVC H-L 7680x4320 (23.98/25/29.97p)",
+     "mbps": 525,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived: Sony BURANO Operating Instructions record-time table (960 GB CFexpress Type B VPG400, single clip). Effective capacity is calibrated at 940 GB from X-OCN LT clips of known Mbps. Values are effective file rates, including audio and overhead. 239 min at every frame rate, so it is a fixed bitrate."
+    },
+    {
+     "key": "xavci-hd-2398",
+     "name": "XAVC-I HD 23.98p",
+     "mbps": 104,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from record time 1207 min; nominal family value 89 Mbps"
+    },
+    {
+     "key": "xavci-hd-25",
+     "name": "XAVC-I HD 25p",
+     "mbps": 127,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 985 min; nominal family value 112 Mbps"
+    },
+    {
+     "key": "xavci-hd-2997",
+     "name": "XAVC-I HD 29.97p",
+     "mbps": 128,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 981 min; nominal family value 111 Mbps"
+    },
+    {
+     "key": "xavci-hd-50",
+     "name": "XAVC-I HD 50p",
+     "mbps": 245,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 512 min; nominal family value 223 Mbps"
+    },
+    {
+     "key": "xavci-hd-5994",
+     "name": "XAVC-I HD 59.94p",
+     "mbps": 246,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 510 min; nominal family value 222 Mbps"
+    },
+    {
+     "key": "xavcl-qfhd-30",
+     "name": "XAVC-L 3840x2160 23.98-29.97p",
+     "mbps": 110,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 1145 min (nominal 100 Mbps class)"
+    },
+    {
+     "key": "xavcl-qfhd-60",
+     "name": "XAVC-L 3840x2160 50/59.94p",
+     "mbps": 166,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 756 min (nominal 150 Mbps class)"
+    },
+    {
+     "key": "xavcl-hd",
+     "name": "XAVC-L 1920x1080 23.98-29.97p",
+     "mbps": 59,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 2121 min (nominal 50 Mbps class)"
+    },
+    {
+     "key": "xavcl-hd-60",
+     "name": "XAVC-L 1920x1080 50/59.94p",
+     "mbps": 65,
+     "source": "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf",
+     "estimated": true,
+     "ref": "Derived from 1939 min"
+    }
+   ],
+   "notes": "Imager modes, pixel sizes and fps come from Sony's BURANO Recording Formats sheet (sonycine, Apr 2026 update R5). Internal X-OCN is LT only, and in Cine EI mode only. XAVC H-I HQ/SQ and H-L are 8K only: 8192x4320 from FF 8.6K 17:9, 7680x4320 from 8.6K 16:9. XAVC-I/L at 4K/UHD/HD. There is no ProRes. Sony publishes no Mbps for XAVC H or Burano XAVC, so all XAVC values are derived from the manual's record times (firmware 1.0 manual, hosted by a reseller) and marked estimated. Firmware 3.00 (May 2026) is current; check for new codecs (e.g. X-OCN C1/C2 on BURANO not confirmed).",
+   "sources": [
+    "https://77snszqv.media.zestyio.com/260407-Update-BURANO_RecordingFormats_R5-SB.pdf",
+    "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+    "https://www.avbroadcast.fr/media/productfile/s/o/sony-burano-camera-manuel.pdf"
+   ]
+  }
+ ]
+}

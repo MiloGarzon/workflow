@@ -4,6 +4,88 @@
   const B = (type, props = {}) => ({ id: uid(), type, width: 'full', ...props });
   const S = (props) => ({ id: uid(), kind: 'content', orientation: 'portrait', newPage: true, numbered: true, showTitle: true, blocks: [], ...props });
 
+  // ---- storage calculator: data rate from codec × resolution × fps ----
+  // bpp = bits per pixel per frame. ProRes from Apple's published 1920×1080 @ 24 fps targets,
+  // scaled by pixel count; RAW from bit depth and compression. Values are estimates.
+  const PR = mbps => mbps * 1e6 / (24 * 1920 * 1080);
+  const CODECS = [
+    { group: 'ARRI', items: [
+      { key: 'arriraw13', name: 'ARRIRAW (Alexa 35)', bpp: 12.74 },
+      { key: 'arrirawhde13', name: 'ARRIRAW HDE (Alexa 35)', bpp: 12.74 * 0.5 },
+      { key: 'arriraw12', name: 'ARRIRAW (LF / Mini LF / Mini / 65)', bpp: 12 },
+      { key: 'arrirawhde12', name: 'ARRIRAW HDE 12-bit', bpp: 12 * 0.6 }] },
+    { group: 'Apple ProRes', items: [
+      { key: 'pr-proxy', name: 'ProRes 422 Proxy', bpp: PR(36) },
+      { key: 'pr-lt', name: 'ProRes 422 LT', bpp: PR(82) },
+      { key: 'pr-422', name: 'ProRes 422', bpp: PR(117) },
+      { key: 'pr-hq', name: 'ProRes 422 HQ', bpp: PR(176) },
+      { key: 'pr-4444', name: 'ProRes 4444', bpp: PR(264) },
+      { key: 'pr-xq', name: 'ProRes 4444 XQ', bpp: PR(396) }] },
+    { group: 'Blackmagic RAW (constant bitrate)', items: [
+      { key: 'braw3', name: 'Blackmagic RAW 3:1', bpp: 12 / 3 },
+      { key: 'braw5', name: 'Blackmagic RAW 5:1', bpp: 12 / 5 },
+      { key: 'braw8', name: 'Blackmagic RAW 8:1', bpp: 12 / 8 },
+      { key: 'braw12', name: 'Blackmagic RAW 12:1', bpp: 12 / 12 }] },
+    { group: 'Otros', items: [
+      { key: 'raw', name: 'RAW con compresión X:1 (X-OCN, REDCODE, Canon RAW…)', raw: true },
+      { key: 'mbps', name: 'Data rate conocido (Mb/s)', mbps: true },
+      { key: 'manual', name: 'Escribir TB/h a mano', manual: true }] },
+  ];
+  const RESOLUTIONS = [
+    { group: 'ARRI Alexa 35', items: [
+      ['a35-46og', '4.6K 3:2 Open Gate', 4608, 3164], ['a35-46', '4.6K 16:9', 4608, 2592], ['a35-4k169', '4K 16:9', 4096, 2304],
+      ['a35-4k21', '4K 2:1', 4096, 2048], ['a35-38', '3.8K 16:9 (UHD)', 3840, 2160], ['a35-33', '3.3K 6:5', 3328, 2790],
+      ['a35-3k', '3K 1:1', 3072, 3072], ['a35-27', '2.7K 8:9', 2743, 3086], ['a35-2k', '2K 16:9 S16', 2048, 1152]] },
+    { group: 'ARRI Alexa Mini LF / LF', items: [
+      ['lf-45og', '4.5K LF 3:2 Open Gate', 4448, 3096], ['lf-45239', '4.5K LF 2.39:1', 4448, 1856], ['lf-38', 'LF 16:9 UHD', 3840, 2160]] },
+    { group: 'ARRI Alexa Mini', items: [
+      ['mini-34og', '3.4K Open Gate', 3424, 2202], ['mini-32', '3.2K 16:9', 3200, 1800], ['mini-28', '2.8K 4:3', 2880, 2160]] },
+    { group: 'Sony Venice', items: [
+      ['v2-86', '8.6K 3:2', 8640, 5760], ['v2-82', '8.2K 17:9', 8192, 4320], ['v-6k32', '6K 3:2', 6048, 4032], ['v-6k169', '6K 17:9', 6054, 3192]] },
+    { group: 'RED', items: [
+      ['red-8kff', '8K FF 17:9', 8192, 4320], ['red-6k', '6K 17:9', 6144, 3240]] },
+    { group: 'Genéricas', items: [
+      ['dci4k', '4K DCI', 4096, 2160], ['uhd', 'UHD 3840×2160', 3840, 2160], ['dci2k', '2K DCI', 2048, 1080], ['hd', 'HD 1920×1080', 1920, 1080], ['custom', 'Personalizada…', 0, 0]] },
+  ];
+  const codecByKey = k => CODECS.flatMap(g => g.items).find(c => c.key === k);
+  const resByKey = k => { const r = RESOLUTIONS.flatMap(g => g.items).find(x => x[0] === k); return r && { key: r[0], name: r[1], w: r[2], h: r[3] }; };
+  // camera library (cameras.js): each model lists its own sensor modes and recording formats
+  const camList = () => ((window.FFCameras && FFCameras.brands) || []).flatMap(b => b.cameras.map(c => ({ ...c, brand: b.name })));
+  const camById = id => id ? camList().find(c => c.id === id) : null;
+  function camCodec(cam, key) {
+    if (!cam) return null;
+    const c = (cam.codecs || []).find(x => x.key === key);
+    if (c) return { ...c, bpp: c.bpp };
+    const f = (cam.fixed || []).find(x => x.key === key);
+    return f ? { ...f, fixed: true } : null;
+  }
+  function camRes(cam, key) {
+    const r = cam && (cam.resolutions || []).find(x => x.key === key);
+    return r ? { ...r } : null;
+  }
+  // returns { tbph, mbps, mbFrame, label } or null when the row is typed by hand
+  function storageRate(c) {
+    const cam = camById(c.cam);
+    const cd = camCodec(cam, c.fmt) || codecByKey(c.fmt);
+    if (!cd || cd.manual) return null;
+    const fps = Number(c.fps) || 0;
+    let mbps = 0, res = null;
+    if (cd.fixed) mbps = Number(cd.mbps) || 0;
+    else if (cd.mbps) mbps = Number(c.mbps) || 0;
+    else {
+      res = (c.res === 'custom' ? { key: 'custom', name: 'Personalizada' } : camRes(cam, c.res) || resByKey(c.res)) || (cam && cam.resolutions && cam.resolutions[0] ? { ...cam.resolutions[0] } : resByKey('uhd'));
+      const w = res.key === 'custom' ? Number(c.w) || 0 : res.w, hh = res.key === 'custom' ? Number(c.h) || 0 : res.h;
+      const bpp = cd.raw ? (Number(c.bits) || 12) / Math.max(1, Number(c.ratio) || 1) : Number((cd.byRes && cd.byRes[res.key]) || cd.bpp) || 0;
+      mbps = w * hh * bpp * fps / 1e6;
+      res = { ...res, w, h: hh };
+    }
+    const tbph = mbps * 3600 / 8 / 1e6;
+    const resLabel = !res ? '' : res.key === 'custom' ? `${res.w}×${res.h}` : res.name;
+    const codecLabel = cd.raw ? `RAW ${Number(c.bits) || 12}-bit ${Number(c.ratio) || 1}:1` : cd.mbps && !cd.fixed ? `${c.codecName || 'Códec'} ${Number(c.mbps) || 0} Mb/s` : cd.name.replace(/ \(.*\)$/, '');
+    return { tbph, mbps, mbFrame: fps && !cd.fixed ? mbps / 8 / fps : 0, estimated: !!cd.estimated, label: [codecLabel, resLabel, fps && !cd.fixed ? `${fps} fps` : ''].filter(Boolean).join(' · ') };
+  }
+  const STORAGE = { CODECS, RESOLUTIONS, codecByKey, resByKey, storageRate, camList, camById };
+
   // based on the FilmFlow general color pipeline diagrams (PAL, TDC, DSMD, PP…)
   const colorPipe = () => B('colorpipe', {
     camera: 'ARRI Alexa 35', signal: 'Arri Log-C4', cameraImage: '', monitoring: 'Rec 709 Dim 100 nits', credit: '',
@@ -137,7 +219,7 @@
         title: 'Storage calculation', blocks: [
           B('storage', {
             title: 'Unidad principal', showFormula: true, cameras: [
-              { label: 'Cámara A', name: 'Alexa 35', codec: 'ARRIRAW HDE 4.6K 3:2 OG', days: 36, hours: '1:30', tbph: 1.12 }
+              { label: 'Cámara A', name: 'ARRI ALEXA 35', cam: 'arri-alexa35', fmt: 'arriraw_hde', res: '4p6k_3x2_open_gate_4608x3164', fps: 24, codec: '', days: 36, hours: '1:30', tbph: 0 }
             ]
           }),
           B('paragraph', { text: 'Valores estimados con base en el data rate del códec seleccionado. El cálculo debe revisarse si cambian los días de rodaje o el tiempo rodado por día.' })
@@ -257,12 +339,12 @@
     { type: 'table', name: 'Tabla', icon: '▦', make: () => B('table', { header: true, text: 'Columna 1 | Columna 2\nDato | Dato' }) },
     { type: 'contacts', name: 'Contactos', icon: '✆', make: () => B('contacts', { items: [{ role: 'Cargo', name: 'Nombre', phone: '', email: '' }] }) },
     { type: 'naming', name: 'Nomenclatura', icon: '_', make: () => B('naming', { title: 'Nomenclatura', separator: '_', text: 'Proyecto = COD\nEscena = 001' }) },
-    { type: 'storage', name: 'Cálculo de storage', icon: 'TB', make: () => B('storage', { title: 'Unidad principal', showFormula: true, cameras: [{ label: 'Cámara A', name: 'Alexa 35', codec: '', days: 30, hours: '1:30', tbph: 1.12 }] }) },
+    { type: 'storage', name: 'Cálculo de storage', icon: 'TB', make: () => B('storage', { title: 'Unidad principal', showFormula: true, cameras: [{ label: 'Cámara A', name: 'ARRI ALEXA 35', cam: 'arri-alexa35', fmt: 'arriraw_hde', res: '4p6k_3x2_open_gate_4608x3164', fps: 24, codec: '', days: 30, hours: '1:30', tbph: 0 }] }) },
     { type: 'colorpipe', name: 'Color pipeline', icon: '◐', make: colorPipe },
     { type: 'stages', name: 'Diagrama de flujo', icon: '⇉', make: () => B('stages', { columns: [{ title: 'Etapa 1', items: 'Elemento | detalle' }, { title: 'Etapa 2', items: 'Elemento | detalle' }] }) },
     { type: 'spacer', name: 'Espacio', icon: '↕', make: () => B('spacer', { size: 16 }) },
     { type: 'pagebreak', name: 'Salto de página', icon: '⤓', make: () => B('pagebreak', {}) },
   ];
 
-  window.FFDefaults = { PRESETS, BLOCK_TYPES, defaultProject, uid, colorPipe };
+  window.FFDefaults = { PRESETS, BLOCK_TYPES, defaultProject, uid, colorPipe, STORAGE };
 })();

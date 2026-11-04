@@ -461,16 +461,94 @@
           () => ({ role: '', name: '', phone: '', email: '' }), '＋ Añadir contacto');
         break;
       case 'storage': {
+        const ST = FFDefaults.STORAGE;
         body.append(fText('Título', b, 'title', o), fToggle('Mostrar fórmula del cálculo', b, 'showFormula'));
+        const ref = h('div', { class: 'stor-ref' });
+        const drawRef = () => {
+          const rows = (b.cameras || []).map(c => {
+            const r = ST.storageRate(c);
+            return r ? h('div', {}, h('b', {}, `${c.label || 'Cámara'}${c.name ? ' · ' + c.name : ''}: `), `${r.label} ≈ `, h('strong', {}, `${r.tbph.toFixed(2)} TB/h`), r.estimated ? ' (estimado)' : '', ` · ${Math.round(r.mbps)} Mb/s${r.mbFrame ? ` · ${r.mbFrame.toFixed(1)} MB por cuadro` : ''}`)
+              : h('div', {}, h('b', {}, `${c.label || 'Cámara'}: `), `${Number(c.tbph) || 0} TB/h escrito a mano`);
+          });
+          ref.replaceChildren(h('div', { class: 'stor-ref-t' }, 'Referencia de data rate'), ...rows,
+            h('div', { class: 'hint' }, 'Valores estimados a partir del códec, la resolución y los fps. Verifica con la calculadora del fabricante (ARRI Formats & Data Rate Calculator, Sony, RED, Blackmagic).'));
+        };
+        const sel = (label, obj, key, groups, after) => {
+          const opt = it => Array.isArray(it) ? h('option', { value: it[0] }, it[0] === 'custom' ? it[1] : `${it[1]} · ${it[2]}×${it[3]}`)
+            : h('option', { value: it.key ?? it.id }, it.w ? `${it.name} · ${it.w}×${it.h}${it.maxfps ? ` · hasta ${it.maxfps} fps` : ''}` : it.name + (it.estimated ? ' (estimado)' : ''));
+          const s = h('select', {}, ...groups.map(g => g.group ? h('optgroup', { label: g.group }, ...g.items.map(opt)) : g.items.map(opt)).flat());
+          s.value = obj[key] || '';
+          if (s.selectedIndex < 0 && s.options.length) { s.selectedIndex = 0; obj[key] = s.value; }
+          s.onchange = () => { obj[key] = s.value; after(); changed(); };
+          return field(label, s);
+        };
         listEditor(body, b, 'cameras', c => {
+          if (!c.fmt) c.fmt = 'manual'; // rows saved before the calculator keep their typed TB/h
           const res = h('div', { class: 'hint', style: 'margin-top:6px' });
-          const calc = () => { const [hh, mm] = String(c.hours || '0').split(':'); const hrs = (+hh || 0) + (+mm || 0) / 60; const pd = hrs * (+c.tbph || 0); res.innerHTML = `Por día: <b>${pd.toFixed(2)} TB</b> · Total: <b>${(pd * (+c.days || 0)).toFixed(2)} TB</b>`; };
-          calc();
+          const calc = () => {
+            const r = ST.storageRate(c);
+            if (r) { c.tbph = Math.round(r.tbph * 1000) / 1000; c.codec = r.label; tb.querySelector('input').value = c.tbph; }
+            const [hh, mm] = String(c.hours || '0').split(':'); const hrs = (+hh || 0) + (+mm || 0) / 60; const pd = hrs * (+c.tbph || 0);
+            res.innerHTML = `Por día: <b>${pd.toFixed(2)} TB</b> · Total: <b>${(pd * (+c.days || 0)).toFixed(2)} TB</b>`;
+            drawRef();
+          };
           const oc = { after: calc };
-          return [h('div', { class: 'row3' }, fText('Etiqueta', c, 'label', oc), fText('Cámara', c, 'name', oc), fText('Códec', c, 'codec', oc)),
-            h('div', { class: 'row3' }, fText('Días de rodaje', c, 'days', { ...oc, type: 'number' }), fText('Rodado por día', c, 'hours', { ...oc, hint: 'h:mm' }), fText('TB por hora', c, 'tbph', { ...oc, type: 'number', step: '0.01' })), res];
-        }, () => ({ label: 'Cámara B', name: '', codec: '', days: 30, hours: '1:00', tbph: 1 }), '＋ Añadir cámara / unidad');
-        body.append(h('div', { class: 'hint' }, 'Referencia: ARRIRAW HDE 4.6K 3:2 OG a 24 fps ≈ 1.12 TB/h · ProRes 4444 XQ 4.6K ≈ 0.75 TB/h. Verifica con la calculadora del fabricante.'));
+          const extra = h('div');
+          const fmtWrap = h('div');
+          const camGroups = () => [{ group: '', items: [{ key: '', name: 'Genérica / otra cámara' }] }, ...((window.FFCameras && FFCameras.brands) || []).map(b => ({ group: b.name, items: b.cameras.map(x => ({ key: x.id, name: x.name })) }))];
+          const fmtGroups = () => {
+            const cam = ST.camById(c.cam);
+            if (!cam) return ST.CODECS;
+            return [{ group: cam.name, items: [...(cam.codecs || []).filter(x => x.bpp), ...(cam.fixed || []).filter(x => x.mbps)] }, ST.CODECS.find(g => g.group === 'Otros')];
+          };
+          const resGroups = () => {
+            const cam = ST.camById(c.cam);
+            if (!cam) return ST.RESOLUTIONS;
+            const cd = (cam.codecs || []).find(x => x.key === c.fmt);
+            const list = (cam.resolutions || []).filter(r => !cd || !cd.res || cd.res.includes(r.key));
+            return [{ group: cam.name, items: list }, { group: 'Otra', items: [['custom', 'Personalizada…', 0, 0]] }];
+          };
+          const drawFmt = () => fmtWrap.replaceChildren(sel('Formato de grabación', c, 'fmt', fmtGroups(), () => { drawExtra(); calc(); }));
+          const tb = fText('TB por hora', c, 'tbph', { ...oc, type: 'number', step: '0.01' });
+          const drawExtra = () => {
+            const cam = ST.camById(c.cam);
+            const cd = (cam && ([...(cam.codecs || []), ...(cam.fixed || []).map(x => ({ ...x, fixed: true }))].find(x => x.key === c.fmt))) || ST.codecByKey(c.fmt) || {};
+            const manual = !!cd.manual;
+            tb.querySelector('input').readOnly = !manual;
+            tb.classList.toggle('ro', !manual);
+            extra.replaceChildren(
+              ...(cd.manual ? [fText('Códec (texto)', c, 'codec', { ...oc, ph: 'ARRIRAW HDE 4.6K 3:2 OG' })] : []),
+              ...(!cd.manual && !cd.mbps && !cd.fixed ? [h('div', { class: 'row' }, sel('Resolución', c, 'res', resGroups(), () => { drawExtra(); calc(); }), fText('Frame rate (fps)', c, 'fps', { ...oc, type: 'number', step: 'any' }))] : []),
+              ...(cd.fixed ? [h('div', { class: 'hint' }, `Bitrate fijo de ${cd.mbps} Mb/s publicado por el fabricante para este modo.`)] : []),
+              ...(cd.mbps ? [h('div', { class: 'row3' }, fText('Nombre del códec', c, 'codecName', { ...oc, ph: 'X-OCN ST, H.265…' }), fText('Data rate (Mb/s)', c, 'mbps', { ...oc, type: 'number', step: 'any' }), fText('Frame rate (fps)', c, 'fps', { ...oc, type: 'number', step: 'any' }))] : []),
+              ...(!cd.manual && !cd.mbps && !cd.fixed && c.res === 'custom' ? [h('div', { class: 'row' }, fText('Ancho (px)', c, 'w', { ...oc, type: 'number' }), fText('Alto (px)', c, 'h', { ...oc, type: 'number' }))] : []),
+              ...(cd.raw ? [h('div', { class: 'row' }, fText('Profundidad de bits', c, 'bits', { ...oc, type: 'number', hint: 'ej. 16, 12' }), fText('Compresión (X:1)', c, 'ratio', { ...oc, type: 'number', step: 'any', hint: 'ej. 5 para 5:1' }))] : []));
+          };
+          if (c.fps == null) c.fps = 24;
+          if (!c.res) c.res = 'uhd';
+          drawFmt();
+          drawExtra();
+          requestAnimationFrame(calc);
+          const nameF = fText('Nombre en el documento', c, 'name', oc);
+          const camSel = sel('Modelo de cámara', c, 'cam', camGroups(), () => {
+            const cam = ST.camById(c.cam);
+            if (cam) {
+              c.name = /iphone/i.test(cam.name) ? cam.name : `${cam.brand} ${cam.name}`; nameF.querySelector('input').value = c.name;
+              const first = (cam.codecs || []).find(x => x.bpp) || (cam.fixed || [])[0];
+              if (first) c.fmt = first.key;
+              const r = (cam.resolutions || []).find(r => !first || !first.res || first.res.includes(r.key));
+              if (r) c.res = r.key;
+            }
+            drawFmt(); drawExtra(); calc();
+          });
+          return [h('div', { class: 'row' }, fText('Etiqueta', c, 'label', oc), nameF),
+            camSel,
+            fmtWrap,
+            extra,
+            h('div', { class: 'row3' }, fText('Días de rodaje', c, 'days', { ...oc, type: 'number' }), fText('Rodado por día', c, 'hours', { ...oc, hint: 'h:mm' }), tb), res];
+        }, () => ({ label: 'Cámara B', name: '', fmt: 'arrirawhde13', res: 'a35-46og', fps: 24, codec: '', days: 30, hours: '1:00', tbph: 0 }), '＋ Añadir cámara / unidad');
+        body.append(ref);
+        drawRef();
         break;
       }
       case 'colorpipe': {
