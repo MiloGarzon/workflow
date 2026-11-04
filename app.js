@@ -25,8 +25,14 @@
     window.showExportPage = async (i) => {
       pages.forEach(p => p.classList.remove('show'));
       pages[i].classList.add('show');
-      await new Promise(r => setTimeout(r, 40));
-      return { w: pages[i]._dims.w, h: pages[i]._dims.h };
+      // large photos must be fully decoded before WebKit snapshots the page, or they come out blank
+      const imgs = [...pages[i].querySelectorAll('img')];
+      await Promise.all(imgs.map(im => Promise.race([
+        (im.complete ? Promise.resolve() : new Promise(r => { im.onload = im.onerror = r; })).then(() => im.decode ? im.decode().catch(() => { }) : null),
+        new Promise(r => setTimeout(r, 8000)),
+      ])));
+      await new Promise(r => setTimeout(r, imgs.length ? 250 : 40));
+      return { w: pages[i]._dims.w, h: pages[i]._dims.h, imgs: imgs.map(im => im.naturalWidth) };
     };
     return;
   }
@@ -37,6 +43,10 @@
   function normalize(p) {
     if (!p || !Array.isArray(p.sections)) return defaultProject();
     p.sections.forEach(s => { s.id = s.id || uid(); (s.blocks || []).forEach(b => b.id = b.id || uid()); s.blocks = s.blocks || []; });
+    // old "color pipeline" pages were a single empty image → switch them to the editable pipeline block
+    p.sections.forEach(s => {
+      if (/color pipeline/i.test(s.title || '') && s.blocks.length && s.blocks.every(b => b.type === 'image' && !b.src)) s.blocks = [FFDefaults.colorPipe()];
+    });
     p.clientLogos = p.clientLogos || [];
     p.id = p.id || uid() + uid();
     return p;
@@ -86,7 +96,7 @@
   }
 
   function projectMeta(p) {
-    return JSON.stringify({ id: p.id, name: p.name || 'Sin nombre', code: p.code || '', client: p.client || '', version: p.version || '', date: p.date || '', theme: p.theme || 'dark', accent: p.accent || '#37A14F', sections: p.sections.length, active: p.sections.filter(x => !x.hidden).length, modified: p.updatedAt || new Date().toISOString() });
+    return JSON.stringify({ id: p.id, name: p.name || 'Sin nombre', code: p.code || '', client: p.client || '', version: p.version || '', docTitle: p.docTitle || '', date: p.date || '', theme: p.theme || 'dark', accent: p.accent || '#37A14F', sections: p.sections.length, active: p.sections.filter(x => !x.hidden).length, modified: p.updatedAt || new Date().toISOString() });
   }
   let saving = null;
   async function saveToLibrary() {
@@ -110,7 +120,7 @@
     return h('div', { class: 'f' }, label ? h('label', {}, label, hint ? h('em', {}, hint) : null) : null, input);
   }
   function fText(label, obj, key, o = {}) {
-    const i = h('input', { type: o.type || 'text', placeholder: o.ph || '', step: o.step });
+    const i = h('input', { type: o.type || 'text', placeholder: o.ph || '', step: o.step, list: o.list });
     i.value = obj[key] ?? '';
     i.addEventListener('input', () => { obj[key] = o.type === 'number' ? (i.value === '' ? '' : Number(i.value)) : i.value; o.after && o.after(); changed(o.structural); });
     return field(label, i, o.hint);
@@ -372,7 +382,7 @@
       case 'spec': case 'keyvalue': case 'naming': case 'storage': return b.title || first(b.text);
       case 'image': return b.src ? (b.caption || 'Imagen cargada') : 'Sin imagen';
       case 'contacts': return (b.items || []).map(c => c.name).join(', ');
-      case 'stages': return (b.columns || []).map(c => c.title).join(' › ');
+      case 'stages': case 'colorpipe': return (b.columns || []).map(c => c.title).join(' › ');
       case 'heading': return b.text;
       default: return first(b.text);
     }
@@ -384,7 +394,7 @@
     const card = h('div', { class: `blk-card ${collapsed ? 'collapsed' : ''} ${b.hidden ? 'hid' : ''}`, 'data-b': b.id });
     const mv = d => { const j = i + d; if (j < 0 || j >= s.blocks.length) return; s.blocks.splice(i, 1); s.blocks.splice(j, 0, b); changed(); renderEditor(); };
     const stop = fn => e => { e.stopPropagation(); fn(); };
-    const canWidth = !['pagebreak', 'spacer', 'stages', 'storage'].includes(b.type);
+    const canWidth = !['pagebreak', 'spacer', 'stages', 'storage', 'colorpipe'].includes(b.type);
     const wbtn = canWidth ? h('button', { class: 'icon-btn wsel', title: 'Ancho del bloque', onclick: stop(() => { b.width = b.width === 'full' || !b.width ? 'half' : b.width === 'half' ? 'third' : 'full'; wbtn.textContent = wl(); changed(); }) }) : null;
     const wl = () => ({ half: '½ ancho', third: '⅓ ancho' }[b.width] || 'Completo');
     if (wbtn) wbtn.textContent = wl();
@@ -461,6 +471,27 @@
             h('div', { class: 'row3' }, fText('Días de rodaje', c, 'days', { ...oc, type: 'number' }), fText('Rodado por día', c, 'hours', { ...oc, hint: 'h:mm' }), fText('TB por hora', c, 'tbph', { ...oc, type: 'number', step: '0.01' })), res];
         }, () => ({ label: 'Cámara B', name: '', codec: '', days: 30, hours: '1:00', tbph: 1 }), '＋ Añadir cámara / unidad');
         body.append(h('div', { class: 'hint' }, 'Referencia: ARRIRAW HDE 4.6K 3:2 OG a 24 fps ≈ 1.12 TB/h · ProRes 4444 XQ 4.6K ≈ 0.75 TB/h. Verifica con la calculadora del fabricante.'));
+        break;
+      }
+      case 'colorpipe': {
+        body.append(h('div', { class: 'row3' }, fText('Cámara', b, 'camera', { ...o, ph: 'ARRI Alexa 35' }), fText('Señal / log', b, 'signal', { ...o, ph: 'Arri Log-C4' }), fText('Monitoreo (línea superior)', b, 'monitoring', { ...o, ph: 'Rec 709 Dim 100 nits' })),
+          fImage('Foto de la cámara (opcional)', b, 'cameraImage', o));
+        listEditor(body, b, 'columns', c => {
+          const wrap = h('div', { class: 'cp-col-ed' });
+          wrap.append(fText('Columna', c, 'title', { ...o, ph: 'On set color · Data management · Dailies · Entrega' }));
+          listEditor(wrap, c, 'boxes', x => [
+            h('div', { class: 'row' }, fText('Herramienta', x, 'tool', { ...o, ph: 'Pomfort Livegrade', list: 'cpTools' }), fText('Pie de la caja', x, 'caption', { ...o, ph: 'Live Color Tools' })),
+            fArea('Datos de color', x, 'specs', { ...o, mono: true, rows: 3, help: 'Uno por línea:  IDT: ARRI LogC4/AWG4 · Intermediate: ACES 1.3 · ODT: Rec 709 100 dim · Node: CDL + LUT · Grading Mode · Output Colorspace' }),
+            h('div', { class: 'row' }, fText('Método', x, 'method', { ...o, ph: 'Color Trace · .PFLA Match · ACES CDL Advanced', list: 'cpMethods' }), fText('Etiqueta superior (opcional)', x, 'tag', { ...o, ph: 'HDR Monitoring' })),
+            fArea('Notas / entregables', x, 'notes', { ...o, rows: 2, help: 'Ej.: Offload + QC + Metadata. Empieza con  -  para lista (- DRP, - AMF, - EDL).' }),
+            fImage('Logo de la herramienta (opcional)', x, 'logo', o)],
+            () => ({ tag: '', tool: '', logo: '', specs: '', notes: '', method: '', caption: '' }), '＋ Añadir caja en esta columna');
+          return [wrap];
+        }, () => ({ title: 'Nueva columna', boxes: [{ tag: '', tool: '', logo: '', specs: '', notes: '', method: '', caption: '' }] }), '＋ Añadir columna');
+        body.append(fText('Crédito (opcional, abajo a la derecha)', b, 'credit', { ...o, ph: 'Created by: Nombre DIT' }));
+        if (!document.getElementById('cpTools')) document.body.append(
+          h('datalist', { id: 'cpTools' }, ...['Pomfort Livegrade', 'Pomfort Silverstack', 'Pomfort Silverstack Lab', 'DaVinci Resolve', 'Colorfront', 'Lockit Script', 'FilmBox Pro', 'Netflix', 'Netflix Footage Ingest', 'Content HUB', 'Frame.io', 'Avid Media Composer'].map(v => h('option', { value: v }))),
+          h('datalist', { id: 'cpMethods' }, ...['ACES CDL Advanced', 'CDL and LUT', '.PFLA Match', 'Color Trace', 'AMF Trace', 'Lockit Script', 'Footage Ingest'].map(v => h('option', { value: v }))));
         break;
       }
       case 'stages':
@@ -609,66 +640,152 @@
   }
 
   // ================= library (Mis proyectos) =================
+  // folders: productora › proyecto › documento (each document lists its versions)
+  const libPath = [];
+  const keyOf = v => (v || '').trim().toLowerCase();
+  const verNum = v => { const m = String(v || '').match(/\d+(\.\d+)?/); return m ? parseFloat(m[0]) : 0; };
+  function nextVersion(v) {
+    const m = String(v || '').match(/^(.*?)(\d+)(\D*)$/);
+    return m ? m[1] + (Number(m[2]) + 1) + m[3] : (v ? v + ' 2' : 'V2');
+  }
+  function groupBy(items, key, label) {
+    const g = new Map();
+    items.forEach(m => { const k = keyOf(key(m)); if (!g.has(k)) g.set(k, { key: k, label: label(m), items: [] }); g.get(k).items.push(m); });
+    return [...g.values()].map(x => ({ ...x, modified: x.items.reduce((a, m) => String(m.modified) > a ? String(m.modified) : a, '') }))
+      .sort((a, b) => b.modified.localeCompare(a.modified));
+  }
+
   async function openLibrary() {
     if (state.dirty) await saveToLibrary();
     const ov = h('div', { class: 'lib-ov' });
     const close = () => ov.remove();
-    const search = h('input', { type: 'text', placeholder: 'Buscar por nombre, código o productora…' });
+    const search = h('input', { type: 'text', placeholder: 'Buscar por nombre, código, productora o versión…' });
+    const crumbs = h('div', { class: 'lib-crumbs' });
     const grid = h('div', { class: 'lib-grid' });
     const fmtDate = d => { try { return new Date(d).toLocaleString('es-CO', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }); } catch (e) { return ''; } };
+    const fmtDay = d => { try { return new Date(d).toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }); } catch (e) { return ''; } };
     let list = [];
-    const draw = () => {
+    const reload = async () => { list = await native('libList') || []; draw(); };
+    const client = m => (m.client || '').trim() || 'Sin productora';
+    const projName = m => (m.name || '').trim() || 'Sin nombre';
+    const docName = m => (m.docTitle || '').trim() || 'Workflow';
+
+    function card(m) {
+      const cur = P() && P().id === m.id;
+      return h('div', { class: `lib-card ${cur ? 'cur' : ''}` },
+        h('div', { class: `lib-cover ${m.theme === 'light' ? 'light' : 'dark'}`, style: `--acc:${m.accent}`, onclick: async () => { if (await openFromLibrary(m.id)) close(); } },
+          h('div', { class: 'lc-ver' }, m.version || 'Sin versión'),
+          h('div', { class: 'lc-k' }, docName(m)), h('div', { class: 'lc-n' }, projName(m)), h('div', { class: 'lc-c' }, m.client || ''), h('div', { class: 'lc-code' }, m.code || '')),
+        h('div', { class: 'lib-info' },
+          h('div', { class: 'li-t' }, `${docName(m)} ${m.version || ''}`.trim(), cur ? h('span', { class: 'li-cur' }, 'Abierto') : null),
+          h('div', { class: 'li-s' }, `${m.date ? 'Fecha ' + fmtDay(m.date + 'T12:00') + ' · ' : ''}${m.active ?? m.sections}/${m.sections} hojas`),
+          h('div', { class: 'li-s' }, `Editado ${fmtDate(m.modified)}`),
+          h('div', { class: 'li-a' },
+            h('button', { class: 'icon-btn', onclick: async () => { if (await openFromLibrary(m.id)) close(); } }, 'Abrir'),
+            h('button', { class: 'icon-btn', title: 'Crear la siguiente versión de este documento (copia con la versión aumentada)', onclick: async () => {
+              const json = await native('libLoad', { id: m.id }); if (!json) return;
+              const c = JSON.parse(json); c.id = uid() + uid();
+              const siblings = list.filter(x => keyOf(client(x)) === keyOf(client(m)) && keyOf(projName(x)) === keyOf(projName(m)) && keyOf(docName(x)) === keyOf(docName(m)));
+              const top = siblings.reduce((a, x) => verNum(x.version) > verNum(a.version) ? x : a, m);
+              c.version = nextVersion(top.version || m.version);
+              c.date = new Date().toISOString().slice(0, 10);
+              c.updatedAt = new Date().toISOString();
+              await native('libSave', { id: c.id, json: JSON.stringify(c), meta: projectMeta(c) });
+              if (P()) await native('libSave', { id: P().id, json: JSON.stringify(P()), meta: projectMeta(P()) });
+              await reload(); toast(`Versión ${c.version} creada`);
+            } }, 'Nueva versión'),
+            h('button', { class: 'icon-btn', title: 'Crear una copia como proyecto aparte', onclick: async () => {
+              const json = await native('libLoad', { id: m.id }); if (!json) return;
+              const c = JSON.parse(json); c.id = uid() + uid(); c.name = (c.name || 'Proyecto') + ' (copia)'; c.updatedAt = new Date().toISOString();
+              await native('libSave', { id: c.id, json: JSON.stringify(c), meta: projectMeta(c) });
+              if (P()) await native('libSave', { id: P().id, json: JSON.stringify(P()), meta: projectMeta(P()) });
+              await reload(); toast('Copia creada');
+            } }, 'Duplicar'),
+            h('button', { class: 'icon-btn', title: 'Guardar una copia como archivo .ffworkflow', onclick: async () => {
+              const json = await native('libLoad', { id: m.id }); if (!json) return;
+              const r = await native('exportFile', { json, name: syncName(JSON.parse(json)) }); if (r) toast(`Archivo listo: ${r}`);
+            } }, isWeb ? 'Guardar en iCloud' : 'Exportar archivo'),
+            h('button', { class: 'icon-btn danger', onclick: async () => {
+              if (!confirm(`¿Eliminar “${projName(m)} ${m.version || ''}” de Mis proyectos? Se moverá a la Papelera.`)) return;
+              await native('libDelete', { id: m.id });
+              list = list.filter(x => x.id !== m.id); draw();
+              if (cur) { const next = [...list].sort((a, b) => String(b.modified).localeCompare(String(a.modified)))[0]; if (next) await openFromLibrary(next.id); else { loadProject(await newFromBase()); await saveToLibrary(); } }
+            } }, 'Eliminar'))));
+    }
+
+    function folder(g, kind, sub, onOpen) {
+      const hasCur = P() && g.items.some(m => m.id === P().id);
+      return h('div', { class: `lib-folder ${kind} ${hasCur ? 'cur' : ''}`, onclick: onOpen },
+        h('div', { class: 'lf-ic' }, h('i'), h('b', {}, g.items.length)),
+        h('div', { class: 'lf-t' }, g.label, hasCur ? h('span', { class: 'li-cur' }, 'Abierto') : null),
+        h('div', { class: 'lf-s' }, sub),
+        h('div', { class: 'lf-s' }, `Editado ${fmtDay(g.modified)}`));
+    }
+
+    function draw() {
       const q = search.value.trim().toLowerCase();
-      grid.innerHTML = '';
-      const items = list.filter(m => !q || [m.name, m.code, m.client, m.version].join(' ').toLowerCase().includes(q));
-      if (!items.length) grid.append(h('div', { class: 'lib-empty' }, list.length ? 'Ningún proyecto coincide con la búsqueda.' : 'Aún no hay proyectos guardados.'));
-      items.forEach(m => {
-        const cur = P() && P().id === m.id;
-        const card = h('div', { class: `lib-card ${cur ? 'cur' : ''}` },
-          h('div', { class: `lib-cover ${m.theme === 'light' ? 'light' : 'dark'}`, style: `--acc:${m.accent}`, onclick: async () => { if (await openFromLibrary(m.id)) close(); } },
-            h('div', { class: 'lc-k' }, 'Workflow'), h('div', { class: 'lc-n' }, m.name || 'Sin nombre'), h('div', { class: 'lc-c' }, m.client || ''), h('div', { class: 'lc-code' }, [m.code, m.version].filter(Boolean).join(' · '))),
-          h('div', { class: 'lib-info' },
-            h('div', { class: 'li-t' }, m.name || 'Sin nombre', cur ? h('span', { class: 'li-cur' }, 'Abierto') : null),
-            h('div', { class: 'li-s' }, `${m.active ?? m.sections}/${m.sections} hojas activas · editado ${fmtDate(m.modified)}`),
-            h('div', { class: 'li-a' },
-              h('button', { class: 'icon-btn', onclick: async () => { if (await openFromLibrary(m.id)) close(); } }, 'Abrir'),
-              h('button', { class: 'icon-btn', title: 'Crear una copia (por ejemplo para una nueva versión)', onclick: async () => {
-                const json = await native('libLoad', { id: m.id }); if (!json) return;
-                const c = JSON.parse(json); c.id = uid() + uid(); c.name = (c.name || 'Proyecto') + ' (copia)';
-                await native('libSave', { id: c.id, json: JSON.stringify(c), meta: projectMeta(c) });
-                if (P()) await native('libSave', { id: P().id, json: JSON.stringify(P()), meta: projectMeta(P()) });
-                list = await native('libList') || []; sortList(); draw(); toast('Copia creada');
-              } }, 'Duplicar'),
-              h('button', { class: 'icon-btn', title: 'Guardar una copia como archivo .ffworkflow', onclick: async () => {
-                const json = await native('libLoad', { id: m.id }); if (!json) return;
-                const c = JSON.parse(json);
-                const d = (c.date || '').replace(/-/g, '');
-                const name = [c.code ? `${c.code} - ` : '', (c.docTitle || 'Workflow').toUpperCase(), d ? ` ${d}` : '', c.version ? ` ${c.version}` : ''].join('').trim();
-                const r = await native('exportFile', { json, name: syncName(c) }); if (r) toast(`Archivo listo: ${r}`);
-              } }, isWeb ? 'Guardar en iCloud' : 'Exportar archivo'),
-              h('button', { class: 'icon-btn danger', onclick: async () => {
-                if (!confirm(`¿Eliminar “${m.name}” de Mis proyectos? Se moverá a la Papelera.`)) return;
-                await native('libDelete', { id: m.id });
-                list = list.filter(x => x.id !== m.id); draw();
-                if (cur) { const next = list[0]; if (next) await openFromLibrary(next.id); else { loadProject(await newFromBase()); await saveToLibrary(); } }
-              } }, 'Eliminar'))));
-        grid.append(card);
-      });
-    };
-    const sortList = () => list.sort((a, b) => String(b.modified).localeCompare(String(a.modified)));
+      grid.innerHTML = ''; crumbs.innerHTML = '';
+      grid.classList.remove('docs');
+      if (!list.length) { grid.append(h('div', { class: 'lib-empty' }, 'Aún no hay proyectos guardados.')); return; }
+
+      if (q) {
+        crumbs.append(h('span', {}, 'Resultados de búsqueda'));
+        const items = list.filter(m => [m.name, m.code, m.client, m.version, m.docTitle].join(' ').toLowerCase().includes(q))
+          .sort((a, b) => String(b.modified).localeCompare(String(a.modified)));
+        if (!items.length) grid.append(h('div', { class: 'lib-empty' }, 'Ningún documento coincide con la búsqueda.'));
+        items.forEach(m => grid.append(card(m)));
+        return;
+      }
+
+      // walk the saved path; drop levels that no longer exist
+      const prods = groupBy(list, client, client);
+      const prod = libPath[0] != null && prods.find(g => g.key === libPath[0]);
+      if (!prod) libPath.length = 0;
+      const projs = prod ? groupBy(prod.items, projName, projName) : [];
+      const proj = prod && libPath[1] != null && projs.find(g => g.key === libPath[1]);
+      if (prod && !proj) libPath.length = 1;
+
+      const crumb = (label, depth) => h('button', { class: 'lc-crumb', onclick: () => { libPath.length = depth; draw(); } }, label);
+      crumbs.append(prod ? crumb('Productoras', 0) : h('span', {}, 'Productoras'));
+      if (prod) crumbs.append(h('i', {}, '›'), proj ? crumb(prod.label, 1) : h('span', {}, prod.label));
+      if (proj) crumbs.append(h('i', {}, '›'), h('span', {}, proj.label));
+
+      if (!prod) {
+        prods.forEach(g => {
+          const n = new Set(g.items.map(m => keyOf(projName(m)))).size;
+          grid.append(folder(g, 'prod', `${n} ${n === 1 ? 'proyecto' : 'proyectos'} · ${g.items.length} ${g.items.length === 1 ? 'documento' : 'documentos'}`, () => { libPath[0] = g.key; draw(); }));
+        });
+      } else if (!proj) {
+        projs.forEach(g => {
+          const docs = groupBy(g.items, docName, docName);
+          const code = g.items.find(m => m.code)?.code;
+          grid.append(folder(g, 'proj', `${code ? code + ' · ' : ''}${docs.map(d => d.label).join(', ')} · ${g.items.length} ${g.items.length === 1 ? 'versión' : 'versiones'}`, () => { libPath[1] = g.key; draw(); }));
+        });
+      } else {
+        grid.classList.add('docs');
+        groupBy(proj.items, docName, docName).forEach(d => {
+          const vers = [...d.items].sort((a, b) => verNum(b.version) - verNum(a.version) || String(b.modified).localeCompare(String(a.modified)));
+          grid.append(h('div', { class: 'lib-doc-h' }, h('b', {}, d.label), h('span', {}, `${vers.length} ${vers.length === 1 ? 'versión' : 'versiones'}`)));
+          const row = h('div', { class: 'lib-doc-row' });
+          vers.forEach(m => row.append(card(m)));
+          grid.append(row);
+        });
+      }
+    }
+
     search.oninput = draw;
     ov.append(h('div', { class: 'lib' },
-      h('div', { class: 'lib-h' }, h('div', {}, h('h2', {}, 'Mis proyectos'), h('div', { class: 'hint' }, isWeb ? 'Se guardan en este dispositivo. Usa “Abrir desde iCloud” y “Guardar en iCloud” (carpeta iCloud Drive › FilmFlow Workflow › Workflows) para compartirlos con tu Mac.' : 'Todos tus workflows se guardan aquí automáticamente y siguen siendo editables.')),
+      h('div', { class: 'lib-h' }, h('div', {}, h('h2', {}, 'Mis proyectos'), h('div', { class: 'hint' }, isWeb ? 'Se guardan en este dispositivo. Usa “Abrir desde iCloud” y “Guardar en iCloud” (carpeta iCloud Drive › FilmFlow Workflow › Workflows) para compartirlos con tu Mac.' : 'Organizados por productora › proyecto › documento. Se ordenan solos según los datos de cada proyecto (Productora, Nombre, Tipo de documento y Versión).')),
         h('button', { class: 'icon-btn', onclick: close, title: 'Cerrar' }, '✕')),
       h('div', { class: 'lib-bar' }, search,
         h('button', { class: 'tb-btn', onclick: async () => { close(); await commands.open(); } }, h('span', {}, '⇪'), isWeb ? 'Abrir desde iCloud' : 'Importar archivo…'),
         h('button', { class: 'tb-btn primary', onclick: async () => { close(); await commands.new(); } }, h('span', {}, '＋'), 'Nuevo proyecto')),
-      backupBar(async () => { list = await native('libList') || []; sortList(); draw(); }),
+      backupBar(reload),
+      crumbs,
       grid));
     ov.addEventListener('click', e => { if (e.target === ov) close(); });
     document.body.append(ov);
-    list = await native('libList') || [];
-    sortList(); draw();
+    await reload();
     search.focus();
   }
 

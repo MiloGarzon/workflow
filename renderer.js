@@ -195,6 +195,42 @@
       }).join(arrow);
       return { el: el(`<div class="${cls(b, 'stages-b')}"><div class="stages">${html}</div></div>`) };
     },
+    colorpipe(b) {
+      const arrow = `<div class="st-arrow"><svg viewBox="0 0 10 10"><path d="M2 1 L8 5 L2 9" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div>`;
+      const kv = l => { const m = l.match(/^([^:]{1,24}):\s*(.*)$/); return m ? `<div class="cp-kv"><b>${esc(m[1])}</b><span>${md(m[2])}</span></div>` : `<div class="cp-kv"><span>${md(l)}</span></div>`; };
+      const notes = t => {
+        const ls = lines(t); if (!ls.length) return '';
+        let html = '', ul = [];
+        const flush = () => { if (ul.length) { html += `<ul>${ul.map(x => `<li>${md(x)}</li>`).join('')}</ul>`; ul = []; } };
+        ls.forEach(l => { const m = l.match(/^\s*[-•]\s*(.*)$/); if (m) ul.push(m[1]); else { flush(); html += `<div>${md(l)}</div>`; } });
+        flush();
+        return `<div class="cp-notes">${html}</div>`;
+      };
+      const box = x => `<div class="cp-box">
+          ${x.tag ? `<div class="cp-tag">${esc(x.tag)}</div>` : ''}
+          ${x.logo ? `<img class="cp-logo" src="${imgSrc(x.logo)}">` : ''}
+          ${x.tool ? `<div class="cp-tool">${esc(x.tool)}</div>` : ''}
+          ${lines(x.specs).length ? `<div class="cp-specs">${lines(x.specs).map(kv).join('')}</div>` : ''}
+          ${notes(x.notes)}
+          ${x.method ? `<div class="cp-method">Method: <strong>${esc(x.method)}</strong></div>` : ''}
+          ${x.caption ? `<div class="cp-cap">${esc(x.caption)}</div>` : ''}
+        </div>`;
+      const cols = (b.columns || []).filter(c => c.title || (c.boxes || []).length);
+      const stages = cols.map(c => `<div class="cp-stage">${c.title ? `<div class="stage-h">${esc(c.title)}</div>` : ''}<div class="cp-boxes">${(c.boxes || []).map(box).join('')}</div></div>`).join(arrow);
+      const cam = b.cameraImage ? `<img src="${imgSrc(b.cameraImage)}">`
+        : `<svg viewBox="0 0 64 40" class="cp-camico"><rect x="2" y="9" width="40" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M42 18 L60 10 V34 L42 26 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><rect x="8" y="3" width="14" height="6" rx="2" fill="currentColor"/><circle cx="12" cy="22" r="3" fill="currentColor"/></svg>`;
+      return { el: el(`<div class="${cls(b, 'cpipe')}">
+        <div class="cp-row">
+          <div class="cp-src">${cam}${b.camera ? `<div class="cp-cam">${esc(b.camera)}</div>` : ''}</div>
+          <div class="cp-link">${b.signal ? `<span>${esc(b.signal)}</span>` : ''}<div class="cp-line"></div>${arrow}</div>
+          <div class="cp-flow">
+            ${b.monitoring ? `<div class="cp-mon"><span>${esc(b.monitoring)}</span></div>` : ''}
+            <div class="cp-stages">${stages}</div>
+          </div>
+        </div>
+        ${b.credit ? `<div class="cp-credit">${esc(b.credit)}</div>` : ''}
+      </div>`), center: true };
+    },
     spacer(b) { return { el: el(`<div class="spacer" style="height:${Number(b.size) || 16}px"></div>`) }; },
     pagebreak() { return { pagebreak: true }; },
   };
@@ -268,6 +304,11 @@
           const avail = cur.body.clientHeight - node.offsetTop - (node.offsetHeight - img.offsetHeight) - 2;
           if (avail > 80) { img.style.maxHeight = avail + 'px'; img.style.width = 'auto'; img.style.maxWidth = '100%'; return; }
         }
+      }
+      if (info && info.center && !overflow(cur.body) && sec.blocks.filter(b => !b.hidden).length === 1) {
+        const free = cur.body.clientHeight - (node.offsetTop + node.offsetHeight);
+        if (free > 24) node.style.paddingTop = Math.floor(free * 0.42) + 'px';
+        return;
       }
       if (!overflow(cur.body)) return;
       if (info && info.image) {

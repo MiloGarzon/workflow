@@ -4,6 +4,23 @@
   const B = (type, props = {}) => ({ id: uid(), type, width: 'full', ...props });
   const S = (props) => ({ id: uid(), kind: 'content', orientation: 'portrait', newPage: true, numbered: true, showTitle: true, blocks: [], ...props });
 
+  // based on the FilmFlow general color pipeline diagrams (PAL, TDC, DSMD, PP…)
+  const colorPipe = () => B('colorpipe', {
+    camera: 'ARRI Alexa 35', signal: 'Arri Log-C4', cameraImage: '', monitoring: 'Rec 709 Dim 100 nits', credit: '',
+    columns: [
+      { title: 'On set color', boxes: [
+        { tag: '', tool: 'Pomfort Livegrade', logo: '', specs: 'IDT: ARRI LogC4/AWG4\nIntermediate: ACES 1.3\nODT: Rec 709 100 dim', notes: '', method: 'ACES CDL Advanced', caption: 'Live Color Tools' },
+        { tag: '', tool: 'Lockit Script', logo: '', specs: '', notes: '', method: 'Lockit Script', caption: 'Dynamic Metadata' }] },
+      { title: 'Data management', boxes: [
+        { tag: '', tool: 'Pomfort Silverstack', logo: '', specs: 'IDT: ARRI LogC4/AWG4\nIntermediate: ACES\nODT: Rec 709 100 dim', notes: 'Offload + QC + Metadata', method: '.PFLA Match', caption: 'Offload Tools' }] },
+      { title: 'Laboratorio dailies', boxes: [
+        { tag: '', tool: 'DaVinci Resolve', logo: '', specs: 'IDT: ARRI LogC4/AWG4\nNode: Creative LUT + CDL\nODT: Rec 709 100 dim', notes: '', method: 'Color Trace', caption: 'Dailies Colorist' },
+        { tag: '', tool: 'Netflix Footage Ingest', logo: '', specs: '', notes: '', method: 'Footage Ingest', caption: 'OCF Upload Process' }] },
+      { title: 'Entrega', boxes: [
+        { tag: '', tool: 'Netflix', logo: '', specs: '', notes: '- DRP\n- AMF\n- EDL\nContent HUB', method: '', caption: 'Post house process' }] }
+    ]
+  });
+
   const PRESETS = [
     {
       key: 'cover', name: 'Portada', icon: '◼', group: 'Estructura',
@@ -138,12 +155,8 @@
       })
     },
     {
-      key: 'pipeline', name: 'Color pipeline (imagen)', icon: '◐', group: 'Data & Laboratorio',
-      make: () => S({
-        title: 'General color pipeline', orientation: 'landscape', blocks: [
-          B('image', { src: '', caption: '', size: 'full', fill: true })
-        ]
-      })
+      key: 'pipeline', name: 'Color pipeline', icon: '◐', group: 'Data & Laboratorio',
+      make: () => S({ title: 'General color pipeline', orientation: 'landscape', blocks: [colorPipe()] })
     },
     {
       key: 'flow', name: 'Diagrama de flujo', icon: '⇉', group: 'Data & Laboratorio',
@@ -245,10 +258,11 @@
     { type: 'contacts', name: 'Contactos', icon: '✆', make: () => B('contacts', { items: [{ role: 'Cargo', name: 'Nombre', phone: '', email: '' }] }) },
     { type: 'naming', name: 'Nomenclatura', icon: '_', make: () => B('naming', { title: 'Nomenclatura', separator: '_', text: 'Proyecto = COD\nEscena = 001' }) },
     { type: 'storage', name: 'Cálculo de storage', icon: 'TB', make: () => B('storage', { title: 'Unidad principal', showFormula: true, cameras: [{ label: 'Cámara A', name: 'Alexa 35', codec: '', days: 30, hours: '1:30', tbph: 1.12 }] }) },
+    { type: 'colorpipe', name: 'Color pipeline', icon: '◐', make: colorPipe },
     { type: 'stages', name: 'Diagrama de flujo', icon: '⇉', make: () => B('stages', { columns: [{ title: 'Etapa 1', items: 'Elemento | detalle' }, { title: 'Etapa 2', items: 'Elemento | detalle' }] }) },
     { type: 'spacer', name: 'Espacio', icon: '↕', make: () => B('spacer', { size: 16 }) },
     { type: 'pagebreak', name: 'Salto de página', icon: '⤓', make: () => B('pagebreak', {}) },
   ];
 
-  window.FFDefaults = { PRESETS, BLOCK_TYPES, defaultProject, uid };
+  window.FFDefaults = { PRESETS, BLOCK_TYPES, defaultProject, uid, colorPipe };
 })();
