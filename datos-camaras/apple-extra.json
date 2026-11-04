@@ -1,0 +1,262 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice",
+ "cameras": [
+  {
+   "id": "apple-iphone15pro",
+   "name": "iPhone 15 Pro / 15 Pro Max",
+   "exists": true,
+   "notes": "Apple tech specs (support 111829, 15 Pro; 15 Pro Max identical video specs): 4K at 24/25/30/60 fps; 1080p at 25/30/60; 720p30; slo-mo 1080p 120/240; Cinematic up to 4K HDR 30; Action mode up to 2.8K 60 (pixel size not published, omitted); spatial 1080p30; Dolby Vision HDR up to 4K60. 'ProRes video recording up to 4K at 60 fps with external recording.' Formats: HEVC, H.264, ProRes. Log video recording (Apple Log, a transfer curve - does not change ProRes data rates) and ACES. No ProRes RAW listed in tech specs. Support 109041: 4K60 ProRes requires external USB-C drive >=220 MB/s (exFAT, USB 3 10 Gb/s cable); no 4K120 on 15 Pro; built-in ProRes supports HDR, SDR and Log.",
+   "sources": [
+    "https://support.apple.com/en-us/111829",
+    "https://support.apple.com/en-us/109041",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "1080p",
+     "name": "1080p HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "720p",
+     "name": "720p",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 30
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Native Camera app records ProRes 422 HQ (flavor not named on apple.com; consistent with Apple's 220 MB/s external-drive requirement for 4K60 = ~1768 Mb/s 422 HQ). iPhone ProRes limits (Apple support 109041): built-in storage 4K at 24/25/30 fps (256 GB+), 1080p 25/30 (128 GB) or 25/30/60 (256 GB+); 4K60 requires an external drive >=220 MB/s; 4K120 not available on 15 Pro. ProRes not available in Cinematic, slo-mo or time-lapse.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps (e.g. Blackmagic Camera); not the native Camera app - third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "hevc-4k",
+     "name": "HEVC 4K",
+     "mbps": null,
+     "source": "https://support.apple.com/en-us/111829",
+     "ref": "Apple does not publish HEVC bitrates for iPhone. Left null."
+    },
+    {
+     "key": "h264-4k",
+     "name": "H.264 4K",
+     "mbps": null,
+     "source": "https://support.apple.com/en-us/111829",
+     "ref": "Apple does not publish H.264 bitrates for iPhone. Left null."
+    }
+   ]
+  },
+  {
+   "id": "apple-iphone16pro",
+   "name": "iPhone 16 Pro / 16 Pro Max",
+   "exists": true,
+   "notes": "Apple tech specs (support 121031, 16 Pro; 16 Pro Max identical video specs): 4K Dolby Vision at 24/25/30/60, 100/120 fps (Fusion camera); 1080p at 25/30/60/120 (Fusion); 720p30; slo-mo 1080p up to 240 and 4K up to 120; Cinematic up to 4K30; Action mode up to 2.8K60 (pixel size not published, omitted); spatial 1080p30. 'ProRes video recording up to 4K at 120 fps with external recording.' Formats: HEVC, H.264, ProRes. Log video recording and ACES. No ProRes RAW listed in tech specs. Support 109041: 4K60 ProRes requires external drive >=220 MB/s; built-in ProRes on 16 Pro supports HDR and Log (not SDR). Exact external-drive speed requirement for 4K120 not confirmed on the fetched page (17 Pro entry in apple-dji.json cites 440 MB/s).",
+   "sources": [
+    "https://support.apple.com/en-us/121031",
+    "https://support.apple.com/en-us/109041",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "1080p",
+     "name": "1080p HD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "720p",
+     "name": "720p",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 30
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60,
+      100,
+      120
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Native Camera app records ProRes 422 HQ (flavor not named on apple.com; consistent with Apple's 220 MB/s external-drive requirement for 4K60 = ~1768 Mb/s 422 HQ). iPhone ProRes limits (Apple support 109041): built-in storage 4K at 24/25/30 fps (256 GB+), 1080p 25/30 (128 GB) or 25/30/60 (256 GB+); 4K60 and 4K120 require external recording (4K60: drive >=220 MB/s). ProRes not available in Cinematic, slo-mo or time-lapse.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60,
+      100,
+      120
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps (e.g. Blackmagic Camera); not the native Camera app - third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60,
+      100,
+      120
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "4k",
+      "1080p"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      60,
+      100,
+      120
+     ],
+     "ref": "Apple ProRes White Paper (April 2022), target data rate ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). Only via third-party apps; third-party info.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "hevc-4k",
+     "name": "HEVC 4K",
+     "mbps": null,
+     "source": "https://support.apple.com/en-us/121031",
+     "ref": "Apple does not publish HEVC bitrates for iPhone. Left null."
+    },
+    {
+     "key": "h264-4k",
+     "name": "H.264 4K",
+     "mbps": null,
+     "source": "https://support.apple.com/en-us/121031",
+     "ref": "Apple does not publish H.264 bitrates for iPhone. Left null."
+    }
+   ]
+  }
+ ]
+}

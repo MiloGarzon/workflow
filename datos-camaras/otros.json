@@ -1,0 +1,932 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice",
+ "cameras": [
+  {
+   "id": "sigma-fp",
+   "name": "SIGMA fp",
+   "exists": true,
+   "notes": "Data from Sigma SIGMA fp User's Manual FW Ver.5.0 (bit rate table) and Sigma spec page. Internal: CinemaDNG 8/10/12-bit (image sequence .DNG + .WAV) and MOV H.264 ALL-I/GOP, UHD 3840x2160 up to 29.97p and FHD 1920x1080 up to 119.88p (UHD max 29.97p; no internal DCI 4K). Continuous recording up to 2 h. CinemaDNG UHD 10/12-bit and UHD 8-bit 29.97p need a USB-C portable SSD. Same recording table as fp L. External only (not internal, not included as codecs): HDMI 4:2:2 8-bit, and 12-bit RAW over HDMI recorded as ProRes RAW on Atomos Ninja V / Ninja V+ / Shogun CONNECT or as Blackmagic RAW on Blackmagic Video Assist 12G; DCI 4K 4096x2160 24p is RAW-output-only. Sigma publishes no data rates for these external formats (they depend on the recorder). Audio LPCM 2ch 48 kHz/16-bit.",
+   "sources": [
+    "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+    "https://www.sigma-global.com/en/cameras/fp/specification.html",
+    "https://www.sigma-global.com/en/special/fp-series/cinemacamera/"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "UHD 4K",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 29.97
+    },
+    {
+     "key": "fhd",
+     "name": "FHD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 119.88
+    }
+   ],
+   "codecs": [
+    {
+     "key": "cdng-12",
+     "name": "CinemaDNG 12-bit",
+     "bpp": 12.0664,
+     "res": [
+      "uhd",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      48,
+      50,
+      59.94,
+      100
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.98,
+       "mbps": 2400,
+       "bpp": 12.0664
+      },
+      {
+       "res": "uhd",
+       "fps": 24,
+       "mbps": 2420,
+       "bpp": 12.1568
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 2520,
+       "bpp": 12.1528
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 3020,
+       "bpp": 12.1489
+      },
+      {
+       "res": "fhd",
+       "fps": 23.98,
+       "mbps": 610,
+       "bpp": 12.2675
+      },
+      {
+       "res": "fhd",
+       "fps": 24,
+       "mbps": 610,
+       "bpp": 12.2573
+      },
+      {
+       "res": "fhd",
+       "fps": 25,
+       "mbps": 640,
+       "bpp": 12.3457
+      },
+      {
+       "res": "fhd",
+       "fps": 29.97,
+       "mbps": 760,
+       "bpp": 12.2293
+      },
+      {
+       "res": "fhd",
+       "fps": 48,
+       "mbps": 1220,
+       "bpp": 12.2573
+      },
+      {
+       "res": "fhd",
+       "fps": 50,
+       "mbps": 1270,
+       "bpp": 12.2492
+      },
+      {
+       "res": "fhd",
+       "fps": 59.94,
+       "mbps": 1530,
+       "bpp": 12.3098
+      },
+      {
+       "res": "fhd",
+       "fps": 100,
+       "mbps": 2540,
+       "bpp": 12.2492
+      }
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, CinemaDNG 12-bit: published Mbps per resolution/fps (all values in rates). Top-level bpp from UHD 3840x2160 23.98p = 2400 Mbps; bpp = Mbps*1e6/(W*H*fps). Published figures imply ~12-12.5 bits/pixel (uncompressed DNG frame sequence + overhead). Media: UHD: SSD only; FHD up to 59.94p on SD UHS-II, 100p SSD only. Max: UHD 29.97p; FHD 100p.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "cdng-10",
+     "name": "CinemaDNG 10-bit",
+     "bpp": 10.0553,
+     "res": [
+      "uhd",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      48,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.98,
+       "mbps": 2000,
+       "bpp": 10.0553
+      },
+      {
+       "res": "uhd",
+       "fps": 24,
+       "mbps": 2010,
+       "bpp": 10.0972
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 2090,
+       "bpp": 10.0791
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 2500,
+       "bpp": 10.057
+      },
+      {
+       "res": "fhd",
+       "fps": 23.98,
+       "mbps": 510,
+       "bpp": 10.2564
+      },
+      {
+       "res": "fhd",
+       "fps": 24,
+       "mbps": 510,
+       "bpp": 10.2479
+      },
+      {
+       "res": "fhd",
+       "fps": 25,
+       "mbps": 530,
+       "bpp": 10.2238
+      },
+      {
+       "res": "fhd",
+       "fps": 29.97,
+       "mbps": 640,
+       "bpp": 10.2984
+      },
+      {
+       "res": "fhd",
+       "fps": 48,
+       "mbps": 1020,
+       "bpp": 10.2479
+      },
+      {
+       "res": "fhd",
+       "fps": 50,
+       "mbps": 1060,
+       "bpp": 10.2238
+      },
+      {
+       "res": "fhd",
+       "fps": 59.94,
+       "mbps": 1280,
+       "bpp": 10.2984
+      },
+      {
+       "res": "fhd",
+       "fps": 100,
+       "mbps": 2120,
+       "bpp": 10.2238
+      },
+      {
+       "res": "fhd",
+       "fps": 119.88,
+       "mbps": 2540,
+       "bpp": 10.2179
+      }
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, CinemaDNG 10-bit: published Mbps per resolution/fps (all values in rates). Top-level bpp from UHD 3840x2160 23.98p = 2000 Mbps; bpp = Mbps*1e6/(W*H*fps). Published figures imply ~10-10.5 bits/pixel (uncompressed DNG frame sequence + overhead). Media: UHD: SSD only; FHD up to 59.94p on SD UHS-II, 100/119.88p SSD only. Max: UHD 29.97p; FHD 119.88p.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "cdng-8",
+     "name": "CinemaDNG 8-bit",
+     "bpp": 8.0443,
+     "res": [
+      "uhd",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      48,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.98,
+       "mbps": 1600,
+       "bpp": 8.0443
+      },
+      {
+       "res": "uhd",
+       "fps": 24,
+       "mbps": 1610,
+       "bpp": 8.0878
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 1670,
+       "bpp": 8.0536
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 2000,
+       "bpp": 8.0456
+      },
+      {
+       "res": "fhd",
+       "fps": 23.98,
+       "mbps": 410,
+       "bpp": 8.2454
+      },
+      {
+       "res": "fhd",
+       "fps": 24,
+       "mbps": 410,
+       "bpp": 8.2385
+      },
+      {
+       "res": "fhd",
+       "fps": 25,
+       "mbps": 430,
+       "bpp": 8.2948
+      },
+      {
+       "res": "fhd",
+       "fps": 29.97,
+       "mbps": 510,
+       "bpp": 8.2065
+      },
+      {
+       "res": "fhd",
+       "fps": 48,
+       "mbps": 820,
+       "bpp": 8.2385
+      },
+      {
+       "res": "fhd",
+       "fps": 50,
+       "mbps": 850,
+       "bpp": 8.1983
+      },
+      {
+       "res": "fhd",
+       "fps": 59.94,
+       "mbps": 1020,
+       "bpp": 8.2065
+      },
+      {
+       "res": "fhd",
+       "fps": 100,
+       "mbps": 1710,
+       "bpp": 8.2465
+      },
+      {
+       "res": "fhd",
+       "fps": 119.88,
+       "mbps": 2050,
+       "bpp": 8.2467
+      }
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, CinemaDNG 8-bit: published Mbps per resolution/fps (all values in rates). Top-level bpp from UHD 3840x2160 23.98p = 1600 Mbps; bpp = Mbps*1e6/(W*H*fps). Published figures imply ~8-8.5 bits/pixel (uncompressed DNG frame sequence + overhead). Media: UHD up to 25p on SD UHS-II, 29.97p SSD only; FHD up to 59.94p on SD UHS-II, 100/119.88p SSD only. Max: UHD 29.97p; FHD 119.88p.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-alli-uhd-440",
+     "name": "H.264 ALL-I UHD 440 Mbps",
+     "mbps": 440,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "uhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 440 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-alli-fhd-440",
+     "name": "H.264 ALL-I FHD 440 Mbps (100/119.88p)",
+     "mbps": 440,
+     "fps": [
+      100,
+      119.88
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 440 Mbps at 100, 119.88 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-alli-fhd-240",
+     "name": "H.264 ALL-I FHD 240 Mbps",
+     "mbps": 240,
+     "fps": [
+      48,
+      50,
+      59.94
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 240 Mbps at 48, 50, 59.94 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-alli-fhd-140",
+     "name": "H.264 ALL-I FHD 140 Mbps",
+     "mbps": 140,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 140 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-uhd-120",
+     "name": "H.264 GOP UHD 120 Mbps",
+     "mbps": 120,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "uhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 120 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-fhd-100",
+     "name": "H.264 GOP FHD 100 Mbps (100/119.88p)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 100 Mbps at 100, 119.88 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-fhd-70",
+     "name": "H.264 GOP FHD 70 Mbps",
+     "mbps": 70,
+     "fps": [
+      48,
+      50,
+      59.94
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 70 Mbps at 48, 50, 59.94 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-fhd-60",
+     "name": "H.264 GOP FHD 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp User's Manual (FW Ver.5.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 60 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_Manual_FW_Ver.5.0_EN_2.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sigma-fp-l",
+   "name": "SIGMA fp L",
+   "exists": true,
+   "notes": "Data from Sigma SIGMA fp L User's Manual FW Ver.3.0 (bit rate table) and Sigma spec page. Internal: CinemaDNG 8/10/12-bit (image sequence .DNG + .WAV) and MOV H.264 ALL-I/GOP, UHD 3840x2160 up to 29.97p and FHD 1920x1080 up to 119.88p (UHD max 29.97p; no internal DCI 4K). Continuous recording up to 2 h. CinemaDNG UHD 10/12-bit and UHD 8-bit 29.97p need a USB-C portable SSD. fp L (61MP sensor) bit-rate table is identical to the fp's; Sigma spec page notes FHD 100p/119.88p apply an automatic x1.67 crop zoom (file still 1920x1080). Crop Zoom changes sensor area, not recorded resolution. External only (not internal, not included as codecs): HDMI 4:2:2 8-bit, and 12-bit RAW over HDMI recorded as ProRes RAW on Atomos Ninja V / Ninja V+ / Shogun CONNECT or as Blackmagic RAW on Blackmagic Video Assist 12G; DCI 4K 4096x2160 24p is RAW-output-only. Sigma publishes no data rates for these external formats (they depend on the recorder). Audio LPCM 2ch 48 kHz/16-bit.",
+   "sources": [
+    "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+    "https://www.sigma-global.com/en/cameras/fpl/specification.html",
+    "https://www.sigma-global.com/en/special/fp-series/cinemacamera/"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "UHD 4K",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 29.97
+    },
+    {
+     "key": "fhd",
+     "name": "FHD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 119.88
+    }
+   ],
+   "codecs": [
+    {
+     "key": "cdng-12",
+     "name": "CinemaDNG 12-bit",
+     "bpp": 12.0664,
+     "res": [
+      "uhd",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      48,
+      50,
+      59.94,
+      100
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.98,
+       "mbps": 2400,
+       "bpp": 12.0664
+      },
+      {
+       "res": "uhd",
+       "fps": 24,
+       "mbps": 2420,
+       "bpp": 12.1568
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 2520,
+       "bpp": 12.1528
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 3020,
+       "bpp": 12.1489
+      },
+      {
+       "res": "fhd",
+       "fps": 23.98,
+       "mbps": 610,
+       "bpp": 12.2675
+      },
+      {
+       "res": "fhd",
+       "fps": 24,
+       "mbps": 610,
+       "bpp": 12.2573
+      },
+      {
+       "res": "fhd",
+       "fps": 25,
+       "mbps": 640,
+       "bpp": 12.3457
+      },
+      {
+       "res": "fhd",
+       "fps": 29.97,
+       "mbps": 760,
+       "bpp": 12.2293
+      },
+      {
+       "res": "fhd",
+       "fps": 48,
+       "mbps": 1220,
+       "bpp": 12.2573
+      },
+      {
+       "res": "fhd",
+       "fps": 50,
+       "mbps": 1270,
+       "bpp": 12.2492
+      },
+      {
+       "res": "fhd",
+       "fps": 59.94,
+       "mbps": 1530,
+       "bpp": 12.3098
+      },
+      {
+       "res": "fhd",
+       "fps": 100,
+       "mbps": 2540,
+       "bpp": 12.2492
+      }
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, CinemaDNG 12-bit: published Mbps per resolution/fps (all values in rates). Top-level bpp from UHD 3840x2160 23.98p = 2400 Mbps; bpp = Mbps*1e6/(W*H*fps). Published figures imply ~12-12.5 bits/pixel (uncompressed DNG frame sequence + overhead). Media: UHD: SSD only; FHD up to 59.94p on SD UHS-II, 100p SSD only. Max: UHD 29.97p; FHD 100p.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "cdng-10",
+     "name": "CinemaDNG 10-bit",
+     "bpp": 10.0553,
+     "res": [
+      "uhd",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      48,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.98,
+       "mbps": 2000,
+       "bpp": 10.0553
+      },
+      {
+       "res": "uhd",
+       "fps": 24,
+       "mbps": 2010,
+       "bpp": 10.0972
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 2090,
+       "bpp": 10.0791
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 2500,
+       "bpp": 10.057
+      },
+      {
+       "res": "fhd",
+       "fps": 23.98,
+       "mbps": 510,
+       "bpp": 10.2564
+      },
+      {
+       "res": "fhd",
+       "fps": 24,
+       "mbps": 510,
+       "bpp": 10.2479
+      },
+      {
+       "res": "fhd",
+       "fps": 25,
+       "mbps": 530,
+       "bpp": 10.2238
+      },
+      {
+       "res": "fhd",
+       "fps": 29.97,
+       "mbps": 640,
+       "bpp": 10.2984
+      },
+      {
+       "res": "fhd",
+       "fps": 48,
+       "mbps": 1020,
+       "bpp": 10.2479
+      },
+      {
+       "res": "fhd",
+       "fps": 50,
+       "mbps": 1060,
+       "bpp": 10.2238
+      },
+      {
+       "res": "fhd",
+       "fps": 59.94,
+       "mbps": 1280,
+       "bpp": 10.2984
+      },
+      {
+       "res": "fhd",
+       "fps": 100,
+       "mbps": 2120,
+       "bpp": 10.2238
+      },
+      {
+       "res": "fhd",
+       "fps": 119.88,
+       "mbps": 2540,
+       "bpp": 10.2179
+      }
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, CinemaDNG 10-bit: published Mbps per resolution/fps (all values in rates). Top-level bpp from UHD 3840x2160 23.98p = 2000 Mbps; bpp = Mbps*1e6/(W*H*fps). Published figures imply ~10-10.5 bits/pixel (uncompressed DNG frame sequence + overhead). Media: UHD: SSD only; FHD up to 59.94p on SD UHS-II, 100/119.88p SSD only. Max: UHD 29.97p; FHD 119.88p.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "cdng-8",
+     "name": "CinemaDNG 8-bit",
+     "bpp": 8.0443,
+     "res": [
+      "uhd",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      48,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.98,
+       "mbps": 1600,
+       "bpp": 8.0443
+      },
+      {
+       "res": "uhd",
+       "fps": 24,
+       "mbps": 1610,
+       "bpp": 8.0878
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 1670,
+       "bpp": 8.0536
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 2000,
+       "bpp": 8.0456
+      },
+      {
+       "res": "fhd",
+       "fps": 23.98,
+       "mbps": 410,
+       "bpp": 8.2454
+      },
+      {
+       "res": "fhd",
+       "fps": 24,
+       "mbps": 410,
+       "bpp": 8.2385
+      },
+      {
+       "res": "fhd",
+       "fps": 25,
+       "mbps": 430,
+       "bpp": 8.2948
+      },
+      {
+       "res": "fhd",
+       "fps": 29.97,
+       "mbps": 510,
+       "bpp": 8.2065
+      },
+      {
+       "res": "fhd",
+       "fps": 48,
+       "mbps": 820,
+       "bpp": 8.2385
+      },
+      {
+       "res": "fhd",
+       "fps": 50,
+       "mbps": 850,
+       "bpp": 8.1983
+      },
+      {
+       "res": "fhd",
+       "fps": 59.94,
+       "mbps": 1020,
+       "bpp": 8.2065
+      },
+      {
+       "res": "fhd",
+       "fps": 100,
+       "mbps": 1710,
+       "bpp": 8.2465
+      },
+      {
+       "res": "fhd",
+       "fps": 119.88,
+       "mbps": 2050,
+       "bpp": 8.2467
+      }
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, CinemaDNG 8-bit: published Mbps per resolution/fps (all values in rates). Top-level bpp from UHD 3840x2160 23.98p = 1600 Mbps; bpp = Mbps*1e6/(W*H*fps). Published figures imply ~8-8.5 bits/pixel (uncompressed DNG frame sequence + overhead). Media: UHD up to 25p on SD UHS-II, 29.97p SSD only; FHD up to 59.94p on SD UHS-II, 100/119.88p SSD only. Max: UHD 29.97p; FHD 119.88p.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-alli-uhd-440",
+     "name": "H.264 ALL-I UHD 440 Mbps",
+     "mbps": 440,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "uhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 440 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-alli-fhd-440",
+     "name": "H.264 ALL-I FHD 440 Mbps (100/119.88p)",
+     "mbps": 440,
+     "fps": [
+      100,
+      119.88
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 440 Mbps at 100, 119.88 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-alli-fhd-240",
+     "name": "H.264 ALL-I FHD 240 Mbps",
+     "mbps": 240,
+     "fps": [
+      48,
+      50,
+      59.94
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 240 Mbps at 48, 50, 59.94 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-alli-fhd-140",
+     "name": "H.264 ALL-I FHD 140 Mbps",
+     "mbps": 140,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 140 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-uhd-120",
+     "name": "H.264 GOP UHD 120 Mbps",
+     "mbps": 120,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "uhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 120 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-fhd-100",
+     "name": "H.264 GOP FHD 100 Mbps (100/119.88p)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 100 Mbps at 100, 119.88 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-fhd-70",
+     "name": "H.264 GOP FHD 70 Mbps",
+     "mbps": 70,
+     "fps": [
+      48,
+      50,
+      59.94
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 70 Mbps at 48, 50, 59.94 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-gop-fhd-60",
+     "name": "H.264 GOP FHD 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "res": [
+      "fhd"
+     ],
+     "ref": "Sigma SIGMA fp L User's Manual (FW Ver.3.0), 'BIT RATE AND COMPATIBLE MEDIA' table, MOV (H.264) section: 60 Mbps at 23.98, 24, 25, 29.97 fps. SSD and SD both supported; for ALL-I Sigma recommends media writing >= 60 MB/s.",
+     "source": "https://www.sigma-global.com/en/support/download/fp_L_Manual_FW_Ver.3.0_EN.pdf",
+     "estimated": false
+    }
+   ]
+  }
+ ]
+}

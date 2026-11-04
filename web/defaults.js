@@ -77,6 +77,9 @@
       const w = res.key === 'custom' ? Number(c.w) || 0 : res.w, hh = res.key === 'custom' ? Number(c.h) || 0 : res.h;
       const bpp = cd.raw ? (Number(c.bits) || 12) / Math.max(1, Number(c.ratio) || 1) : Number((cd.byRes && cd.byRes[res.key]) || cd.bpp) || 0;
       mbps = w * hh * bpp * fps / 1e6;
+      // manufacturer's exact figure for this resolution + frame rate, when published (e.g. Canon Intra steps per fps)
+      const exact = !cd.raw && cd.rf && cd.rf[res.key] && Object.entries(cd.rf[res.key]).find(([f]) => Math.abs(Number(f) - fps) < 0.02);
+      if (exact) mbps = exact[1];
       res = { ...res, w, h: hh };
     }
     const tbph = mbps * 3600 / 8 / 1e6;

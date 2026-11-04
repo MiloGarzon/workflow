@@ -1,0 +1,2017 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice",
+ "cameras": [
+  {
+   "id": "gopro-hero11",
+   "name": "GoPro HERO11 Black",
+   "exists": true,
+   "notes": "All video H.265 (HEVC) in .MP4 (GoPro product page: max video bit rate 120Mbps; support article lists only H.265 bit rates). Per-mode nominal rates are published by GoPro (Standard/High/10-Bit columns) - not estimated. Frame rates as GoPro labels them (60/30/24 are NTSC-family 59.94/29.97/23.976 in practice; 50/25 PAL). 10-bit is offered only in 5.3K/4K 16:9 and 8:7 modes (N/A elsewhere); High for 4K 120 fps has no 10-bit. Extended Battery Video Mode uses lower caps (Standard 45-60 / High 60-120, e.g. 4K60 60/100) and Looping Video is 45 Mb/s - not listed as separate entries. No 9:16 recording mode in the HERO11 article. LRV proxy, audio and GPMF metadata add to card usage (GoPro capacity table shows ~2:01 per 128 GB at 120 Mb/s).",
+   "sources": [
+    "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+    "https://community.gopro.com/s/article/HERO11-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+    "https://gopro.com/en/us/shop/cameras/hero11-black/CHDHX-111-master.html"
+   ],
+   "resolutions": [
+    {
+     "key": "5.3k-169",
+     "name": "5.3K (16:9)",
+     "w": 5312,
+     "h": 2988,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-169",
+     "name": "4K (16:9)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "2.7k-169",
+     "name": "2.7K (16:9)",
+     "w": 2704,
+     "h": 1520,
+     "maxfps": 240
+    },
+    {
+     "key": "1080p-169",
+     "name": "1080p (16:9)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "5.3k-43",
+     "name": "5.3K (4:3)",
+     "w": 5120,
+     "h": 3984,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-43",
+     "name": "4K (4:3)",
+     "w": 4000,
+     "h": 3000,
+     "maxfps": 60
+    },
+    {
+     "key": "2.7k-43",
+     "name": "2.7K (4:3)",
+     "w": 2704,
+     "h": 2028,
+     "maxfps": 120
+    },
+    {
+     "key": "5.3k-87",
+     "name": "5.3K (8:7)",
+     "w": 5312,
+     "h": 4648,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-87",
+     "name": "4K (8:7)",
+     "w": 3840,
+     "h": 3360,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [],
+   "fixed": [
+    {
+     "key": "hevc-5.3k-169-std-60",
+     "name": "H.265 (HEVC) 5.3K (16:9) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      60,
+      50,
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (16:9) at 60/50/30/25/24 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-169-high-120",
+     "name": "H.265 (HEVC) 5.3K (16:9) High bit rate 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (16:9) at 60/50 fps = 120 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-169-high-100",
+     "name": "H.265 (HEVC) 5.3K (16:9) High bit rate 100 Mb/s",
+     "mbps": 100,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (16:9) at 30/25/24 fps = 100 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-169-10bit-120",
+     "name": "H.265 (HEVC) 5.3K (16:9) 10-bit 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      60,
+      50,
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (16:9) at 60/50/30/25/24 fps = 120 Mb/s (10-bit). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-169-std-60",
+     "name": "H.265 (HEVC) 4K (16:9) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      120,
+      100,
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (16:9) at 120/100/60/50 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-169-std-45",
+     "name": "H.265 (HEVC) 4K (16:9) Standard bit rate 45 Mb/s",
+     "mbps": 45,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (16:9) at 30/25/24 fps = 45 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-169-high-120",
+     "name": "H.265 (HEVC) 4K (16:9) High bit rate 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (16:9) at 120/100 fps = 120 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-169-high-100",
+     "name": "H.265 (HEVC) 4K (16:9) High bit rate 100 Mb/s",
+     "mbps": 100,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      60,
+      50,
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (16:9) at 60/50/30/25/24 fps = 100 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-169-10bit-120",
+     "name": "H.265 (HEVC) 4K (16:9) 10-bit 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      60,
+      50,
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (16:9) at 60/50/30/25/24 fps = 120 Mb/s (10-bit). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-2.7k-169-std-60",
+     "name": "H.265 (HEVC) 2.7K (16:9) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "2.7k-169"
+     ],
+     "fps": [
+      240,
+      200,
+      120,
+      100
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 2.7K (16:9) at 240/200/120/100 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-2.7k-169-std-45",
+     "name": "H.265 (HEVC) 2.7K (16:9) Standard bit rate 45 Mb/s",
+     "mbps": 45,
+     "res": [
+      "2.7k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 2.7K (16:9) at 60/50 fps = 45 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-2.7k-169-high-100",
+     "name": "H.265 (HEVC) 2.7K (16:9) High bit rate 100 Mb/s",
+     "mbps": 100,
+     "res": [
+      "2.7k-169"
+     ],
+     "fps": [
+      240,
+      200,
+      120,
+      100,
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 2.7K (16:9) at 240/200/120/100/60/50 fps = 100 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-1080p-169-std-60",
+     "name": "H.265 (HEVC) 1080p (16:9) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 1080p (16:9) at 240/200 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-1080p-169-std-45",
+     "name": "H.265 (HEVC) 1080p (16:9) Standard bit rate 45 Mb/s",
+     "mbps": 45,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      120,
+      100,
+      60,
+      50,
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 1080p (16:9) at 120/100/60/50/30/25/24 fps = 45 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-1080p-169-high-78",
+     "name": "H.265 (HEVC) 1080p (16:9) High bit rate 78 Mb/s",
+     "mbps": 78,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 1080p (16:9) at 240/200 fps = 78 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-1080p-169-high-60",
+     "name": "H.265 (HEVC) 1080p (16:9) High bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      120,
+      100,
+      60,
+      50,
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 1080p (16:9) at 120/100/60/50/30/25/24 fps = 60 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-43-std-60",
+     "name": "H.265 (HEVC) 5.3K (4:3) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "5.3k-43"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (4:3) at 30/25/24 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-43-high-120",
+     "name": "H.265 (HEVC) 5.3K (4:3) High bit rate 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "5.3k-43"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (4:3) at 30/25/24 fps = 120 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-43-std-60",
+     "name": "H.265 (HEVC) 4K (4:3) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "4k-43"
+     ],
+     "fps": [
+      60,
+      50,
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (4:3) at 60/50/30/25/24 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-43-high-120",
+     "name": "H.265 (HEVC) 4K (4:3) High bit rate 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-43"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (4:3) at 60/50 fps = 120 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-43-high-100",
+     "name": "H.265 (HEVC) 4K (4:3) High bit rate 100 Mb/s",
+     "mbps": 100,
+     "res": [
+      "4k-43"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (4:3) at 30/25/24 fps = 100 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-2.7k-43-std-60",
+     "name": "H.265 (HEVC) 2.7K (4:3) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      120,
+      100,
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 2.7K (4:3) at 120/100/60/50 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-2.7k-43-high-100",
+     "name": "H.265 (HEVC) 2.7K (4:3) High bit rate 100 Mb/s",
+     "mbps": 100,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      120,
+      100,
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 2.7K (4:3) at 120/100/60/50 fps = 100 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-87-std-60",
+     "name": "H.265 (HEVC) 5.3K (8:7) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (8:7) at 30/25/24 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-87-high-120",
+     "name": "H.265 (HEVC) 5.3K (8:7) High bit rate 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (8:7) at 30/25/24 fps = 120 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-5.3k-87-10bit-120",
+     "name": "H.265 (HEVC) 5.3K (8:7) 10-bit 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      30,
+      25,
+      24
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 5.3K (8:7) at 30/25/24 fps = 120 Mb/s (10-bit). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-87-std-60",
+     "name": "H.265 (HEVC) 4K (8:7) Standard bit rate 60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (8:7) at 60/50 fps = 60 Mb/s (Standard bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-87-high-120",
+     "name": "H.265 (HEVC) 4K (8:7) High bit rate 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (8:7) at 60/50 fps = 120 Mb/s (High bit rate). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    },
+    {
+     "key": "hevc-4k-87-10bit-120",
+     "name": "H.265 (HEVC) 4K (8:7) 10-bit 120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "GoPro support 'HERO11 Black: Video Settings And Resolutions', Highest Quality Video Mode table, column 'H.265 Bitrate Standard/High/10-Bit': 4K (8:7) at 60/50 fps = 120 Mb/s (10-bit). Nominal published figure.",
+     "source": "https://community.gopro.com/s/article/HERO11-Black-Video-Settings-And-Resolutions?language=en_US",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "gopro-hero12",
+   "name": "GoPro HERO12 Black",
+   "exists": true,
+   "notes": "H.265 (HEVC) only; gopro.com spec: 'Maximum Video Bit Rate 120Mbps', 10-bit (4K and higher). GoPro does NOT publish per-mode bit rates for HERO12 (variable bit rate, Standard/High setting); per-mode figures are derived from GoPro's 128 GB record-time table, scaled so 2:01 = 120 Mb/s (calibrated against HERO11's published table) - all estimated. 10-bit has no separate figure. 4:3 4K (4000x3000) exists only with Max Lens Mod 2.0 (60/50/30/25/24) - no rate data; 4:3 2.7K 60/50 listed in capacity table. Max Lens Mod modes not otherwise covered. Frame rates as GoPro labels them.",
+   "sources": [
+    "https://community.gopro.com/s/article/HERO12-Black-Video-Settings-And-Resolutions?language=en_US",
+    "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+    "https://gopro.com/en/us/shop/cameras/hero12-black/CHDHX-121-master.html"
+   ],
+   "resolutions": [
+    {
+     "key": "5.3k-169",
+     "name": "5.3K (16:9)",
+     "w": 5312,
+     "h": 2988,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-169",
+     "name": "4K (16:9)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "2.7k-169",
+     "name": "2.7K (16:9)",
+     "w": 2704,
+     "h": 1520,
+     "maxfps": 240
+    },
+    {
+     "key": "1080p-169",
+     "name": "1080p (16:9)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "4k-43",
+     "name": "4K (4:3, Max Lens Mod 2.0)",
+     "w": 4000,
+     "h": 3000,
+     "maxfps": 60
+    },
+    {
+     "key": "2.7k-43",
+     "name": "2.7K (4:3)",
+     "w": 2704,
+     "h": 2028,
+     "maxfps": 120
+    },
+    {
+     "key": "5.3k-87",
+     "name": "5.3K (8:7)",
+     "w": 5312,
+     "h": 4648,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-87",
+     "name": "4K (8:7)",
+     "w": 3840,
+     "h": 3360,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-916",
+     "name": "4K (9:16)",
+     "w": 2160,
+     "h": 3840,
+     "maxfps": 60
+    },
+    {
+     "key": "1080p-916",
+     "name": "1080p (9:16)",
+     "w": 1080,
+     "h": 1920,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [],
+   "fixed": [
+    {
+     "key": "hevc-5.3k-169-60-high",
+     "name": "H.265 (HEVC) 5.3K (16:9) 60p High bit rate ~120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 60 fps High bit rate = 2:01 (h:mm). Mbps = 120 x 121 min / 121 min = 120.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-60-std",
+     "name": "H.265 (HEVC) 5.3K (16:9) 60p Standard bit rate ~62 Mb/s",
+     "mbps": 62,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 60 fps Standard bit rate = 3:54 (h:mm). Mbps = 120 x 121 min / 234 min = 62.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-30-high",
+     "name": "H.265 (HEVC) 5.3K (16:9) 30p High bit rate ~118 Mb/s",
+     "mbps": 118,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 30 fps High bit rate = 2:03 (h:mm). Mbps = 120 x 121 min / 123 min = 118.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-30-std",
+     "name": "H.265 (HEVC) 5.3K (16:9) 30p Standard bit rate ~56 Mb/s",
+     "mbps": 56,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 30 fps Standard bit rate = 4:19 (h:mm). Mbps = 120 x 121 min / 259 min = 56.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-24-high",
+     "name": "H.265 (HEVC) 5.3K (16:9) 24p High bit rate ~99 Mb/s",
+     "mbps": 99,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 24 fps High bit rate = 2:26 (h:mm). Mbps = 120 x 121 min / 146 min = 99.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-24-std",
+     "name": "H.265 (HEVC) 5.3K (16:9) 24p Standard bit rate ~51 Mb/s",
+     "mbps": 51,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 24 fps Standard bit rate = 4:44 (h:mm). Mbps = 120 x 121 min / 284 min = 51.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-120-high",
+     "name": "H.265 (HEVC) 4K (16:9) 120p High bit rate ~120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 120 fps High bit rate = 2:00 (h:mm). Mbps = 120 x 121 min / 120 min = 121.0 (computed value slightly above 120; capped at the published 'Maximum Video Bit Rate 120Mbps'). Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-120-std",
+     "name": "H.265 (HEVC) 4K (16:9) 120p Standard bit rate ~78 Mb/s",
+     "mbps": 78,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 120 fps Standard bit rate = 3:06 (h:mm). Mbps = 120 x 121 min / 186 min = 78.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-60-high",
+     "name": "H.265 (HEVC) 4K (16:9) 60p High bit rate ~120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 60 fps High bit rate = 2:01 (h:mm). Mbps = 120 x 121 min / 121 min = 120.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-60-std",
+     "name": "H.265 (HEVC) 4K (16:9) 60p Standard bit rate ~53 Mb/s",
+     "mbps": 53,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 60 fps Standard bit rate = 4:36 (h:mm). Mbps = 120 x 121 min / 276 min = 52.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-30-high",
+     "name": "H.265 (HEVC) 4K (16:9) 30p High bit rate ~90 Mb/s",
+     "mbps": 90,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 30 fps High bit rate = 2:42 (h:mm). Mbps = 120 x 121 min / 162 min = 89.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-30-std",
+     "name": "H.265 (HEVC) 4K (16:9) 30p Standard bit rate ~37 Mb/s",
+     "mbps": 37,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 30 fps Standard bit rate = 6:35 (h:mm). Mbps = 120 x 121 min / 395 min = 36.8. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-24-high",
+     "name": "H.265 (HEVC) 4K (16:9) 24p High bit rate ~75 Mb/s",
+     "mbps": 75,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 24 fps High bit rate = 3:13 (h:mm). Mbps = 120 x 121 min / 193 min = 75.2. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-24-std",
+     "name": "H.265 (HEVC) 4K (16:9) 24p Standard bit rate ~32 Mb/s",
+     "mbps": 32,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 24 fps Standard bit rate = 7:34 (h:mm). Mbps = 120 x 121 min / 454 min = 32.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-169-240-high",
+     "name": "H.265 (HEVC) 2.7K (16:9) 240p High bit rate ~120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "2.7k-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 2.7K (16:9) 240 fps High bit rate = 2:00 (h:mm). Mbps = 120 x 121 min / 120 min = 121.0 (computed value slightly above 120; capped at the published 'Maximum Video Bit Rate 120Mbps'). Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 200 fps assumed same as 240 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-169-240-std",
+     "name": "H.265 (HEVC) 2.7K (16:9) 240p Standard bit rate ~78 Mb/s",
+     "mbps": 78,
+     "res": [
+      "2.7k-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 2.7K (16:9) 240 fps Standard bit rate = 3:06 (h:mm). Mbps = 120 x 121 min / 186 min = 78.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 200 fps assumed same as 240 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-240-high",
+     "name": "H.265 (HEVC) 1080p (16:9) 240p High bit rate ~116 Mb/s",
+     "mbps": 116,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 240 fps High bit rate = 2:05 (h:mm). Mbps = 120 x 121 min / 125 min = 116.2. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 200 fps assumed same as 240 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-240-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 240p Standard bit rate ~63 Mb/s",
+     "mbps": 63,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 240 fps Standard bit rate = 3:49 (h:mm). Mbps = 120 x 121 min / 229 min = 63.4. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 200 fps assumed same as 240 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-120-high",
+     "name": "H.265 (HEVC) 1080p (16:9) 120p High bit rate ~92 Mb/s",
+     "mbps": 92,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 120 fps High bit rate = 2:37 (h:mm). Mbps = 120 x 121 min / 157 min = 92.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-120-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 120p Standard bit rate ~49 Mb/s",
+     "mbps": 49,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 120 fps Standard bit rate = 4:56 (h:mm). Mbps = 120 x 121 min / 296 min = 49.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-60-high",
+     "name": "H.265 (HEVC) 1080p (16:9) 60p High bit rate ~67 Mb/s",
+     "mbps": 67,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 60 fps High bit rate = 3:37 (h:mm). Mbps = 120 x 121 min / 217 min = 66.9. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-60-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 60p Standard bit rate ~33 Mb/s",
+     "mbps": 33,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 60 fps Standard bit rate = 7:14 (h:mm). Mbps = 120 x 121 min / 434 min = 33.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-30-high",
+     "name": "H.265 (HEVC) 1080p (16:9) 30p High bit rate ~42 Mb/s",
+     "mbps": 42,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 30 fps High bit rate = 5:49 (h:mm). Mbps = 120 x 121 min / 349 min = 41.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-30-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 30p Standard bit rate ~22 Mb/s",
+     "mbps": 22,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 30 fps Standard bit rate = 10:47 (h:mm). Mbps = 120 x 121 min / 647 min = 22.4. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-24-high",
+     "name": "H.265 (HEVC) 1080p (16:9) 24p High bit rate ~37 Mb/s",
+     "mbps": 37,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 24 fps High bit rate = 6:35 (h:mm). Mbps = 120 x 121 min / 395 min = 36.8. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-24-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 24p Standard bit rate ~22 Mb/s",
+     "mbps": 22,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 24 fps Standard bit rate = 10:47 (h:mm). Mbps = 120 x 121 min / 647 min = 22.4. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-43-120-high",
+     "name": "H.265 (HEVC) 2.7K (4:3) 120p High bit rate ~120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 2.7K (4:3) 120 fps High bit rate = 2:00 (h:mm). Mbps = 120 x 121 min / 120 min = 121.0 (computed value slightly above 120; capped at the published 'Maximum Video Bit Rate 120Mbps'). Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-43-120-std",
+     "name": "H.265 (HEVC) 2.7K (4:3) 120p Standard bit rate ~63 Mb/s",
+     "mbps": 63,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 2.7K (4:3) 120 fps Standard bit rate = 3:49 (h:mm). Mbps = 120 x 121 min / 229 min = 63.4. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-43-60-high",
+     "name": "H.265 (HEVC) 2.7K (4:3) 60p High bit rate ~110 Mb/s",
+     "mbps": 110,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 2.7K (4:3) 60 fps High bit rate = 2:12 (h:mm). Mbps = 120 x 121 min / 132 min = 110.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-43-60-std",
+     "name": "H.265 (HEVC) 2.7K (4:3) 60p Standard bit rate ~43 Mb/s",
+     "mbps": 43,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 2.7K (4:3) 60 fps Standard bit rate = 5:37 (h:mm). Mbps = 120 x 121 min / 337 min = 43.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-30-high",
+     "name": "H.265 (HEVC) 5.3K (8:7) 30p High bit rate ~118 Mb/s",
+     "mbps": 118,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 30 fps High bit rate = 2:03 (h:mm). Mbps = 120 x 121 min / 123 min = 118.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-30-std",
+     "name": "H.265 (HEVC) 5.3K (8:7) 30p Standard bit rate ~61 Mb/s",
+     "mbps": 61,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 30 fps Standard bit rate = 3:59 (h:mm). Mbps = 120 x 121 min / 239 min = 60.8. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-24-high",
+     "name": "H.265 (HEVC) 5.3K (8:7) 24p High bit rate ~99 Mb/s",
+     "mbps": 99,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 24 fps High bit rate = 2:26 (h:mm). Mbps = 120 x 121 min / 146 min = 99.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-24-std",
+     "name": "H.265 (HEVC) 5.3K (8:7) 24p Standard bit rate ~61 Mb/s",
+     "mbps": 61,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 24 fps Standard bit rate = 3:59 (h:mm). Mbps = 120 x 121 min / 239 min = 60.8. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-60-high",
+     "name": "H.265 (HEVC) 4K (8:7) 60p High bit rate ~120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 60 fps High bit rate = 2:01 (h:mm). Mbps = 120 x 121 min / 121 min = 120.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-60-std",
+     "name": "H.265 (HEVC) 4K (8:7) 60p Standard bit rate ~62 Mb/s",
+     "mbps": 62,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 60 fps Standard bit rate = 3:53 (h:mm). Mbps = 120 x 121 min / 233 min = 62.3. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-30-high",
+     "name": "H.265 (HEVC) 4K (8:7) 30p High bit rate ~113 Mb/s",
+     "mbps": 113,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 30 fps High bit rate = 2:08 (h:mm). Mbps = 120 x 121 min / 128 min = 113.4. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-30-std",
+     "name": "H.265 (HEVC) 4K (8:7) 30p Standard bit rate ~46 Mb/s",
+     "mbps": 46,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 30 fps Standard bit rate = 5:13 (h:mm). Mbps = 120 x 121 min / 313 min = 46.4. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-24-high",
+     "name": "H.265 (HEVC) 4K (8:7) 24p High bit rate ~90 Mb/s",
+     "mbps": 90,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 24 fps High bit rate = 2:42 (h:mm). Mbps = 120 x 121 min / 162 min = 89.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-24-std",
+     "name": "H.265 (HEVC) 4K (8:7) 24p Standard bit rate ~42 Mb/s",
+     "mbps": 42,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 24 fps Standard bit rate = 5:49 (h:mm). Mbps = 120 x 121 min / 349 min = 41.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-60-high",
+     "name": "H.265 (HEVC) 4K (9:16) 60p High bit rate ~120 Mb/s",
+     "mbps": 120,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 60 fps High bit rate = 2:01 (h:mm). Mbps = 120 x 121 min / 121 min = 120.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-60-std",
+     "name": "H.265 (HEVC) 4K (9:16) 60p Standard bit rate ~53 Mb/s",
+     "mbps": 53,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 60 fps Standard bit rate = 4:36 (h:mm). Mbps = 120 x 121 min / 276 min = 52.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-30-high",
+     "name": "H.265 (HEVC) 4K (9:16) 30p High bit rate ~90 Mb/s",
+     "mbps": 90,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 30 fps High bit rate = 2:42 (h:mm). Mbps = 120 x 121 min / 162 min = 89.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-30-std",
+     "name": "H.265 (HEVC) 4K (9:16) 30p Standard bit rate ~37 Mb/s",
+     "mbps": 37,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 30 fps Standard bit rate = 6:35 (h:mm). Mbps = 120 x 121 min / 395 min = 36.8. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-60-high",
+     "name": "H.265 (HEVC) 1080p (9:16) 60p High bit rate ~67 Mb/s",
+     "mbps": 67,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 60 fps High bit rate = 3:37 (h:mm). Mbps = 120 x 121 min / 217 min = 66.9. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-60-std",
+     "name": "H.265 (HEVC) 1080p (9:16) 60p Standard bit rate ~33 Mb/s",
+     "mbps": 33,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 60 fps Standard bit rate = 7:14 (h:mm). Mbps = 120 x 121 min / 434 min = 33.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-30-high",
+     "name": "H.265 (HEVC) 1080p (9:16) 30p High bit rate ~42 Mb/s",
+     "mbps": 42,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 30 fps High bit rate = 5:49 (h:mm). Mbps = 120 x 121 min / 349 min = 41.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-30-std",
+     "name": "H.265 (HEVC) 1080p (9:16) 30p Standard bit rate ~22 Mb/s",
+     "mbps": 22,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO12 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 30 fps Standard bit rate = 10:47 (h:mm). Mbps = 120 x 121 min / 647 min = 22.4. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO12-Black-SD-Card-Capacity-In-Each-Video-Setting?language=en_US",
+     "estimated": true
+    }
+   ]
+  },
+  {
+   "id": "gopro-hero13",
+   "name": "GoPro HERO13 Black",
+   "exists": true,
+   "notes": "H.265 (HEVC) only; gopro.com spec: 'Maximum Video Bit Rate 120Mbps', 10-bit (4K and higher). Per GoPro 'Video Settings And Resolutions' (Feb 2026): 2.7K 240/200 and all 1080p 16:9 modes are 8-bit, Standard bit rate only (the Sep 2024 capacity table still lists High times for them - omitted here); 4:3 and 9:16 are 8-bit only. GoPro does NOT publish per-mode rates; figures derived from the 128 GB record-time table scaled so 2:01 = 120 Mb/s (calibrated on HERO11 published rates) - estimated. Spec page lists 4K 8:7 at 60/50/30/25 while support article also lists 24 fps; 1080p has no 24 fps. Burst Slo-Mo (720p 400fps / 900p 360fps / 5.3K 4x, 15s/5s bursts) and HB-Series lens modes not covered.",
+   "sources": [
+    "https://community.gopro.com/s/article/HERO13-Black-Video-Settings-And-Resolutions?language=en_US",
+    "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+    "https://gopro.com/en/us/shop/cameras/buy/hero13black/CHDHX-131-master.html?tab=tech-specs"
+   ],
+   "resolutions": [
+    {
+     "key": "5.3k-169",
+     "name": "5.3K (16:9)",
+     "w": 5312,
+     "h": 2988,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-169",
+     "name": "4K (16:9)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "2.7k-169",
+     "name": "2.7K (16:9)",
+     "w": 2704,
+     "h": 1520,
+     "maxfps": 240
+    },
+    {
+     "key": "1080p-169",
+     "name": "1080p (16:9)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    },
+    {
+     "key": "2.7k-43",
+     "name": "2.7K (4:3)",
+     "w": 2704,
+     "h": 2028,
+     "maxfps": 120
+    },
+    {
+     "key": "5.3k-87",
+     "name": "5.3K (8:7)",
+     "w": 5312,
+     "h": 4648,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-87",
+     "name": "4K (8:7)",
+     "w": 3840,
+     "h": 3360,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-916",
+     "name": "4K (9:16)",
+     "w": 2160,
+     "h": 3840,
+     "maxfps": 60
+    },
+    {
+     "key": "1080p-916",
+     "name": "1080p (9:16)",
+     "w": 1080,
+     "h": 1920,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [],
+   "fixed": [
+    {
+     "key": "hevc-5.3k-169-60-high",
+     "name": "H.265 (HEVC) 5.3K (16:9) 60p High bit rate ~118 Mb/s",
+     "mbps": 118,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 60 fps High bit rate = 2:03 (h:mm). Mbps = 120 x 121 min / 123 min = 118.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-60-std",
+     "name": "H.265 (HEVC) 5.3K (16:9) 60p Standard bit rate ~60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 60 fps Standard bit rate = 4:00 (h:mm). Mbps = 120 x 121 min / 240 min = 60.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-30-high",
+     "name": "H.265 (HEVC) 5.3K (16:9) 30p High bit rate ~117 Mb/s",
+     "mbps": 117,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 30 fps High bit rate = 2:04 (h:mm). Mbps = 120 x 121 min / 124 min = 117.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-30-std",
+     "name": "H.265 (HEVC) 5.3K (16:9) 30p Standard bit rate ~55 Mb/s",
+     "mbps": 55,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 30 fps Standard bit rate = 4:26 (h:mm). Mbps = 120 x 121 min / 266 min = 54.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-24-high",
+     "name": "H.265 (HEVC) 5.3K (16:9) 24p High bit rate ~117 Mb/s",
+     "mbps": 117,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 24 fps High bit rate = 2:04 (h:mm). Mbps = 120 x 121 min / 124 min = 117.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-169-24-std",
+     "name": "H.265 (HEVC) 5.3K (16:9) 24p Standard bit rate ~50 Mb/s",
+     "mbps": 50,
+     "res": [
+      "5.3k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (16:9) 24 fps Standard bit rate = 4:51 (h:mm). Mbps = 120 x 121 min / 291 min = 49.9. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-120-high",
+     "name": "H.265 (HEVC) 4K (16:9) 120p High bit rate ~119 Mb/s",
+     "mbps": 119,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 120 fps High bit rate = 2:02 (h:mm). Mbps = 120 x 121 min / 122 min = 119.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-120-std",
+     "name": "H.265 (HEVC) 4K (16:9) 120p Standard bit rate ~76 Mb/s",
+     "mbps": 76,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 120 fps Standard bit rate = 3:11 (h:mm). Mbps = 120 x 121 min / 191 min = 76.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-60-high",
+     "name": "H.265 (HEVC) 4K (16:9) 60p High bit rate ~118 Mb/s",
+     "mbps": 118,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 60 fps High bit rate = 2:03 (h:mm). Mbps = 120 x 121 min / 123 min = 118.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-60-std",
+     "name": "H.265 (HEVC) 4K (16:9) 60p Standard bit rate ~56 Mb/s",
+     "mbps": 56,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 60 fps Standard bit rate = 4:21 (h:mm). Mbps = 120 x 121 min / 261 min = 55.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-30-high",
+     "name": "H.265 (HEVC) 4K (16:9) 30p High bit rate ~88 Mb/s",
+     "mbps": 88,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 30 fps High bit rate = 2:45 (h:mm). Mbps = 120 x 121 min / 165 min = 88.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-30-std",
+     "name": "H.265 (HEVC) 4K (16:9) 30p Standard bit rate ~45 Mb/s",
+     "mbps": 45,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 30 fps Standard bit rate = 5:22 (h:mm). Mbps = 120 x 121 min / 322 min = 45.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-24-high",
+     "name": "H.265 (HEVC) 4K (16:9) 24p High bit rate ~74 Mb/s",
+     "mbps": 74,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 24 fps High bit rate = 3:17 (h:mm). Mbps = 120 x 121 min / 197 min = 73.7. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-169-24-std",
+     "name": "H.265 (HEVC) 4K (16:9) 24p Standard bit rate ~31 Mb/s",
+     "mbps": 31,
+     "res": [
+      "4k-169"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (16:9) 24 fps Standard bit rate = 7:53 (h:mm). Mbps = 120 x 121 min / 473 min = 30.7. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-169-240-std",
+     "name": "H.265 (HEVC) 2.7K (16:9) 240p Standard bit rate ~72 Mb/s",
+     "mbps": 72,
+     "res": [
+      "2.7k-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 2.7K (16:9) 240 fps Standard bit rate = 3:23 (h:mm). Mbps = 120 x 121 min / 203 min = 71.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 200 fps assumed same as 240 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-240-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 240p Standard bit rate ~65 Mb/s",
+     "mbps": 65,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      240,
+      200
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 240 fps Standard bit rate = 3:43 (h:mm). Mbps = 120 x 121 min / 223 min = 65.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 200 fps assumed same as 240 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-120-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 120p Standard bit rate ~47 Mb/s",
+     "mbps": 47,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 120 fps Standard bit rate = 5:06 (h:mm). Mbps = 120 x 121 min / 306 min = 47.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-60-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 60p Standard bit rate ~32 Mb/s",
+     "mbps": 32,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 60 fps Standard bit rate = 7:39 (h:mm). Mbps = 120 x 121 min / 459 min = 31.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-169-30-std",
+     "name": "H.265 (HEVC) 1080p (16:9) 30p Standard bit rate ~21 Mb/s",
+     "mbps": 21,
+     "res": [
+      "1080p-169"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (16:9) 30 fps Standard bit rate = 11:27 (h:mm). Mbps = 120 x 121 min / 687 min = 21.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-43-120-high",
+     "name": "H.265 (HEVC) 2.7K (4:3) 120p High bit rate ~119 Mb/s",
+     "mbps": 119,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 2.7K (4:3) 120 fps High bit rate = 2:02 (h:mm). Mbps = 120 x 121 min / 122 min = 119.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-2.7k-43-120-std",
+     "name": "H.265 (HEVC) 2.7K (4:3) 120p Standard bit rate ~62 Mb/s",
+     "mbps": 62,
+     "res": [
+      "2.7k-43"
+     ],
+     "fps": [
+      120,
+      100
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 2.7K (4:3) 120 fps Standard bit rate = 3:55 (h:mm). Mbps = 120 x 121 min / 235 min = 61.8. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 100 fps assumed same as 120 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-30-high",
+     "name": "H.265 (HEVC) 5.3K (8:7) 30p High bit rate ~117 Mb/s",
+     "mbps": 117,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 30 fps High bit rate = 2:04 (h:mm). Mbps = 120 x 121 min / 124 min = 117.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-30-std",
+     "name": "H.265 (HEVC) 5.3K (8:7) 30p Standard bit rate ~60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 30 fps Standard bit rate = 4:04 (h:mm). Mbps = 120 x 121 min / 244 min = 59.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-24-high",
+     "name": "H.265 (HEVC) 5.3K (8:7) 24p High bit rate ~117 Mb/s",
+     "mbps": 117,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 24 fps High bit rate = 2:04 (h:mm). Mbps = 120 x 121 min / 124 min = 117.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-5.3k-87-24-std",
+     "name": "H.265 (HEVC) 5.3K (8:7) 24p Standard bit rate ~60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "5.3k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 5.3K (8:7) 24 fps Standard bit rate = 4:04 (h:mm). Mbps = 120 x 121 min / 244 min = 59.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-60-high",
+     "name": "H.265 (HEVC) 4K (8:7) 60p High bit rate ~118 Mb/s",
+     "mbps": 118,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 60 fps High bit rate = 2:03 (h:mm). Mbps = 120 x 121 min / 123 min = 118.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-60-std",
+     "name": "H.265 (HEVC) 4K (8:7) 60p Standard bit rate ~60 Mb/s",
+     "mbps": 60,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 60 fps Standard bit rate = 4:00 (h:mm). Mbps = 120 x 121 min / 240 min = 60.5. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-30-high",
+     "name": "H.265 (HEVC) 4K (8:7) 30p High bit rate ~117 Mb/s",
+     "mbps": 117,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 30 fps High bit rate = 2:04 (h:mm). Mbps = 120 x 121 min / 124 min = 117.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-30-std",
+     "name": "H.265 (HEVC) 4K (8:7) 30p Standard bit rate ~45 Mb/s",
+     "mbps": 45,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 30 fps Standard bit rate = 5:22 (h:mm). Mbps = 120 x 121 min / 322 min = 45.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-24-high",
+     "name": "H.265 (HEVC) 4K (8:7) 24p High bit rate ~103 Mb/s",
+     "mbps": 103,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 24 fps High bit rate = 2:21 (h:mm). Mbps = 120 x 121 min / 141 min = 103.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-87-24-std",
+     "name": "H.265 (HEVC) 4K (8:7) 24p Standard bit rate ~40 Mb/s",
+     "mbps": 40,
+     "res": [
+      "4k-87"
+     ],
+     "fps": [
+      24
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (8:7) 24 fps Standard bit rate = 6:01 (h:mm). Mbps = 120 x 121 min / 361 min = 40.2. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates.",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-60-high",
+     "name": "H.265 (HEVC) 4K (9:16) 60p High bit rate ~118 Mb/s",
+     "mbps": 118,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 60 fps High bit rate = 2:03 (h:mm). Mbps = 120 x 121 min / 123 min = 118.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-60-std",
+     "name": "H.265 (HEVC) 4K (9:16) 60p Standard bit rate ~56 Mb/s",
+     "mbps": 56,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 60 fps Standard bit rate = 4:21 (h:mm). Mbps = 120 x 121 min / 261 min = 55.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-30-high",
+     "name": "H.265 (HEVC) 4K (9:16) 30p High bit rate ~88 Mb/s",
+     "mbps": 88,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 30 fps High bit rate = 2:45 (h:mm). Mbps = 120 x 121 min / 165 min = 88.0. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-4k-916-30-std",
+     "name": "H.265 (HEVC) 4K (9:16) 30p Standard bit rate ~45 Mb/s",
+     "mbps": 45,
+     "res": [
+      "4k-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 4K (9:16) 30 fps Standard bit rate = 5:22 (h:mm). Mbps = 120 x 121 min / 322 min = 45.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-60-high",
+     "name": "H.265 (HEVC) 1080p (9:16) 60p High bit rate ~65 Mb/s",
+     "mbps": 65,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 60 fps High bit rate = 3:43 (h:mm). Mbps = 120 x 121 min / 223 min = 65.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-60-std",
+     "name": "H.265 (HEVC) 1080p (9:16) 60p Standard bit rate ~32 Mb/s",
+     "mbps": 32,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      60,
+      50
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 60 fps Standard bit rate = 7:39 (h:mm). Mbps = 120 x 121 min / 459 min = 31.6. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 50 fps assumed same as 60 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-30-high",
+     "name": "H.265 (HEVC) 1080p (9:16) 30p High bit rate ~40 Mb/s",
+     "mbps": 40,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 30 fps High bit rate = 6:01 (h:mm). Mbps = 120 x 121 min / 361 min = 40.2. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    },
+    {
+     "key": "hevc-1080p-916-30-std",
+     "name": "H.265 (HEVC) 1080p (9:16) 30p Standard bit rate ~21 Mb/s",
+     "mbps": 21,
+     "res": [
+      "1080p-916"
+     ],
+     "fps": [
+      30,
+      25
+     ],
+     "ref": "Derived from GoPro support 'HERO13 Black: SD Card Capacity' table (128 GB card): 1080p (9:16) 30 fps Standard bit rate = 11:27 (h:mm). Mbps = 120 x 121 min / 687 min = 21.1. Calibration: on GoPro's HERO11 Black capacity table (same 128 GB card) the published 120 Mb/s modes show 2:01, and this scaling reproduces several of HERO11's published per-mode rates (e.g. 5.3K60 Std 60 -> 62, 4K30 Std 45 -> 46, 1080p30 High 60 -> 61, 1080p240 High 78 -> 81), though that table is not consistent everywhere (4K30 High, published 100, shows 2:03), so treat as approximate. GoPro states HERO12/13 bit rate is variable with scene complexity; tables are static-scene estimates. 25 fps assumed same as 30 fps (PAL counterpart not in table).",
+     "source": "https://community.gopro.com/s/article/HERO13-Black-SD-Card-Capacity-In-Various-Settings?language=en_US",
+     "estimated": true
+    }
+   ]
+  }
+ ]
+}

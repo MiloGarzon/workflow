@@ -1,7 +1,14 @@
 # Build web/cameras.js from the researched JSON files.
 import json, sys, os, re
 src, out = sys.argv[1], sys.argv[2]
-order = [('ARRI', 'arri.json', None), ('Sony', 'sony.json', None), ('RED', 'red.json', None), ('Apple iPhone', 'apple-dji.json', 'apple'), ('DJI', 'apple-dji.json', 'dji')]
+order = [('ARRI', 'arri.json', None), ('ARRI', 'arri-extra.json', None), ('Sony', 'sony.json', None), ('Sony', 'sony-extra.json', None),
+         ('RED', 'red.json', None), ('RED', 'red-extra.json', None), ('Blackmagic Design', 'blackmagic.json', None), ('Canon', 'canon.json', None),
+         ('Panasonic', 'panasonic.json', None), ('Fujifilm', 'fujifilm.json', None), ('Nikon', 'nikon.json', None), ('Z CAM', 'zcam.json', None),
+         ('Kinefinity', 'kinefinity.json', None), ('Panavision', 'cine-otros.json', 'panavision'), ('Phantom', 'cine-otros.json', 'phantom'),
+         ('Apple iPhone', 'apple-dji.json', 'apple'), ('Apple iPhone', 'apple-extra.json', 'apple'), ('DJI', 'apple-dji.json', 'dji'), ('DJI', 'dji-extra.json', 'dji'),
+         ('GoPro', 'gopro.json', None), ('Otras marcas', 'otros.json', None)]
+# maker prefix removed from display names (the app shows "<brand> <name>"); 'Otras marcas' keeps the full name
+MAKER = re.compile(r'^(ARRI|Sony|RED|Blackmagic Design|Blackmagic|Canon|Panasonic|FUJIFILM|Fujifilm|Nikon|Z ?CAM|Kinefinity|Panavision|Phantom|DJI|GoPro|Apple)\s+', re.I)
 brands, report = [], []
 # display order and names follow the user's list
 ORDER = ['arri-alexa35', 'arri-alexa35-xtreme', 'arri-alexa65', 'arri-alexa265', 'arri-alexa-mini', 'arri-alexa-mini-lf',
@@ -33,6 +40,16 @@ RENAME = {
     'H.264 (max)': 'H.264 (máximo)', 'H.265 (max)': 'H.265 (máximo)',
     'H.264 4K/4.1K up to 30 fps': 'H.264 4K hasta 30 fps', 'H.264 4K/4.1K 48-60 fps': 'H.264 4K 48–60 fps', 'H.264 4K/4.1K 72-120 fps (FF only, S&Q)': 'H.264 4K 72–120 fps',
 }
+# shorter, consistent codec labels for the dropdown
+CLEAN = [(r'Intra-frame', 'Intra'), (r'YCC(\d)(\d)(\d)', r'\1:\2:\3'), (r'\(highest (?:4K )?(?:bit rate )?option\)', '(tasa alta)'),
+         (r'\(middle (?:4K )?(?:bit rate )?option\)', '(tasa media)'), (r'\((?:lowest|lower) (?:4K )?(?:bit rate )?option\)', '(tasa baja)'),
+         (r'\(highest option, ([^)]*)\)', r'(tasa alta, \1)'), (r'\(interlaced\)', '(entrelazado)'), (r'\(external recorder\)', '(grabador externo)'),
+         (r'ProRes RAW \(DJI high-rate tier[^)]*\)', 'ProRes RAW (tasa normal)'), (r'ProRes RAW \(DJI reduced-rate tier([^)]*)\)', r'ProRes RAW (tasa reducida\1)'),
+         (r'\s{2,}', ' ')]
+def clean(n):
+    n = RENAME.get(n, n)
+    for a, b in CLEAN: n = re.sub(a, b, n)
+    return n.strip()
 for name, fn, pref in order:
     path = os.path.join(src, fn)
     if not os.path.exists(path): report.append(f'MISSING {fn}'); continue
@@ -53,8 +70,14 @@ for name, fn, pref in order:
             br = {k: round(v['bpp'] if isinstance(v, dict) else v, 4) for k, v in (x.get('byRes') or {}).items() if k in keys and isinstance(v.get('bpp') if isinstance(v, dict) else v, (int, float))}
             for rt in sorted(x.get('rates') or [], key=lambda q: abs((q.get('fps') or 24) - 24), reverse=True):
                 if rt.get('res') in keys and isinstance(rt.get('bpp'), (int, float)) and rt['bpp'] > 0: br[rt['res']] = round(rt['bpp'], 4)
+            # exact published Mb/s per resolution and fps, where a maker publishes more than one fps (rates don't scale linearly)
+            rf = {}
+            for rt in x.get('rates') or []:
+                m = rt.get('mbps') if isinstance(rt.get('mbps'), (int, float)) else None
+                if m and rt.get('res') in keys and isinstance(rt.get('fps'), (int, float)): rf.setdefault(rt['res'], {})[str(rt['fps'])] = round(m, 2)
+            rf = {k: v for k, v in rf.items() if len(v) > 1}
             if x.get('external'): x = {**x, 'name': x['name'] + ' (grabador externo)'}
-            codecs.append({'key': x['key'], 'name': RENAME.get(x['name'], x['name']), 'bpp': round(x['bpp'], 4), **({'res': r} if r else {}), **({'byRes': br} if br else {}), **({'estimated': True} if x.get('estimated') else {})})
+            codecs.append({'key': x['key'], 'name': clean(x['name']), 'bpp': round(x['bpp'], 4), **({'res': r} if r else {}), **({'byRes': br} if br else {}), **({'estimated': True} if x.get('estimated') else {}), **({'fps': sorted(x['fps'])} if x.get('fps') else {}), **({'rf': rf} if rf else {})})
         # ProRes/DNx listed without a rate → derived codec limited to its recording resolutions
         derived = {}
         for f in c.get('fixed', []) or []:
@@ -72,12 +95,15 @@ for name, fn, pref in order:
             for x in codecs:
                 if 'res' not in x: x['res'] = base
         codecs += list(derived.values())
-        fixed = [{'key': f['key'], 'name': RENAME.get(f['name'], f['name']), 'mbps': f['mbps']} for f in c.get('fixed', []) or [] if isinstance(f.get('mbps'), (int, float)) and f['mbps'] > 0]
+        fixed = [{'key': f['key'], 'name': clean(f['name']), 'mbps': f['mbps'], **({'fps': sorted(f['fps'])} if f.get('fps') else {})} for f in c.get('fixed', []) or [] if isinstance(f.get('mbps'), (int, float)) and f['mbps'] > 0]
         if not res or not (codecs or fixed): report.append(f'SKIP (sin datos) {c.get("name")}'); continue
         cams.append({'id': cid, 'name': c['name'], 'resolutions': res, 'codecs': codecs, 'fixed': fixed})
         report.append(f'OK {c["name"]}: {len(res)} resoluciones, {len(codecs)} códecs, {len(fixed)} fijos')
-    for cm in cams: cm['name'] = NAMES.get(cm['id'], cm['name'])
-    cams.sort(key=lambda cm: ORDER.index(cm['id']) if cm['id'] in ORDER else 999)
-    if cams: brands.append({'name': name, 'cameras': cams})
-open(out, 'w').write('/* FilmFlow Workflow — camera library for the storage calculator.\n   bpp = bits per pixel per frame derived from manufacturer-published data rates (see project notes). Generated file. */\nwindow.FFCameras = ' + json.dumps({'brands': brands}, ensure_ascii=False, indent=1) + ';\n')
+    for cm in cams: cm['name'] = NAMES.get(cm['id']) or (cm['name'] if name == 'Otras marcas' else MAKER.sub('', cm['name']))
+    br = next((b for b in brands if b['name'] == name), None)
+    if cams and not br: br = {'name': name, 'cameras': []}; brands.append(br)
+    if cams:
+        br['cameras'] += [cm for cm in cams if cm['id'] not in {x['id'] for x in br['cameras']}]
+        br['cameras'].sort(key=lambda cm: ORDER.index(cm['id']) if cm['id'] in ORDER else 999)
+open(out, 'w').write('/* FilmFlow Workflow — camera library for the storage calculator.\n   bpp = bits per pixel per frame derived from manufacturer-published data rates (see project notes);\n   fps = frame rates the manufacturer lists for that recording mode. Generated file. */\nwindow.FFCameras = ' + json.dumps({'brands': brands}, ensure_ascii=False, separators=(',', ':')) + ';\n')
 print('\n'.join(report))

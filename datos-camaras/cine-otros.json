@@ -1,0 +1,1108 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice",
+ "cameras": [
+  {
+   "id": "panavision-dxl2",
+   "name": "Panavision Millennium DXL2",
+   "exists": true,
+   "notes": "Panavision Millennium DXL2 (2018): RED MONSTRO 8K VV sensor (40.96x21.60 mm, 8192x4320), Light Iron Color 2, firmware V-1.0.0 manual (2020). Records R3D (REDCODE RAW, 2:1-22:1 target ratio; camera falls back to next achievable ratio), R3D + ProRes, R3D + DNxHD/HR, ProRes only, or DNxHD/HR only, to Panavision MINI-MAG 512GB/1TB. Panavision spec: max 60 fps 8K FF, 75 fps 8K 2.4:1; 'up to 1 hour on a single magazine'. Other max fps taken from RED DSMC2 MONSTRO spec (same sensor/DSMC2 platform) and marked; null where unknown. REDCODE bpp uses RED's 14-bit Recording Time tool model (estimated - DXL2 not in tool). Media throughput assumed like RED MINI-MAG (300 MB/s) - not stated by Panavision. Anamorphic formats (2x 6:5, 1.3x, 1.25x) share pixel dims of spherical formats. Available through Panavision rental only.",
+   "sources": [
+    "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+    "https://www.panavision.com/camera-and-optics/cameras/product-detail/dxl2-millennium-dxl2",
+    "https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+    "https://docs.red.com/955-0170/DSMC2MONSTROOperationGuide/en-us/Content/A_TechSpecs/Specs_DSMC2_MONSTRO.htm"
+   ],
+   "sensor": "RED MONSTRO 8K VV (40.96x21.60 mm, 8192x4320)",
+   "resolutions": [
+    {
+     "key": "8k-ff",
+     "name": "8K Full Format",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-2x1",
+     "name": "8K 2:1",
+     "w": 8192,
+     "h": 4096,
+     "maxfps": null
+    },
+    {
+     "key": "8k-2.4",
+     "name": "8K 2.4:1 (WS)",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 75
+    },
+    {
+     "key": "8k-16x9",
+     "name": "8K 16:9 (HD)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "7.5k-ff",
+     "name": "7.5K Full Format",
+     "w": 7680,
+     "h": 4080,
+     "maxfps": null
+    },
+    {
+     "key": "7.5k-2x1",
+     "name": "7.5K 2:1",
+     "w": 7680,
+     "h": 3840,
+     "maxfps": null
+    },
+    {
+     "key": "7.5k-2.4",
+     "name": "7.5K 2.4:1 (WS)",
+     "w": 7680,
+     "h": 3240,
+     "maxfps": null
+    },
+    {
+     "key": "7.5k-16x9",
+     "name": "7.5K 16:9 (HD)",
+     "w": 7296,
+     "h": 4104,
+     "maxfps": null
+    },
+    {
+     "key": "7k-ff",
+     "name": "7K Full Format",
+     "w": 7168,
+     "h": 3780,
+     "maxfps": 60,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "7k-2x1",
+     "name": "7K 2:1",
+     "w": 7168,
+     "h": 3584,
+     "maxfps": null
+    },
+    {
+     "key": "7k-2.4",
+     "name": "7K 2.4:1 (WS)",
+     "w": 7168,
+     "h": 3024,
+     "maxfps": null
+    },
+    {
+     "key": "7k-16x9",
+     "name": "7K 16:9 (HD)",
+     "w": 6720,
+     "h": 3780,
+     "maxfps": null
+    },
+    {
+     "key": "6.5k-ff",
+     "name": "6.5K Full Format",
+     "w": 6656,
+     "h": 3536,
+     "maxfps": null
+    },
+    {
+     "key": "6.5k-2x1",
+     "name": "6.5K 2:1",
+     "w": 6656,
+     "h": 3328,
+     "maxfps": null
+    },
+    {
+     "key": "6.5k-2.4",
+     "name": "6.5K 2.4:1 (WS)",
+     "w": 6656,
+     "h": 2808,
+     "maxfps": null
+    },
+    {
+     "key": "6.5k-16x9",
+     "name": "6.5K 16:9 (HD)",
+     "w": 6144,
+     "h": 3456,
+     "maxfps": null
+    },
+    {
+     "key": "6k-ff",
+     "name": "6K Full Format",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 75,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "6k-2x1",
+     "name": "6K 2:1",
+     "w": 6144,
+     "h": 3072,
+     "maxfps": null
+    },
+    {
+     "key": "6k-2.4",
+     "name": "6K 2.4:1 (WS)",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 100,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "6k-16x9",
+     "name": "6K 16:9 (HD)",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": null
+    },
+    {
+     "key": "5k-ff",
+     "name": "5K Full Format",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 96,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "5k-2x1",
+     "name": "5K 2:1",
+     "w": 5120,
+     "h": 2560,
+     "maxfps": null
+    },
+    {
+     "key": "5k-2.4",
+     "name": "5K 2.4:1 (WS)",
+     "w": 5120,
+     "h": 2160,
+     "maxfps": null
+    },
+    {
+     "key": "5k-16x9",
+     "name": "5K 16:9 (HD)",
+     "w": 4800,
+     "h": 2700,
+     "maxfps": null
+    },
+    {
+     "key": "4k-ff",
+     "name": "4K Full Format",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "4k-2x1",
+     "name": "4K 2:1",
+     "w": 4096,
+     "h": 2048,
+     "maxfps": null
+    },
+    {
+     "key": "4k-2.4",
+     "name": "4K 2.4:1 (WS)",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "4k-16x9",
+     "name": "4K 16:9 (HD)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "3k-ff",
+     "name": "3K Full Format",
+     "w": 3072,
+     "h": 1620,
+     "maxfps": null
+    },
+    {
+     "key": "3k-2.4",
+     "name": "3K 2.4:1 (WS)",
+     "w": 3072,
+     "h": 1296,
+     "maxfps": null
+    },
+    {
+     "key": "3k-16x9",
+     "name": "3K 16:9 (HD)",
+     "w": 2880,
+     "h": 1620,
+     "maxfps": null
+    },
+    {
+     "key": "2k-ff",
+     "name": "2K Full Format",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240,
+     "maxfps_source": "RED DSMC2 MONSTRO spec (same sensor/platform)"
+    },
+    {
+     "key": "2k-2.4",
+     "name": "2K 2.4:1 (WS)",
+     "w": 2048,
+     "h": 864,
+     "maxfps": null
+    },
+    {
+     "key": "8k-6x5",
+     "name": "8K 6:5 (2x anamorphic)",
+     "w": 5184,
+     "h": 4320,
+     "maxfps": 60,
+     "maxfps_source": "RED DSMC2 MONSTRO spec",
+     "note": "pixel dims per RED MONSTRO 8K 6:5; DXL2 manual lists 8K 6:5 under Anamorphic 2x without dimensions"
+    }
+   ],
+   "codecs": [
+    {
+     "key": "r3d-2to1",
+     "name": "REDCODE 2:1",
+     "bpp": 7.0,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/2 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-3to1",
+     "name": "REDCODE 3:1",
+     "bpp": 4.6667,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/3 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-4to1",
+     "name": "REDCODE 4:1",
+     "bpp": 3.5,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/4 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-5to1",
+     "name": "REDCODE 5:1",
+     "bpp": 2.8,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/5 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-6to1",
+     "name": "REDCODE 6:1",
+     "bpp": 2.3333,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/6 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-7to1",
+     "name": "REDCODE 7:1",
+     "bpp": 2.0,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/7 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-8to1",
+     "name": "REDCODE 8:1",
+     "bpp": 1.75,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/8 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-9to1",
+     "name": "REDCODE 9:1",
+     "bpp": 1.5556,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/9 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-10to1",
+     "name": "REDCODE 10:1",
+     "bpp": 1.4,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/10 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-12to1",
+     "name": "REDCODE 12:1",
+     "bpp": 1.1667,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/12 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-14to1",
+     "name": "REDCODE 14:1",
+     "bpp": 1.0,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/14 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-16to1",
+     "name": "REDCODE 16:1",
+     "bpp": 0.875,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/16 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-18to1",
+     "name": "REDCODE 18:1",
+     "bpp": 0.7778,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/18 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "r3d-22to1",
+     "name": "REDCODE 22:1",
+     "bpp": 0.6364,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      75
+     ],
+     "ref": "bpp = 14/22 (RED Recording Time tool model for MONSTRO 8K VV: MB/s = W*H*14/8*fps/ratio/1e6). DXL2 is not in RED's tool; Panavision manual: DXL2 uses the RED MONSTRO 8K VV sensor, records R3D (REDCODE RAW) with target ratio 2:1 (lowest) to 22:1 (highest) selectable, to Panavision MINI-MAG 512GB/1TB. Same model reproduces RED DSMC2 MONSTRO published minimum ratios at 300 MB/s (8K FF 24fps 5:1, 60fps 12:1).",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf ; https://www.reddigitalcinema.com/tools#recording-time (data: https://downloads.reddigitalcinema.com/red-tools/tools-20250813.json)",
+     "estimated": true
+    },
+    {
+     "key": "pr4444xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 8.5336,
+     "res": [
+      "2k-ff"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      120
+     ],
+     "rates": [
+      {
+       "res": "2k-ff",
+       "fps": 24,
+       "mbps": 453,
+       "bpp": 8.5336
+      }
+     ],
+     "ref": "ESTIMATE: Panavision does not publish ProRes data rates (manual refers to Apple's ProRes data rates); Apple ProRes White Paper (Apr 2022) 24p targets: 2k-ff 453 Mb/s (bpp 8.5336). DXL2 manual: ProRes is scaled from any format to 4K or 2K; 4K ProRes up to 60 fps (ProRes only) or 29.97 fps with simultaneous R3D; R3D + ProRes not supported in 4K FF format. Flavor-by-resolution availability (4444/XQ only at 2K) assumed from the RED DSMC2 MONSTRO platform - the DXL2 manual text does not list ProRes flavors; DXL2 4K proxy width (4096 vs 3840) not confirmed.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf ; https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr4444",
+     "name": "ProRes 4444",
+     "bpp": 5.6891,
+     "res": [
+      "2k-ff"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      120
+     ],
+     "rates": [
+      {
+       "res": "2k-ff",
+       "fps": 24,
+       "mbps": 302,
+       "bpp": 5.6891
+      }
+     ],
+     "ref": "ESTIMATE: Panavision does not publish ProRes data rates (manual refers to Apple's ProRes data rates); Apple ProRes White Paper (Apr 2022) 24p targets: 2k-ff 302 Mb/s (bpp 5.6891). DXL2 manual: ProRes is scaled from any format to 4K or 2K; 4K ProRes up to 60 fps (ProRes only) or 29.97 fps with simultaneous R3D; R3D + ProRes not supported in 4K FF format. Flavor-by-resolution availability (4444/XQ only at 2K) assumed from the RED DSMC2 MONSTRO platform - the DXL2 manual text does not list ProRes flavors; DXL2 4K proxy width (4096 vs 3840) not confirmed.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf ; https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr422hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.551,
+     "res": [
+      "4k-ff",
+      "2k-ff"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      120
+     ],
+     "rates": [
+      {
+       "res": "4k-ff",
+       "fps": 24,
+       "mbps": 754,
+       "bpp": 3.551
+      },
+      {
+       "res": "2k-ff",
+       "fps": 24,
+       "mbps": 201,
+       "bpp": 3.7864
+      }
+     ],
+     "ref": "ESTIMATE: Panavision does not publish ProRes data rates (manual refers to Apple's ProRes data rates); Apple ProRes White Paper (Apr 2022) 24p targets: 4k-ff 754 Mb/s (bpp 3.551), 2k-ff 201 Mb/s (bpp 3.7864). DXL2 manual: ProRes is scaled from any format to 4K or 2K; 4K ProRes up to 60 fps (ProRes only) or 29.97 fps with simultaneous R3D; R3D + ProRes not supported in 4K FF format. Flavor-by-resolution availability (4444/XQ only at 2K) assumed from the RED DSMC2 MONSTRO platform - the DXL2 manual text does not list ProRes flavors; DXL2 4K proxy width (4096 vs 3840) not confirmed.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf ; https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr422",
+     "name": "ProRes 422",
+     "bpp": 2.3689,
+     "res": [
+      "4k-ff",
+      "2k-ff"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      120
+     ],
+     "rates": [
+      {
+       "res": "4k-ff",
+       "fps": 24,
+       "mbps": 503,
+       "bpp": 2.3689
+      },
+      {
+       "res": "2k-ff",
+       "fps": 24,
+       "mbps": 134,
+       "bpp": 2.5243
+      }
+     ],
+     "ref": "ESTIMATE: Panavision does not publish ProRes data rates (manual refers to Apple's ProRes data rates); Apple ProRes White Paper (Apr 2022) 24p targets: 4k-ff 503 Mb/s (bpp 2.3689), 2k-ff 134 Mb/s (bpp 2.5243). DXL2 manual: ProRes is scaled from any format to 4K or 2K; 4K ProRes up to 60 fps (ProRes only) or 29.97 fps with simultaneous R3D; R3D + ProRes not supported in 4K FF format. Flavor-by-resolution availability (4444/XQ only at 2K) assumed from the RED DSMC2 MONSTRO platform - the DXL2 manual text does not list ProRes flavors; DXL2 4K proxy width (4096 vs 3840) not confirmed.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf ; https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr422lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6483,
+     "res": [
+      "4k-ff",
+      "2k-ff"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94,
+      120
+     ],
+     "rates": [
+      {
+       "res": "4k-ff",
+       "fps": 24,
+       "mbps": 350,
+       "bpp": 1.6483
+      },
+      {
+       "res": "2k-ff",
+       "fps": 24,
+       "mbps": 93,
+       "bpp": 1.7519
+      }
+     ],
+     "ref": "ESTIMATE: Panavision does not publish ProRes data rates (manual refers to Apple's ProRes data rates); Apple ProRes White Paper (Apr 2022) 24p targets: 4k-ff 350 Mb/s (bpp 1.6483), 2k-ff 93 Mb/s (bpp 1.7519). DXL2 manual: ProRes is scaled from any format to 4K or 2K; 4K ProRes up to 60 fps (ProRes only) or 29.97 fps with simultaneous R3D; R3D + ProRes not supported in 4K FF format. Flavor-by-resolution availability (4444/XQ only at 2K) assumed from the RED DSMC2 MONSTRO platform - the DXL2 manual text does not list ProRes flavors; DXL2 4K proxy width (4096 vs 3840) not confirmed.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf ; https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": true
+    }
+   ],
+   "ratios": {
+    "min": 2,
+    "max": 22
+   },
+   "fixed": [
+    {
+     "key": "dnxhr-hqx",
+     "name": "DNxHR HQX 12-bit (4K/2K)",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhr-444",
+     "name": "DNxHR 444 12-bit",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhr-hq",
+     "name": "DNxHR HQ 8-bit",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhr-sq",
+     "name": "DNxHR SQ 8-bit",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhr-lb",
+     "name": "DNxHR LB 8-bit",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhd-444",
+     "name": "DNxHD 444 10-bit 1080",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhd-hqx",
+     "name": "DNxHD HQX 10-bit 1080",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhd-hq",
+     "name": "DNxHD HQ 8-bit 1080",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhd-sq",
+     "name": "DNxHD SQ 8-bit 1080",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "dnxhd-lb",
+     "name": "DNxHD LB 8-bit 1080",
+     "mbps": null,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.952,
+      48,
+      50,
+      59.94
+     ],
+     "ref": "Codec listed in Panavision DXL2 manual (Avid DNxHD/HR description table, .mxf, scaled to 2K or 4K). No data rate published by Panavision (refers to Avid); Avid bandwidth table not retrieved - left null. Unsupported recording frame rates are sub-sampled to half rate.",
+     "source": "https://www.afcinema.com/IMG/pdf/c/0/d/panavision_dxl2_manual_v1_0.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "phantom-flex4k",
+   "name": "Phantom Flex4K (incl. Flex4K-GS)",
+   "exists": true,
+   "notes": "Vision Research Phantom Flex4K / Flex4K-GS: 9.4 MP S35 sensor (27.7x15.5 mm, 6.75 um), 64 or 128 GB RAM. Two recording paths: loop mode into RAM at full speed (then saved/offloaded to CineMag IV), or run/stop direct to CineMag IV / IV PRO (1TB/2TB) at lower rates (raw 4K up to ~120 fps per record table; ProRes up to 136 fps on CineMag IV PRO). Storage = frames captured x bytes/frame, so for high-speed shots compute from captured frames (not playback duration). Max fps per resolution from the data sheet (2048x1152 = 1900 from record table; key features list 2048x1080 @1975). No published Mb/s; bpp derived from Vision Research record-time tables and statements (estimated). Cine RAW can be transcoded to ProRes/H.264 in PCC (not in-camera recording). Flex4K-GS adds global shutter (same data).",
+   "sources": [
+    "https://www.phantomhighspeed.com (Phantom Flex4K Data Sheet Rev March 2017; copy used: https://w-technika.cz/cdn/shop/files/dsflex4k.pdf)",
+    "https://w-technika.cz/cdn/shop/files/dsveo4kfamily.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "4k-max",
+     "name": "4096 x 2304 (max res)",
+     "w": 4096,
+     "h": 2304,
+     "maxfps": 938
+    },
+    {
+     "key": "4k-dci",
+     "name": "4096 x 2160 (4K standard)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 1000
+    },
+    {
+     "key": "uhd",
+     "name": "3840 x 2160 (16x9)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 1000
+    },
+    {
+     "key": "2k-1152",
+     "name": "2048 x 1152",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 1900
+    },
+    {
+     "key": "2k-1080",
+     "name": "2048 x 1080",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 1975
+    },
+    {
+     "key": "hd",
+     "name": "1920 x 1080 (16x9)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 1975
+    },
+    {
+     "key": "720p",
+     "name": "1280 x 720 (16x9)",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 2930
+    }
+   ],
+   "codecs": [
+    {
+     "key": "cine-raw-12",
+     "name": "Phantom Cine RAW (uncompressed, 12-bit)",
+     "bpp": 12.0,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      120,
+      938,
+      1000,
+      1975,
+      2930
+     ],
+     "ref": "ESTIMATE (derived): Vision Research calls Flex4K Cine Raw 'uncompressed'; sensor is 12-bit (VEO4K family data sheet, same sensor/platform), so 12 bits/pixel packed = W*H*1.5 bytes/frame. Checked against Flex4K data sheet 'Maximum Record Times': 128GB RAM 4096x2304 @938 fps = 10 s (model: 128 GiB/(4096*2304*1.5 B) = 9706 frames = 10.3 s); 4096x2160 @1000 = 10 s (model 10.4 s); 2TB CineMag IV PRO run/stop 4096x2160 @24 = 120 min (model: 2 TiB = 115 min; 2 TB = 105 min); 4096x2304 @120 = 22 min (model 2 TiB: 21.6 min). Exception: data sheet 2048x1152 @500 = 40 min raw on 2TB is ~2x the 12-bit model (20 min) - unexplained, likely a data-sheet inconsistency. Bits/pixel not explicitly published.",
+     "source": "https://www.phantomhighspeed.com (Phantom Flex4K Data Sheet Rev March 2017; copy used: https://w-technika.cz/cdn/shop/files/dsflex4k.pdf)",
+     "estimated": true
+    },
+    {
+     "key": "pr422hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 4.71,
+     "res": [
+      "4k-max",
+      "2k-1152"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      120,
+      136,
+      938
+     ],
+     "ref": "ESTIMATE (derived from Vision Research figures): ProRes 422 HQ only at 4096x2304 and 2048x1152 (CineMag IV recording). Data sheet: 'files become 2.5X smaller compared to an equivalent Cine Raw' -> 12/2.5 = 4.8 bpp; record-time table 4096x2304 @120 fps = 55 min on 2TB CineMag IV PRO -> 2 TiB/(120*3300 frames) = 5.553 MB/frame = 4.71 bpp (4.28 bpp if 2 TB decimal). Using 4.71. The table's 2048x1152 @500 = 100 min implies ~half that (same anomaly as raw). Up to 938 fps in loop mode (RAM), up to 136 fps run/stop to CineMag IV PRO (original CineMag IV: 30 fps). For comparison, Apple's white-paper 422 HQ target is ~3.55 bpp at 4096x2160.",
+     "source": "https://www.phantomhighspeed.com (Phantom Flex4K Data Sheet Rev March 2017; copy used: https://w-technika.cz/cdn/shop/files/dsflex4k.pdf)",
+     "estimated": true
+    }
+   ],
+   "fixed": []
+  },
+  {
+   "id": "phantom-veo4k",
+   "name": "Phantom VEO 4K (VEO4K-PL / 990 / 590)",
+   "exists": true,
+   "notes": "One entry for the VEO4K family (models 990S, 990L, 590S, 590L, 4K-PL; later PL-RLS). Same 9.4 MP 12-bit S35 sensor (6.75 um, global + rolling shutter), RAM 36 or 72 GB (4K-PL: 72 GB standard), records to RAM then saves Cine RAW to CFast 2.0 (S and PL models; L model via Ethernet only). Differences: 990 and 4K-PL = 9 Gpx/s (4096x2304 @938, 4096x2160 @1000, 2048x1080 @1970); 590 = 5 Gpx/s (4096x2304 @500, 4096x2160 @550, 2048x1080 @950) - per-model max fps in resolution entries (maxfps = 990/PL). 4K-PL adds cinema-style black housing, OLPF and PL mount; L = software-controlled body; S adds on-camera controls, I/O and CFast. Record time @max fps with 72GB: 5.6 s (990/PL 4K) / 10 s (590 4K); 36GB halves it. CFast save speed from RAM 90 MB/s. No in-camera ProRes - Cine RAW only (ProRes/H.264 via PCC transcode). Storage = frames captured x bytes/frame.",
+   "sources": [
+    "https://www.phantomhighspeed.com (Phantom VEO4K Family Data Sheet Rev August 2017; copy used: https://w-technika.cz/cdn/shop/files/dsveo4kfamily.pdf)",
+    "https://www.phantomhighspeed.com"
+   ],
+   "resolutions": [
+    {
+     "key": "4k-max",
+     "name": "4096 x 2304 (990 / 4K-PL; 590: 500 fps)",
+     "w": 4096,
+     "h": 2304,
+     "maxfps": 938,
+     "maxfps_990_pl": 938,
+     "maxfps_590": 500
+    },
+    {
+     "key": "4k-dci",
+     "name": "4096 x 2160 (990 / 4K-PL; 590: 550 fps)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 1000,
+     "maxfps_990_pl": 1000,
+     "maxfps_590": 550
+    },
+    {
+     "key": "4k-1152",
+     "name": "4096 x 1152 (990 / 4K-PL; 590: 900 fps)",
+     "w": 4096,
+     "h": 1152,
+     "maxfps": 1850,
+     "maxfps_990_pl": 1850,
+     "maxfps_590": 900
+    },
+    {
+     "key": "2k-sq",
+     "name": "2048 x 2048 (990 / 4K-PL; 590: 550 fps)",
+     "w": 2048,
+     "h": 2048,
+     "maxfps": 1050,
+     "maxfps_990_pl": 1050,
+     "maxfps_590": 550
+    },
+    {
+     "key": "2k-1152",
+     "name": "2048 x 1152 (990 / 4K-PL; 590: 900 fps)",
+     "w": 2048,
+     "h": 1152,
+     "maxfps": 1850,
+     "maxfps_990_pl": 1850,
+     "maxfps_590": 900
+    },
+    {
+     "key": "2k-1080",
+     "name": "2048 x 1080 (990 / 4K-PL; 590: 950 fps)",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 1970,
+     "maxfps_990_pl": 1970,
+     "maxfps_590": 950
+    }
+   ],
+   "codecs": [
+    {
+     "key": "cine-raw-12",
+     "name": "Phantom Cine RAW (12-bit)",
+     "bpp": 12.0,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      120,
+      500,
+      550,
+      900,
+      938,
+      950,
+      1000,
+      1050,
+      1850,
+      1970
+     ],
+     "ref": "ESTIMATE (derived): data sheet: custom 9.4 MP 12-bit CMOS, native file format Phantom Cine RAW (.cine); 12 bits/pixel packed = W*H*1.5 bytes/frame. Cross-check with data sheet 'Example Frame Rates & Record Times' (72GB RAM, 990/4K-PL, binary GiB): 4096x2304 @938 fps 5.6 s -> 12.48 bpp; 4096x2160 @1000 fps 5.6 s -> 12.48 bpp; 4096x1152 @1850 fps 5.6 s -> 12.65 bpp; 2048x2048 @1050 fps 11 s -> 12.77 bpp; 2048x1152 @1850 fps 11 s -> 12.88 bpp; 2048x1080 @1970 fps 11 s -> 12.90 bpp - i.e. 12 bpp plus a few % RAM overhead/rounding (using decimal GB gives ~7% lower). No Mb/s published.",
+     "source": "https://www.phantomhighspeed.com (Phantom VEO4K Family Data Sheet Rev August 2017; copy used: https://w-technika.cz/cdn/shop/files/dsveo4kfamily.pdf)",
+     "estimated": true
+    }
+   ],
+   "fixed": []
+  }
+ ]
+}

@@ -1,0 +1,1876 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice",
+ "cameras": [
+  {
+   "id": "nikon-z9",
+   "name": "Nikon Z9",
+   "exists": true,
+   "notes": "Reference Guide incl. \"C\" firmware 5.30 additions. Frame-rate labels map to actual rates per Nikon (120p=119.88, 60p=59.94, 30p=29.97, 24p=23.976). ProRes RAW HQ 12-bit is supported internally (FX 4128×2322 up to 60p, DX 5392×3032 up to 30p, 2.3× 3840×2160 50/60p) but neither Nikon nor Apple publishes a numeric data rate (Apple: RAW HQ \"generally between ProRes 422 HQ and 4444\") — omitted (gap).",
+   "sources": [
+    "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "fx-8256x4644",
+     "name": "FX 8256×4644",
+     "w": 8256,
+     "h": 4644,
+     "maxfps": 59.94
+    },
+    {
+     "key": "fx-4128x2322",
+     "name": "FX 4128×2322",
+     "w": 4128,
+     "h": 2322,
+     "maxfps": 119.88
+    },
+    {
+     "key": "dx-5392x3032",
+     "name": "DX 5392×3032",
+     "w": 5392,
+     "h": 3032,
+     "maxfps": 59.94
+    },
+    {
+     "key": "2-3-3840x2160",
+     "name": "2.3× 3840×2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 119.88
+    },
+    {
+     "key": "4k-uhd-3840x2160",
+     "name": "4K UHD 3840×2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 119.88
+    },
+    {
+     "key": "fhd-1920x1080",
+     "name": "FHD 1920×1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 119.88
+    },
+    {
+     "key": "8k-uhd-7680x4320",
+     "name": "8K UHD 7680×4320",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 29.97
+    }
+   ],
+   "codecs": [
+    {
+     "key": "nraw-hq",
+     "name": "N-RAW 12-bit (NEV) High quality",
+     "bpp": 3.0255,
+     "res": [
+      "fx-8256x4644",
+      "fx-4128x2322",
+      "dx-5392x3032",
+      "2-3-3840x2160"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "fx-8256x4644",
+       "fps": 59.94,
+       "mbps": 5780,
+       "bpp": 2.5151
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 50,
+       "mbps": 4810,
+       "bpp": 2.5091
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 29.97,
+       "mbps": 3470,
+       "bpp": 3.0198
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 25,
+       "mbps": 2890,
+       "bpp": 3.0151
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 23.976,
+       "mbps": 2780,
+       "bpp": 3.0242
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 119.88,
+       "mbps": 3480,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 100,
+       "mbps": 2900,
+       "bpp": 3.0255
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 59.94,
+       "mbps": 1740,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 50,
+       "mbps": 1450,
+       "bpp": 3.0255
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 29.97,
+       "mbps": 870,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 25,
+       "mbps": 730,
+       "bpp": 3.0464
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 23.976,
+       "mbps": 700,
+       "bpp": 3.0459
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 59.94,
+       "mbps": 2960,
+       "bpp": 3.0206
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 50,
+       "mbps": 2470,
+       "bpp": 3.0217
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 29.97,
+       "mbps": 1480,
+       "bpp": 3.0206
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 25,
+       "mbps": 1240,
+       "bpp": 3.0339
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 23.976,
+       "mbps": 1190,
+       "bpp": 3.0359
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 119.88,
+       "mbps": 3020,
+       "bpp": 3.0372
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 100,
+       "mbps": 2510,
+       "bpp": 3.0261
+      }
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate table (N-RAW 12-bit (NEV) High quality): 'Approx.' Mbps per frame size/rate; rates[] are those figures (fps = actual rate per Nikon footnote, e.g. 30p = 29.97), bpp = Mbps*1e6/(W*H*fps); codec-level bpp = median. A companion MP4 (~28-120 Mbps) is also recorded for playback and is not included.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "nraw-normal",
+     "name": "N-RAW 12-bit (NEV) Normal",
+     "bpp": 1.5205,
+     "res": [
+      "fx-8256x4644",
+      "fx-4128x2322",
+      "dx-5392x3032",
+      "2-3-3840x2160"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "fx-8256x4644",
+       "fps": 59.94,
+       "mbps": 3470,
+       "bpp": 1.5099
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 50,
+       "mbps": 2890,
+       "bpp": 1.5075
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 29.97,
+       "mbps": 1740,
+       "bpp": 1.5143
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 25,
+       "mbps": 1450,
+       "bpp": 1.5127
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 23.976,
+       "mbps": 1390,
+       "bpp": 1.5121
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 119.88,
+       "mbps": 1750,
+       "bpp": 1.523
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 100,
+       "mbps": 1460,
+       "bpp": 1.5232
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 59.94,
+       "mbps": 880,
+       "bpp": 1.5317
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 50,
+       "mbps": 730,
+       "bpp": 1.5232
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 29.97,
+       "mbps": 440,
+       "bpp": 1.5317
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 25,
+       "mbps": 370,
+       "bpp": 1.544
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 23.976,
+       "mbps": 350,
+       "bpp": 1.523
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 59.94,
+       "mbps": 1490,
+       "bpp": 1.5205
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 50,
+       "mbps": 1240,
+       "bpp": 1.517
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 29.97,
+       "mbps": 750,
+       "bpp": 1.5307
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 25,
+       "mbps": 620,
+       "bpp": 1.517
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 23.976,
+       "mbps": 600,
+       "bpp": 1.5307
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 119.88,
+       "mbps": 1510,
+       "bpp": 1.5186
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 100,
+       "mbps": 1260,
+       "bpp": 1.5191
+      }
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate table (N-RAW 12-bit (NEV) Normal): 'Approx.' Mbps per frame size/rate; rates[] are those figures (fps = actual rate per Nikon footnote, e.g. 30p = 29.97), bpp = Mbps*1e6/(W*H*fps); codec-level bpp = median. A companion MP4 (~28-120 Mbps) is also recorded for playback and is not included.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "prores-422-hq",
+     "name": "Apple ProRes 422 HQ 10-bit",
+     "bpp": 3.5562,
+     "res": [
+      "4k-uhd-3840x2160",
+      "fhd-1920x1080"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Nikon publishes no Mbps for ProRes ('data specifications are available from the Apple website'). bpp from Apple ProRes White Paper (Apr 2022) target 884 Mb/s for 3840×2160 30p (29.97). Frame sizes/rates from Nikon availability table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h-265-10-bit-7680x4320-400",
+     "name": "H.265 10-bit 8K UHD 7680×4320 400 Mbps",
+     "mbps": 400,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-7680x4320-370",
+     "name": "H.265 8-bit 8K UHD 7680×4320 370 Mbps",
+     "mbps": 370,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-400",
+     "name": "H.265 10-bit 4K UHD 3840×2160 400 Mbps",
+     "mbps": 400,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-370",
+     "name": "H.265 8-bit 4K UHD 3840×2160 370 Mbps",
+     "mbps": 370,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-340",
+     "name": "H.265 10-bit 4K UHD 3840×2160 340 Mbps",
+     "mbps": 340,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-300",
+     "name": "H.265 8-bit 4K UHD 3840×2160 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-190",
+     "name": "H.265 10-bit 4K UHD 3840×2160 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-150",
+     "name": "H.265 8-bit 4K UHD 3840×2160 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-190",
+     "name": "H.265 10-bit FHD 1920×1080 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-150",
+     "name": "H.265 8-bit FHD 1920×1080 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-100",
+     "name": "H.265 10-bit FHD 1920×1080 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-80",
+     "name": "H.265 8-bit FHD 1920×1080 80 Mbps",
+     "mbps": 80,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-50",
+     "name": "H.264 8-bit FHD 1920×1080 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-50",
+     "name": "H.265 10-bit FHD 1920×1080 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-40",
+     "name": "H.265 8-bit FHD 1920×1080 40 Mbps",
+     "mbps": 40,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-30",
+     "name": "H.264 8-bit FHD 1920×1080 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-slow-30",
+     "name": "H.264 8-bit FHD 1920×1080 slow-motion (×4/×5) 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z9 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote; slow-motion records 100/119.88 fps readout into 25/23.976/29.97p files.",
+     "source": "https://onlinemanual.nikonimglib.com/z9/en/video_frame_size_and_rate_options_33.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "nikon-z8",
+   "name": "Nikon Z8",
+   "exists": true,
+   "notes": "Reference Guide (current online version). Bit-rate tables identical to Z9 except companion MP4 rates. Frame-rate labels map to actual rates (60p=59.94, 30p=29.97, 24p=23.976). ProRes RAW HQ 12-bit is supported internally (FX 4128×2322 up to 60p, DX 5392×3032 up to 30p, 2.3× 3840×2160 50/60p) but neither Nikon nor Apple publishes a numeric data rate (Apple: RAW HQ \"generally between ProRes 422 HQ and 4444\") — omitted (gap).",
+   "sources": [
+    "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "fx-8256x4644",
+     "name": "FX 8256×4644",
+     "w": 8256,
+     "h": 4644,
+     "maxfps": 59.94
+    },
+    {
+     "key": "fx-4128x2322",
+     "name": "FX 4128×2322",
+     "w": 4128,
+     "h": 2322,
+     "maxfps": 119.88
+    },
+    {
+     "key": "dx-5392x3032",
+     "name": "DX 5392×3032",
+     "w": 5392,
+     "h": 3032,
+     "maxfps": 59.94
+    },
+    {
+     "key": "2-3-3840x2160",
+     "name": "2.3× 3840×2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 119.88
+    },
+    {
+     "key": "4k-uhd-3840x2160",
+     "name": "4K UHD 3840×2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 119.88
+    },
+    {
+     "key": "fhd-1920x1080",
+     "name": "FHD 1920×1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 119.88
+    },
+    {
+     "key": "8k-uhd-7680x4320",
+     "name": "8K UHD 7680×4320",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 29.97
+    }
+   ],
+   "codecs": [
+    {
+     "key": "nraw-hq",
+     "name": "N-RAW 12-bit (NEV) High quality",
+     "bpp": 3.0255,
+     "res": [
+      "fx-8256x4644",
+      "fx-4128x2322",
+      "dx-5392x3032",
+      "2-3-3840x2160"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "fx-8256x4644",
+       "fps": 59.94,
+       "mbps": 5780,
+       "bpp": 2.5151
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 50,
+       "mbps": 4810,
+       "bpp": 2.5091
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 29.97,
+       "mbps": 3470,
+       "bpp": 3.0198
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 25,
+       "mbps": 2890,
+       "bpp": 3.0151
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 23.976,
+       "mbps": 2780,
+       "bpp": 3.0242
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 119.88,
+       "mbps": 3480,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 100,
+       "mbps": 2900,
+       "bpp": 3.0255
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 59.94,
+       "mbps": 1740,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 50,
+       "mbps": 1450,
+       "bpp": 3.0255
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 29.97,
+       "mbps": 870,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 25,
+       "mbps": 730,
+       "bpp": 3.0464
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 23.976,
+       "mbps": 700,
+       "bpp": 3.0459
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 59.94,
+       "mbps": 2960,
+       "bpp": 3.0206
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 50,
+       "mbps": 2470,
+       "bpp": 3.0217
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 29.97,
+       "mbps": 1480,
+       "bpp": 3.0206
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 25,
+       "mbps": 1240,
+       "bpp": 3.0339
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 23.976,
+       "mbps": 1190,
+       "bpp": 3.0359
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 119.88,
+       "mbps": 3020,
+       "bpp": 3.0372
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 100,
+       "mbps": 2510,
+       "bpp": 3.0261
+      }
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate table (N-RAW 12-bit (NEV) High quality): 'Approx.' Mbps per frame size/rate; rates[] are those figures (fps = actual rate per Nikon footnote, e.g. 30p = 29.97), bpp = Mbps*1e6/(W*H*fps); codec-level bpp = median. A companion MP4 (~28-120 Mbps) is also recorded for playback and is not included.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "nraw-normal",
+     "name": "N-RAW 12-bit (NEV) Normal",
+     "bpp": 1.5205,
+     "res": [
+      "fx-8256x4644",
+      "fx-4128x2322",
+      "dx-5392x3032",
+      "2-3-3840x2160"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "fx-8256x4644",
+       "fps": 59.94,
+       "mbps": 3470,
+       "bpp": 1.5099
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 50,
+       "mbps": 2890,
+       "bpp": 1.5075
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 29.97,
+       "mbps": 1740,
+       "bpp": 1.5143
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 25,
+       "mbps": 1450,
+       "bpp": 1.5127
+      },
+      {
+       "res": "fx-8256x4644",
+       "fps": 23.976,
+       "mbps": 1390,
+       "bpp": 1.5121
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 119.88,
+       "mbps": 1750,
+       "bpp": 1.523
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 100,
+       "mbps": 1460,
+       "bpp": 1.5232
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 59.94,
+       "mbps": 880,
+       "bpp": 1.5317
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 50,
+       "mbps": 730,
+       "bpp": 1.5232
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 29.97,
+       "mbps": 440,
+       "bpp": 1.5317
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 25,
+       "mbps": 370,
+       "bpp": 1.544
+      },
+      {
+       "res": "fx-4128x2322",
+       "fps": 23.976,
+       "mbps": 350,
+       "bpp": 1.523
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 59.94,
+       "mbps": 1490,
+       "bpp": 1.5205
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 50,
+       "mbps": 1240,
+       "bpp": 1.517
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 29.97,
+       "mbps": 750,
+       "bpp": 1.5307
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 25,
+       "mbps": 620,
+       "bpp": 1.517
+      },
+      {
+       "res": "dx-5392x3032",
+       "fps": 23.976,
+       "mbps": 600,
+       "bpp": 1.5307
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 119.88,
+       "mbps": 1510,
+       "bpp": 1.5186
+      },
+      {
+       "res": "2-3-3840x2160",
+       "fps": 100,
+       "mbps": 1260,
+       "bpp": 1.5191
+      }
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate table (N-RAW 12-bit (NEV) Normal): 'Approx.' Mbps per frame size/rate; rates[] are those figures (fps = actual rate per Nikon footnote, e.g. 30p = 29.97), bpp = Mbps*1e6/(W*H*fps); codec-level bpp = median. A companion MP4 (~28-120 Mbps) is also recorded for playback and is not included.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "prores-422-hq",
+     "name": "Apple ProRes 422 HQ 10-bit",
+     "bpp": 3.5562,
+     "res": [
+      "4k-uhd-3840x2160",
+      "fhd-1920x1080"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Nikon publishes no Mbps for ProRes ('data specifications are available from the Apple website'). bpp from Apple ProRes White Paper (Apr 2022) target 884 Mb/s for 3840×2160 30p (29.97). Frame sizes/rates from Nikon availability table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h-265-10-bit-7680x4320-400",
+     "name": "H.265 10-bit 8K UHD 7680×4320 400 Mbps",
+     "mbps": 400,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-7680x4320-370",
+     "name": "H.265 8-bit 8K UHD 7680×4320 370 Mbps",
+     "mbps": 370,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-400",
+     "name": "H.265 10-bit 4K UHD 3840×2160 400 Mbps",
+     "mbps": 400,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-370",
+     "name": "H.265 8-bit 4K UHD 3840×2160 370 Mbps",
+     "mbps": 370,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-340",
+     "name": "H.265 10-bit 4K UHD 3840×2160 340 Mbps",
+     "mbps": 340,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-300",
+     "name": "H.265 8-bit 4K UHD 3840×2160 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-190",
+     "name": "H.265 10-bit 4K UHD 3840×2160 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-150",
+     "name": "H.265 8-bit 4K UHD 3840×2160 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-190",
+     "name": "H.265 10-bit FHD 1920×1080 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-150",
+     "name": "H.265 8-bit FHD 1920×1080 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-100",
+     "name": "H.265 10-bit FHD 1920×1080 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-80",
+     "name": "H.265 8-bit FHD 1920×1080 80 Mbps",
+     "mbps": 80,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-50",
+     "name": "H.264 8-bit FHD 1920×1080 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-50",
+     "name": "H.265 10-bit FHD 1920×1080 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-40",
+     "name": "H.265 8-bit FHD 1920×1080 40 Mbps",
+     "mbps": 40,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-30",
+     "name": "H.264 8-bit FHD 1920×1080 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-slow-30",
+     "name": "H.264 8-bit FHD 1920×1080 slow-motion (×4/×5) 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon Z8 Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote; slow-motion records 100/119.88 fps readout into 25/23.976/29.97p files.",
+     "source": "https://onlinemanual.nikonimglib.com/z8/en/video_frame_size_and_rate_options_41.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "nikon-zr",
+   "name": "Nikon ZR",
+   "exists": true,
+   "notes": "Nikon ZR (2025, cinema-oriented, co-developed with RED). Internal R3D NE 12-bit, N-RAW 12-bit, ProRes RAW HQ, ProRes 422 HQ, H.265/H.264. ProRes RAW HQ availability: FX 6048×3402 up to 29.97p, FX 4032×2268 and DX 3984×2240 up to 59.94p — no published Mbps, omitted (gap).",
+   "sources": [
+    "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "fx-6048x3402",
+     "name": "FX 6048×3402",
+     "w": 6048,
+     "h": 3402,
+     "maxfps": 59.94
+    },
+    {
+     "key": "fx-4032x2268",
+     "name": "FX 4032×2268",
+     "w": 4032,
+     "h": 2268,
+     "maxfps": 59.94
+    },
+    {
+     "key": "dx-3984x2240",
+     "name": "DX 3984×2240",
+     "w": 3984,
+     "h": 2240,
+     "maxfps": 119.88
+    },
+    {
+     "key": "5-4k-5376x3024",
+     "name": "5.4K 5376×3024",
+     "w": 5376,
+     "h": 3024,
+     "maxfps": 59.94
+    },
+    {
+     "key": "4k-uhd-3840x2160",
+     "name": "4K UHD 3840×2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 119.88
+    },
+    {
+     "key": "fhd-1920x1080",
+     "name": "FHD 1920×1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 239.76
+    }
+   ],
+   "codecs": [
+    {
+     "key": "nraw-hq",
+     "name": "N-RAW 12-bit (NEV) High quality",
+     "bpp": 3.0285,
+     "res": [
+      "fx-6048x3402",
+      "fx-4032x2268",
+      "dx-3984x2240"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "fx-6048x3402",
+       "fps": 59.94,
+       "mbps": 3730,
+       "bpp": 3.0244
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 50,
+       "mbps": 3110,
+       "bpp": 3.023
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 29.97,
+       "mbps": 1870,
+       "bpp": 3.0326
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 25,
+       "mbps": 1560,
+       "bpp": 3.0328
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 23.976,
+       "mbps": 1490,
+       "bpp": 3.0204
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 59.94,
+       "mbps": 1660,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 50,
+       "mbps": 1390,
+       "bpp": 3.0401
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 29.97,
+       "mbps": 830,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 25,
+       "mbps": 700,
+       "bpp": 3.0619
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 23.976,
+       "mbps": 670,
+       "bpp": 3.0559
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 119.88,
+       "mbps": 3240,
+       "bpp": 3.0285
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 100,
+       "mbps": 2700,
+       "bpp": 3.0255
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 59.94,
+       "mbps": 1620,
+       "bpp": 3.0285
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 50,
+       "mbps": 1350,
+       "bpp": 3.0255
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 29.97,
+       "mbps": 810,
+       "bpp": 3.0285
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 25,
+       "mbps": 680,
+       "bpp": 3.0479
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 23.976,
+       "mbps": 650,
+       "bpp": 3.0379
+      }
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate table (N-RAW 12-bit (NEV) High quality): 'Approx.' Mbps per frame size/rate; rates[] are those figures (fps = actual rate per Nikon footnote, e.g. 30p = 29.97), bpp = Mbps*1e6/(W*H*fps); codec-level bpp = median. A companion MP4 (~28-120 Mbps) is also recorded for playback and is not included.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "nraw-normal",
+     "name": "N-RAW 12-bit (NEV) Normal",
+     "bpp": 1.524,
+     "res": [
+      "fx-6048x3402",
+      "fx-4032x2268",
+      "dx-3984x2240"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "fx-6048x3402",
+       "fps": 59.94,
+       "mbps": 1870,
+       "bpp": 1.5163
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 50,
+       "mbps": 1560,
+       "bpp": 1.5164
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 29.97,
+       "mbps": 940,
+       "bpp": 1.5244
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 25,
+       "mbps": 780,
+       "bpp": 1.5164
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 23.976,
+       "mbps": 750,
+       "bpp": 1.5203
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 59.94,
+       "mbps": 830,
+       "bpp": 1.5143
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 50,
+       "mbps": 700,
+       "bpp": 1.531
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 29.97,
+       "mbps": 420,
+       "bpp": 1.5325
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 25,
+       "mbps": 350,
+       "bpp": 1.531
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 23.976,
+       "mbps": 340,
+       "bpp": 1.5507
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 119.88,
+       "mbps": 1630,
+       "bpp": 1.5236
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 100,
+       "mbps": 1360,
+       "bpp": 1.524
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 59.94,
+       "mbps": 820,
+       "bpp": 1.533
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 50,
+       "mbps": 680,
+       "bpp": 1.524
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 29.97,
+       "mbps": 410,
+       "bpp": 1.533
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 25,
+       "mbps": 340,
+       "bpp": 1.524
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 23.976,
+       "mbps": 330,
+       "bpp": 1.5423
+      }
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate table (N-RAW 12-bit (NEV) Normal): 'Approx.' Mbps per frame size/rate; rates[] are those figures (fps = actual rate per Nikon footnote, e.g. 30p = 29.97), bpp = Mbps*1e6/(W*H*fps); codec-level bpp = median. A companion MP4 (~28-120 Mbps) is also recorded for playback and is not included.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "r3d-ne",
+     "name": "R3D NE 12-bit",
+     "bpp": 3.0285,
+     "res": [
+      "fx-6048x3402",
+      "fx-4032x2268",
+      "dx-3984x2240"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "rates": [
+      {
+       "res": "fx-6048x3402",
+       "fps": 59.94,
+       "mbps": 3730,
+       "bpp": 3.0244
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 50,
+       "mbps": 3110,
+       "bpp": 3.023
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 29.97,
+       "mbps": 1870,
+       "bpp": 3.0326
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 25,
+       "mbps": 1560,
+       "bpp": 3.0328
+      },
+      {
+       "res": "fx-6048x3402",
+       "fps": 23.976,
+       "mbps": 1490,
+       "bpp": 3.0204
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 59.94,
+       "mbps": 1660,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 50,
+       "mbps": 1390,
+       "bpp": 3.0401
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 29.97,
+       "mbps": 830,
+       "bpp": 3.0285
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 25,
+       "mbps": 700,
+       "bpp": 3.0619
+      },
+      {
+       "res": "fx-4032x2268",
+       "fps": 23.976,
+       "mbps": 670,
+       "bpp": 3.0559
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 119.88,
+       "mbps": 3240,
+       "bpp": 3.0285
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 100,
+       "mbps": 2700,
+       "bpp": 3.0255
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 59.94,
+       "mbps": 1620,
+       "bpp": 3.0285
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 50,
+       "mbps": 1350,
+       "bpp": 3.0255
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 29.97,
+       "mbps": 810,
+       "bpp": 3.0285
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 25,
+       "mbps": 680,
+       "bpp": 3.0479
+      },
+      {
+       "res": "dx-3984x2240",
+       "fps": 23.976,
+       "mbps": 650,
+       "bpp": 3.0379
+      }
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate table (R3D NE 12-bit): 'Approx.' Mbps per frame size/rate; rates[] are those figures (fps = actual rate per Nikon footnote, e.g. 30p = 29.97), bpp = Mbps*1e6/(W*H*fps); codec-level bpp = median. A companion MP4 (~28-120 Mbps) is also recorded for playback and is not included.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "prores-422-hq",
+     "name": "Apple ProRes 422 HQ 10-bit",
+     "bpp": 3.5562,
+     "res": [
+      "5-4k-5376x3024",
+      "4k-uhd-3840x2160",
+      "fhd-1920x1080"
+     ],
+     "fps": [
+      23.976,
+      25,
+      29.97,
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Nikon publishes no Mbps for ProRes ('data specifications are available from the Apple website'). bpp from Apple ProRes White Paper (Apr 2022) target 884 Mb/s for 3840×2160 30p (29.97). Frame sizes/rates from Nikon availability table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h-265-10-bit-5376x3024-400",
+     "name": "H.265 10-bit 5.4K 5376×3024 400 Mbps",
+     "mbps": 400,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-5376x3024-370",
+     "name": "H.265 8-bit 5.4K 5376×3024 370 Mbps",
+     "mbps": 370,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-5376x3024-340",
+     "name": "H.265 10-bit 5.4K 5376×3024 340 Mbps",
+     "mbps": 340,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-5376x3024-300",
+     "name": "H.265 8-bit 5.4K 5376×3024 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-400",
+     "name": "H.265 10-bit 4K UHD 3840×2160 400 Mbps",
+     "mbps": 400,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-370",
+     "name": "H.265 8-bit 4K UHD 3840×2160 370 Mbps",
+     "mbps": 370,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-340",
+     "name": "H.265 10-bit 4K UHD 3840×2160 340 Mbps",
+     "mbps": 340,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-300",
+     "name": "H.265 8-bit 4K UHD 3840×2160 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-3840x2160-190",
+     "name": "H.265 10-bit 4K UHD 3840×2160 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-3840x2160-150",
+     "name": "H.265 8-bit 4K UHD 3840×2160 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-340",
+     "name": "H.265 10-bit FHD 1920×1080 340 Mbps",
+     "mbps": 340,
+     "fps": [
+      200,
+      239.76
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-300",
+     "name": "H.265 8-bit FHD 1920×1080 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      200,
+      239.76
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-190",
+     "name": "H.265 10-bit FHD 1920×1080 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-150",
+     "name": "H.265 8-bit FHD 1920×1080 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-100",
+     "name": "H.265 10-bit FHD 1920×1080 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-80",
+     "name": "H.265 8-bit FHD 1920×1080 80 Mbps",
+     "mbps": 80,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-50",
+     "name": "H.264 8-bit FHD 1920×1080 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-10-bit-1920x1080-50",
+     "name": "H.265 10-bit FHD 1920×1080 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-265-8-bit-1920x1080-40",
+     "name": "H.265 8-bit FHD 1920×1080 40 Mbps",
+     "mbps": 40,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-30",
+     "name": "H.264 8-bit FHD 1920×1080 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    },
+    {
+     "key": "h-264-8-bit-1920x1080-slow-30",
+     "name": "H.264 8-bit FHD 1920×1080 slow-motion (×4/×5) 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.976,
+      25,
+      29.97
+     ],
+     "ref": "Nikon Nikon ZR Reference Guide, 'Video Frame Size and Rate Options' > Bit Rate > H.265 10-bit, H.265 8-bit, and H.264 8-bit table (average bit rate, 'Approx.'). fps = actual rates per Nikon footnote; slow-motion records 100/119.88 fps readout into 25/23.976/29.97p files.",
+     "source": "https://onlinemanual.nikonimglib.com/zr/en/19-02.html",
+     "estimated": false
+    }
+   ]
+  }
+ ]
+}

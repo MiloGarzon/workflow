@@ -1,0 +1,1967 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice",
+ "cameras": [
+  {
+   "id": "zcam-e2-f6",
+   "name": "Z CAM E2-F6",
+   "exists": true,
+   "notes": "Original E2-F6 (full frame 6K, model E1901), FW 0.98 manual. Internal codecs: H.264 / H.265 / ZRAW (manual v0.4) plus ProRes 422 Proxy/LT/422/HQ (added in later firmware; FW 0.98.0 release coverage says ProRes 422 in all resolution/fps modes; Z CAM wiki encoder table lists ProRes HQ as 'NA' at 6K - check camera). Project fps: 23.98/24/25/29.97 for Open Gate/6K DCI/6K UHD/5K 4:3/5K 6:5/4K DCI 3:2; plus 50/59.94 for 6K 2.4:1/5K DCI/5K/4K/S16/FHD; higher rates via VFR (maxfps). 2.8K (2868x1512) mode listed in manual without fps, omitted. ProRes RAW/BRAW only to external recorders over HDMI (not included). Not the E2-F6 Pro (separate camera, internal ProRes RAW, ZBlade). Storage CFast 2.0 / USB SSD.",
+   "sources": [
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/spec/F6_spec.md",
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/intro.md",
+    "https://static.bhphoto.com/lit_files/886257.pdf",
+    "https://www.adorama.com/col/productManuals/ZCE2S6PL.pdf",
+    "https://cined.com/z-cam-e2-cameras-get-prores-422-for-all-modes-with-firmware-0-98-0",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "og",
+     "name": "6K Open Gate 3:2",
+     "w": 6064,
+     "h": 4040,
+     "maxfps": 30
+    },
+    {
+     "key": "6k-dci",
+     "name": "6K DCI",
+     "w": 6064,
+     "h": 3196,
+     "maxfps": 48
+    },
+    {
+     "key": "6k-24",
+     "name": "6K 2.4:1",
+     "w": 6064,
+     "h": 2560,
+     "maxfps": 60
+    },
+    {
+     "key": "6k-uhd",
+     "name": "6K UHD",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": 48
+    },
+    {
+     "key": "5k-43",
+     "name": "5K 4:3",
+     "w": 5376,
+     "h": 4032,
+     "maxfps": 30
+    },
+    {
+     "key": "5k-65",
+     "name": "5K 6:5",
+     "w": 4848,
+     "h": 4040,
+     "maxfps": 30
+    },
+    {
+     "key": "5k-dci",
+     "name": "5K DCI",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 60
+    },
+    {
+     "key": "5k",
+     "name": "5K",
+     "w": 4800,
+     "h": 2700,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-dci",
+     "name": "4K DCI",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 90
+    },
+    {
+     "key": "4k-32",
+     "name": "4K DCI 3:2",
+     "w": 4096,
+     "h": 2732,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-24",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-uhd",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 90
+    },
+    {
+     "key": "s16",
+     "name": "Super16 (16:9)",
+     "w": 2112,
+     "h": 1188,
+     "maxfps": 170
+    },
+    {
+     "key": "fhd",
+     "name": "FHD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). ProRes added to E2 flagship models in firmware after 0.93; FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table, e.g. FHD up to 120, 4K up to 50-75); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). ProRes added to E2 flagship models in firmware after 0.93; FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table, e.g. FHD up to 120, 4K up to 50-75); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). ProRes added to E2 flagship models in firmware after 0.93; FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table, e.g. FHD up to 120, 4K up to 50-75); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). ProRes added to E2 flagship models in firmware after 0.93; FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table, e.g. FHD up to 120, 4K up to 50-75); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "zraw-1200",
+     "name": "ZRAW 12-bit 1.2 Gbps (up to 4K 30fps)",
+     "mbps": 1200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM E2 Flagship Series user manual v0.4 (FW 0.98), Record > Bitrate: 'For ZRAW, the bitrate is 1.2Gbps'; 'Max frame rate @30fps for ZRAW encoder'. z-cam.com spec pages: 'ZRAW: 1.2 Gbps', 'up to 4K @30fps'. Fixed rate regardless of resolution. ZRAW files also carry an H.265 proxy track (auto On). ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-h",
+     "name": "H.265 / H.264 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) <=30fps High 250 Mbps",
+     "mbps": 250,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) frame-rate range <=30 -> High 250 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-m",
+     "name": "H.265 / H.264 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) <=30fps Medium 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) frame-rate range <=30 -> Medium 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-l",
+     "name": "H.265 / H.264 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) <=30fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) frame-rate range <=30 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-30-60-h",
+     "name": "H.265 6K 2.4:1 30-60fps High 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K 2.4:1 frame-rate range 30-60 -> High 300 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-30-60-m",
+     "name": "H.265 6K 2.4:1 30-60fps Medium 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K 2.4:1 frame-rate range 30-60 -> Medium 190 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-30-60-l",
+     "name": "H.265 6K 2.4:1 30-60fps Low 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K 2.4:1 frame-rate range 30-60 -> Low 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-5k-le30-h",
+     "name": "H.265 / H.264 5K 4:3 / 5K 6:5 <=30fps High 250 Mbps",
+     "mbps": 250,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 5K 4:3 / 5K 6:5 frame-rate range <=30 -> High 250 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-5k-le30-m",
+     "name": "H.265 / H.264 5K 4:3 / 5K 6:5 <=30fps Medium 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 5K 4:3 / 5K 6:5 frame-rate range <=30 -> Medium 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-5k-le30-l",
+     "name": "H.265 / H.264 5K 4:3 / 5K 6:5 <=30fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 5K 4:3 / 5K 6:5 frame-rate range <=30 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-h",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1/3:2) & Super16 <=30fps High 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1/3:2) & Super16 frame-rate range <=30 -> High 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-m",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1/3:2) & Super16 <=30fps Medium 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1/3:2) & Super16 frame-rate range <=30 -> Medium 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-l",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1/3:2) & Super16 <=30fps Low 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1/3:2) & Super16 frame-rate range <=30 -> Low 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-h",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1) & Super16 30-60fps High 230 Mbps",
+     "mbps": 230,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range 30-60 -> High 230 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-m",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1) & Super16 30-60fps Medium 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range 30-60 -> Medium 150 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-l",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1) & Super16 30-60fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range 30-60 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-h",
+     "name": "H.265 4K (DCI/UHD/2.4:1) & Super16 >60fps High 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      170
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range >60 -> High 300 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-m",
+     "name": "H.265 4K (DCI/UHD/2.4:1) & Super16 >60fps Medium 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      170
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range >60 -> Medium 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-l",
+     "name": "H.265 4K (DCI/UHD/2.4:1) & Super16 >60fps Low 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      170
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range >60 -> Low 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-h",
+     "name": "H.265 / H.264 FHD <=30fps High 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> High 30 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-m",
+     "name": "H.265 / H.264 FHD <=30fps Medium 20 Mbps",
+     "mbps": 20,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> Medium 20 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-l",
+     "name": "H.265 / H.264 FHD <=30fps Low 10 Mbps",
+     "mbps": 10,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> Low 10 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-h",
+     "name": "H.265 / H.264 FHD 30-60fps High 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> High 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-m",
+     "name": "H.265 / H.264 FHD 30-60fps Medium 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> Medium 30 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-l",
+     "name": "H.265 / H.264 FHD 30-60fps Low 15 Mbps",
+     "mbps": 15,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> Low 15 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-h",
+     "name": "H.265 / H.264 FHD >60fps High 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      120
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> High 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-m",
+     "name": "H.265 / H.264 FHD >60fps Medium 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      120
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> Medium 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-l",
+     "name": "H.265 / H.264 FHD >60fps Low 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      120
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> Low 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) modes added in FW 0.98 are not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "zcam-e2-s6",
+   "name": "Z CAM E2-S6",
+   "exists": true,
+   "notes": "Super35 6K. Manual v0.4 (FW 0.98): codecs H.264/H.265/ZRAW; z-cam.com S6 page: 'ProRes, H.265 & H.264: up to 300 Mbps', 'ZRAW: 1.2 Gbps', ZRAW up to 4K 30fps. 4K DCI / 4K UHD Low Noise modes (same pixel size, max 30fps) not listed separately. Super16 max VFR: manual v0.4 says 90, wiki S6_spec says 75. Open Gate listed as 6244x4168 (VFR table typo 6244x4148). 2.8K (2868x1512) omitted (no fps). Project fps 23.98-29.97 for Open Gate/6K DCI/6K UHD/5K 4:3/5K 6:5/4K DCI 3:2/Low Noise; 50/59.94 also for 6K 2.4:1/5K DCI/5K/4K/S16/FHD. ProRes RAW/BRAW only external over HDMI.",
+   "sources": [
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/spec/S6_spec.md",
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/intro.md",
+    "https://static.bhphoto.com/lit_files/886257.pdf",
+    "https://www.adorama.com/col/productManuals/ZCE2S6PL.pdf",
+    "https://www.z-cam.com/products/professional-cameras/e2-s6/",
+    "https://cined.com/z-cam-e2-cameras-get-prores-422-for-all-modes-with-firmware-0-98-0",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "og",
+     "name": "6K Open Gate 3:2",
+     "w": 6244,
+     "h": 4168,
+     "maxfps": 30
+    },
+    {
+     "key": "6k-dci",
+     "name": "6K DCI",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 48
+    },
+    {
+     "key": "6k-24",
+     "name": "6K 2.4:1",
+     "w": 6144,
+     "h": 2592,
+     "maxfps": 60
+    },
+    {
+     "key": "6k-uhd",
+     "name": "6K UHD",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": 48
+    },
+    {
+     "key": "5k-43",
+     "name": "5K 4:3",
+     "w": 5552,
+     "h": 4164,
+     "maxfps": 30
+    },
+    {
+     "key": "5k-65",
+     "name": "5K 6:5",
+     "w": 4992,
+     "h": 4160,
+     "maxfps": 30
+    },
+    {
+     "key": "5k-dci",
+     "name": "5K DCI",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 60
+    },
+    {
+     "key": "5k",
+     "name": "5K",
+     "w": 4800,
+     "h": 2700,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-dci",
+     "name": "4K DCI",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 75
+    },
+    {
+     "key": "4k-32",
+     "name": "4K DCI 3:2",
+     "w": 4096,
+     "h": 2732,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-24",
+     "name": "4K 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 100
+    },
+    {
+     "key": "4k-uhd",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 75
+    },
+    {
+     "key": "s16",
+     "name": "Super16 (16:9)",
+     "w": 3392,
+     "h": 1908,
+     "maxfps": 90
+    },
+    {
+     "key": "fhd",
+     "name": "FHD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "og",
+      "6k-dci",
+      "6k-24",
+      "6k-uhd",
+      "5k-43",
+      "5k-65",
+      "5k-dci",
+      "5k",
+      "4k-dci",
+      "4k-32",
+      "4k-24",
+      "4k-uhd",
+      "s16",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). FW 0.98.0 (CineD) enables ProRes 422 for all resolution/frame-rate modes. Max fps per flavour varies (wiki intro.md table); HQ at 6K marked NA in wiki table.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "zraw-1200",
+     "name": "ZRAW 12-bit 1.2 Gbps (up to 4K 30fps)",
+     "mbps": 1200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM E2 Flagship Series user manual v0.4 (FW 0.98), Record > Bitrate: 'For ZRAW, the bitrate is 1.2Gbps'; 'Max frame rate @30fps for ZRAW encoder'. z-cam.com spec pages: 'ZRAW: 1.2 Gbps', 'up to 4K @30fps'. Fixed rate regardless of resolution. ZRAW files also carry an H.265 proxy track (auto On). ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-h",
+     "name": "H.265 / H.264 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) <=30fps High 250 Mbps",
+     "mbps": 250,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) frame-rate range <=30 -> High 250 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-m",
+     "name": "H.265 / H.264 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) <=30fps Medium 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) frame-rate range <=30 -> Medium 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-l",
+     "name": "H.265 / H.264 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) <=30fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (Open Gate/6K DCI/6K UHD/6K 2.4:1) frame-rate range <=30 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-30-60-h",
+     "name": "H.265 6K 2.4:1 30-60fps High 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K 2.4:1 frame-rate range 30-60 -> High 300 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-30-60-m",
+     "name": "H.265 6K 2.4:1 30-60fps Medium 190 Mbps",
+     "mbps": 190,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K 2.4:1 frame-rate range 30-60 -> Medium 190 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-30-60-l",
+     "name": "H.265 6K 2.4:1 30-60fps Low 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K 2.4:1 frame-rate range 30-60 -> Low 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-5k-le30-h",
+     "name": "H.265 / H.264 5K 4:3 / 5K 6:5 <=30fps High 250 Mbps",
+     "mbps": 250,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 5K 4:3 / 5K 6:5 frame-rate range <=30 -> High 250 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-5k-le30-m",
+     "name": "H.265 / H.264 5K 4:3 / 5K 6:5 <=30fps Medium 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 5K 4:3 / 5K 6:5 frame-rate range <=30 -> Medium 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-5k-le30-l",
+     "name": "H.265 / H.264 5K 4:3 / 5K 6:5 <=30fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 5K 4:3 / 5K 6:5 frame-rate range <=30 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-h",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1/3:2) & Super16 <=30fps High 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1/3:2) & Super16 frame-rate range <=30 -> High 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-m",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1/3:2) & Super16 <=30fps Medium 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1/3:2) & Super16 frame-rate range <=30 -> Medium 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-l",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1/3:2) & Super16 <=30fps Low 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1/3:2) & Super16 frame-rate range <=30 -> Low 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-h",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1) & Super16 30-60fps High 230 Mbps",
+     "mbps": 230,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range 30-60 -> High 230 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-m",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1) & Super16 30-60fps Medium 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range 30-60 -> Medium 150 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-l",
+     "name": "H.265 / H.264 4K (DCI/UHD/2.4:1) & Super16 30-60fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range 30-60 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-h",
+     "name": "H.265 4K (DCI/UHD/2.4:1) & Super16 >60fps High 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      100
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range >60 -> High 300 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-m",
+     "name": "H.265 4K (DCI/UHD/2.4:1) & Super16 >60fps Medium 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      100
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range >60 -> Medium 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-l",
+     "name": "H.265 4K (DCI/UHD/2.4:1) & Super16 >60fps Low 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      100
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K (DCI/UHD/2.4:1) & Super16 frame-rate range >60 -> Low 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published). H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-h",
+     "name": "H.265 / H.264 FHD <=30fps High 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> High 30 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-m",
+     "name": "H.265 / H.264 FHD <=30fps Medium 20 Mbps",
+     "mbps": 20,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> Medium 20 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-l",
+     "name": "H.265 / H.264 FHD <=30fps Low 10 Mbps",
+     "mbps": 10,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> Low 10 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-h",
+     "name": "H.265 / H.264 FHD 30-60fps High 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> High 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-m",
+     "name": "H.265 / H.264 FHD 30-60fps Medium 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> Medium 30 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-l",
+     "name": "H.265 / H.264 FHD 30-60fps Low 15 Mbps",
+     "mbps": 15,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> Low 15 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-h",
+     "name": "H.265 / H.264 FHD >60fps High 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      120
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> High 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-m",
+     "name": "H.265 / H.264 FHD >60fps Medium 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      120
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> Medium 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-l",
+     "name": "H.265 / H.264 FHD >60fps Low 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      120
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> Low 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. 5K DCI / 5K (4800x2700) not in the table (no figure published).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "zcam-e2-f8",
+   "name": "Z CAM E2-F8",
+   "exists": true,
+   "notes": "Full frame 8K. z-cam.com F8 page: 'ProRes, ZRAW / H.265 main 10 / H.264 high', '500 Mbps max for H.265 & H.264 / 1.2 Gbps for ZRAW', ZRAW up to 4K 30fps; 12-bit ProRes RAW only over HDMI to Atomos Ninja V (not included). ProRes not available in 8K 2.4:1 (FW 0.98.0 release: ProRes in all modes except C8K 2.4:1). Project fps 23.98-29.97 for 8K/6K, plus 50/59.94 for 4K UHD/S16. 4K/6K supersampled or cropped selectable.",
+   "sources": [
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/spec/F8_spec.md",
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/intro.md",
+    "https://static.bhphoto.com/lit_files/886257.pdf",
+    "https://www.z-cam.com/products/professional-cameras/e2-f8/",
+    "https://cined.com/z-cam-e2-cameras-get-prores-422-for-all-modes-with-firmware-0-98-0",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "8k-24",
+     "name": "8K 2.4:1",
+     "w": 8192,
+     "h": 3456,
+     "maxfps": 30
+    },
+    {
+     "key": "8k-uhd",
+     "name": "8K UHD",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 30
+    },
+    {
+     "key": "6k-dci",
+     "name": "6K DCI",
+     "w": 6144,
+     "h": 3240,
+     "maxfps": 30
+    },
+    {
+     "key": "6k-uhd",
+     "name": "6K UHD",
+     "w": 5760,
+     "h": 3240,
+     "maxfps": 30
+    },
+    {
+     "key": "4k-uhd",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "s16",
+     "name": "Super16 (16:9)",
+     "w": 3392,
+     "h": 1908,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "8k-uhd",
+      "6k-dci",
+      "6k-uhd",
+      "4k-uhd",
+      "s16"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Not available in 8K 2.4:1 (FW 0.98.0 release notes via CineD). Whether every flavour (esp. HQ) is offered at 8K UHD is not documented by Z CAM.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "8k-uhd",
+      "6k-dci",
+      "6k-uhd",
+      "4k-uhd",
+      "s16"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Not available in 8K 2.4:1 (FW 0.98.0 release notes via CineD). Whether every flavour (esp. HQ) is offered at 8K UHD is not documented by Z CAM.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "8k-uhd",
+      "6k-dci",
+      "6k-uhd",
+      "4k-uhd",
+      "s16"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Not available in 8K 2.4:1 (FW 0.98.0 release notes via CineD). Whether every flavour (esp. HQ) is offered at 8K UHD is not documented by Z CAM.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "8k-uhd",
+      "6k-dci",
+      "6k-uhd",
+      "4k-uhd",
+      "s16"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Not available in 8K 2.4:1 (FW 0.98.0 release notes via CineD). Whether every flavour (esp. HQ) is offered at 8K UHD is not documented by Z CAM.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "zraw-1200",
+     "name": "ZRAW 12-bit 1.2 Gbps (up to 4K 30fps)",
+     "mbps": 1200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM E2 Flagship Series user manual v0.4 (FW 0.98), Record > Bitrate: 'For ZRAW, the bitrate is 1.2Gbps'; 'Max frame rate @30fps for ZRAW encoder'. z-cam.com spec pages: 'ZRAW: 1.2 Gbps', 'up to 4K @30fps'. Fixed rate regardless of resolution. ZRAW files also carry an H.265 proxy track (auto On). ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-8k-le30-h",
+     "name": "H.265 / H.264 8K (8K 2.4:1 / 8K UHD) <=30fps High 500 Mbps",
+     "mbps": 500,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 8K (8K 2.4:1 / 8K UHD) frame-rate range <=30 -> High 500 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-8k-le30-m",
+     "name": "H.265 / H.264 8K (8K 2.4:1 / 8K UHD) <=30fps Medium 400 Mbps",
+     "mbps": 400,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 8K (8K 2.4:1 / 8K UHD) frame-rate range <=30 -> Medium 400 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-8k-le30-l",
+     "name": "H.265 / H.264 8K (8K 2.4:1 / 8K UHD) <=30fps Low 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 8K (8K 2.4:1 / 8K UHD) frame-rate range <=30 -> Low 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-h",
+     "name": "H.265 / H.264 6K (6K DCI / 6K UHD) <=30fps High 250 Mbps",
+     "mbps": 250,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (6K DCI / 6K UHD) frame-rate range <=30 -> High 250 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-m",
+     "name": "H.265 / H.264 6K (6K DCI / 6K UHD) <=30fps Medium 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (6K DCI / 6K UHD) frame-rate range <=30 -> Medium 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-6k-le30-l",
+     "name": "H.265 / H.264 6K (6K DCI / 6K UHD) <=30fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 6K (6K DCI / 6K UHD) frame-rate range <=30 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-h",
+     "name": "H.265 / H.264 4K UHD & Super16 <=30fps High 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K UHD & Super16 frame-rate range <=30 -> High 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-m",
+     "name": "H.265 / H.264 4K UHD & Super16 <=30fps Medium 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K UHD & Super16 frame-rate range <=30 -> Medium 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-l",
+     "name": "H.265 / H.264 4K UHD & Super16 <=30fps Low 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K UHD & Super16 frame-rate range <=30 -> Low 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-h",
+     "name": "H.265 / H.264 4K UHD & Super16 30-60fps High 230 Mbps",
+     "mbps": 230,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K UHD & Super16 frame-rate range 30-60 -> High 230 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-m",
+     "name": "H.265 / H.264 4K UHD & Super16 30-60fps Medium 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K UHD & Super16 frame-rate range 30-60 -> Medium 150 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-l",
+     "name": "H.265 / H.264 4K UHD & Super16 30-60fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K UHD & Super16 frame-rate range 30-60 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. ",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "zcam-e2-m4",
+   "name": "Z CAM E2-M4",
+   "exists": true,
+   "notes": "MFT 4/3 4K (same sensor/spec as original E2; wiki 'E2 & E2-M4'). Codecs: H.264/H.265/ZRAW (partial debayer) + ProRes 422 Proxy/LT/422/HQ; ProRes RAW / BRAW only over HDMI to external recorders (not included). Low Noise variants of 4K DCI/4K UHD/3696x2772 (max 30fps) not listed separately. WDR mode caps 4K/FHD at 60, 3696/3312 at 48. 4K 2.4:1 is 3840x1620 per z-cam.com and wiki (manual v0.4 says 3840x1600). Bitrate class of 3696x2772/3312x2760/Super16 assumed = 4K class (z-cam.com M4 page: up to 300 Mbps for these, 200 Mbps for 1080p). Project fps 23.98-29.97 (Low Noise/3696) and up to 59.94 for others; higher via VFR.",
+   "sources": [
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/spec/E2_spec.md",
+    "https://github.com/imaginevision/Z-Camera-Doc/blob/master/E2/intro.md",
+    "https://static.bhphoto.com/lit_files/886257.pdf",
+    "https://www.z-cam.com/products/professional-cameras/e2-m4/",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "4k-dci",
+     "name": "4K DCI",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-uhd",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k-dci-24",
+     "name": "4K DCI 2.4:1",
+     "w": 4096,
+     "h": 1728,
+     "maxfps": 150
+    },
+    {
+     "key": "4k-24",
+     "name": "4K 2.4:1",
+     "w": 3840,
+     "h": 1620,
+     "maxfps": 160
+    },
+    {
+     "key": "4k-43",
+     "name": "3696x2772 4:3 (Anamorphic)",
+     "w": 3696,
+     "h": 2772,
+     "maxfps": 60
+    },
+    {
+     "key": "65",
+     "name": "3312x2760 6:5",
+     "w": 3312,
+     "h": 2760,
+     "maxfps": 60
+    },
+    {
+     "key": "s16",
+     "name": "Super16",
+     "w": 2704,
+     "h": 1600,
+     "maxfps": 160
+    },
+    {
+     "key": "s16-169",
+     "name": "Super16 16:9",
+     "w": 2112,
+     "h": 1188,
+     "maxfps": 170
+    },
+    {
+     "key": "fhd",
+     "name": "FHD",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 240
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.5401,
+     "res": [
+      "4k-dci",
+      "4k-uhd",
+      "4k-dci-24",
+      "4k-24",
+      "4k-43",
+      "65",
+      "s16",
+      "s16-169",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 HQ 1920x1080 29.97p = 220 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Z CAM wiki intro.md encoder table (E2/M4 resolutions): Proxy up to 75 fps at 4K, LT up to 75 (UHD)/60 (DCI), 422 up to 60, HQ up to 50 (UHD)/30 (DCI), all flavours up to 120 at FHD, 2704x1600 up to 75.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-422",
+     "name": "ProRes 422",
+     "bpp": 2.3654,
+     "res": [
+      "4k-dci",
+      "4k-uhd",
+      "4k-dci-24",
+      "4k-24",
+      "4k-43",
+      "65",
+      "s16",
+      "s16-169",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 1920x1080 29.97p = 147 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Z CAM wiki intro.md encoder table (E2/M4 resolutions): Proxy up to 75 fps at 4K, LT up to 75 (UHD)/60 (DCI), 422 up to 60, HQ up to 50 (UHD)/30 (DCI), all flavours up to 120 at FHD, 2704x1600 up to 75.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.6413,
+     "res": [
+      "4k-dci",
+      "4k-uhd",
+      "4k-dci-24",
+      "4k-24",
+      "4k-43",
+      "65",
+      "s16",
+      "s16-169",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 LT 1920x1080 29.97p = 102 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Z CAM wiki intro.md encoder table (E2/M4 resolutions): Proxy up to 75 fps at 4K, LT up to 75 (UHD)/60 (DCI), 422 up to 60, HQ up to 50 (UHD)/30 (DCI), all flavours up to 120 at FHD, 2704x1600 up to 75.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    },
+    {
+     "key": "pr-proxy",
+     "name": "ProRes 422 Proxy",
+     "bpp": 0.7241,
+     "res": [
+      "4k-dci",
+      "4k-uhd",
+      "4k-dci-24",
+      "4k-24",
+      "4k-43",
+      "65",
+      "s16",
+      "s16-169",
+      "fhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "ESTIMATE. Z CAM publishes no per-flavour ProRes data rate (spec pages only say 'ProRes, H.265 & H.264: up to 300 Mbps' for S6, which cannot be right for ProRes HQ at 6K). bpp from Apple ProRes White Paper target ProRes 422 Proxy 1920x1080 29.97p = 45 Mb/s (bpp = Mbps*1e6/(1920*1080*29.97)). ProRes is MOV only (Z CAM wiki intro.md). Z CAM wiki intro.md encoder table (E2/M4 resolutions): Proxy up to 75 fps at 4K, LT up to 75 (UHD)/60 (DCI), 422 up to 60, HQ up to 50 (UHD)/30 (DCI), all flavours up to 120 at FHD, 2704x1600 up to 75.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "zraw-1200",
+     "name": "ZRAW 12-bit 1.2 Gbps (up to 4K 30fps)",
+     "mbps": 1200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM E2 Flagship Series user manual v0.4 (FW 0.98), Record > Bitrate: 'For ZRAW, the bitrate is 1.2Gbps'; 'Max frame rate @30fps for ZRAW encoder'. z-cam.com spec pages: 'ZRAW: 1.2 Gbps', 'up to 4K @30fps'. Fixed rate regardless of resolution. ZRAW files also carry an H.265 proxy track (auto On). E2-M4 ZRAW is partial-debayer (z-cam.com M4 page).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-h",
+     "name": "H.265 / H.264 4K / 4:3 / 6:5 / Super16 <=30fps High 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / 4:3 / 6:5 / Super16 frame-rate range <=30 -> High 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-m",
+     "name": "H.265 / H.264 4K / 4:3 / 6:5 / Super16 <=30fps Medium 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / 4:3 / 6:5 / Super16 frame-rate range <=30 -> Medium 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-le30-l",
+     "name": "H.265 / H.264 4K / 4:3 / 6:5 / Super16 <=30fps Low 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / 4:3 / 6:5 / Super16 frame-rate range <=30 -> Low 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-h",
+     "name": "H.265 / H.264 4K / 4:3 / 6:5 / Super16 30-60fps High 230 Mbps",
+     "mbps": 230,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / 4:3 / 6:5 / Super16 frame-rate range 30-60 -> High 230 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-m",
+     "name": "H.265 / H.264 4K / 4:3 / 6:5 / Super16 30-60fps Medium 150 Mbps",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / 4:3 / 6:5 / Super16 frame-rate range 30-60 -> Medium 150 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-30-60-l",
+     "name": "H.265 / H.264 4K / 4:3 / 6:5 / Super16 30-60fps Low 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / 4:3 / 6:5 / Super16 frame-rate range 30-60 -> Low 100 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-h",
+     "name": "H.265 4K / Super16 >60fps High 300 Mbps",
+     "mbps": 300,
+     "fps": [
+      160
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / Super16 frame-rate range >60 -> High 300 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models. H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-m",
+     "name": "H.265 4K / Super16 >60fps Medium 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      160
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / Super16 frame-rate range >60 -> Medium 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models. H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-4k-gt60-l",
+     "name": "H.265 4K / Super16 >60fps Low 160 Mbps",
+     "mbps": 160,
+     "fps": [
+      160
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): 4K / Super16 frame-rate range >60 -> Low 160 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models. H.264 not available in this range (wiki encoder table: H.264 <=30fps at 6K, <=60fps at 4K, <=120 at FHD).",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-h",
+     "name": "H.265 / H.264 FHD <=30fps High 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> High 30 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-m",
+     "name": "H.265 / H.264 FHD <=30fps Medium 20 Mbps",
+     "mbps": 20,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> Medium 20 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-le30-l",
+     "name": "H.265 / H.264 FHD <=30fps Low 10 Mbps",
+     "mbps": 10,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range <=30 -> Low 10 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-h",
+     "name": "H.265 / H.264 FHD 30-60fps High 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> High 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-m",
+     "name": "H.265 / H.264 FHD 30-60fps Medium 30 Mbps",
+     "mbps": 30,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> Medium 30 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-30-60-l",
+     "name": "H.265 / H.264 FHD 30-60fps Low 15 Mbps",
+     "mbps": 15,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range 30-60 -> Low 15 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-h",
+     "name": "H.265 / H.264 FHD >60fps High 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      240
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> High 200 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-m",
+     "name": "H.265 / H.264 FHD >60fps Medium 130 Mbps",
+     "mbps": 130,
+     "fps": [
+      240
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> Medium 130 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h26x-fhd-gt60-l",
+     "name": "H.265 / H.264 FHD >60fps Low 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      240
+     ],
+     "ref": "Z CAM bitrate table (E2 Flagship Series manual v0.4 FW 0.98 p.22; Z-Camera-Doc wiki E2/intro.md 'H.265/H.264 bitrate'): FHD frame-rate range >60 -> Low 60 Mbps. Same table for H.265 (10-bit 4:2:0) and H.264 (8-bit 4:2:0); with VFR the range applies to the VFR rate. Manual v0.4 table covers E2-M4 together with flagship models.",
+     "source": "https://static.bhphoto.com/lit_files/886257.pdf",
+     "estimated": false
+    }
+   ]
+  }
+ ]
+}

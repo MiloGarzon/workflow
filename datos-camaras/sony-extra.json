@@ -1,0 +1,5258 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice",
+ "cameras": [
+  {
+   "id": "sony-f55",
+   "name": "Sony PMW-F55",
+   "exists": true,
+   "notes": "Operating Instructions Software Version 9.0 (Sony doc 4-588-305-13). ProRes/DNxHD need the CBK-55PD option and use Apple/Avid targets (estimated). RAW and X-OCN need an external recorder (AXS-R5 RAW, or AXS-R7 RAW/X-OCN).",
+   "sources": [
+    "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+    "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+    "https://www.sony.jp/ls-camera/spl/x-ocn/",
+    "https://www.sony.jp/srmaster/about/index.html",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "dci",
+     "name": "4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120,
+     "note": "4K RAW/X-OCN up to 120 fps with AXS-R7. XAVC 4K internal up to 59.94P."
+    },
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "2k",
+     "name": "2K 2048x1080",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240,
+     "note": "2K RAW up to 240 fps with AXS-R5/R7. XAVC 2K/HD S&Q to SxS up to 180 fps."
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 180
+    },
+    {
+     "key": "hd720",
+     "name": "HD 1280x720 (MPEG HD422)",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-c300",
+     "name": "XAVC 4K / QFHD Class 300 (Intra 4:2:2 10-bit)",
+     "bpp": 1.1303,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 240,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.1314
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "F5/F55 Operating Instructions (Software Version 9.0) Specifications: \"XAVC ... 4K/QFHD: VBR, 600 Mbps max. Class480/300 compliant\" (600 Mbps = Class 300 at 59.94P). Sony X-OCN White Paper v3.0 gives 4K XAVC-I Class 300 at 4096x2160/24p = 240 Mbps. Both give the same bpp, so rate scales with fps. QFHD has no 24.00P.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-c480",
+     "name": "XAVC 4K / QFHD Class 480 (Intra 4:2:2 10-bit)",
+     "bpp": 1.8084,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 384,
+       "bpp": 1.8084
+      }
+     ],
+     "ref": "Sony X-OCN White Paper v3.0 (p.6): \"4K XAVC Class480 (384Mbps)\" at 4096x2160/24p. Class 480 is limited to 23.98-29.97P (24P 4K only) per the F5/F55 manual V9.0.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-2k",
+     "name": "XAVC 2K / HD (Intra 4:2:2 10-bit, Class 100)",
+     "bpp": 1.6594,
+     "res": [
+      "2k",
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "2k",
+       "fps": 59.94,
+       "mbps": 220,
+       "bpp": 1.6594
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861,
+       "estimated": true
+      }
+     ],
+     "ref": "F5/F55 manual V9.0 Specifications: \"2K: VBR, 220 Mbps max.\" (2048x1080), \"HD: SMPTE RP2027 Class100 compliant\". The manual gives no Mbps for HD. The HD rate (222 Mbps at 59.94P) is from Sony's PXW-FS7 manual for the same Class 100 HD mode, so it is flagged estimated. Assumed to scale with frame rate.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-4444",
+     "name": "Apple ProRes 4444 HD (with CBK-55PD)",
+     "bpp": 5.3101,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 330,
+       "bpp": 5.3101
+      }
+     ],
+     "ref": "Sony gives no Mbps. Apple ProRes White Paper target: 1920x1080 29.97p ProRes 4444 = 330 Mbps. Record-time check (manual V9.0): SBP-128 at 29.97P = approx. 38 min.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prores-422hq",
+     "name": "Apple ProRes 422 HQ HD (with CBK-55PD)",
+     "bpp": 3.5401,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 220,
+       "bpp": 3.5401
+      }
+     ],
+     "ref": "Sony gives no Mbps for F5/F55. Apple ProRes White Paper target: 1920x1080 29.97 = 220 Mbps (Sony's FS7 manual uses the same figure). 50/59.94 are interlaced (50i/59.94i).",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prores-422",
+     "name": "Apple ProRes 422 HD (with CBK-55PD)",
+     "bpp": 2.3654,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 147,
+       "bpp": 2.3654
+      }
+     ],
+     "ref": "Sony gives no Mbps for F5/F55. Apple ProRes White Paper target: 1920x1080 29.97 = 147 Mbps.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    },
+    {
+     "key": "dnxhd-220x",
+     "name": "Avid DNxHD 220x HD (10-bit, with CBK-55PD)",
+     "bpp": 3.5401,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 220,
+       "bpp": 3.5401
+      }
+     ],
+     "ref": "Avid DNx naming/data-rate references: DNxHD 1080 175X/185X/220X = 23.976/25/29.97 fps, so 220x = 220 Mbps at 29.97 (scales with fps). Sony gives no Mbps.",
+     "source": "https://kb.avid.com/pkb/articles/en_US/Knowledge/Avid-DNx-naming-scheme-and-data-rates",
+     "estimated": true
+    },
+    {
+     "key": "dnxhd-145",
+     "name": "Avid DNxHD 145 HD (8-bit, with CBK-55PD)",
+     "bpp": 2.3332,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 145,
+       "bpp": 2.3332
+      }
+     ],
+     "ref": "Avid DNx references: DNxHD 1080 115/120/145 = 23.976/25/29.97 fps, so 145 = 145 Mbps at 29.97. Sony gives no Mbps.",
+     "source": "https://kb.avid.com/pkb/articles/en_US/Knowledge/Avid-DNx-naming-scheme-and-data-rates",
+     "estimated": true
+    },
+    {
+     "key": "xocn-st",
+     "name": "X-OCN ST (AXS-R7, external recorder)",
+     "bpp": 3.1114,
+     "res": [
+      "dci",
+      "2k"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94,
+      119.88,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 660,
+       "bpp": 3.1114
+      }
+     ],
+     "ref": "Sony Japan X-OCN page: X-OCN ST 4K 24p = 660 Mbps (bitrate comparison at 23.98p, F55 + AXS-R7). bpp at 4096x2160/23.976. 2K assumed same bpp.",
+     "source": "https://www.sony.jp/ls-camera/spl/x-ocn/",
+     "estimated": false
+    },
+    {
+     "key": "xocn-lt",
+     "name": "X-OCN LT (AXS-R7, external recorder)",
+     "bpp": 1.8338,
+     "res": [
+      "dci",
+      "2k"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94,
+      119.88,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 389,
+       "bpp": 1.8338
+      }
+     ],
+     "ref": "Sony Japan X-OCN page: X-OCN LT 4K 24p = 389 Mbps (approx. 60% lighter than F55 RAW). The X-OCN White Paper v3.0 also gives 4K X-OCN LT = 389 Mbps at 4096x2160/24p.",
+     "source": "https://www.sony.jp/ls-camera/spl/x-ocn/",
+     "estimated": false
+    },
+    {
+     "key": "raw-sq",
+     "name": "F55 RAW 16-bit (AXS-R5/R7, external recorder)",
+     "bpp": 4.4455,
+     "res": [
+      "dci",
+      "2k"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94,
+      119.88,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 943,
+       "bpp": 4.4455,
+       "estimated": true
+      }
+     ],
+     "ref": "Derived: Sony Japan X-OCN page says X-OCN ST (660 Mbps, 4K 24p) is \"approx. 30% lighter\" than F55 RAW, which gives approx. 943 Mbps at 4096x2160/23.98p. The figure is shown only in Sony's chart image, so it is flagged estimated. 2K RAW (up to 240 fps) assumed same bpp.",
+     "source": "https://www.sony.jp/ls-camera/spl/x-ocn/",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavc-l-50",
+     "name": "XAVC-L 50 Mbps (HD 1920x1080, max)",
+     "mbps": 50,
+     "fps": [
+      29.97,
+      59.94
+     ],
+     "ref": "F5/F55 manual V9.0: \"XAVC Long 50 mode: VBR, 50 Mbps max.\" 1920x1080 59.94i/29.97P only.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-35",
+     "name": "XAVC-L 35 Mbps (HD 1920x1080, max)",
+     "mbps": 35,
+     "fps": [
+      29.97,
+      59.94
+     ],
+     "ref": "F5/F55 manual V9.0: \"35 mode: VBR, 35 Mbps max.\" 59.94i/29.97P.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-25",
+     "name": "XAVC-L 25 Mbps (HD 1920x1080 59.94i, max)",
+     "mbps": 25,
+     "fps": [
+      29.97
+     ],
+     "ref": "F5/F55 manual V9.0: \"25 mode: VBR, 25 Mbps max.\" 59.94i only.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "mpeg-hd422-50",
+     "name": "MPEG HD422 50 Mbps (MPEG-2, 1080 / 720)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "F5/F55 manual V9.0: \"MPEG HD422 ... HD 422 mode: CBR, 50 Mbps\". 1920x1080 50i/59.94i/23.98P/25P/29.97P, 1280x720 50P/59.94P (720P is F55 only).",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "sstp-sr-sq",
+     "name": "SStP SR-SQ 422 / 444 440 Mbps (HD)",
+     "mbps": 440,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Sony SRMASTER page: SR-SQ = 440 Mbps (nominal). F5/F55 manual V9.0 record times (SBP-128: 40 min at 23.98P, 30 min at 29.97P) suggest the actual rate scales with frame rate (nominal at 29.97). SR-SQ 422 also at 59.94i.",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": false
+    },
+    {
+     "key": "sstp-sr-lite",
+     "name": "SStP SR-Lite 422 220 Mbps (HD)",
+     "mbps": 220,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Sony SRMASTER page: SR-Lite = 220 Mbps (nominal).",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-f5",
+   "name": "Sony PMW-F5",
+   "exists": true,
+   "notes": "Operating Instructions Software Version 9.0 (Sony doc 4-588-305-13). ProRes/DNxHD need the CBK-55PD option and use Apple/Avid targets (estimated). RAW and X-OCN need an external recorder (AXS-R5 RAW, or AXS-R7 RAW/X-OCN). PMW-F5: XAVC 4K/QFHD needs the CBKZ-55FX license. 4K 120 fps HFR to AXS-R7 is listed only for the F55.",
+   "sources": [
+    "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+    "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+    "https://www.sony.jp/ls-camera/spl/x-ocn/",
+    "https://www.sony.jp/srmaster/about/index.html",
+    "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "dci",
+     "name": "4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60,
+     "note": "XAVC 4K internal up to 59.94P."
+    },
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "2k",
+     "name": "2K 2048x1080",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 240,
+     "note": "2K RAW up to 240 fps with AXS-R5/R7. XAVC 2K/HD S&Q to SxS up to 180 fps."
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 180
+    },
+    {
+     "key": "hd720",
+     "name": "HD 1280x720 (MPEG HD422)",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-c300",
+     "name": "XAVC 4K / QFHD Class 300 (Intra 4:2:2 10-bit)",
+     "bpp": 1.1303,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 240,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.1314
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "F5/F55 Operating Instructions (Software Version 9.0) Specifications: \"XAVC ... 4K/QFHD: VBR, 600 Mbps max. Class480/300 compliant\" (600 Mbps = Class 300 at 59.94P). Sony X-OCN White Paper v3.0 gives 4K XAVC-I Class 300 at 4096x2160/24p = 240 Mbps. Both give the same bpp, so rate scales with fps. QFHD has no 24.00P. On PMW-F5, XAVC 4K/QFHD needs the CBKZ-55FX upgrade license.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-c480",
+     "name": "XAVC 4K / QFHD Class 480 (Intra 4:2:2 10-bit)",
+     "bpp": 1.8084,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 384,
+       "bpp": 1.8084
+      }
+     ],
+     "ref": "Sony X-OCN White Paper v3.0 (p.6): \"4K XAVC Class480 (384Mbps)\" at 4096x2160/24p. Class 480 is limited to 23.98-29.97P (24P 4K only) per the F5/F55 manual V9.0. On PMW-F5, XAVC 4K/QFHD needs the CBKZ-55FX upgrade license.",
+     "source": "https://77snszqv.media.zestyio.com/Sony_X-OCN_WhitePaper_v3.0.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-2k",
+     "name": "XAVC 2K / HD (Intra 4:2:2 10-bit, Class 100)",
+     "bpp": 1.6594,
+     "res": [
+      "2k",
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "2k",
+       "fps": 59.94,
+       "mbps": 220,
+       "bpp": 1.6594
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861,
+       "estimated": true
+      }
+     ],
+     "ref": "F5/F55 manual V9.0 Specifications: \"2K: VBR, 220 Mbps max.\" (2048x1080), \"HD: SMPTE RP2027 Class100 compliant\". The manual gives no Mbps for HD. The HD rate (222 Mbps at 59.94P) is from Sony's PXW-FS7 manual for the same Class 100 HD mode, so it is flagged estimated. Assumed to scale with frame rate.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-4444",
+     "name": "Apple ProRes 4444 HD (with CBK-55PD)",
+     "bpp": 5.3101,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 330,
+       "bpp": 5.3101
+      }
+     ],
+     "ref": "Sony gives no Mbps. Apple ProRes White Paper target: 1920x1080 29.97p ProRes 4444 = 330 Mbps. Record-time check (manual V9.0): SBP-128 at 29.97P = approx. 38 min.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prores-422hq",
+     "name": "Apple ProRes 422 HQ HD (with CBK-55PD)",
+     "bpp": 3.5401,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 220,
+       "bpp": 3.5401
+      }
+     ],
+     "ref": "Sony gives no Mbps for F5/F55. Apple ProRes White Paper target: 1920x1080 29.97 = 220 Mbps (Sony's FS7 manual uses the same figure). 50/59.94 are interlaced (50i/59.94i).",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prores-422",
+     "name": "Apple ProRes 422 HD (with CBK-55PD)",
+     "bpp": 2.3654,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 147,
+       "bpp": 2.3654
+      }
+     ],
+     "ref": "Sony gives no Mbps for F5/F55. Apple ProRes White Paper target: 1920x1080 29.97 = 147 Mbps.",
+     "source": "https://www.apple.com/final-cut-pro/docs/Apple_ProRes_White_Paper.pdf",
+     "estimated": true
+    },
+    {
+     "key": "dnxhd-220x",
+     "name": "Avid DNxHD 220x HD (10-bit, with CBK-55PD)",
+     "bpp": 3.5401,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 220,
+       "bpp": 3.5401
+      }
+     ],
+     "ref": "Avid DNx naming/data-rate references: DNxHD 1080 175X/185X/220X = 23.976/25/29.97 fps, so 220x = 220 Mbps at 29.97 (scales with fps). Sony gives no Mbps.",
+     "source": "https://kb.avid.com/pkb/articles/en_US/Knowledge/Avid-DNx-naming-scheme-and-data-rates",
+     "estimated": true
+    },
+    {
+     "key": "dnxhd-145",
+     "name": "Avid DNxHD 145 HD (8-bit, with CBK-55PD)",
+     "bpp": 2.3332,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 145,
+       "bpp": 2.3332
+      }
+     ],
+     "ref": "Avid DNx references: DNxHD 1080 115/120/145 = 23.976/25/29.97 fps, so 145 = 145 Mbps at 29.97. Sony gives no Mbps.",
+     "source": "https://kb.avid.com/pkb/articles/en_US/Knowledge/Avid-DNx-naming-scheme-and-data-rates",
+     "estimated": true
+    },
+    {
+     "key": "xocn-st",
+     "name": "X-OCN ST (AXS-R7, external recorder)",
+     "bpp": 3.1114,
+     "res": [
+      "dci",
+      "2k"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 660,
+       "bpp": 3.1114
+      }
+     ],
+     "ref": "Sony Japan X-OCN page: X-OCN ST 4K 24p = 660 Mbps (bitrate comparison at 23.98p, F55 + AXS-R7). bpp at 4096x2160/23.976. 2K assumed same bpp. F5 support per X-OCN White Paper v3.0 (\"VENICE and PMW-F55/F5 cameras (in combination with AXS-R7)\"). The F55 figure is applied to F5, which has the same 4096x2160 RAW raster.",
+     "source": "https://www.sony.jp/ls-camera/spl/x-ocn/",
+     "estimated": true
+    },
+    {
+     "key": "xocn-lt",
+     "name": "X-OCN LT (AXS-R7, external recorder)",
+     "bpp": 1.8338,
+     "res": [
+      "dci",
+      "2k"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 389,
+       "bpp": 1.8338
+      }
+     ],
+     "ref": "Sony Japan X-OCN page: X-OCN LT 4K 24p = 389 Mbps (approx. 60% lighter than F55 RAW). The X-OCN White Paper v3.0 also gives 4K X-OCN LT = 389 Mbps at 4096x2160/24p. F55 figure applied to F5.",
+     "source": "https://www.sony.jp/ls-camera/spl/x-ocn/",
+     "estimated": true
+    },
+    {
+     "key": "raw-sq",
+     "name": "F5 RAW 16-bit (AXS-R5/R7, external recorder)",
+     "bpp": 4.4455,
+     "res": [
+      "dci",
+      "2k"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 943,
+       "bpp": 4.4455,
+       "estimated": true
+      }
+     ],
+     "ref": "Derived: Sony Japan X-OCN page says X-OCN ST (660 Mbps, 4K 24p) is \"approx. 30% lighter\" than F55 RAW, which gives approx. 943 Mbps at 4096x2160/23.98p. The figure is shown only in Sony's chart image, so it is flagged estimated. 2K RAW (up to 240 fps) assumed same bpp.",
+     "source": "https://www.sony.jp/ls-camera/spl/x-ocn/",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavc-l-50",
+     "name": "XAVC-L 50 Mbps (HD 1920x1080, max)",
+     "mbps": 50,
+     "fps": [
+      29.97,
+      59.94
+     ],
+     "ref": "F5/F55 manual V9.0: \"XAVC Long 50 mode: VBR, 50 Mbps max.\" 1920x1080 59.94i/29.97P only.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-35",
+     "name": "XAVC-L 35 Mbps (HD 1920x1080, max)",
+     "mbps": 35,
+     "fps": [
+      29.97,
+      59.94
+     ],
+     "ref": "F5/F55 manual V9.0: \"35 mode: VBR, 35 Mbps max.\" 59.94i/29.97P.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-25",
+     "name": "XAVC-L 25 Mbps (HD 1920x1080 59.94i, max)",
+     "mbps": 25,
+     "fps": [
+      29.97
+     ],
+     "ref": "F5/F55 manual V9.0: \"25 mode: VBR, 25 Mbps max.\" 59.94i only.",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "mpeg-hd422-50",
+     "name": "MPEG HD422 50 Mbps (MPEG-2, 1080 / 720)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "F5/F55 manual V9.0: \"MPEG HD422 ... HD 422 mode: CBR, 50 Mbps\". 1920x1080 50i/59.94i/23.98P/25P/29.97P, 1280x720 50P/59.94P (720P is F55 only).",
+     "source": "https://www.adorama.com/col/productManuals/SOF52F55UPGK.pdf",
+     "estimated": false
+    },
+    {
+     "key": "sstp-sr-sq",
+     "name": "SStP SR-SQ 422 / 444 440 Mbps (HD)",
+     "mbps": 440,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Sony SRMASTER page: SR-SQ = 440 Mbps (nominal). F5/F55 manual V9.0 record times (SBP-128: 40 min at 23.98P, 30 min at 29.97P) suggest the actual rate scales with frame rate (nominal at 29.97). SR-SQ 422 also at 59.94i.",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": false
+    },
+    {
+     "key": "sstp-sr-lite",
+     "name": "SStP SR-Lite 422 220 Mbps (HD)",
+     "mbps": 220,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "Sony SRMASTER page: SR-Lite = 220 Mbps (nominal).",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-f65",
+   "name": "Sony F65 (F65RS)",
+   "exists": true,
+   "notes": "Records to the docked SR-R4 SRMemory recorder (F65 Operation Manual: F65RAW mode 23.98-59.94p, F65RAW-HFR up to 120p, HD mode with SR-HQ/SR-SQ/SR-Lite). Sony gives no Mbps for F65RAW. The rate is derived from Sony SRMASTER brochure record times and is flagged estimated. F65RAW is 16-bit linear data from the 8K-class photosite array, delivered as a 4096x2160 (or 3840x2160) image. bpp is relative to 4096x2160.",
+   "sources": [
+    "https://www.afcinema.com/IMG/pdf/f/5/3/sony_f65.pdf",
+    "https://www.sony.jp/srmaster/about/index.html",
+    "https://www.manualowl.com/m/Sony/SRR4/Manual/375384?page=8"
+   ],
+   "resolutions": [
+    {
+     "key": "dci",
+     "name": "4K 4096x2160 (F65RAW)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160 (F65RAW effective area)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080 (HD mode, SStP)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "f65raw-sq",
+     "name": "F65RAW-SQ 16-bit (SR-R4)",
+     "bpp": 10.6435,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 2260,
+       "bpp": 10.6435,
+       "estimated": true
+      }
+     ],
+     "ref": "Derived: Sony SRMASTER/SR-R4 brochure, \"59 minutes of RAW recording on a 1 TB SRMemory card at 24 fps\". The brochure host blocked automated access, so the figure was taken from the indexed brochure text. Sony's 2011 F65 announcement said about 60 min. 8e12 bits / 3540 s gives approx. 2260 Mbps (gross, incl. audio/metadata). bpp vs 4096x2160 at 24.",
+     "source": "https://www.manualowl.com/m/Sony/SRR4/Manual/375384?page=8",
+     "estimated": true
+    },
+    {
+     "key": "f65raw-lite",
+     "name": "F65RAW-Lite 16-bit (SR-R4)",
+     "bpp": 6.3861,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 1356,
+       "bpp": 6.3861,
+       "estimated": true
+      }
+     ],
+     "ref": "Derived: Sony Japan SRMASTER page says F65RAW-Lite is \"about 3/5\" the data size of F65RAW-SQ, so 0.6 x 2260 = approx. 1356 Mbps at 24 fps.",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": true
+    },
+    {
+     "key": "f65raw-hfr",
+     "name": "F65RAW-HFR 16-bit (SR-R4, up to 120 fps)",
+     "bpp": 5.2332,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      100,
+      119.88,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 120,
+       "mbps": 5556,
+       "bpp": 5.2332,
+       "estimated": true
+      }
+     ],
+     "ref": "Derived (from indexed brochure text, host blocked): Sony SRMASTER brochure, \"up to 24 minutes of 120p high frame rate image can be recorded on 1 TB SRMemory card\". 8e12 / 1440 s gives approx. 5556 Mbps at 120 fps (needs the 5.5 Gbps SRMemory card).",
+     "source": "https://www.manualowl.com/m/Sony/SRR4/Manual/375384?page=8",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "sr-hq",
+     "name": "SStP SR-HQ 880 Mbps (HD 4:4:4 RGB)",
+     "mbps": 880,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan SRMASTER page: SR-HQ = 880 Mbps (nominal). The F65 HD mode offers SR-HQ/SR-SQ in 4:4:4 RGB, and SR-SQ/SR-Lite in 4:2:2.",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": false
+    },
+    {
+     "key": "sr-sq",
+     "name": "SStP SR-SQ 440 Mbps (HD)",
+     "mbps": 440,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan SRMASTER page: SR-SQ = 440 Mbps.",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": false
+    },
+    {
+     "key": "sr-lite",
+     "name": "SStP SR-Lite 220 Mbps (HD 4:2:2)",
+     "mbps": 220,
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan SRMASTER page: SR-Lite = 220 Mbps.",
+     "source": "https://www.sony.jp/srmaster/about/index.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-fs7",
+   "name": "Sony PXW-FS7",
+   "exists": true,
+   "notes": "Sony PXW-FS7 Operating Instructions (system software V2.0) + the Sony Japan FS7 II spec sheet for per-frame-rate Mbps (same XAVC modes and the same record-time figures as the FS7 manual). DCI 4K XAVC-I is in the V2.0 manual. RAW (4K up to 59.94P, 2K up to 240 fps) needs the XDCA-FS7 + HXR-IFR5 + AXS-R5 (external recorder). Sony publishes no RAW data rate for this path, so it is not included.",
+   "sources": [
+    "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf",
+    "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160 (XAVC-I)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 180,
+     "note": "S&Q: XAVC-I HD 1-180 fps (150 at 50 Hz), XAVC-L HD 1-120 fps. Recorded at project rate."
+    },
+    {
+     "key": "hd720",
+     "name": "HD 1280x720 (MPEG HD422)",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-4k",
+     "name": "XAVC-I 4K / QFHD (Class 300, 4:2:2 10-bit)",
+     "bpp": 1.2068,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.1314
+      },
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 4096x2160 and 3840x2160 59.94p 600 Mbps, 29.97p 300 Mbps, 24p/23.98p 240 Mbps (VBR). 50p/25p are scaled (500/250, PAL area). FS7 manual: \"QFHD/4K: VBR, 600 Mbps max.\"",
+     "source": "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-hd",
+     "name": "XAVC-I HD (Class 100, 4:2:2 10-bit)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 1920x1080 59.94p 222 Mbps (CBG), 59.94i/29.97p 111 Mbps, 23.98p 89 Mbps. FS7 manual: \"HD: CBG, 222 Mbps\".",
+     "source": "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-422hq",
+     "name": "Apple ProRes 422 HQ HD (with XDCA-FS7)",
+     "bpp": 3.5401,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 220,
+       "bpp": 3.5401
+      }
+     ],
+     "ref": "PXW-FS7 Operating Instructions (V2.0) Specifications: \"ProRes 422 HQ: 4:2:2, 10-bit, VBR, 220 Mbps max.\" 1920x1080 59.94i/50i/29.97P/25P/23.98P. bpp is taken at 29.97 (the Apple target frame rate for 220 Mbps).",
+     "source": "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-422",
+     "name": "Apple ProRes 422 HD (with XDCA-FS7)",
+     "bpp": 2.3654,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 147,
+       "bpp": 2.3654
+      }
+     ],
+     "ref": "PXW-FS7 Operating Instructions (V2.0) Specifications: \"ProRes 422: 4:2:2, 10-bit, VBR, 147 Mbps max.\" bpp at 29.97.",
+     "source": "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavc-l-qfhd-150",
+     "name": "XAVC-L QFHD 150 Mbps (4:2:0 8-bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 3840x2160 59.94p 150 Mbps VBR. FS7 manual: \"QFHD: VBR, 150 Mbps max., 4:2:0 Long\".",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-qfhd-100",
+     "name": "XAVC-L QFHD 100 Mbps (4:2:0 8-bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 3840x2160 29.97p/23.98p 100 Mbps VBR.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-50",
+     "name": "XAVC-L HD 50 Mbps (4:2:2 10-bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 1920x1080 59.94p/29.97p/23.98p 50/35 Mbps, 59.94i 50/35/25 Mbps (VBR).",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-35",
+     "name": "XAVC-L HD 35 Mbps (4:2:2 10-bit)",
+     "mbps": 35,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: XAVC Long HD 35 Mbps mode.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-25",
+     "name": "XAVC-L HD 25 Mbps (59.94i/50i only)",
+     "mbps": 25,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 25 Mbps only at 59.94i (50i in PAL). Listed as 25/29.97 frame rates.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "mpeg-hd422-50",
+     "name": "MPEG HD422 50 Mbps (MPEG-2, 1080 / 720)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: MPEG HD422 50 Mbps CBR, 1920x1080 59.94i/29.97p/23.98p, 1280x720 59.94p/29.97p/23.98p.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-fs7-ii",
+   "name": "Sony PXW-FS7 II (PXW-FS7M2)",
+   "exists": true,
+   "notes": "Sony Japan spec sheet SPC_PXW-FS7M2.pdf (per-frame-rate Mbps and record times on 128 GB XQD). ProRes via XDCA-FS7 is taken from the FS7 manual (same extension unit). RAW via XDCA-FS7 + HXR-IFR5 + AXS-R5 (2K 120/240 fps) has no Sony data rate, so it is not included.",
+   "sources": [
+    "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+    "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160 (XAVC-I)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 180,
+     "note": "S&Q: XAVC-I HD 1-180 fps (150 at 50 Hz), XAVC-L HD 1-120 fps. Recorded at project rate."
+    },
+    {
+     "key": "hd720",
+     "name": "HD 1280x720 (MPEG HD422)",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-4k",
+     "name": "XAVC-I 4K / QFHD (Class 300, 4:2:2 10-bit)",
+     "bpp": 1.2068,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.1314
+      },
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 4096x2160 and 3840x2160 59.94p 600 Mbps, 29.97p 300 Mbps, 24p/23.98p 240 Mbps (VBR). 50p/25p are scaled (500/250, PAL area). FS7 manual: \"QFHD/4K: VBR, 600 Mbps max.\"",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-hd",
+     "name": "XAVC-I HD (Class 100, 4:2:2 10-bit)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 1920x1080 59.94p 222 Mbps (CBG), 59.94i/29.97p 111 Mbps, 23.98p 89 Mbps. FS7 manual: \"HD: CBG, 222 Mbps\".",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "prores-422hq",
+     "name": "Apple ProRes 422 HQ HD (with XDCA-FS7)",
+     "bpp": 3.5401,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 220,
+       "bpp": 3.5401
+      }
+     ],
+     "ref": "PXW-FS7 Operating Instructions (V2.0) Specifications: \"ProRes 422 HQ: 4:2:2, 10-bit, VBR, 220 Mbps max.\" 1920x1080 59.94i/50i/29.97P/25P/23.98P. bpp is taken at 29.97 (the Apple target frame rate for 220 Mbps). Applied to FS7 II from the FS7 manual (same XDCA-FS7 option).",
+     "source": "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf",
+     "estimated": true
+    },
+    {
+     "key": "prores-422",
+     "name": "Apple ProRes 422 HD (with XDCA-FS7)",
+     "bpp": 2.3654,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 147,
+       "bpp": 2.3654
+      }
+     ],
+     "ref": "PXW-FS7 Operating Instructions (V2.0) Specifications: \"ProRes 422: 4:2:2, 10-bit, VBR, 147 Mbps max.\" bpp at 29.97. Applied to FS7 II from the FS7 manual.",
+     "source": "https://di.update.sony.net/HXR/0sMtGAHDwD/PXW-FS7_V200_manual_eng.pdf",
+     "estimated": true
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavc-l-qfhd-150",
+     "name": "XAVC-L QFHD 150 Mbps (4:2:0 8-bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 3840x2160 59.94p 150 Mbps VBR. FS7 manual: \"QFHD: VBR, 150 Mbps max., 4:2:0 Long\".",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-qfhd-100",
+     "name": "XAVC-L QFHD 100 Mbps (4:2:0 8-bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 3840x2160 29.97p/23.98p 100 Mbps VBR.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-50",
+     "name": "XAVC-L HD 50 Mbps (4:2:2 10-bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 1920x1080 59.94p/29.97p/23.98p 50/35 Mbps, 59.94i 50/35/25 Mbps (VBR).",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-35",
+     "name": "XAVC-L HD 35 Mbps (4:2:2 10-bit)",
+     "mbps": 35,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: XAVC Long HD 35 Mbps mode.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-25",
+     "name": "XAVC-L HD 25 Mbps (59.94i/50i only)",
+     "mbps": 25,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: 25 Mbps only at 59.94i (50i in PAL). Listed as 25/29.97 frame rates.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    },
+    {
+     "key": "mpeg-hd422-50",
+     "name": "MPEG HD422 50 Mbps (MPEG-2, 1080 / 720)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS7M2 spec sheet (SPC_PXW-FS7M2.pdf) recording-format table: MPEG HD422 50 Mbps CBR, 1920x1080 59.94i/29.97p/23.98p, 1280x720 59.94p/29.97p/23.98p.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS7M2.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-fs5-ii",
+   "name": "Sony PXW-FS5 II (PXW-FS5M2)",
+   "exists": true,
+   "notes": "Sony did not publish an FS5 II-specific rate table that could be fetched (pro.sony and manual hosts blocked automated access). The rates come from Sony Japan's FS5 (Mk I) spec sheet. The FS5 II uses the same internal recording formats (Sony's operating guide 4-581-849-13 covers PXW-FS5/FS5M2/FS5M2K). FS5 II additions (4K RAW output over SDI to an external recorder, 120/240 fps HFR) have no published Sony data rate. Super slow motion (HD 120-960 fps) is recorded into 59.94i/29.97p/23.98p files at the normal rates.",
+   "sources": [
+    "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 30
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 60
+    },
+    {
+     "key": "hd720",
+     "name": "HD 1280x720",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [],
+   "fixed": [
+    {
+     "key": "xavc-l-qfhd-100",
+     "name": "XAVC QFHD 100 Mbps (Long 4:2:0 8-bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: 4K XAVC Long420 3840x2160 30p/24p 100/60 Mbps VBR (25p in PAL). 64 GB = approx. 60 min at 100M.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-qfhd-60",
+     "name": "XAVC QFHD 60 Mbps (Long 4:2:0 8-bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: 60 Mbps mode. 64 GB = approx. 100 min.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-50",
+     "name": "XAVC HD 50 Mbps (Long 4:2:2 10-bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: XAVC Long422 1920x1080 60p/30p/24p 50/35 Mbps, 60i 50/35/25 Mbps, 1280x720 60p 50 Mbps.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-35",
+     "name": "XAVC HD 35 Mbps (Long 4:2:2 10-bit)",
+     "mbps": 35,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: 35 Mbps mode (1080).",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd-25",
+     "name": "XAVC HD 25 Mbps (60i/50i only)",
+     "mbps": 25,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: 25 Mbps only at 60i (50i PAL).",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "avchd-28",
+     "name": "AVCHD 1080 28 Mbps (PS, 60p/50p)",
+     "mbps": 28,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: AVCHD 1920x1080 60p 28 Mbps VBR.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "avchd-24",
+     "name": "AVCHD 24 Mbps (1080 60i/30p/24p, 720 60p)",
+     "mbps": 24,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: AVCHD 1080 60i/30p/24p 24/17 Mbps, 1280x720 60p 24/17/9 Mbps.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "avchd-17",
+     "name": "AVCHD 17 Mbps (1080 60i/30p/24p, 720 60p)",
+     "mbps": 17,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: AVCHD 17 Mbps mode.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    },
+    {
+     "key": "avchd-9",
+     "name": "AVCHD 720 9 Mbps",
+     "mbps": 9,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan PXW-FS5 spec sheet (SPC_PXW-FS5K.pdf) recording-format table: AVCHD 1280x720 60p 9 Mbps.",
+     "source": "https://www.sony.jp/products/catalog/SPC_PXW-FS5K.pdf",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-fx2",
+   "name": "Sony FX2 (ILME-FX2)",
+   "exists": true,
+   "notes": "Help Guide ilc/2530 (ILME-FX2/FX2B). The table lists exact rates (23.98p/29.97p/59.94p/119.88p). XAVC S-I DCI 4K (4096x2160) adds 24.00p. No 4K 100/120p. HD 119.88p is the top recorded rate. No RAW video output.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160 (XAVC S-I DCI 4K)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K / DCI 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd",
+      "dci"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      },
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 240,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.1314
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD. XAVC S-I DCI 4K (4096x2160): 60p/50p 600M/500M, 30p/25p 300M/250M, 24p 240M, 24.00p 240M (same Mbps as UHD, so DCI bpp is ~6% lower).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2530/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-fr7",
+   "name": "Sony FR7 (ILME-FR7 / ILME-FR7K)",
+   "exists": true,
+   "notes": "PTZ full-frame cinema camera. Help Guide ilc/2240 \"Specifications\" + \"Rec Format\". Sony publishes only max bitrates per mode (at 59.94P). RAW (4096x2160 / 3840x2160, up to 59.94P) goes over 12G-SDI to an external recorder. Sony publishes no rate for it, so it is not included. S&Q: QFHD 1-120 fps, HD 1-240 fps, 4K 1-60 fps.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2240/v1/en/contents/TP1000673490.html",
+    "https://helpguide.sony.net/ilc/2240/v1/en/contents/TP1000669684.html"
+   ],
+   "resolutions": [
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-4k",
+     "name": "XAVC-I 4K / QFHD (Class 300, 4:2:2 10-bit)",
+     "bpp": 1.2068,
+     "res": [
+      "dci",
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      },
+      {
+       "res": "dci",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.1314
+      }
+     ],
+     "ref": "FR7 Help Guide Specifications: \"XAVC-I 4K/QFHD mode: VBR, 600 Mbps (max)\". bpp from 600 Mbps at 59.94P. Lower frame rates are assumed to scale linearly (XAVC Intra Class 300). Sony states 4K Class 300 24p = 240 Mbps in the X-OCN White Paper v3.0, which is the same bpp. 24P (24.00) is DCI 4K only.",
+     "source": "https://helpguide.sony.net/ilc/2240/v1/en/contents/TP1000673490.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-hd",
+     "name": "XAVC-I HD (Class 100, 4:2:2 10-bit)",
+     "bpp": 1.7942,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 223,
+       "bpp": 1.7942
+      }
+     ],
+     "ref": "FR7 Help Guide Specifications: \"XAVC-I HD mode: CBG, 223 Mbps (max)\". bpp from 223 Mbps at 59.94P, assuming it scales with frame rate (Class 100).",
+     "source": "https://helpguide.sony.net/ilc/2240/v1/en/contents/TP1000673490.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavc-l-qfhd-150",
+     "name": "XAVC-L QFHD 150 Mbps (max, 4:2:0 Long GOP)",
+     "mbps": 150,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "FR7 Help Guide Specifications: \"XAVC-L QFHD mode: VBR, 150 Mbps (max)\". This is a maximum. Sony does not state a lower figure for 23.98-29.97P on FR7.",
+     "source": "https://helpguide.sony.net/ilc/2240/v1/en/contents/TP1000673490.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd50",
+     "name": "XAVC-L HD 50 Mbps (max)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "FR7 Help Guide Specifications: \"XAVC-L HD 50 mode: VBR, 50 Mbps (max)\".",
+     "source": "https://helpguide.sony.net/ilc/2240/v1/en/contents/TP1000673490.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-hd35",
+     "name": "XAVC-L HD 35 Mbps (max)",
+     "mbps": 35,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "FR7 Help Guide Specifications: \"XAVC-L HD 35 mode: VBR, 35 Mbps (max)\".",
+     "source": "https://helpguide.sony.net/ilc/2240/v1/en/contents/TP1000673490.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-a7s-iii",
+   "name": "Sony Alpha 7S III (ILCE-7SM3)",
+   "exists": true,
+   "notes": "Help Guide for system software Ver.3.00 or later (ilc/2410). DCI 4K (XAVC S-I DCI 4K) and 24.00p need the paid \"DCI 4K / 24.00p Upgrade License\". HD S&Q goes up to 240 fps, recorded at the project frame rate. 4K 120p records with a crop of about 1.1x. 16-bit RAW over HDMI to an external recorder: 4264x2408, 24p-60p (Sony help guide \"Outputting RAW movies to an external RAW recorder\"); not included, because Sony does not publish a data rate and the rate depends on the recorder codec.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+    "https://helpguide.sony.net/di/dci4k_2410/v1/en/print.pdf",
+    "https://helpguide.sony.net/ilc/2410/v1/en/contents/251h_outputting_RAW_movies.html"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "dci",
+     "name": "DCI 4K 4096x2160 (XAVC S-I DCI 4K)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K / DCI 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd",
+      "dci"
+     ],
+     "fps": [
+      23.98,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      },
+      {
+       "res": "dci",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 24,
+       "mbps": 240,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.1314
+      },
+      {
+       "res": "dci",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.1303
+      },
+      {
+       "res": "dci",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.1314
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD. XAVC S-I DCI 4K (4096x2160): 60p/50p 600M/500M, 30p/25p 300M/250M, 24p 240M, 24.00p 240M (same Mbps as UHD, so DCI bpp is ~6% lower).",
+     "source": "https://helpguide.sony.net/di/dci4k_2410/v1/en/print.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-4k-280",
+     "name": "XAVC HS 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-280",
+     "name": "XAVC S 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2410/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-a7-iv",
+   "name": "Sony Alpha 7 IV (ILCE-7M4)",
+   "exists": true,
+   "notes": "Help Guide ilc/2110. No 4K 100/120p. HD 120p is the top recorded rate. 4K 60p records in Super 35 crop. No RAW video output.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+    "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640818.html"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD.",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2110/v1/en/contents/TP1000640834.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-a7-v",
+   "name": "Sony Alpha 7 V (ILCE-7M5)",
+   "exists": true,
+   "notes": "Exists: Sony Help Guide ilc/2540 \"ILCE-7M5\". Movie Settings table includes XAVC HS/S 4K 120p/100p. No DCI 4K and no RAW video output page in the help guide.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+    "https://helpguide.sony.net/ilc/2540/v1/en/index.html"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD.",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-4k-280",
+     "name": "XAVC HS 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-280",
+     "name": "XAVC S 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2540/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-a1",
+   "name": "Sony Alpha 1 (ILCE-1)",
+   "exists": true,
+   "notes": "Help Guide ilc/2420 (latest system software). 8K 30p/25p/24p in XAVC HS only. No DCI 4K internal. 16-bit RAW over HDMI to an external recorder: 4332x2446, 24p-60p (Sony help guide \"Outputting RAW movies to an external RAW recorder\"); not included, because Sony does not publish a data rate and the rate depends on the recorder codec.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+    "https://helpguide.sony.net/ilc/2420/v1/en/contents/251h_outputting_RAW_movies.html"
+   ],
+   "resolutions": [
+    {
+     "key": "8k",
+     "name": "8K 7680x4320 (XAVC HS 8K)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 30
+    },
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD.",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-8k-520",
+     "name": "XAVC HS 8K 520 Mbps (4:2:2 10bit)",
+     "mbps": 520,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-8k-400",
+     "name": "XAVC HS 8K 400 Mbps (4:2:0 10bit)",
+     "mbps": 400,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-8k-260",
+     "name": "XAVC HS 8K 260 Mbps (4:2:2 10bit)",
+     "mbps": 260,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-8k-200",
+     "name": "XAVC HS 8K 200 Mbps (4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-280",
+     "name": "XAVC HS 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-280",
+     "name": "XAVC S 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2420/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-a1-ii",
+   "name": "Sony Alpha 1 II (ILCE-1M2)",
+   "exists": true,
+   "notes": "Help Guide ilc/2440. 8K 30p/25p/24p in XAVC HS only. No DCI 4K internal. 16-bit RAW over HDMI to an external recorder: 4332x2446, 24p-60p (Sony help guide \"Outputting RAW movies to an external RAW recorder\"); not included, because Sony does not publish a data rate and the rate depends on the recorder codec.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+    "https://helpguide.sony.net/ilc/2440/v1/en/contents/251h_outputting_RAW_movies.html"
+   ],
+   "resolutions": [
+    {
+     "key": "8k",
+     "name": "8K 7680x4320 (XAVC HS 8K)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 30
+    },
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD.",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-8k-520",
+     "name": "XAVC HS 8K 520 Mbps (4:2:2 10bit)",
+     "mbps": 520,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-8k-400",
+     "name": "XAVC HS 8K 400 Mbps (4:2:0 10bit)",
+     "mbps": 400,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-8k-260",
+     "name": "XAVC HS 8K 260 Mbps (4:2:2 10bit)",
+     "mbps": 260,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-8k-200",
+     "name": "XAVC HS 8K 200 Mbps (4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-280",
+     "name": "XAVC HS 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-280",
+     "name": "XAVC S 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2440/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-a7r-v",
+   "name": "Sony Alpha 7R V (ILCE-7RM5)",
+   "exists": true,
+   "notes": "Help Guide ilc/2230. XAVC HS 8K only at 24p/25p (400M/200M, 4:2:0 10-bit). No 4K 100/120p. HD 120p is the top recorded rate. 16-bit RAW over HDMI to an external recorder: 3848x2168, 24p-60p (Sony help guide \"Outputting RAW movies to an external RAW recorder\"); not included, because Sony does not publish a data rate and the rate depends on the recorder codec.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+    "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP1002101516.html"
+   ],
+   "resolutions": [
+    {
+     "key": "8k",
+     "name": "8K 7680x4320 (XAVC HS 8K)",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 25
+    },
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD.",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-8k-400",
+     "name": "XAVC HS 8K 400 Mbps (4:2:0 10bit)",
+     "mbps": 400,
+     "fps": [
+      23.98,
+      25
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-8k-200",
+     "name": "XAVC HS 8K 200 Mbps (4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      23.98,
+      25
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2230/v1/en/contents/TP0002911203.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-a9-iii",
+   "name": "Sony Alpha 9 III (ILCE-9M3)",
+   "exists": true,
+   "notes": "Help Guide ilc/2380. 4K up to 120p (XAVC HS/S). 16-bit RAW over HDMI to an external recorder: 4672x2628, 24p-60p (Sony help guide \"Outputting RAW movies to an external RAW recorder\"); not included, because Sony does not publish a data rate and the rate depends on the recorder codec.",
+   "sources": [
+    "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+    "https://helpguide.sony.net/ilc/2380/v1/en/contents/251h_outputting_RAW_movies.html"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "4K UHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-si-4k",
+     "name": "XAVC S-I 4K (4:2:2 10-bit Intra)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 23.976,
+       "mbps": 240,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 25,
+       "mbps": 250,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 29.97,
+       "mbps": 300,
+       "bpp": 1.2068
+      },
+      {
+       "res": "uhd",
+       "fps": 50,
+       "mbps": 500,
+       "bpp": 1.2056
+      },
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I 4K table: 60p/50p = 600M/500M, 30p/25p = 300M/250M, 24p = 240M (3840x2160, Intra, 4:2:2 10-bit). Mbps scales with frame rate, so bpp is constant (1.2068) for UHD.",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavc-si-hd",
+     "name": "XAVC S-I HD (4:2:2 10-bit Intra)",
+     "bpp": 1.7861,
+     "res": [
+      "hd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "hd",
+       "fps": 23.976,
+       "mbps": 89,
+       "bpp": 1.7901
+      },
+      {
+       "res": "hd",
+       "fps": 25,
+       "mbps": 93,
+       "bpp": 1.794
+      },
+      {
+       "res": "hd",
+       "fps": 29.97,
+       "mbps": 111,
+       "bpp": 1.7861
+      },
+      {
+       "res": "hd",
+       "fps": 50,
+       "mbps": 185,
+       "bpp": 1.7843
+      },
+      {
+       "res": "hd",
+       "fps": 59.94,
+       "mbps": 222,
+       "bpp": 1.7861
+      }
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\", XAVC S-I HD table: 60p/50p = 222M/185M, 30p/25p = 111M/93M, 24p = 89M (1920x1080, Intra). bpp per figure in rates[]; headline bpp from 59.94p.",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavchs-4k-280",
+     "name": "XAVC HS 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-200",
+     "name": "XAVC HS 4K 200 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-150",
+     "name": "XAVC HS 4K 150 Mbps (4:2:0 10bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-100",
+     "name": "XAVC HS 4K 100 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-75",
+     "name": "XAVC HS 4K 75 Mbps (4:2:0 10bit)",
+     "mbps": 75,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-50",
+     "name": "XAVC HS 4K 50 Mbps (4:2:2 10bit / 4:2:0 10bit)",
+     "mbps": 50,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-45",
+     "name": "XAVC HS 4K 45 Mbps (4:2:0 10bit)",
+     "mbps": 45,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavchs-4k-30",
+     "name": "XAVC HS 4K 30 Mbps (4:2:0 10bit)",
+     "mbps": 30,
+     "fps": [
+      23.98
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-280",
+     "name": "XAVC S 4K 280 Mbps (4:2:2 10bit)",
+     "mbps": 280,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-200",
+     "name": "XAVC S 4K 200 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94,
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-150",
+     "name": "XAVC S 4K 150 Mbps (4:2:0 8bit)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-140",
+     "name": "XAVC S 4K 140 Mbps (4:2:2 10bit)",
+     "mbps": 140,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-100",
+     "name": "XAVC S 4K 100 Mbps (4:2:0 8bit / 4:2:2 10bit)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-4k-60",
+     "name": "XAVC S 4K 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-100",
+     "name": "XAVC S HD 100 Mbps (4:2:0 8bit)",
+     "mbps": 100,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-60",
+     "name": "XAVC S HD 60 Mbps (4:2:0 8bit)",
+     "mbps": 60,
+     "fps": [
+      100,
+      119.88
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-50",
+     "name": "XAVC S HD 50 Mbps (4:2:2 10bit / 4:2:0 8bit)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-25",
+     "name": "XAVC S HD 25 Mbps (4:2:0 8bit)",
+     "mbps": 25,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    },
+    {
+     "key": "xavcs-hd-16",
+     "name": "XAVC S HD 16 Mbps (4:2:0 8bit)",
+     "mbps": 16,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Help Guide \"Movie Settings (movie)\" table (https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html). Nominal bitrate as labelled by Sony; frame rates per the table (24p = 23.98p NTSC only; 120p = 119.88p).",
+     "source": "https://helpguide.sony.net/ilc/2380/v1/en/contents/0412B_movie_setting.html",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "sony-pxw-z750",
+   "name": "Sony PXW-Z750",
+   "exists": true,
+   "notes": "2/3-inch 3-chip 4K shoulder camcorder. Sony spec sheet (English, pro.sony PDF copy) + Sony Japan catalog (format list and bitrate labels). HD HFR up to 120 fps.",
+   "sources": [
+    "https://www.afcinema.com/IMG/pdf/4/c/7/pxw-z750.pdf",
+    "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "uhd",
+     "name": "QFHD 3840x2160",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 60
+    },
+    {
+     "key": "hd",
+     "name": "HD 1920x1080",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    },
+    {
+     "key": "hd1440",
+     "name": "HD 1440x1080 (MPEG HD)",
+     "w": 1440,
+     "h": 1080,
+     "maxfps": 60
+    },
+    {
+     "key": "hd720",
+     "name": "HD 1280x720 (MPEG)",
+     "w": 1280,
+     "h": 720,
+     "maxfps": 60
+    }
+   ],
+   "codecs": [
+    {
+     "key": "xavc-i-qfhd-300",
+     "name": "XAVC-I QFHD 300 (Intra Class 300, 4:2:2 10-bit)",
+     "bpp": 1.2068,
+     "res": [
+      "uhd"
+     ],
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "uhd",
+       "fps": 59.94,
+       "mbps": 600,
+       "bpp": 1.2068
+      }
+     ],
+     "ref": "Sony Japan Z750 catalog: XAVC-I QFHD 300 = 600 Mbps (official name \"XAVC QFHD Intra Class300 VBR\", 59.94p). Assumed to scale with frame rate (Class 300: 240 Mbps at 24p per Sony X-OCN White Paper v3.0).",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "xavc-l422-qfhd-200",
+     "name": "XAVC-L422 QFHD 200 Mbps (4:2:2 10-bit)",
+     "mbps": 200,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan Z750 catalog: XAVC-L422 QFHD 200 (200 Mbps), 59.94p/50p.",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-qfhd-150",
+     "name": "XAVC-L QFHD 150 Mbps (4:2:0)",
+     "mbps": 150,
+     "fps": [
+      50,
+      59.94
+     ],
+     "ref": "Sony spec sheet: XAVC-L420 QFHD 150, 59.94p/50p.",
+     "source": "https://www.afcinema.com/IMG/pdf/4/c/7/pxw-z750.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l-qfhd-100",
+     "name": "XAVC-L QFHD 100 Mbps (4:2:0)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan Z750 catalog: XAVC-L QFHD 100, 29.97p/25p/23.98p.",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-i-hd-100",
+     "name": "XAVC-I HD 100 (Class 100, nominal 100 Mbps)",
+     "mbps": 100,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan Z750 catalog record-time table labels XAVC-I HD 100 as \"100Mbps\" (ODC5500R 5.5 TB = 87 h, approx. 140 Mbps effective). In other Sony XAVC-I HD Class 100 specs (FS7/FR7) 1080 59.94p reaches 222-223 Mbps, so treat 100 Mbps as nominal.",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l422-hd-50",
+     "name": "XAVC-L422 HD 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony spec sheet / Sony Japan catalog: XAVC-L422 HD 50.",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l422-hd-35",
+     "name": "XAVC-L422 HD 35 Mbps",
+     "mbps": 35,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan Z750 catalog: XAVC-L422 HD 35.",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    },
+    {
+     "key": "xavc-l422-hd-25",
+     "name": "XAVC-L422 HD 25 Mbps (59.94i/50i)",
+     "mbps": 25,
+     "fps": [
+      25,
+      29.97
+     ],
+     "ref": "Sony Japan Z750 catalog: XAVC-L422 HD 25, 59.94i/50i only.",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    },
+    {
+     "key": "mpeg-hd422-50",
+     "name": "MPEG HD422 50 Mbps (1080 / 720)",
+     "mbps": 50,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Sony Japan Z750 catalog record-time table: MPEG HD422 = 50Mbps.",
+     "source": "https://www.sony.jp/professional/support/catalog_pdf/c_c/PXW-Z750_1911.pdf",
+     "estimated": false
+    },
+    {
+     "key": "mpeg-hd420",
+     "name": "MPEG HD (4:2:0, 1080 / 1440 / 720)",
+     "mbps": null,
+     "fps": [
+      23.98,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "ref": "Listed in the Sony spec sheet as MPEG HD420, but no bitrate is given in the Z750 documents that were checked.",
+     "source": "https://www.afcinema.com/IMG/pdf/4/c/7/pxw-z750.pdf",
+     "estimated": false
+    }
+   ]
+  }
+ ]
+}

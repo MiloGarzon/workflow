@@ -516,10 +516,18 @@
             const manual = !!cd.manual;
             tb.querySelector('input').readOnly = !manual;
             tb.classList.toggle('ro', !manual);
+            // frame rates offered by this recording mode (camera library), limited to the selected resolution's max
+            const r = cam && (cam.resolutions || []).find(x => x.key === c.res);
+            const fpsAll = Array.isArray(cd.fps) ? cd.fps : [];
+            const fpsOk = r && r.maxfps ? fpsAll.filter(x => x <= r.maxfps) : fpsAll;
+            const fpsList = fpsOk.length ? fpsOk : fpsAll;
+            const fpsId = fpsList.length ? 'fps-' + Math.random().toString(36).slice(2, 8) : undefined;
+            const fpsDl = fpsId ? h('datalist', { id: fpsId }, fpsList.map(x => h('option', { value: x }))) : null;
+            const fpsHint = fpsList.length ? h('div', { class: 'hint' }, `Frame rates comunes de este modo: ${fpsList.join(' · ')}${r && r.maxfps ? ` (máx. ${r.maxfps} fps en esta resolución)` : ''}`) : null;
             extra.replaceChildren(
               ...(cd.manual ? [fText('Códec (texto)', c, 'codec', { ...oc, ph: 'ARRIRAW HDE 4.6K 3:2 OG' })] : []),
-              ...(!cd.manual && !cd.mbps && !cd.fixed ? [h('div', { class: 'row' }, sel('Resolución', c, 'res', resGroups(), () => { drawExtra(); calc(); }), fText('Frame rate (fps)', c, 'fps', { ...oc, type: 'number', step: 'any' }))] : []),
-              ...(cd.fixed ? [h('div', { class: 'hint' }, `Bitrate fijo de ${cd.mbps} Mb/s publicado por el fabricante para este modo.`)] : []),
+              ...(!cd.manual && !cd.mbps && !cd.fixed ? [h('div', { class: 'row' }, sel('Resolución', c, 'res', resGroups(), () => { drawExtra(); calc(); }), fText('Frame rate (fps)', c, 'fps', { ...oc, type: 'number', step: 'any', list: fpsId })), fpsDl, fpsHint].filter(Boolean) : []),
+              ...(cd.fixed ? [h('div', { class: 'hint' }, `Bitrate fijo de ${cd.mbps} Mb/s para este modo${fpsList.length ? ` · frame rates: ${fpsList.join(' · ')}` : ''}.`)] : []),
               ...(cd.mbps ? [h('div', { class: 'row3' }, fText('Nombre del códec', c, 'codecName', { ...oc, ph: 'X-OCN ST, H.265…' }), fText('Data rate (Mb/s)', c, 'mbps', { ...oc, type: 'number', step: 'any' }), fText('Frame rate (fps)', c, 'fps', { ...oc, type: 'number', step: 'any' }))] : []),
               ...(!cd.manual && !cd.mbps && !cd.fixed && c.res === 'custom' ? [h('div', { class: 'row' }, fText('Ancho (px)', c, 'w', { ...oc, type: 'number' }), fText('Alto (px)', c, 'h', { ...oc, type: 'number' }))] : []),
               ...(cd.raw ? [h('div', { class: 'row' }, fText('Profundidad de bits', c, 'bits', { ...oc, type: 'number', hint: 'ej. 16, 12' }), fText('Compresión (X:1)', c, 'ratio', { ...oc, type: 'number', step: 'any', hint: 'ej. 5 para 5:1' }))] : []));

@@ -1,0 +1,1607 @@
+{
+ "generated": "2026-11-04",
+ "conventions": "bpp = Mbps*1e6/(W*H*fps) of the recorded file resolution; fixed = codecs whose bitrate does not scale with resolution/fps choice. DJI MB/s figures are megabytes per second (x8 = Mb/s).",
+ "cameras": [
+  {
+   "id": "dji-ronin4d-6k",
+   "name": "DJI Ronin 4D 6K (Zenmuse X9-6K)",
+   "exists": true,
+   "notes": "Data from Ronin 4D User Manual v1.4 (2023.12) and the dji.com detailed recording-spec table (includes 16:9, added in firmware v01.05.1702, 2024.11). ProRes RAW needs the paid Ronin 4D RAW license (activated in DJI Assistant 2); DJI labels the table rows only 'ProRes RAW' although specs list 'ProRes RAW HQ/ProRes RAW'. ProRes 4444 XQ only to DJI PROSSD 1TB. CFexpress 2.0 Type B: ProRes 422 HQ/LT 6K up to 30 fps, C4K/2K up to 120; USB-C SSD: C4K/2K up to 60. Rates do not depend on Full Frame vs Super 35 at the same output size. S&Q 1-120 fps supported (fw v01.05.0100). No H.265.",
+   "sources": [
+    "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+    "https://www.dji.com/global/ronin-4d/specs",
+    "https://dl.djicdn.com/downloads/DJI_Ronin_4D/20231214/DJI_Ronin_4D_User_Manual_v1.4_en.pdf",
+    "https://dl.djicdn.com/downloads/DJI_Ronin_4D/20241226/Ronin_4D_Release_Notes_en.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "6k",
+     "name": "6K FF 17:9",
+     "w": 6008,
+     "h": 3168,
+     "maxfps": 48
+    },
+    {
+     "key": "6k-169",
+     "name": "6K FF 16:9",
+     "w": 5632,
+     "h": 3168,
+     "maxfps": 48
+    },
+    {
+     "key": "6k-50",
+     "name": "6K FF 17:9 (50 fps mode)",
+     "w": 5952,
+     "h": 3136,
+     "maxfps": 50
+    },
+    {
+     "key": "6k-169-50",
+     "name": "6K FF 16:9 (50 fps mode)",
+     "w": 5568,
+     "h": 3136,
+     "maxfps": 50
+    },
+    {
+     "key": "6k-239",
+     "name": "6K FF 2.39:1",
+     "w": 6008,
+     "h": 2512,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-dci",
+     "name": "C4K 17:9 (FF or S35)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 96
+    },
+    {
+     "key": "4k",
+     "name": "4K 16:9 (FF or S35)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 96
+    },
+    {
+     "key": "4k-239",
+     "name": "4K 2.39:1 (FF or S35)",
+     "w": 4096,
+     "h": 1712,
+     "maxfps": 120
+    },
+    {
+     "key": "2k",
+     "name": "2K 17:9 (FF or S35)",
+     "w": 2048,
+     "h": 1080,
+     "maxfps": 120
+    },
+    {
+     "key": "2k-169",
+     "name": "2K 16:9 / FHD (FF or S35)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "prraw",
+     "name": "ProRes RAW",
+     "bpp": 3.8179,
+     "res": [
+      "6k",
+      "6k-169",
+      "6k-50",
+      "6k-169-50",
+      "6k-239",
+      "4k-dci",
+      "4k",
+      "4k-239"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "rates": [
+      {
+       "res": "6k",
+       "fps": 24,
+       "mbps": 1744,
+       "bpp": 3.8179
+      },
+      {
+       "res": "6k-169",
+       "fps": 24,
+       "mbps": 1744,
+       "bpp": 4.0727
+      },
+      {
+       "res": "6k-50",
+       "fps": 50,
+       "mbps": 3560,
+       "bpp": 3.8145
+      },
+      {
+       "res": "6k-169-50",
+       "fps": 50,
+       "mbps": 3560,
+       "bpp": 4.0776
+      },
+      {
+       "res": "6k-239",
+       "fps": 59.94,
+       "mbps": 3448,
+       "bpp": 3.8115
+      },
+      {
+       "res": "4k-dci",
+       "fps": 24,
+       "mbps": 808,
+       "bpp": 3.8053
+      },
+      {
+       "res": "4k",
+       "fps": 24,
+       "mbps": 808,
+       "bpp": 4.059
+      },
+      {
+       "res": "4k-239",
+       "fps": 120,
+       "mbps": 3208,
+       "bpp": 3.8123
+      }
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). ProRes RAW 6K 24 fps = 218 MB/s = 1744 Mb/s; constant ~3.81 bpp in every cell (6K FF to 60 fps, 4K S35 to 120 fps). No 2K or 4K FF ProRes RAW. Paid license.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "pr-xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 7.6182,
+     "res": [
+      "6k",
+      "6k-169",
+      "6k-50",
+      "6k-169-50",
+      "6k-239",
+      "4k-dci",
+      "4k",
+      "4k-239"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "rates": [
+      {
+       "res": "6k",
+       "fps": 24,
+       "mbps": 3480,
+       "bpp": 7.6182
+      },
+      {
+       "res": "6k-169",
+       "fps": 24,
+       "mbps": 3480,
+       "bpp": 8.1268
+      },
+      {
+       "res": "6k-50",
+       "fps": 50,
+       "mbps": 7120,
+       "bpp": 7.6291
+      },
+      {
+       "res": "6k-169-50",
+       "fps": 50,
+       "mbps": 7120,
+       "bpp": 8.1552
+      },
+      {
+       "res": "6k-239",
+       "fps": 59.94,
+       "mbps": 6904,
+       "bpp": 7.6319
+      },
+      {
+       "res": "4k-dci",
+       "fps": 24,
+       "mbps": 1616,
+       "bpp": 7.6106
+      },
+      {
+       "res": "4k",
+       "fps": 24,
+       "mbps": 1616,
+       "bpp": 8.1179
+      },
+      {
+       "res": "4k-239",
+       "fps": 120,
+       "mbps": 6416,
+       "bpp": 7.6246
+      }
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). ProRes 4444XQ 6K 24 fps = 435 MB/s = 3480 Mb/s (~7.6 bpp). 6K FF to 60 fps, 4K S35 to 120 fps. PROSSD only (release notes fw v01.04.0100).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.38,
+     "res": [
+      "6k",
+      "6k-169",
+      "6k-50",
+      "6k-169-50",
+      "6k-239",
+      "4k-dci",
+      "4k",
+      "4k-239",
+      "2k",
+      "2k-169"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "rates": [
+      {
+       "res": "6k",
+       "fps": 24,
+       "mbps": 1544,
+       "bpp": 3.38
+      },
+      {
+       "res": "6k-169",
+       "fps": 24,
+       "mbps": 1544,
+       "bpp": 3.6057
+      },
+      {
+       "res": "6k-50",
+       "fps": 50,
+       "mbps": 3160,
+       "bpp": 3.3859
+      },
+      {
+       "res": "6k-169-50",
+       "fps": 50,
+       "mbps": 3160,
+       "bpp": 3.6194
+      },
+      {
+       "res": "6k-239",
+       "fps": 59.94,
+       "mbps": 3064,
+       "bpp": 3.3871
+      },
+      {
+       "res": "4k-dci",
+       "fps": 24,
+       "mbps": 720,
+       "bpp": 3.3908
+      },
+      {
+       "res": "4k",
+       "fps": 24,
+       "mbps": 720,
+       "bpp": 3.6169
+      },
+      {
+       "res": "4k-239",
+       "fps": 120,
+       "mbps": 2848,
+       "bpp": 3.3845
+      },
+      {
+       "res": "2k",
+       "fps": 24,
+       "mbps": 192,
+       "bpp": 3.6169
+      },
+      {
+       "res": "2k-169",
+       "fps": 24,
+       "mbps": 192,
+       "bpp": 3.858
+      }
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). ProRes 422HQ 6K 24 fps = 193 MB/s = 1544 Mb/s (~3.38 bpp); 2K figures are small integers so bpp rounds higher (24 MB/s at 24 fps).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "pr-lt",
+     "name": "ProRes 422 LT",
+     "bpp": 1.5762,
+     "res": [
+      "6k",
+      "6k-169",
+      "6k-50",
+      "6k-169-50",
+      "6k-239",
+      "4k-dci",
+      "4k",
+      "4k-239",
+      "2k",
+      "2k-169"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "rates": [
+      {
+       "res": "6k",
+       "fps": 24,
+       "mbps": 720,
+       "bpp": 1.5762
+      },
+      {
+       "res": "6k-169",
+       "fps": 24,
+       "mbps": 720,
+       "bpp": 1.6814
+      },
+      {
+       "res": "6k-50",
+       "fps": 50,
+       "mbps": 1464,
+       "bpp": 1.5687
+      },
+      {
+       "res": "6k-169-50",
+       "fps": 50,
+       "mbps": 1464,
+       "bpp": 1.6769
+      },
+      {
+       "res": "6k-239",
+       "fps": 59.94,
+       "mbps": 1488,
+       "bpp": 1.6449
+      },
+      {
+       "res": "4k-dci",
+       "fps": 24,
+       "mbps": 336,
+       "bpp": 1.5824
+      },
+      {
+       "res": "4k",
+       "fps": 24,
+       "mbps": 336,
+       "bpp": 1.6879
+      },
+      {
+       "res": "4k-239",
+       "fps": 120,
+       "mbps": 1336,
+       "bpp": 1.5877
+      },
+      {
+       "res": "2k",
+       "fps": 24,
+       "mbps": 88,
+       "bpp": 1.6577
+      },
+      {
+       "res": "2k-169",
+       "fps": 24,
+       "mbps": 88,
+       "bpp": 1.7683
+      }
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). ProRes 422LT 6K 24 fps = 90 MB/s = 720 Mb/s (~1.58 bpp).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-4k-144",
+     "name": "H.264 4K/C4K 144 Mbps",
+     "mbps": 144,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). H.264 (4:2:0 10-bit) rows: 4K FF and S35 18 MB/s at 23.976-30 fps.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "h264-4k-200",
+     "name": "H.264 4K/C4K 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      48,
+      50,
+      59.94,
+      60
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). H.264 (4:2:0 10-bit) rows: 4K FF and S35 25 MB/s at 48-60 fps.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "h264-4k-288",
+     "name": "H.264 4K/C4K 288 Mbps (S35, S&Q)",
+     "mbps": 288,
+     "fps": [
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). H.264 (4:2:0 10-bit) rows: 4K S35 36 MB/s at 72-120 fps (100/120 in 2.39:1).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "h264-2k-56",
+     "name": "H.264 2K 56 Mbps",
+     "mbps": 56,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). H.264 (4:2:0 10-bit) rows: 2K 7 MB/s at 23.976-30 fps.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "h264-2k-88",
+     "name": "H.264 2K 88 Mbps",
+     "mbps": 88,
+     "fps": [
+      48,
+      50,
+      59.94,
+      60
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). H.264 (4:2:0 10-bit) rows: 2K 11 MB/s at 48-60 fps.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "h264-2k-144",
+     "name": "H.264 2K 144 Mbps (S&Q)",
+     "mbps": 144,
+     "fps": [
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "ref": "DJI Ronin 4D 'X9-6K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.22 'X9-6K Recording Specifications'), values in MB/s, x8 = Mb/s. Cell colours map to image areas: teal = 17:9/16:9 (6008x3168 / 5632x3168 6K, 4096x2160 / 3840x2160 4K, 2048x1080 / 1920x1080 2K), blue = 6K FF at 50 fps (5952x3136 / 5568x3136), orange = 2.39:1 (6K 6008x2512 at 59.94/60, 4K 4096x1712 at 59.94/60 FF and 100/120 S35). DJI gives one MB/s figure per cell for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure (bpp computed on the 16:9 frame). H.264 (4:2:0 10-bit) rows: 2K 18 MB/s at 72-120 fps (S35 to 96, FF to 120).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "dji-ronin4d-8k",
+   "name": "DJI Ronin 4D 8K (Zenmuse X9-8K)",
+   "exists": true,
+   "notes": "Data from Ronin 4D User Manual v1.4 (2023.12) and the dji.com detailed recording-spec table. X9-8K table lists only ProRes RAW, ProRes 422 HQ and H.264 (no 4444 XQ / 422 LT rows for X9-8K although the shared spec sheet lists them). ProRes RAW has two per-frame tiers like the Inspire 3 X9-8K Air: ~3.8 bpp (8K up to 25 fps, 5.5K up to 50, 4K FF up to 100) and ~1.9 bpp (8K 29.97-60, 8K 2.39:1 72/75, 5.5K 59.94/60, 4K 120). ProRes RAW needs the paid RAW license. 8K ProRes 422 HQ up to 30 fps; 4K FF up to 120, 4K S35 up to 60. Storage limits as Ronin 4D 6K (CFexpress/USB-C SSD restrictions). No H.265.",
+   "sources": [
+    "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+    "https://www.dji.com/global/ronin-4d/specs",
+    "https://dl.djicdn.com/downloads/DJI_Ronin_4D/20231214/DJI_Ronin_4D_User_Manual_v1.4_en.pdf",
+    "https://dl.djicdn.com/downloads/DJI_Ronin_4D/20241226/Ronin_4D_Release_Notes_en.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "8k-dci",
+     "name": "8K FF 17:9",
+     "w": 8192,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-uhd",
+     "name": "8K FF 16:9",
+     "w": 7680,
+     "h": 4320,
+     "maxfps": 60
+    },
+    {
+     "key": "8k-239",
+     "name": "8K FF 2.39:1",
+     "w": 8192,
+     "h": 3424,
+     "maxfps": 75
+    },
+    {
+     "key": "5.5k",
+     "name": "5.5K S35 17:9",
+     "w": 5568,
+     "h": 2952,
+     "maxfps": 60
+    },
+    {
+     "key": "5.2k",
+     "name": "5.2K S35 16:9",
+     "w": 5248,
+     "h": 2952,
+     "maxfps": 60
+    },
+    {
+     "key": "4k-dci",
+     "name": "C4K 17:9 (FF or S35)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k",
+     "name": "4K 16:9 (FF or S35)",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    }
+   ],
+   "codecs": [
+    {
+     "key": "prraw-hi",
+     "name": "ProRes RAW (DJI high-rate tier, ~3.8 bpp)",
+     "bpp": 3.8147,
+     "res": [
+      "8k-dci",
+      "8k-uhd",
+      "5.5k",
+      "5.2k",
+      "4k-dci",
+      "4k"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      72,
+      75,
+      96,
+      100
+     ],
+     "rates": [
+      {
+       "res": "8k-dci",
+       "fps": 24,
+       "mbps": 3240,
+       "bpp": 3.8147
+      },
+      {
+       "res": "8k-uhd",
+       "fps": 24,
+       "mbps": 3240,
+       "bpp": 4.069
+      },
+      {
+       "res": "5.5k",
+       "fps": 24,
+       "mbps": 1504,
+       "bpp": 3.8126
+      },
+      {
+       "res": "5.2k",
+       "fps": 24,
+       "mbps": 1504,
+       "bpp": 4.0451
+      },
+      {
+       "res": "4k-dci",
+       "fps": 24,
+       "mbps": 808,
+       "bpp": 3.8053
+      },
+      {
+       "res": "4k",
+       "fps": 24,
+       "mbps": 808,
+       "bpp": 4.059
+      }
+     ],
+     "ref": "DJI Ronin 4D 'X9-8K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.23 'X9-8K Recording Specifications'), values in MB/s, x8 = Mb/s. Teal cells = 17:9/16:9 (8192x4320 / 7680x4320 8K FF, 5568x2952 / 5248x2952 5.5K S35, 4096x2160 / 3840x2160 4K), orange = 8K 2.39:1 8192x3424 (72/75 fps). DJI gives one MB/s figure for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure. ProRes RAW 8K 24 fps = 405 MB/s = 3240 Mb/s (~3.8 bpp). This tier: 8K at 23.976/24/25, 5.5K at 23.976-50, 4K FF at 23.976-100 (e.g. 4K 100 fps = 422 MB/s). Paid license.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false,
+     "resMaxfps": {
+      "8k-dci": 25,
+      "8k-uhd": 25,
+      "5.5k": 50,
+      "5.2k": 50,
+      "4k-dci": 100,
+      "4k": 100
+     }
+    },
+    {
+     "key": "prraw-lo",
+     "name": "ProRes RAW (DJI reduced-rate tier, ~1.9 bpp: 8K above 25 fps, 8K 2.39:1, 5.5K 60, 4K 120)",
+     "bpp": 1.9083,
+     "res": [
+      "8k-dci",
+      "8k-uhd",
+      "8k-239",
+      "5.5k",
+      "5.2k",
+      "4k-dci",
+      "4k"
+     ],
+     "fps": [
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      72,
+      75,
+      120
+     ],
+     "rates": [
+      {
+       "res": "8k-dci",
+       "fps": 59.94,
+       "mbps": 4048,
+       "bpp": 1.9083
+      },
+      {
+       "res": "8k-uhd",
+       "fps": 59.94,
+       "mbps": 4048,
+       "bpp": 2.0355
+      },
+      {
+       "res": "8k-239",
+       "fps": 75,
+       "mbps": 4016,
+       "bpp": 1.909
+      },
+      {
+       "res": "5.5k",
+       "fps": 59.94,
+       "mbps": 1880,
+       "bpp": 1.9082
+      },
+      {
+       "res": "5.2k",
+       "fps": 59.94,
+       "mbps": 1880,
+       "bpp": 2.0246
+      },
+      {
+       "res": "4k-dci",
+       "fps": 120,
+       "mbps": 2024,
+       "bpp": 1.9064
+      },
+      {
+       "res": "4k",
+       "fps": 120,
+       "mbps": 2024,
+       "bpp": 2.0335
+      }
+     ],
+     "ref": "DJI Ronin 4D 'X9-8K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.23 'X9-8K Recording Specifications'), values in MB/s, x8 = Mb/s. Teal cells = 17:9/16:9 (8192x4320 / 7680x4320 8K FF, 5568x2952 / 5248x2952 5.5K S35, 4096x2160 / 3840x2160 4K), orange = 8K 2.39:1 8192x3424 (72/75 fps). DJI gives one MB/s figure for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure. ProRes RAW 8K 59.94 fps = 506 MB/s = 4048 Mb/s (~1.9 bpp); e.g. 8K 29.97 = 253 MB/s vs 24 fps = 405 MB/s. 8K 2.39:1 72/75 fps = 482/502 MB/s; 5.5K 59.94/60 = 235 MB/s; 4K 120 = 253 MB/s.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false,
+     "resMaxfps": {
+      "8k-dci": 60,
+      "8k-uhd": 60,
+      "8k-239": 75,
+      "5.5k": 60,
+      "5.2k": 60,
+      "4k-dci": 120,
+      "4k": 120
+     }
+    },
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.3908,
+     "res": [
+      "8k-dci",
+      "8k-uhd",
+      "4k-dci",
+      "4k"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30,
+      48,
+      50,
+      59.94,
+      60,
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "rates": [
+      {
+       "res": "8k-dci",
+       "fps": 24,
+       "mbps": 2880,
+       "bpp": 3.3908
+      },
+      {
+       "res": "8k-uhd",
+       "fps": 24,
+       "mbps": 2880,
+       "bpp": 3.6169
+      },
+      {
+       "res": "4k-dci",
+       "fps": 24,
+       "mbps": 720,
+       "bpp": 3.3908
+      },
+      {
+       "res": "4k",
+       "fps": 24,
+       "mbps": 720,
+       "bpp": 3.6169
+      }
+     ],
+     "ref": "DJI Ronin 4D 'X9-8K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.23 'X9-8K Recording Specifications'), values in MB/s, x8 = Mb/s. Teal cells = 17:9/16:9 (8192x4320 / 7680x4320 8K FF, 5568x2952 / 5248x2952 5.5K S35, 4096x2160 / 3840x2160 4K), orange = 8K 2.39:1 8192x3424 (72/75 fps). DJI gives one MB/s figure for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure. ProRes 422HQ 8K 24 fps = 360 MB/s = 2880 Mb/s (~3.39 bpp); 8K up to 30 fps (450 MB/s), 4K FF up to 120 fps (450 MB/s), 4K S35 up to 60 fps.",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false,
+     "resMaxfps": {
+      "8k-dci": 30,
+      "8k-uhd": 30,
+      "4k-dci": 120,
+      "4k": 120
+     }
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-4k-144",
+     "name": "H.264 4K/C4K 144 Mbps",
+     "mbps": 144,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      30
+     ],
+     "ref": "DJI Ronin 4D 'X9-8K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.23 'X9-8K Recording Specifications'), values in MB/s, x8 = Mb/s. Teal cells = 17:9/16:9 (8192x4320 / 7680x4320 8K FF, 5568x2952 / 5248x2952 5.5K S35, 4096x2160 / 3840x2160 4K), orange = 8K 2.39:1 8192x3424 (72/75 fps). DJI gives one MB/s figure for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure. H.264 (4:2:0 10-bit) 4K rows: 18 MB/s at 23.976-30 fps (FF and S35).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "h264-4k-200",
+     "name": "H.264 4K/C4K 200 Mbps",
+     "mbps": 200,
+     "fps": [
+      48,
+      50,
+      59.94,
+      60
+     ],
+     "ref": "DJI Ronin 4D 'X9-8K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.23 'X9-8K Recording Specifications'), values in MB/s, x8 = Mb/s. Teal cells = 17:9/16:9 (8192x4320 / 7680x4320 8K FF, 5568x2952 / 5248x2952 5.5K S35, 4096x2160 / 3840x2160 4K), orange = 8K 2.39:1 8192x3424 (72/75 fps). DJI gives one MB/s figure for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure. H.264 (4:2:0 10-bit) 4K rows: 25 MB/s at 48-60 fps (FF and S35).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    },
+    {
+     "key": "h264-4k-288",
+     "name": "H.264 4K/C4K 288 Mbps (FF, S&Q)",
+     "mbps": 288,
+     "fps": [
+      72,
+      75,
+      96,
+      100,
+      120
+     ],
+     "ref": "DJI Ronin 4D 'X9-8K Recording Specs' table (dji.com/ronin-4d/specs > Recording Format > 'View detailed list' image, same table as User Manual v1.4 (2023.12) p.23 'X9-8K Recording Specifications'), values in MB/s, x8 = Mb/s. Teal cells = 17:9/16:9 (8192x4320 / 7680x4320 8K FF, 5568x2952 / 5248x2952 5.5K S35, 4096x2160 / 3840x2160 4K), orange = 8K 2.39:1 8192x3424 (72/75 fps). DJI gives one MB/s figure for both 17:9 and 16:9, so 16:9 rates repeat the 17:9 figure. H.264 (4:2:0 10-bit) 4K rows: 36 MB/s at 72-120 fps (Full Frame only).",
+     "source": "https://terra-1-g.djicdn.com/851d20f7b9f64838a34cd02351370894/en.jpg",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "dji-mavic3-cine",
+   "name": "DJI Mavic 3 Cine",
+   "exists": true,
+   "notes": "Hasselblad L2D-20c 4/3 camera; ProRes 422 HQ/422/LT to the built-in 1 TB SSD (Cine only). ProRes: 5.1K 5120x2700 24-50 fps, DCI 4K and 4K 24-60 + 120 fps (S&Q). H.264/H.265 also FHD 1920x1080 up to 200 fps. DJI publishes only the maximum bitrate per codec (ProRes bpp derived from the max at DCI 4K 120 fps, the highest-pixel-rate mode: 5.1K 50 fps is lower, 691 Mpx/s vs 1062). Tele camera (162 mm, 1/2-in) records H.264/H.265 only, 4K/FHD at 25/30/50 fps; no separate bitrate published. Frame rates as DJI writes them (24/25/30...).",
+   "sources": [
+    "https://www.dji.com/global/support/product/mavic-3",
+    "https://dl.djicdn.com/downloads/DJI_Mavic_3/20240723/DJI_Mavic_3_User_Manual_v2.3_EN.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "5.1k",
+     "name": "5.1K",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 50
+    },
+    {
+     "key": "dci4k",
+     "name": "DCI 4K",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "fhd",
+     "name": "FHD (H.264/H.265 only)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 200
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "Apple ProRes 422 HQ",
+     "bpp": 3.5528,
+     "res": [
+      "5.1k",
+      "dci4k",
+      "4k"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci4k",
+       "fps": 120,
+       "mbps": 3772,
+       "bpp": 3.5528
+      }
+     ],
+     "ref": "DJI Mavic 3 / Mavic 3 Cine specs (dji.com support page, Hasselblad Camera > Max Video Bitrate): Apple ProRes 422 HQ Bitrate: 3,772 Mbps. bpp computed at DCI 4K 4096x2160 at 120 fps, the mode with the highest pixel rate (DJI gives only one max figure per codec). Matches Apple ProRes White Paper targets (HQ 4096x2160 59.94p = 1885 Mb/s x2).",
+     "source": "https://www.dji.com/global/support/product/mavic-3",
+     "estimated": false
+    },
+    {
+     "key": "pr-422",
+     "name": "Apple ProRes 422",
+     "bpp": 2.3679,
+     "res": [
+      "5.1k",
+      "dci4k",
+      "4k"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci4k",
+       "fps": 120,
+       "mbps": 2514,
+       "bpp": 2.3679
+      }
+     ],
+     "ref": "DJI Mavic 3 / Mavic 3 Cine specs (dji.com support page, Hasselblad Camera > Max Video Bitrate): Apple ProRes 422 Bitrate: 2,514 Mbps. bpp computed at DCI 4K 4096x2160 at 120 fps, the mode with the highest pixel rate (DJI gives only one max figure per codec). Matches Apple ProRes White Paper targets (HQ 4096x2160 59.94p = 1885 Mb/s x2).",
+     "source": "https://www.dji.com/global/support/product/mavic-3",
+     "estimated": false
+    },
+    {
+     "key": "pr-lt",
+     "name": "Apple ProRes 422 LT",
+     "bpp": 1.6483,
+     "res": [
+      "5.1k",
+      "dci4k",
+      "4k"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci4k",
+       "fps": 120,
+       "mbps": 1750,
+       "bpp": 1.6483
+      }
+     ],
+     "ref": "DJI Mavic 3 / Mavic 3 Cine specs (dji.com support page, Hasselblad Camera > Max Video Bitrate): Apple ProRes 422 LT Bitrate: 1,750 Mbps. bpp computed at DCI 4K 4096x2160 at 120 fps, the mode with the highest pixel rate (DJI gives only one max figure per codec). Matches Apple ProRes White Paper targets (HQ 4096x2160 59.94p = 1885 Mb/s x2).",
+     "source": "https://www.dji.com/global/support/product/mavic-3",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-max",
+     "name": "H.264 (all resolutions, max 200 Mbps)",
+     "mbps": 200,
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120,
+      200
+     ],
+     "ref": "DJI Mavic 3 / Mavic 3 Cine specs (dji.com support page, Hasselblad Camera > Max Video Bitrate): H.264/H.265 Bitrate: 200 Mbps (single maximum; DJI publishes no per-mode H.264 rates). Also User Manual v2.3 (2024.06) specs: Max Video Bitrate H.264/H.265: 200Mbps.",
+     "source": "https://www.dji.com/global/support/product/mavic-3",
+     "estimated": false
+    },
+    {
+     "key": "h265-max",
+     "name": "H.265 (all resolutions, max 200 Mbps)",
+     "mbps": 200,
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120,
+      200
+     ],
+     "ref": "DJI Mavic 3 / Mavic 3 Cine specs (dji.com support page, Hasselblad Camera > Max Video Bitrate): H.264/H.265 Bitrate: 200 Mbps (single maximum for both codecs).",
+     "source": "https://www.dji.com/global/support/product/mavic-3",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "dji-mavic3-pro",
+   "name": "DJI Mavic 3 Pro (ProRes on Mavic 3 Pro Cine)",
+   "exists": true,
+   "notes": "Three cameras: Hasselblad 4/3 (24 mm), Medium Tele 1/1.3-in (70 mm), Tele 1/2-in (166 mm). ProRes 422 HQ/422/LT only on the Mavic 3 Pro Cine (1 TB SSD); the standard Mavic 3 Pro records H.264/H.265 only. Hasselblad: 5.1K 24-50, DCI 4K/4K 24-60 + 120 (S&Q), FHD H.264/H.265 to 200 fps. Medium Tele: 4K (ProRes and H.264/H.265) and FHD (H.264/H.265) 24-60 fps. Tele: ProRes 4K 24-60; H.264/H.265 4K/FHD 24/25/30/50/60. DJI publishes max bitrates per camera; ProRes bpp from Hasselblad DCI 4K 120 fps max, cross-checked with tele-camera max at 4K 60 fps (same bpp within 0.1%).",
+   "sources": [
+    "https://www.dji.com/global/mavic-3-pro/specs",
+    "https://dl.djicdn.com/downloads/DJI_Mavic_3_Pro/20240816/DJI_Mavic_3_Pro_User_Manual_EN.pdf"
+   ],
+   "resolutions": [
+    {
+     "key": "5.1k",
+     "name": "5.1K (Hasselblad)",
+     "w": 5120,
+     "h": 2700,
+     "maxfps": 50
+    },
+    {
+     "key": "dci4k",
+     "name": "DCI 4K (Hasselblad)",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 120
+    },
+    {
+     "key": "fhd",
+     "name": "FHD (H.264/H.265 only)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 200
+    }
+   ],
+   "codecs": [
+    {
+     "key": "pr-hq",
+     "name": "Apple ProRes 422 HQ",
+     "bpp": 3.5528,
+     "res": [
+      "5.1k",
+      "dci4k",
+      "4k"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci4k",
+       "fps": 120,
+       "mbps": 3772,
+       "bpp": 3.5528
+      },
+      {
+       "res": "4k",
+       "fps": 60,
+       "mbps": 1768,
+       "bpp": 3.5526
+      }
+     ],
+     "ref": "DJI Mavic 3 Pro specs (dji.com/mavic-3-pro/specs and User Manual v1.4 2024.08 Specifications), Max Video Bitrate: Hasselblad ProRes 422 HQ 3772 Mbps; Medium Tele/Tele ProRes 422 HQ 1768 Mbps. bpp computed at DCI 4K 4096x2160 120 fps (Hasselblad, highest pixel rate); second rate = Medium Tele/Tele camera max at 4K 3840x2160 60 fps. Only Mavic 3 Pro Cine records ProRes.",
+     "source": "https://www.dji.com/global/mavic-3-pro/specs",
+     "estimated": false
+    },
+    {
+     "key": "pr-422",
+     "name": "Apple ProRes 422",
+     "bpp": 2.3679,
+     "res": [
+      "5.1k",
+      "dci4k",
+      "4k"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci4k",
+       "fps": 120,
+       "mbps": 2514,
+       "bpp": 2.3679
+      },
+      {
+       "res": "4k",
+       "fps": 60,
+       "mbps": 1178,
+       "bpp": 2.3671
+      }
+     ],
+     "ref": "DJI Mavic 3 Pro specs (dji.com/mavic-3-pro/specs and User Manual v1.4 2024.08 Specifications), Max Video Bitrate: Hasselblad ProRes 422 2514 Mbps; Medium Tele/Tele ProRes 422 1178 Mbps. bpp computed at DCI 4K 4096x2160 120 fps (Hasselblad, highest pixel rate); second rate = Medium Tele/Tele camera max at 4K 3840x2160 60 fps. Only Mavic 3 Pro Cine records ProRes.",
+     "source": "https://www.dji.com/global/mavic-3-pro/specs",
+     "estimated": false
+    },
+    {
+     "key": "pr-lt",
+     "name": "Apple ProRes 422 LT",
+     "bpp": 1.6483,
+     "res": [
+      "5.1k",
+      "dci4k",
+      "4k"
+     ],
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120
+     ],
+     "rates": [
+      {
+       "res": "dci4k",
+       "fps": 120,
+       "mbps": 1750,
+       "bpp": 1.6483
+      },
+      {
+       "res": "4k",
+       "fps": 60,
+       "mbps": 821,
+       "bpp": 1.6497
+      }
+     ],
+     "ref": "DJI Mavic 3 Pro specs (dji.com/mavic-3-pro/specs and User Manual v1.4 2024.08 Specifications), Max Video Bitrate: Hasselblad ProRes 422 LT 1750 Mbps; Medium Tele/Tele ProRes 422 LT 821 Mbps. bpp computed at DCI 4K 4096x2160 120 fps (Hasselblad, highest pixel rate); second rate = Medium Tele/Tele camera max at 4K 3840x2160 60 fps. Only Mavic 3 Pro Cine records ProRes.",
+     "source": "https://www.dji.com/global/mavic-3-pro/specs",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-hb-200",
+     "name": "H.264 Hasselblad camera (max 200 Mbps)",
+     "mbps": 200,
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120,
+      200
+     ],
+     "ref": "DJI Mavic 3 Pro specs (dji.com/mavic-3-pro/specs and User Manual v1.4 2024.08 Specifications), Max Video Bitrate: Hasselblad Camera H.264/H.265: 200 Mbps (single maximum, no per-mode figures).",
+     "source": "https://www.dji.com/global/mavic-3-pro/specs",
+     "estimated": false
+    },
+    {
+     "key": "h265-hb-200",
+     "name": "H.265 Hasselblad camera (max 200 Mbps)",
+     "mbps": 200,
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60,
+      120,
+      200
+     ],
+     "ref": "DJI Mavic 3 Pro specs (dji.com/mavic-3-pro/specs and User Manual v1.4 2024.08 Specifications), Max Video Bitrate: Hasselblad Camera H.264/H.265: 200 Mbps.",
+     "source": "https://www.dji.com/global/mavic-3-pro/specs",
+     "estimated": false
+    },
+    {
+     "key": "h264-tele-160",
+     "name": "H.264 Medium Tele / Tele camera 4K/FHD (max 160 Mbps)",
+     "mbps": 160,
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60
+     ],
+     "ref": "DJI Mavic 3 Pro specs (dji.com/mavic-3-pro/specs and User Manual v1.4 2024.08 Specifications), Max Video Bitrate: Medium Tele Camera and Tele Camera H.264/H.265: 160 Mbps (Tele has no 48 fps H.264/H.265).",
+     "source": "https://www.dji.com/global/mavic-3-pro/specs",
+     "estimated": false
+    },
+    {
+     "key": "h265-tele-160",
+     "name": "H.265 Medium Tele / Tele camera 4K/FHD (max 160 Mbps)",
+     "mbps": 160,
+     "fps": [
+      24,
+      25,
+      30,
+      48,
+      50,
+      60
+     ],
+     "ref": "DJI Mavic 3 Pro specs (dji.com/mavic-3-pro/specs and User Manual v1.4 2024.08 Specifications), Max Video Bitrate: Medium Tele Camera and Tele Camera H.264/H.265: 160 Mbps.",
+     "source": "https://www.dji.com/global/mavic-3-pro/specs",
+     "estimated": false
+    }
+   ]
+  },
+  {
+   "id": "dji-inspire2-x5s",
+   "name": "DJI Inspire 2 + Zenmuse X5S",
+   "exists": true,
+   "notes": "Inspire 2 Series User Manual v2.4 (2022.06) Specifications 'Zenmuse X5S' and Zenmuse X5S User Manual v1.4 + dji.com X5S specs (identical figures). CINESSD: CinemaDNG (lossless JPEG) and ProRes 422 HQ / 4444 XQ, need Inspire 2 license keys (Inspire 2 ProRes / L ship pre-activated); max SSD bitrate 4.2 Gbps; 120 GB CINESSD can't record 5.2K 30 or 4K 60 CinemaDNG. MicroSD: H.264/H.265 MOV/MP4, max 100 Mb/s; H.264/H.265 frame rates include 25 and 50 (PAL). CinemaDNG figures are DJI 'up to' maxima at the stated frame rates.",
+   "sources": [
+    "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+    "https://dl.djicdn.com/downloads/zenmuse_x5s/20180420/Zenmuse+X5S+user+manual_v1.4_EN.pdf",
+    "https://www.dji.com/global/support/product/zenmuse-x5s"
+   ],
+   "resolutions": [
+    {
+     "key": "5.2k",
+     "name": "5.2K 16:9 (CinemaDNG)",
+     "w": 5280,
+     "h": 2972,
+     "maxfps": 29.97
+    },
+    {
+     "key": "5.2k-244",
+     "name": "5.2K 2.44:1 (ProRes)",
+     "w": 5280,
+     "h": 2160,
+     "maxfps": 29.97
+    },
+    {
+     "key": "4k-dci",
+     "name": "C4K 4096x2160",
+     "w": 4096,
+     "h": 2160,
+     "maxfps": 59.94
+    },
+    {
+     "key": "4k",
+     "name": "4K UHD",
+     "w": 3840,
+     "h": 2160,
+     "maxfps": 59.94
+    },
+    {
+     "key": "4k-244",
+     "name": "4K 2.44:1 3840x1572 (H.264/H.265)",
+     "w": 3840,
+     "h": 1572,
+     "maxfps": 29.97
+    },
+    {
+     "key": "2.7k",
+     "name": "2.7K (H.264/H.265)",
+     "w": 2720,
+     "h": 1530,
+     "maxfps": 59.94
+    },
+    {
+     "key": "1080p",
+     "name": "FHD (H.264/H.265)",
+     "w": 1920,
+     "h": 1080,
+     "maxfps": 119.88
+    }
+   ],
+   "codecs": [
+    {
+     "key": "cdng",
+     "name": "CinemaDNG (lossless)",
+     "bpp": 8.9306,
+     "res": [
+      "5.2k",
+      "4k-dci",
+      "4k"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      50,
+      59.94
+     ],
+     "rates": [
+      {
+       "res": "5.2k",
+       "fps": 29.97,
+       "mbps": 4200,
+       "bpp": 8.9306
+      },
+      {
+       "res": "4k-dci",
+       "fps": 29.97,
+       "mbps": 2400,
+       "bpp": 9.0513
+      },
+      {
+       "res": "4k",
+       "fps": 29.97,
+       "mbps": 2400,
+       "bpp": 9.6547
+      },
+      {
+       "res": "4k-dci",
+       "fps": 59.94,
+       "mbps": 4000,
+       "bpp": 7.5427
+      },
+      {
+       "res": "4k",
+       "fps": 59.94,
+       "mbps": 4000,
+       "bpp": 8.0456
+      }
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): C-DNG RAW 5.2K 5280x2972 23.976-29.97p up to 4.2 Gbps; 4K 4096/3840x2160 23.976-29.97p up to 2.4 Gbps; 50/59.94p up to 4.0 Gbps. bpp computed at the top frame rate of each group (29.97 / 59.94); DJI gives maxima, actual lossless rate varies with image content and is likely lower at 23.976-25p.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false,
+     "resMaxfps": {
+      "5.2k": 29.97,
+      "4k-dci": 59.94,
+      "4k": 59.94
+     }
+    },
+    {
+     "key": "pr-hq",
+     "name": "ProRes 422 HQ",
+     "bpp": 3.6205,
+     "res": [
+      "5.2k-244",
+      "4k"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97
+     ],
+     "rates": [
+      {
+       "res": "4k",
+       "fps": 29.97,
+       "mbps": 900,
+       "bpp": 3.6205
+      },
+      {
+       "res": "5.2k-244",
+       "fps": 29.97,
+       "mbps": 1300,
+       "bpp": 3.8034
+      }
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): ProRes 5.2K 5280x2160 23.976-29.97p 422 HQ @1.3Gbps; 4K 3840x2160 23.976-29.97p 422 HQ @900Mbps (Apple WP 3840x2160 29.97p = 884 Mb/s). bpp at 29.97 (DJI gives one figure for all four rates).",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "pr-xq",
+     "name": "ProRes 4444 XQ",
+     "bpp": 8.0456,
+     "res": [
+      "4k"
+     ],
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97
+     ],
+     "rates": [
+      {
+       "res": "4k",
+       "fps": 29.97,
+       "mbps": 2000,
+       "bpp": 8.0456
+      }
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): ProRes 4K 3840x2160 23.976-29.97p 4444 XQ @2.0Gbps (Apple WP 1989 Mb/s). bpp at 29.97.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    }
+   ],
+   "fixed": [
+    {
+     "key": "h264-4k-100",
+     "name": "H.264 C4K/4K/3840x1572 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97,
+      47.95,
+      50,
+      59.94
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.264 C4K 4096x2160 and 4K 3840x2160 23.976-59.94p @100Mbps; 3840x1572 23.976-29.97p @100Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-2.7k-80",
+     "name": "H.264 2.7K 80 Mbps",
+     "mbps": 80,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.264 2.7K 2720x1530 23.976/24/25/29.97p @80Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-2.7k-100",
+     "name": "H.264 2.7K 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      47.95,
+      50,
+      59.94
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.264 2.7K 47.95/50/59.94p @100Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-fhd-60",
+     "name": "H.264 FHD 60 Mbps",
+     "mbps": 60,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.264 FHD 1920x1080 23.976-29.97p @60Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-fhd-80",
+     "name": "H.264 FHD 80 Mbps",
+     "mbps": 80,
+     "fps": [
+      47.95,
+      50,
+      59.94
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.264 FHD 47.95/50/59.94p @80Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h264-fhd-100",
+     "name": "H.264 FHD 119.88p 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      119.88
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.264 FHD 119.88p @100Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h265-4k-100",
+     "name": "H.265 C4K/4K/3840x1572 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.265 C4K, 4K 3840x2160 and 3840x1572 23.976-29.97p @100Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h265-2.7k-65",
+     "name": "H.265 2.7K 65 Mbps",
+     "mbps": 65,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.265 2.7K 2720x1530 23.976-29.97p @65Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h265-2.7k-80",
+     "name": "H.265 2.7K 80 Mbps",
+     "mbps": 80,
+     "fps": [
+      47.95,
+      50,
+      59.94
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.265 2.7K 47.95/50/59.94p @80Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h265-fhd-50",
+     "name": "H.265 FHD 50 Mbps",
+     "mbps": 50,
+     "fps": [
+      23.976,
+      24,
+      25,
+      29.97
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.265 FHD 1920x1080 23.976-29.97p @50Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h265-fhd-65",
+     "name": "H.265 FHD 65 Mbps",
+     "mbps": 65,
+     "fps": [
+      47.95,
+      50,
+      59.94
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.265 FHD 47.95/50/59.94p @65Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    },
+    {
+     "key": "h265-fhd-100",
+     "name": "H.265 FHD 119.88p 100 Mbps",
+     "mbps": 100,
+     "fps": [
+      119.88
+     ],
+     "ref": "DJI Inspire 2 manual v2.4 (2022.06) p.69 X5S Video Resolutions (same in X5S manual v1.4 and dji.com X5S specs): H.265 FHD 119.88p @100Mbps.",
+     "source": "https://dl.djicdn.com/downloads/inspire_2/20230406UM/INSPIRE_2_SERIES_User_Manual_EN_0406.pdf",
+     "estimated": false
+    }
+   ]
+  }
+ ]
+}
