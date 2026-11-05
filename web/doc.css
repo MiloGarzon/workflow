@@ -70,6 +70,10 @@
 .blk { width: 100%; margin-bottom: 13px; }
 .blk.half { width: calc(50% - 9px); }
 .blk.third { width: calc(33.333% - 12px); }
+.fit { width: 100%; display: flex; flex-wrap: wrap; align-content: flex-start; column-gap: 18px; }
+.blk.colgrp { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; align-items: start; margin-bottom: 0; }
+.colgrp > .col { min-width: 0; }
+.colgrp .blk { width: 100%; }
 
 /* section title */
 .sec-title { width: 100%; display: flex; align-items: flex-end; gap: 14px; margin: 0 0 18px; padding-bottom: 11px; border-bottom: 1px solid var(--line); position: relative; }
@@ -164,6 +168,22 @@
 .stor-total .tl { font: 700 7.5px/1 var(--hfont); letter-spacing: .2em; text-transform: uppercase; }
 .stor-total .tv { font: 700 22px/1 var(--hfont); }
 .stor-formula { font-size: 8.6px; color: var(--muted); }
+/* storage · compact (4+ cameras): 2-column cards */
+.stor.compact { gap: 7px; }
+.stor.compact .stor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.stor-card { background: var(--card); border: 1px solid var(--line2); border-radius: 9px; padding: 8px 9px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.stor-card .sc-h { display: flex; align-items: baseline; gap: 5px; min-width: 0; }
+.stor-card .sc-h .tl { font: 700 6.5px/1.2 var(--hfont); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); flex: none; }
+.stor-card .sc-nm { font: 700 11px/1.2 var(--hfont); color: var(--fg); flex: none; }
+.stor-card .sc-codec { font-size: 7px; margin-left: auto; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.stor-card .sc-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+.stor-card .tile { background: var(--bg); padding: 6px 8px; min-height: 38px; border-radius: 6px; }
+.stor-card .tile.acc { background: var(--accent); }
+.stor-card .tile .tv { font-size: 14px; margin-top: 5px; }
+.stor-card .tile .tv small { font-size: 8px; }
+.stor-card .stor-formula { font-size: 7.6px; }
+.stor.compact .stor-total { padding: 9px 14px; }
+.stor.compact .stor-total .tv { font-size: 18px; }
 
 /* contacts */
 .contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }

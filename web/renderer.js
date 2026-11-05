@@ -156,6 +156,8 @@
     },
     storage(b) {
       const cams = b.cameras || [];
+      // 4+ cameras: compact 2-column cards so the whole section fits on one page
+      const compact = cams.length >= 4;
       let total = 0;
       const rows = cams.map(c => {
         const rate = window.FFDefaults && FFDefaults.STORAGE.storageRate(c);
@@ -166,6 +168,16 @@
         const perDay = hrs * tbph;
         const tot = perDay * (Number(c.days) || 0);
         total += tot;
+        if (compact) return `<div class="stor-card">
+          <div class="sc-h"><span class="tl">${esc(c.label || 'Cámara')}</span><span class="sc-nm">${esc(c.name || '')}</span>${codec ? `<span class="sc-codec">${esc(codec)}</span>` : ''}</div>
+          <div class="sc-tiles">
+            <div class="tile"><span class="tl">Días</span><span class="tv">${fmt(c.days, 0)}</span></div>
+            <div class="tile"><span class="tl">Rodado / día</span><span class="tv">${esc(c.hours || '0')}<small>h</small></span></div>
+            <div class="tile"><span class="tl">Por día</span><span class="tv">${fmt(perDay)}<small>TB</small></span></div>
+            <div class="tile acc"><span class="tl">Total</span><span class="tv">${fmt(tot, 2)}<small>TB</small></span></div>
+          </div>
+          ${b.showFormula !== false ? `<div class="stor-formula">${fmt(c.days, 0)} días × ${fmt(perDay)} TB = <strong>${fmt(tot, 2)} TB</strong> · tiempo total ${fmt(hrs * (Number(c.days) || 0), 1)} h · ${fmt(tbph)} TB/h</div>` : ''}
+        </div>`;
         return `<div class="stor-row">
           <div class="tile name"><span class="tl">${esc(c.label || 'Cámara')}</span><span class="tv">${esc(c.name || '')}</span></div>
           <div class="tile"><span class="tl">Días de rodaje</span><span class="tv">${fmt(c.days, 0)}</span></div>
@@ -176,7 +188,7 @@
         ${b.showFormula !== false ? `<div class="stor-formula">${fmt(c.days, 0)} días × ${fmt(perDay)} TB = <strong>${fmt(tot, 2)} TB</strong> · tiempo total ${fmt(hrs * (Number(c.days) || 0), 1)} h · ${fmt(tbph)} TB/h${codec ? ` (${esc(codec)})` : ''}</div>` : ''}`;
       }).join('');
       return {
-        el: el(`<div class="${cls(b, 'storage')}"><div class="stor">${b.title ? `<div class="stor-t">${esc(b.title)}</div>` : ''}${rows}
+        el: el(`<div class="${cls(b, 'storage')}"><div class="stor${compact ? ' compact' : ''}">${b.title ? `<div class="stor-t">${esc(b.title)}</div>` : ''}${compact ? `<div class="stor-grid">${rows}</div>` : rows}
         ${cams.length > 1 ? `<div class="stor-total"><span class="tl">Total proyecto</span><span class="tv">${fmt(total, 1)} TB</span></div>` : ''}</div></div>`)
       };
     },
@@ -373,6 +385,49 @@
       }
     }
 
+    // "Columnas libres": consecutive non-full blocks stack independently in a left and a right column
+    function groupColumns(sec, units) {
+      const cols = columnsOf(sec);
+      const out = [];
+      let grp = null;
+      for (const u of units) {
+        const c = cols[u.b.id] || 'full';
+        if (c === 'full' || u.r.pagebreak) { grp = null; out.push(u); continue; }
+        if (!grp) {
+          grp = el(`<div class="blk colgrp"><div class="col"></div><div class="col"></div></div>`);
+          out.push({ b: u.b, r: { el: grp, image: false } });
+        }
+        grp.children[c === 'right' ? 1 : 0].appendChild(unitEl(u.r));
+      }
+      return out;
+    }
+    const unitEl = r => r.el || (r.items ? r.make(r.items, 0, false) : null);
+
+    // "Todo en una sola página": everything on the current page, shrunk if it does not fit
+    async function placeFit(units, sec, si) {
+      const wrap = el(`<div class="fit"></div>`);
+      cur.body.appendChild(wrap);
+      for (const { r } of units) { const n = r.pagebreak ? null : unitEl(r); if (n) wrap.appendChild(n); }
+      await waitImages(wrap);
+      const body = cur.body;
+      const bottom = () => wrap.offsetTop + wrap.offsetHeight;
+      // images marked "fill" share whatever height is left over
+      const fills = units.filter(u => u.r.fill && u.r.el).map(u => u.r.el.querySelector('img')).filter(Boolean);
+      if (fills.length) {
+        fills.forEach(img => { img.style.maxHeight = '60px'; img.style.width = 'auto'; img.style.maxWidth = '100%'; });
+        const free = body.clientHeight - bottom();
+        if (free > 0) fills.forEach(img => { img.style.maxHeight = Math.floor(60 + free / fills.length) + 'px'; });
+      }
+      // still too tall: scale the whole section down
+      for (let k = 0; k < 4 && overflow(body); k++) {
+        const z = Number(wrap.style.zoom || 1);
+        const avail = body.clientHeight - wrap.offsetTop;
+        const need = wrap.offsetHeight;
+        if (need <= 0 || avail <= 0) break;
+        wrap.style.zoom = String(Math.max(0.5, z * (avail / need) * 0.995));
+      }
+    }
+
     for (let si = 0; si < sections.length; si++) {
       const sec = sections[si];
       if (sec.hidden) continue;
@@ -416,10 +471,16 @@
         await place(t, sec, si);
       }
       tocEntries.push({ n: sec.numbered !== false ? num : null, title: sec.title, page: pages.indexOf(cur.page) + 1 });
+      let units = [];
       for (const b of sec.blocks || []) {
         if (b.hidden) continue;
         const r = (R[b.type] || R.paragraph)(b);
         if (r.skip) continue;
+        units.push({ b, r });
+      }
+      if (sec.columns) units = groupColumns(sec, units);
+      if (sec.fitPage) { await placeFit(units, sec, si); continue; }
+      for (const { r } of units) {
         if (r.pagebreak) { cur = contentPage(orient, si); continue; }
         if (r.items) await placeSplittable(r, sec, si);
         else await place(r.el, sec, si, r);
@@ -437,5 +498,18 @@
     return pages;
   }
 
-  window.FFRender = { render, logoSVG, pageDims, sectionIsEmpty };
+  // column of each block in a "Columnas libres" section: its own choice, or alternating left/right like half-width rows
+  function columnsOf(sec) {
+    const out = {};
+    let run = 0;
+    for (const b of sec.blocks || []) {
+      const full = ['pagebreak', 'spacer', 'stages', 'storage', 'colorpipe'].includes(b.type) && !b.col;
+      const c = b.col || (full || !b.width || b.width === 'full' ? 'full' : run % 2 ? 'right' : 'left');
+      if (c === 'full') run = 0; else if (!b.hidden) run++;
+      out[b.id] = c;
+    }
+    return out;
+  }
+
+  window.FFRender = { render, logoSVG, pageDims, sectionIsEmpty, columnsOf };
 })();

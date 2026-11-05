@@ -342,7 +342,9 @@
     }
     sp.append(fChips('Orientación', s, 'orientation', [['portrait', '▯ Vertical'], ['landscape', '▭ Horizontal']], { def: 'portrait', structural: true }));
     if (s.kind === 'content') {
-      sp.append(fToggle('Empezar en una página nueva', s, 'newPage'), fToggle('Numerar esta sección', s, 'numbered', { structural: true }), fToggle('Mostrar título de sección', s, 'showTitle'));
+      sp.append(fToggle('Empezar en una página nueva', s, 'newPage'), fToggle('Numerar esta sección', s, 'numbered', { structural: true }), fToggle('Mostrar título de sección', s, 'showTitle'),
+        fToggle('Todo en una sola página (si no cabe, se reduce el tamaño)', s, 'fitPage', { def: false }),
+        fToggle('Columnas libres: cada bloque elige columna izquierda, derecha o ancho completo', s, 'columns', { def: false, after: () => renderEditor() }));
     }
     ed.append(sp);
 
@@ -395,8 +397,13 @@
     const mv = d => { const j = i + d; if (j < 0 || j >= s.blocks.length) return; s.blocks.splice(i, 1); s.blocks.splice(j, 0, b); changed(); renderEditor(); };
     const stop = fn => e => { e.stopPropagation(); fn(); };
     const canWidth = !['pagebreak', 'spacer', 'stages', 'storage', 'colorpipe'].includes(b.type);
-    const wbtn = canWidth ? h('button', { class: 'icon-btn wsel', title: 'Ancho del bloque', onclick: stop(() => { b.width = b.width === 'full' || !b.width ? 'half' : b.width === 'half' ? 'third' : 'full'; wbtn.textContent = wl(); changed(); }) }) : null;
-    const wl = () => ({ half: '½ ancho', third: '⅓ ancho' }[b.width] || 'Completo');
+    const colMode = !!s.columns && b.type !== 'pagebreak';
+    const COLS = ['left', 'right', 'full'];
+    const curCol = () => FFRender.columnsOf(s)[b.id] || 'full';
+    const wbtn = colMode
+      ? h('button', { class: 'icon-btn wsel', title: 'Columna del bloque', onclick: stop(() => { b.col = COLS[(COLS.indexOf(curCol()) + 1) % 3]; changed(); renderEditor(); }) })
+      : canWidth ? h('button', { class: 'icon-btn wsel', title: 'Ancho del bloque', onclick: stop(() => { b.width = b.width === 'full' || !b.width ? 'half' : b.width === 'half' ? 'third' : 'full'; wbtn.textContent = wl(); changed(); }) }) : null;
+    const wl = () => colMode ? ({ left: '◧ Columna izq.', right: '◨ Columna der.' }[curCol()] || '▭ Ancho completo') : ({ half: '½ ancho', third: '⅓ ancho' }[b.width] || 'Completo');
     if (wbtn) wbtn.textContent = wl();
     const summary = h('span', { class: 'bp' }, blockSummary(b));
     const head = h('div', { class: 'blk-head', onclick: () => { collapsed ? state.collapsed.delete(b.id) : state.collapsed.add(b.id); renderEditor(); } },
