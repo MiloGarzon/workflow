@@ -87,6 +87,24 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .f textarea { resize: vertical; min-height: 64px; font-size: 12.5px; line-height: 1.5; }
 .f textarea.mono { font-family: "SF Mono", Menlo, monospace; font-size: 11.5px; }
 .f input:focus, .f textarea:focus, .f select:focus { border-color: var(--ui-acc); box-shadow: 0 0 0 3px var(--ui-acc-soft); }
+/* formatting toolbar above text boxes */
+.fmt-box { display: flex; flex-direction: column; border: 1px solid var(--ui-line); border-radius: 8px; background: var(--ui-input); overflow: hidden; }
+.fmt-box:focus-within { border-color: var(--ui-acc); box-shadow: 0 0 0 3px var(--ui-acc-soft); }
+.f .fmt-box textarea, .f .fmt-box input[type=text] { border: 0 !important; border-radius: 0 !important; box-shadow: none !important; background: transparent; }
+.fmt-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 1px; padding: 3px 4px; border-bottom: 1px solid var(--ui-line2); background: var(--ui-panel2); }
+.fmt-box.inline { flex-direction: row-reverse; }
+.fmt-box.inline .fmt-bar { border-bottom: 0; border-left: 1px solid var(--ui-line2); flex-wrap: nowrap; }
+.fmt-box.inline input { flex: 1; min-width: 0; }
+.fmt-box.inline .fb-fill { display: none; }
+.fb { display: inline-flex; align-items: center; justify-content: center; min-width: 25px; height: 24px; padding: 0 5px; border: 0; border-radius: 5px; background: transparent; color: var(--ui-fg2); font-size: 13px; line-height: 1; font-family: Georgia, "Times New Roman", serif; }
+.fb svg { width: 14px; height: 14px; display: block; }
+.fb:hover { background: var(--ui-hover); color: var(--ui-fg); }
+.fb.on { background: var(--ui-acc-soft); color: var(--ui-acc); }
+.fb b, .fb i, .fb u, .fb s { font-size: 13.5px; }
+.fb-hl { padding: 0 3px; border-radius: 2px; background: color-mix(in srgb, var(--ui-acc) 30%, transparent); color: var(--ui-fg); font-weight: 600; font-family: var(--ui-font); font-size: 12px; }
+.fb-a { font-family: var(--ui-font); font-weight: 600; }
+.fb-sep { width: 1px; height: 16px; background: var(--ui-line); margin: 0 4px; }
+.fb-fill { flex: 1; }
 .hint { font-size: 10.5px; color: var(--ui-muted); line-height: 1.4; }
 .chips-sel { display: flex; flex-wrap: wrap; gap: 4px; }
 .chips-sel button { border: 1px solid var(--ui-line); background: var(--ui-panel2); border-radius: 7px; padding: 5px 9px; font-size: 11.5px; color: var(--ui-fg2); }

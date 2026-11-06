@@ -15,7 +15,7 @@ Si macOS avisa que no puede verificar al desarrollador: clic derecho sobre la ap
 - **Imágenes vacías**: un bloque de imagen sin archivo no sale en el PDF; una hoja que solo tiene imágenes vacías se omite (aparece marcada “sin img”).
 - **Bloques**: párrafo, viñetas, datos `Clave: Valor`, cámara, tarjeta de especificaciones, tabla `col | col`, imagen, nota, contactos, nomenclatura, cálculo de storage, diagrama de flujo, salto de página. Botón de ancho (Completo / ½ / ⅓) para poner bloques lado a lado.
 - **Imágenes**: arrastrar, pegar (⌘V) o “Elegir…”.
-- `**texto**` = negrita.
+- **Formato de texto**: cada caja de texto tiene una barra con negrita (⌘B), cursiva (⌘I), subrayado (⌘U), tachado (⌘⇧X), resaltado (⌘⇧H), lista con viñetas (⌘⇧8), lista numerada (⌘⇧7), sangría (Tab / ⇧Tab), alineación y tamaño de texto. Se guarda como marcas: `**negrita**`, `*cursiva*`, `++subrayado++`, `~~tachado~~`, `==resaltado==`, `- viñeta`, `1. número`.
 - La paginación es automática; las secciones pueden ser verticales u horizontales.
 - ⌘S guardar ahora, ⌘N nuevo (desde la plantilla base), ⌘O importar archivo, ⌘⇧S exportar archivo, ⌘E exportar PDF.
 - “Guardar como plantilla base” (en Proyecto) hace que los nuevos proyectos partan de tu versión.

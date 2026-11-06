@@ -123,6 +123,7 @@
     const i = h('input', { type: o.type || 'text', placeholder: o.ph || '', step: o.step, list: o.list });
     i.value = obj[key] ?? '';
     i.addEventListener('input', () => { obj[key] = o.type === 'number' ? (i.value === '' ? '' : Number(i.value)) : i.value; o.after && o.after(); changed(o.structural); });
+    if (o.fmt) { const f = field(label, h('div', { class: 'fmt-box inline' }, fmtBar(i, obj, o.fmt), i), o.hint); fmtKeys(i); return f; }
     return field(label, i, o.hint);
   }
   function autoGrow(t) { t.style.height = 'auto'; t.style.height = Math.min(520, t.scrollHeight + 2) + 'px'; }
@@ -131,10 +132,154 @@
     t.value = obj[key] ?? '';
     t.addEventListener('input', () => { obj[key] = t.value; autoGrow(t); o.after && o.after(); changed(); });
     requestAnimationFrame(() => autoGrow(t));
-    const f = field(label, t, o.hint);
+    if (o.fmt) { if (o.listBlock) t.dataset.list = '1'; fmtKeys(t); }
+    const f = field(label, o.fmt ? h('div', { class: 'fmt-box' }, fmtBar(t, obj, o.fmt), t) : t, o.hint);
     if (o.help) f.append(h('div', { class: 'hint' }, o.help));
     return f;
   }
+  // ================= formatting toolbar (bold, italic, lists, alignment, size) =================
+  // Text is stored as light markup the renderer understands:
+  //   **bold**  *italic*  ++underline++  ~~strike~~  ==highlight==   "- item"  "1. item"
+  // Alignment and size are stored on the block as textAlign / textSize.
+  const FMT = {
+    FULL: { lists: true, align: true, size: true },   // paragraph, note
+    TEXT: { align: true, size: true },                // bullet / numbered lists
+    DATA: { size: true },                             // key: value, specs, tables
+    LISTS: { lists: true },                           // divider text
+    INLINE: {}                                        // only inline marks
+  };
+  const svgI = d => { const e = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); e.setAttribute('viewBox', '0 0 16 16'); e.innerHTML = d; return e; };
+  const ln = (y, x1, x2) => `<path d="M${x1} ${y}H${x2}" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>`;
+  const ICONS = {
+    left: ln(3, 2, 14) + ln(6.3, 2, 10) + ln(9.6, 2, 14) + ln(12.9, 2, 9),
+    center: ln(3, 2, 14) + ln(6.3, 4, 12) + ln(9.6, 2, 14) + ln(12.9, 5, 11),
+    right: ln(3, 2, 14) + ln(6.3, 6, 14) + ln(9.6, 2, 14) + ln(12.9, 7, 14),
+    justify: ln(3, 2, 14) + ln(6.3, 2, 14) + ln(9.6, 2, 14) + ln(12.9, 2, 14),
+    ul: '<circle cx="3" cy="4" r="1.3" fill="currentColor"/><circle cx="3" cy="8" r="1.3" fill="currentColor"/><circle cx="3" cy="12" r="1.3" fill="currentColor"/>' + ln(4, 6.5, 14) + ln(8, 6.5, 14) + ln(12, 6.5, 14),
+    ol: '<text x="0.5" y="6" font-size="5.6" font-weight="700" fill="currentColor" font-family="-apple-system,sans-serif">1</text><text x="0.5" y="13.4" font-size="5.6" font-weight="700" fill="currentColor" font-family="-apple-system,sans-serif">2</text>' + ln(4, 6.5, 14) + ln(11.4, 6.5, 14),
+    indent: ln(3, 2, 14) + ln(13, 2, 14) + ln(6.6, 8, 14) + ln(9.4, 8, 14) + '<path d="M2 5.6l3 2.4-3 2.4z" fill="currentColor"/>',
+    outdent: ln(3, 2, 14) + ln(13, 2, 14) + ln(6.6, 8, 14) + ln(9.4, 8, 14) + '<path d="M5 5.6L2 8l3 2.4z" fill="currentColor"/>',
+    clear: '<path d="M4 3h9M8.5 3L6 13M3 14l10-11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>'
+  };
+  // replace a range keeping native undo (⌘Z) when possible
+  function putText(t, text, a, z, select) {
+    t.focus(); t.setSelectionRange(a, z);
+    const ok = text ? document.execCommand('insertText', false, text) : document.execCommand('delete');
+    if (!ok || t.value.slice(a, a + text.length) !== text) { t.setRangeText(text, a, z, 'end'); t.dispatchEvent(new Event('input', { bubbles: true })); }
+    if (select) t.setSelectionRange(a, a + text.length);
+  }
+  function fmtWrap(t, mark) {
+    const v = t.value, L = mark.length;
+    let a = t.selectionStart, z = t.selectionEnd;
+    const inner = v.slice(a, z);
+    const single = mark === '*';
+    // already wrapped → remove the marks (selection includes them, or sits just inside them)
+    if (inner.length >= 2 * L && inner.startsWith(mark) && inner.endsWith(mark) && !(single && inner.startsWith('**') && !inner.startsWith('***'))) {
+      putText(t, inner.slice(L, -L), a, z, true); return;
+    }
+    if (v.slice(a - L, a) === mark && v.slice(z, z + L) === mark && !(single && (v[a - 2] === '*' && v[a - 3] !== '*' || v[z + 1] === '*' && v[z + 2] !== '*'))) {
+      putText(t, inner, a - L, z + L, true); return;
+    }
+    if (a === z) { // nothing selected: insert empty marks and put the cursor in the middle
+      putText(t, mark + mark, a, z); t.setSelectionRange(a + L, a + L); return;
+    }
+    while (a < z && /\s/.test(v[a])) a++;
+    while (z > a && /\s/.test(v[z - 1])) z--;
+    // marks can't cross line breaks: wrap each line, leaving list prefixes outside
+    const out = v.slice(a, z).split('\n').map(l => l.trim() ? l.replace(/^(\s*(?:(?:[-•]|\d+[.)])\s+)?)(.*?)(\s*)$/, `$1${mark}$2${mark}$3`) : l).join('\n');
+    putText(t, out, a, z, true);
+  }
+  function lineRange(t) {
+    const v = t.value;
+    let e = t.selectionEnd; if (e > t.selectionStart && v[e - 1] === '\n') e--;
+    const a = v.lastIndexOf('\n', t.selectionStart - 1) + 1;
+    let z = v.indexOf('\n', e); if (z < 0) z = v.length;
+    return [a, z];
+  }
+  const LIST_RE = /^(\s*)(?:[-•]|\d+[.)])\s+/;
+  function fmtList(t, kind) {
+    const [a, z] = lineRange(t);
+    const ls = t.value.slice(a, z).split('\n');
+    const isK = l => kind === 'ul' ? /^\s*[-•]\s+/.test(l) : /^\s*\d+[.)]\s+/.test(l);
+    const all = ls.some(l => l.trim()) && ls.filter(l => l.trim()).every(isK);
+    let n = 0;
+    const out = ls.map(l => {
+      if (!l.trim()) return l;
+      const base = l.replace(LIST_RE, '$1');
+      if (all) return base;
+      const ind = base.match(/^\s*/)[0];
+      return ind + (kind === 'ul' ? '- ' : `${++n}. `) + base.slice(ind.length);
+    }).join('\n');
+    putText(t, out, a, z, true);
+  }
+  function fmtIndent(t, dir) {
+    const [a, z] = lineRange(t);
+    const out = t.value.slice(a, z).split('\n').map(l => !l.trim() ? l : dir > 0 ? '  ' + l : l.replace(/^ {1,2}|^\t/, '')).join('\n');
+    putText(t, out, a, z, true);
+  }
+  function fmtClear(t) {
+    let a = t.selectionStart, z = t.selectionEnd;
+    if (a === z) { a = 0; z = t.value.length; }
+    const out = t.value.slice(a, z).replace(/\*\*|\+\+|~~|==/g, '').replace(/(^|[^*])\*([^*\n]+)\*/g, '$1$2');
+    putText(t, out, a, z, true);
+  }
+  function fmtKeys(t) {
+    t.addEventListener('keydown', e => {
+      if (!(e.metaKey || e.ctrlKey) || e.altKey) return;
+      const k = e.key.toLowerCase();
+      const m = !e.shiftKey ? { b: '**', i: '*', u: '++' }[k] : { x: '~~', h: '==' }[k];
+      if (m) { e.preventDefault(); fmtWrap(t, m); }
+      else if (t.tagName === 'TEXTAREA' && e.shiftKey && (k === '8' || k === '*')) { e.preventDefault(); fmtList(t, 'ul'); }
+      else if (t.tagName === 'TEXTAREA' && e.shiftKey && (k === '7' || k === '/')) { e.preventDefault(); fmtList(t, 'ol'); }
+    });
+    if (t.tagName === 'TEXTAREA') t.addEventListener('keydown', e => {
+      // Tab / ⇧Tab on a list line = sub-item / back
+      if (e.key !== 'Tab' || e.metaKey || e.ctrlKey || e.altKey) return;
+      const [a] = lineRange(t);
+      if (!t.dataset.list && !LIST_RE.test(t.value.slice(a, t.value.indexOf('\n', a) < 0 ? undefined : t.value.indexOf('\n', a)))) return;
+      e.preventDefault(); fmtIndent(t, e.shiftKey ? -1 : 1);
+    });
+  }
+  function fmtBar(t, obj, opts) {
+    const bar = h('div', { class: 'fmt-bar' });
+    const btn = (label, title, fn, cls) => {
+      const b = h('button', { type: 'button', class: 'fb ' + (cls || ''), title, tabindex: '-1' }, typeof label === 'string' ? label : label);
+      b.addEventListener('mousedown', e => e.preventDefault()); // keep the text selection
+      b.addEventListener('click', e => { e.preventDefault(); fn(b); });
+      return b;
+    };
+    const sep = () => h('span', { class: 'fb-sep' });
+    bar.append(
+      btn(h('b', {}, 'B'), 'Negrita (⌘B)', () => fmtWrap(t, '**')),
+      btn(h('i', {}, 'I'), 'Cursiva (⌘I)', () => fmtWrap(t, '*')),
+      btn(h('u', {}, 'U'), 'Subrayado (⌘U)', () => fmtWrap(t, '++')),
+      btn(h('s', {}, 'S'), 'Tachado (⌘⇧X)', () => fmtWrap(t, '~~')),
+      btn(h('span', { class: 'fb-hl' }, 'A'), 'Resaltar con el color de acento (⌘⇧H)', () => fmtWrap(t, '==')));
+    if (opts.lists) bar.append(sep(),
+      btn(svgI(ICONS.ul), 'Lista con viñetas (⌘⇧8)', () => fmtList(t, 'ul')),
+      btn(svgI(ICONS.ol), 'Lista numerada (⌘⇧7)', () => fmtList(t, 'ol')),
+      btn(svgI(ICONS.outdent), 'Quitar sangría (⇧Tab)', () => fmtIndent(t, -1)),
+      btn(svgI(ICONS.indent), 'Sub-elemento / sangría (Tab)', () => fmtIndent(t, 1)));
+    const group = (key, items) => {
+      const bs = items.map(([v, label, title]) => btn(label, title, () => {
+        obj[key] = obj[key] === v ? '' : v;
+        bs.forEach((x, i) => x.classList.toggle('on', (obj[key] || '') === items[i][0]));
+        changed();
+      }));
+      bs.forEach((x, i) => x.classList.toggle('on', (obj[key] || '') === items[i][0]));
+      return bs;
+    };
+    if (opts.align) bar.append(sep(), ...group('textAlign', [
+      ['left', svgI(ICONS.left), 'Alinear a la izquierda'], ['center', svgI(ICONS.center), 'Centrar'],
+      ['right', svgI(ICONS.right), 'Alinear a la derecha'], ['justify', svgI(ICONS.justify), 'Justificar']]));
+    if (opts.size) bar.append(sep(), ...group('textSize', [
+      ['sm', h('span', { class: 'fb-a', style: 'font-size:9.5px' }, 'A'), 'Texto pequeño'],
+      ['lg', h('span', { class: 'fb-a', style: 'font-size:14px' }, 'A'), 'Texto grande'],
+      ['xl', h('span', { class: 'fb-a', style: 'font-size:17px' }, 'A'), 'Texto muy grande']]));
+    bar.append(h('span', { class: 'fb-fill' }), btn(svgI(ICONS.clear), 'Quitar formato (de la selección o de todo el texto)', () => fmtClear(t)));
+    return bar;
+  }
+
   function fChips(label, obj, key, options, o = {}) {
     const wrap = h('div', { class: 'chips-sel' });
     const cur = () => obj[key] ?? o.def;
@@ -334,7 +479,7 @@
         h('div', { style: 'margin-top:10px' }, h('button', { class: 'icon-btn', onclick: () => select('project') }, 'Ir a Proyecto →')));
     } else if (s.kind === 'divider') {
       sp.append(fText('Título', s, 'title', { after: retitle }), h('div', { class: 'row' }, fText('Número / texto grande', s, 'bigText', { ph: '01' }), fText('Subtítulo', s, 'subtitle')),
-        fArea('Texto (opcional)', s, 'text', { rows: 2 }));
+        fArea('Texto (opcional)', s, 'text', { rows: 2, fmt: FMT.LISTS }));
     } else if (s.kind === 'toc') {
       sp.append(fText('Título', s, 'title', { after: retitle }), h('div', { class: 'hint' }, 'El índice se genera automáticamente con las secciones y números de página.'));
     } else {
@@ -420,29 +565,29 @@
     return card;
   }
 
-  const LIST_HELP = 'Un elemento por línea. Empieza con dos espacios para un sub-elemento. **texto** = negrita.';
+  const LIST_HELP = 'Un elemento por línea. Tab (o dos espacios al inicio) = sub-elemento.';
   function blockFields(b, body, after) {
     const o = { after };
     switch (b.type) {
       case 'heading':
-        body.append(fText('', b, 'text', o), fChips('Tamaño', b, 'size', [['', 'Normal (acento)'], ['lg', 'Grande']], { def: '' }));
+        body.append(fText('', b, 'text', { ...o, fmt: FMT.INLINE }), fChips('Tamaño', b, 'size', [['', 'Normal (acento)'], ['lg', 'Grande']], { def: '' }));
         break;
       case 'paragraph':
-        body.append(fArea('', b, 'text', { ...o, rows: 4, help: 'Separa párrafos con una línea vacía. **texto** = negrita.' }), fChips('Estilo', b, 'style', [['', 'Normal'], ['lead', 'Introducción (grande)']], { def: '' }));
+        body.append(fArea('', b, 'text', { ...o, rows: 4, fmt: FMT.FULL, help: 'Separa párrafos con una línea vacía. Selecciona texto y usa la barra de formato (⌘B, ⌘I, ⌘U).' }), fChips('Estilo', b, 'style', [['', 'Normal'], ['lead', 'Introducción (grande)']], { def: '' }));
         break;
       case 'bullets': case 'numbered':
-        body.append(fArea('', b, 'text', { ...o, rows: 5, help: LIST_HELP }));
+        body.append(fArea('', b, 'text', { ...o, rows: 5, fmt: FMT.TEXT, listBlock: true, help: LIST_HELP }));
         break;
       case 'keyvalue':
-        body.append(fText('Título (opcional)', b, 'title', o), fArea('Datos', b, 'text', { ...o, mono: true, rows: 5, help: 'Un dato por línea con el formato  Clave: Valor' }), fChips('Columnas', b, 'columns', [[1, '1 columna'], [2, '2 columnas']], { def: 1 }));
+        body.append(fText('Título (opcional)', b, 'title', o), fArea('Datos', b, 'text', { ...o, mono: true, rows: 5, fmt: FMT.DATA, help: 'Un dato por línea con el formato  Clave: Valor' }), fChips('Columnas', b, 'columns', [[1, '1 columna'], [2, '2 columnas']], { def: 1 }));
         break;
       case 'spec':
-        body.append(fText('Título de la tarjeta', b, 'title', o), fArea('Especificaciones', b, 'text', { ...o, mono: true, rows: 6, help: 'Un dato por línea:  Codec: H.264' }));
+        body.append(fText('Título de la tarjeta', b, 'title', o), fArea('Especificaciones', b, 'text', { ...o, mono: true, rows: 6, fmt: FMT.DATA, help: 'Un dato por línea:  Codec: H.264' }));
         break;
       case 'camera':
         body.append(h('div', { class: 'row3' }, fText('Etiqueta', b, 'label', { ...o, ph: 'Camera A - B' }), fText('Marca', b, 'brand', { ...o, ph: 'ARRI' }), fText('Modelo', b, 'model', { ...o, ph: 'Alexa 35' })),
           fText('Etiquetas destacadas', b, 'chips', { ...o, hint: 'separadas por coma', ph: 'ARRIRAW HDE, 4.6K OG, 24 fps' }),
-          fArea('Especificaciones', b, 'specs', { ...o, mono: true, rows: 6, help: 'Un dato por línea:  Codec: ARRIRAW HDE' }),
+          fArea('Especificaciones', b, 'specs', { ...o, mono: true, rows: 6, fmt: FMT.DATA, help: 'Un dato por línea:  Codec: ARRIRAW HDE' }),
           fImage('Foto de la cámara (opcional)', b, 'image', o));
         break;
       case 'image':
@@ -454,10 +599,10 @@
         body.lastChild.querySelector('input').checked = b.align === 'left';
         break;
       case 'note':
-        body.append(fText('Etiqueta', b, 'label', { ...o, ph: 'Importante' }), fArea('Texto', b, 'text', { ...o, rows: 3 }), fChips('Estilo', b, 'style', [['', 'Acento'], ['warn', 'Advertencia']], { def: '' }));
+        body.append(fText('Título de la nota', b, 'label', { ...o, ph: 'Importante', fmt: FMT.INLINE }), fArea('Texto', b, 'text', { ...o, rows: 3, fmt: FMT.FULL }), fChips('Estilo', b, 'style', [['', 'Acento'], ['warn', 'Advertencia']], { def: '' }));
         break;
       case 'table':
-        body.append(fArea('', b, 'text', { ...o, mono: true, rows: 5, help: 'Una fila por línea, columnas separadas con  |' }), fToggle('La primera fila es encabezado', b, 'header'));
+        body.append(fArea('', b, 'text', { ...o, mono: true, rows: 5, fmt: FMT.DATA, help: 'Una fila por línea, columnas separadas con  |' }), fToggle('La primera fila es encabezado', b, 'header'));
         break;
       case 'naming':
         body.append(h('div', { class: 'row' }, fText('Título', b, 'title', o), fText('Separador', b, 'separator', o)),
@@ -574,9 +719,9 @@
           wrap.append(fText('Columna', c, 'title', { ...o, ph: 'On set color · Data management · Dailies · Entrega' }));
           listEditor(wrap, c, 'boxes', x => [
             h('div', { class: 'row' }, fText('Herramienta', x, 'tool', { ...o, ph: 'Pomfort Livegrade', list: 'cpTools' }), fText('Pie de la caja', x, 'caption', { ...o, ph: 'Live Color Tools' })),
-            fArea('Datos de color', x, 'specs', { ...o, mono: true, rows: 3, help: 'Uno por línea:  IDT: ARRI LogC4/AWG4 · Intermediate: ACES 1.3 · ODT: Rec 709 100 dim · Node: CDL + LUT · Grading Mode · Output Colorspace' }),
+            fArea('Datos de color', x, 'specs', { ...o, mono: true, rows: 3, fmt: FMT.INLINE, help: 'Uno por línea:  IDT: ARRI LogC4/AWG4 · Intermediate: ACES 1.3 · ODT: Rec 709 100 dim · Node: CDL + LUT · Grading Mode · Output Colorspace' }),
             h('div', { class: 'row' }, fText('Método', x, 'method', { ...o, ph: 'Color Trace · .PFLA Match · ACES CDL Advanced', list: 'cpMethods' }), fText('Etiqueta superior (opcional)', x, 'tag', { ...o, ph: 'HDR Monitoring' })),
-            fArea('Notas / entregables', x, 'notes', { ...o, rows: 2, help: 'Ej.: Offload + QC + Metadata. Empieza con  -  para lista (- DRP, - AMF, - EDL).' }),
+            fArea('Notas / entregables', x, 'notes', { ...o, rows: 2, fmt: FMT.INLINE, help: 'Ej.: Offload + QC + Metadata. Empieza con  -  para lista (- DRP, - AMF, - EDL).' }),
             fImage('Logo de la herramienta (opcional)', x, 'logo', o)],
             () => ({ tag: '', tool: '', logo: '', specs: '', notes: '', method: '', caption: '' }), '＋ Añadir caja en esta columna');
           return [wrap];
@@ -588,7 +733,7 @@
         break;
       }
       case 'stages':
-        listEditor(body, b, 'columns', c => [fText('Etapa', c, 'title', o), fArea('Elementos', c, 'items', { ...o, rows: 4, help: 'Uno por línea:  Equipo | detalle' })],
+        listEditor(body, b, 'columns', c => [fText('Etapa', c, 'title', o), fArea('Elementos', c, 'items', { ...o, rows: 4, fmt: FMT.INLINE, help: 'Uno por línea:  Equipo | detalle' })],
           () => ({ title: 'Nueva etapa', items: '' }), '＋ Añadir etapa');
         body.append(h('div', { class: 'hint' }, 'Consejo: usa este bloque en una sección horizontal. Para diagramas complejos puedes subir una imagen.'));
         break;

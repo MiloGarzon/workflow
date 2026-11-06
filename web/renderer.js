@@ -4,7 +4,30 @@
   const NAMING_COLORS = ['#E5484D', '#F5A524', '#37A14F', '#3E9BF0', '#A66CF0', '#E85FB5', '#2FB8AC'];
 
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>').replace(/\n/g, '<br>');
+  // inline marks: **bold**  *italic*  ++underline++  ~~strike~~  ==highlight==
+  const inl = s => esc(s).replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
+    .replace(/\+\+(.+?)\+\+/g, '<u>$1</u>').replace(/~~(.+?)~~/g, '<s>$1</s>').replace(/==(.+?)==/g, '<mark>$1</mark>');
+  const md = s => inl(s).replace(/\n/g, '<br>');
+  // block text: plain lines + "- item" bullet lists + "1. item" numbered lists (indent 2 spaces = sub-item)
+  const mdBlock = s => {
+    let html = '', txt = [], list = null;
+    const flushT = () => { if (txt.length) { html += `<div class="tl">${txt.map(inl).join('<br>')}</div>`; txt = []; } };
+    const flushL = () => { if (list) { html += list.ol ? `<ol class="lst num" style="--start:${list.start - 1}">${list.it.join('')}</ol>` : `<ul class="lst bul">${list.it.join('')}</ul>`; list = null; } };
+    String(s || '').split('\n').forEach(l => {
+      const b = l.match(/^(\s*)[-•]\s+(.*)$/), n = !b && l.match(/^(\s*)(\d+)[.)]\s+(.*)$/);
+      if (b || n) {
+        flushT();
+        const ol = !!n;
+        if (list && list.ol !== ol) flushL();
+        if (!list) list = { ol, start: ol ? +n[2] || 1 : 1, it: [] };
+        const sub = (b || n)[1].length >= 2;
+        list.it.push(`<li class="${sub ? 'sub' : ''}">${inl(b ? b[2] : n[3])}</li>`);
+      } else if (!l.trim()) flushT(); // blank line: new paragraph (a list continues across it)
+      else { flushL(); txt.push(l); }
+    });
+    flushL(); flushT();
+    return html;
+  };
   const lines = s => String(s || '').split('\n').map(x => x.replace(/\s+$/, '')).filter(x => x.trim());
   const kvParse = s => lines(s).map(l => { const i = l.indexOf(':'); return i < 0 ? [l.trim(), null] : [l.slice(0, i).trim(), l.slice(i + 1).trim()]; });
   const pad2 = n => String(n).padStart(2, '0');
@@ -99,15 +122,15 @@
 
   // ---------- block renderers ----------
   // Each returns {el} or {items, make(subset, start, cont)} for splittable blocks
-  function cls(b, base) { return `blk ${base} ${b.width === 'half' ? 'half' : b.width === 'third' ? 'third' : ''}`; }
+  function cls(b, base) { return `blk ${base} ${b.width === 'half' ? 'half' : b.width === 'third' ? 'third' : ''}${b.textAlign ? ' ta-' + b.textAlign : ''}${b.textSize ? ' ts-' + b.textSize : ''}`; }
 
   const R = {
-    heading(b) { return { el: el(`<div class="${cls(b, 'heading keep-next')} ${b.size === 'lg' ? 'lg' : ''}"><h3>${esc(b.text)}</h3></div>`) }; },
+    heading(b) { return { el: el(`<div class="${cls(b, 'heading keep-next')} ${b.size === 'lg' ? 'lg' : ''}"><h3>${inl(b.text)}</h3></div>`) }; },
     paragraph(b) {
       const paras = String(b.text || '').split(/\n\s*\n/).filter(p => p.trim());
       return {
         items: paras,
-        make: (sub) => el(`<div class="${cls(b, 'paragraph')}">${sub.map(p => `<p class="txt ${b.style === 'lead' ? 'lead' : ''}">${md(p.trim())}</p>`).join('')}</div>`)
+        make: (sub) => el(`<div class="${cls(b, 'paragraph')}">${sub.map(p => `<div class="txt ${b.style === 'lead' ? 'lead' : ''}">${mdBlock(p.replace(/^\n+|\s+$/g, ''))}</div>`).join('')}</div>`)
       };
     },
     bullets(b) {
@@ -123,7 +146,7 @@
       const make = (sub, start, cont) => el(`<div class="${cls(b, 'keyvalue')}">${b.title && !cont ? `<div class="kv-title">${esc(b.title)}</div>` : ''}<div class="kv ${b.columns == 2 ? 'c2' : ''}">${sub.map(([k, v]) => v === null ? `<div class="kv-row solo"><span class="v">${md(k)}</span></div>` : `<div class="kv-row"><span class="k">${md(k)}</span><span class="v">${md(v)}</span></div>`).join('')}</div></div>`);
       return b.columns == 2 ? { el: make(rows, 0, false) } : { items: rows, make };
     },
-    note(b) { return { el: el(`<div class="${cls(b, 'note-b')}"><div class="note ${b.style === 'warn' ? 'warn' : ''}">${b.label ? `<div class="nt">${esc(b.label)}</div>` : ''}${md(b.text)}</div></div>`) }; },
+    note(b) { return { el: el(`<div class="${cls(b, 'note-b')}"><div class="note ${b.style === 'warn' ? 'warn' : ''}">${b.label ? `<div class="nt">${inl(b.label)}</div>` : ''}${mdBlock(b.text)}</div></div>`) }; },
     camera(b) {
       const chips = String(b.chips || '').split(',').map(x => x.trim()).filter(Boolean);
       const rows = kvParse(b.specs);
@@ -452,7 +475,7 @@
       if (sec.kind === 'divider') {
         const p = newPage('divider', orient, si);
         p.insertAdjacentHTML('beforeend', `<header class="pg-head"><div class="logo">${logo}</div><div class="pg-meta">${metaHtml}</div></header>
-          <div class="div-main">${sec.bigText ? `<div class="div-num">${esc(sec.bigText)}</div>` : ''}<h1 class="div-title">${esc(sec.title)}</h1>${sec.subtitle ? `<div class="div-sub">${esc(sec.subtitle)}</div>` : ''}${sec.text ? `<div class="div-text">${md(sec.text)}</div>` : ''}</div>`);
+          <div class="div-main">${sec.bigText ? `<div class="div-num">${esc(sec.bigText)}</div>` : ''}<h1 class="div-title">${esc(sec.title)}</h1>${sec.subtitle ? `<div class="div-sub">${esc(sec.subtitle)}</div>` : ''}${sec.text ? `<div class="div-text">${mdBlock(sec.text)}</div>` : ''}</div>`);
         tocEntries.push({ part: true, title: sec.title, page: pages.length });
         cur = null; continue;
       }
