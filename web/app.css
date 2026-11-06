@@ -330,3 +330,7 @@ body.export #exportRoot .page.show { visibility: visible; }
 .stor-ref-t { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ui-muted); margin-bottom: 4px; }
 .stor-ref strong { color: var(--ui-acc); }
 .f.ro input { opacity: .75; }
+
+/* per-block layout controls */
+.blk-look { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--ui-line); }
+.blk-look .f { margin-bottom: 6px; }

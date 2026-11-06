@@ -239,11 +239,11 @@
 /* stages (workflow diagram) */
 .stages { display: flex; align-items: stretch; gap: 0; }
 .stage { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-.stage-h { background: var(--accent); color: #fff; font: 700 7.5px/1.2 var(--hfont); letter-spacing: .16em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px 6px 0 0; text-align: center; }
+.stage-h { background: var(--accent); color: #fff; font: 700 calc(8.5px * var(--ts, 1))/1.2 var(--hfont); letter-spacing: .16em; text-transform: uppercase; padding: 8px 10px; border-radius: 6px 6px 0 0; text-align: center; }
 .stage-b { flex: 1; background: var(--card); border: 1px solid var(--line2); border-top: 0; border-radius: 0 0 8px 8px; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
-.st-item { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; }
-.st-item .a { font: 700 8px/1.25 var(--hfont); color: var(--fg); letter-spacing: .03em; text-transform: uppercase; }
-.st-item .b { font-size: 7.6px; line-height: 1.35; color: var(--muted); margin-top: 2px; }
+.st-item { background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+.st-item .a { font: 700 calc(9px * var(--ts, 1))/1.25 var(--hfont); color: var(--fg); letter-spacing: .03em; text-transform: uppercase; }
+.st-item .b { font-size: calc(8.3px * var(--ts, 1)); line-height: 1.35; color: var(--muted); margin-top: 2px; }
 .st-item img { width: 100%; max-height: 44px; object-fit: contain; margin-bottom: 4px; }
 .st-arrow { flex: none; width: 18px; display: flex; align-items: center; justify-content: center; color: var(--accent); }
 .st-arrow svg { width: 10px; height: 10px; }

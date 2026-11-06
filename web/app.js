@@ -488,7 +488,7 @@
     sp.append(fChips('Orientación', s, 'orientation', [['portrait', '▯ Vertical'], ['landscape', '▭ Horizontal']], { def: 'portrait', structural: true }));
     if (s.kind === 'content') {
       sp.append(fToggle('Empezar en una página nueva', s, 'newPage'), fToggle('Numerar esta sección', s, 'numbered', { structural: true }), fToggle('Mostrar título de sección', s, 'showTitle'),
-        fToggle('Todo en una sola página (si no cabe, se reduce el tamaño)', s, 'fitPage', { def: false }),
+        sheetMode(s),
         fToggle('Columnas libres: cada bloque elige columna izquierda, derecha o ancho completo', s, 'columns', { def: false, after: () => renderEditor() }));
     }
     ed.append(sp);
@@ -535,6 +535,32 @@
     }
   }
 
+  // how a section uses the sheet: flow over pages / one page (shrink) / fill the page (grow) / one page, spread out
+  function sheetMode(s) {
+    const proxy = {};
+    Object.defineProperty(proxy, 'mode', {
+      get: () => !s.fitPage ? '' : (s.fill || 'fit'),
+      set: v => { s.fitPage = !!v; s.fill = v === 'grow' || v === 'spread' ? v : ''; }
+    });
+    const f = fChips('Uso de la hoja', proxy, 'mode', [['', 'Normal'], ['fit', 'Una sola hoja'], ['grow', 'Llenar la hoja'], ['spread', 'Repartir en la hoja']], { def: '', after: () => { hint.textContent = SHEET_HINT[proxy.mode]; } });
+    const hint = h('div', { class: 'hint' }, SHEET_HINT[proxy.mode]);
+    f.append(hint);
+    return f;
+  }
+  const SHEET_HINT = {
+    '': 'El contenido fluye y pasa a la hoja siguiente si no cabe.',
+    fit: 'Todo en una sola hoja; si no cabe se reduce el tamaño.',
+    grow: 'Todo en una sola hoja, agrandado para ocupar la hoja completa y repartido de arriba a abajo.',
+    spread: 'Todo en una sola hoja, con el tamaño normal y los bloques repartidos de arriba a abajo.'
+  };
+  // per-block layout: scale and "al final de la hoja"
+  function blockLook(b) {
+    const wrap = h('div', { class: 'blk-look' });
+    wrap.append(fChips('Escala del bloque', b, 'scale', [[0.8, '80%'], [1, '100%'], [1.25, '125%'], [1.5, '150%'], [1.75, '175%'], [2, '200%']], { def: 1 }),
+      fToggle('Ubicar al final de la hoja (baja este bloque y los siguientes)', b, 'pushEnd', { def: false }));
+    return wrap;
+  }
+
   function blockCard(s, b, i) {
     const t = BLOCK_TYPES.find(x => x.type === b.type) || { name: b.type, icon: '?' };
     const collapsed = state.collapsed.has(b.id);
@@ -561,6 +587,7 @@
     const body = h('div', { class: 'blk-body' });
     const after = () => { summary.textContent = blockSummary(b); };
     blockFields(b, body, after);
+    if (!['pagebreak'].includes(b.type)) body.append(blockLook(b));
     card.append(head, body);
     return card;
   }

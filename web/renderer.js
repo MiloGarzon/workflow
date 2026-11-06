@@ -281,6 +281,17 @@
     })));
   }
   const overflow = body => body.scrollHeight > body.clientHeight + 0.5;
+  // free space under the content of a page body, in body pixels (works with zoomed content in any engine)
+  const freeBelow = body => {
+    const br = body.getBoundingClientRect();
+    const k = br.height / (body.clientHeight || 1) || 1;
+    let bottom = br.top;
+    for (const c of body.children) {
+      bottom = Math.max(bottom, c.getBoundingClientRect().bottom);
+      if (c.classList.contains('fit')) for (const g of c.children) bottom = Math.max(bottom, g.getBoundingClientRect().bottom);
+    }
+    return (br.bottom - bottom) / k;
+  };
 
   let OPTS = {};
   const isEmptyImage = b => b.type === 'image' && !b.src;
@@ -408,6 +419,31 @@
       }
     }
 
+    // per-block "Escala" (zoom) and "Al final de la hoja"
+    function blockLook(b, r) {
+      const sc = Number(b.scale) || 1;
+      if (sc === 1 && !b.pushEnd) return;
+      const look = n => { if (n && n.style) { if (sc !== 1) n.style.zoom = String(sc); if (b.pushEnd) n.classList.add('push-end'); } return n; };
+      if (r.el) look(r.el);
+      if (r.make) { const mk = r.make; r.make = (...a) => look(mk(...a)); }
+    }
+    // after layout: blocks marked "al final de la hoja" drop to the bottom of their page (with whatever follows them)
+    function pushEnds() {
+      for (const p of pages) {
+        const body = p.querySelector('.pg-body');
+        const pe = body && body.querySelector('.push-end');
+        if (!pe) continue;
+        const parent = pe.parentElement;
+        if (parent.style.alignContent === 'space-between') continue; // already spread over the page
+        const row = [...parent.children].filter(c => Math.abs(c.offsetTop - pe.offsetTop) < 2);
+        const base = row.map(c => parseFloat(getComputedStyle(c).marginTop) || 0);
+        const set = m => row.forEach((c, i) => { c.style.marginTop = (base[i] + m) + 'px'; });
+        let lo = 0, hi = body.clientHeight * 2;
+        for (let k = 0; k < 12; k++) { const mid = (lo + hi) / 2; set(mid); if (overflow(body) || freeBelow(body) < 8) hi = mid; else lo = mid; }
+        set(lo);
+      }
+    }
+
     // "Columnas libres": consecutive non-full blocks stack independently in a left and a right column
     function groupColumns(sec, units) {
       const cols = columnsOf(sec);
@@ -448,6 +484,27 @@
         const need = wrap.offsetHeight;
         if (need <= 0 || avail <= 0) break;
         wrap.style.zoom = String(Math.max(0.5, z * (avail / need) * 0.995));
+      }
+      // "Llenar la hoja": the largest zoom at which everything still fits (measured only by overflow, so it works in any engine)
+      const wide = () => body.scrollWidth > body.clientWidth + 1;
+      const SAFE = 10; // small margin: text can re-wrap slightly when the page is shown at another zoom
+      const tight = () => overflow(body) || freeBelow(body) < SAFE || wide();
+      const maxFit = (lo, hi, apply) => { // largest value in [lo, hi] for which apply(v) leaves the page not tight
+        apply(lo); if (tight()) return null;
+        for (let k = 0; k < 11; k++) { const mid = (lo + hi) / 2; apply(mid); if (tight()) hi = mid; else lo = mid; }
+        apply(lo); return lo;
+      };
+      // the quick shrink above can fall short in some engines: finish it by search
+      if (overflow(body)) { const z1 = Number(wrap.style.zoom || 1); if (maxFit(0.3, z1, z => { wrap.style.zoom = String(z); }) === null) wrap.style.zoom = '0.3'; }
+      if (sec.fill === 'grow' && !fills.length) {
+        const z0 = wrap.style.zoom;
+        if (maxFit(0.4, 2.6, z => { wrap.style.zoom = String(z); }) === null) wrap.style.zoom = z0;
+      }
+      // spread the rows over the whole height (first row at the top, last row at the bottom)
+      if (sec.fill === 'grow' || sec.fill === 'spread') {
+        wrap.style.alignContent = 'space-between';
+        const z = Number(wrap.style.zoom || 1);
+        if (maxFit(0, body.clientHeight / z * 1.5, v => { wrap.style.height = v + 'px'; }) === null) { wrap.style.height = ''; wrap.style.alignContent = ''; }
       }
     }
 
@@ -499,6 +556,7 @@
         if (b.hidden) continue;
         const r = (R[b.type] || R.paragraph)(b);
         if (r.skip) continue;
+        blockLook(b, r);
         units.push({ b, r });
       }
       if (sec.columns) units = groupColumns(sec, units);
@@ -510,6 +568,7 @@
       }
     }
 
+    pushEnds();
     // page numbers
     const total = pages.length;
     pages.forEach((p, i) => { const pn = p.querySelector('.pn'); if (pn) pn.innerHTML = `${pad2(i + 1)} <span>/ ${pad2(total)}</span>`; });
