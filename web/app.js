@@ -466,6 +466,7 @@
         h('button', { class: 'icon-btn', title: 'Subir', onclick: () => move(-1) }, '↑'),
         h('button', { class: 'icon-btn', title: 'Bajar', onclick: () => move(1) }, '↓'),
         h('button', { class: 'icon-btn', title: 'Duplicar sección', onclick: () => { const c = JSON.parse(JSON.stringify(s)); c.id = uid(); c.blocks.forEach(b => b.id = uid()); c.title = (c.title || '') + ' (copia)'; P().sections.splice(idx + 1, 0, c); changed(true); select(c.id); } }, '⧉'),
+        h('button', { class: 'icon-btn', title: 'Reemplazar con hoja de otro documento', onclick: () => pickSheetFrom('replace', s) }, '⇆'),
         h('button', { class: 'icon-btn danger', title: 'Eliminar sección', onclick: () => { if (!confirm(`¿Eliminar la sección “${s.title || kindName}”?`)) return; P().sections.splice(idx, 1); changed(true); select(P().sections[Math.max(0, idx - 1)]?.id || 'project'); } }, '✕'))));
 
     ed.append(h('div', { class: `include-bar ${s.hidden ? 'off' : ''}` }, sectionSwitch(s, true),
@@ -904,6 +905,95 @@
     toast(isWeb ? `Abierto desde iCloud: ${p.name || 'Proyecto'}` : `Importado a Mis proyectos: ${p.name || 'Proyecto'}`);
   }
 
+  // ================= traer hoja de otro documento =================
+  function cloneSection(s) {
+    const c = JSON.parse(JSON.stringify(s));
+    c.id = uid();
+    (c.blocks || []).forEach(b => b.id = uid());
+    return c;
+  }
+
+  // mode 'replace' swaps `target` for a copy; mode 'add' inserts the copy after the selected section
+  async function pickSheetFrom(mode, target) {
+    const replace = mode === 'replace';
+    const ov = h('div', { class: 'lib-ov' });
+    const close = () => { ov.remove(); document.removeEventListener('keydown', onKey); };
+    const onKey = e => { if (e.key === 'Escape') close(); };
+    const search = h('input', { type: 'text', placeholder: 'Buscar documento por nombre, código, productora o versión…' });
+    const docsCol = h('div', { class: 'sp-col sp-docs' });
+    const sheetsCol = h('div', { class: 'sp-col sp-sheets' }, h('div', { class: 'lib-empty' }, 'Elige un documento.'));
+    const go = h('button', { class: 'tb-btn primary', disabled: true }, replace ? 'Reemplazar hoja' : 'Añadir hoja');
+    const label = m => [m.name || 'Sin nombre', m.docTitle || 'Workflow', m.version].filter(Boolean).join(' · ');
+    const pid = P().id; // the project this overlay was opened for
+    let docs = [], curDoc = null, src = null, srcProject = null, loadSeq = 0;
+
+    const sheetName = s => s.kind === 'cover' ? 'Portada' : (s.title || 'Sin título');
+    function drawDocs() {
+      const q = search.value.trim().toLowerCase();
+      docsCol.innerHTML = '';
+      const items = docs.filter(m => [m.name, m.code, m.client, m.version, m.docTitle].join(' ').toLowerCase().includes(q));
+      if (!docs.length) { docsCol.append(h('div', { class: 'lib-empty' }, 'No hay otros documentos en Mis proyectos.')); return; }
+      if (!items.length) { docsCol.append(h('div', { class: 'lib-empty' }, 'Ningún documento coincide con la búsqueda.')); return; }
+      items.forEach(m => docsCol.append(h('button', { class: `sp-row ${curDoc === m.id ? 'on' : ''}`, onclick: () => openDoc(m) },
+        h('b', {}, label(m)), h('span', {}, m.client || 'Sin productora'))));
+    }
+    async function openDoc(m) {
+      curDoc = m.id; src = null; srcProject = null; go.disabled = true; drawDocs();
+      const seq = ++loadSeq;
+      sheetsCol.innerHTML = ''; sheetsCol.append(h('div', { class: 'lib-empty' }, 'Cargando…'));
+      let p = null;
+      try { const raw = await native('libLoad', { id: m.id }); const o = raw ? JSON.parse(raw) : null; p = o && Array.isArray(o.sections) ? normalize(o) : null; } catch (e) { p = null; }
+      if (seq !== loadSeq) return;
+      sheetsCol.innerHTML = '';
+      if (!p || !p.sections.length) { toast('No se pudo leer ese documento'); sheetsCol.append(h('div', { class: 'lib-empty' }, 'No se pudo leer ese documento.')); return; }
+      srcProject = p;
+      let n = 0;
+      p.sections.forEach(s => {
+        const num = s.kind === 'content' && !s.hidden && s.numbered !== false ? String(++n).padStart(2, '0') : '';
+        const row = h('button', { class: `sp-row sp-sheet ${s.hidden ? 'hid' : ''}` },
+          h('span', { class: 'n' }, num), h('span', { class: 'k' }, KIND_ICON[s.kind] || '¶'), h('span', { class: 't' }, sheetName(s)),
+          s.orientation === 'landscape' ? h('span', { class: 'o', title: 'Horizontal' }, '▭') : null);
+        row.onclick = () => { src = s; sheetsCol.querySelectorAll('.sp-row').forEach(r => r.classList.remove('on')); row.classList.add('on'); go.disabled = false; };
+        row.ondblclick = () => apply();
+        sheetsCol.append(row);
+      });
+    }
+    function apply() {
+      if (!src) return;
+      const from = [srcProject.name, srcProject.version].filter(Boolean).join(' ') || 'otro documento';
+      if (P().id !== pid) { close(); toast('El proyecto cambió mientras elegías la hoja; no se copió nada.'); return; }
+      const copy = cloneSection(src);
+      if (replace) {
+        const idx = P().sections.findIndex(x => x.id === target.id);
+        if (idx < 0) { close(); toast(`“${sheetName(target)}” ya no está en el proyecto; no se copió nada.`); return; }
+        if (!confirm(`¿Reemplazar “${sheetName(target)}” con “${sheetName(src)}” de ${from}?\n\nLa hoja actual se perderá.`)) return;
+        P().sections.splice(idx, 1, copy);
+      } else {
+        const i = P().sections.findIndex(x => x.id === state.sel);
+        P().sections.splice(i >= 0 ? i + 1 : P().sections.length, 0, copy);
+      }
+      close();
+      changed(true); select(copy.id);
+      toast(`Hoja copiada de ${from}`);
+    }
+    go.onclick = apply;
+    search.oninput = drawDocs;
+    ov.onclick = e => { if (e.target === ov) close(); };
+    document.addEventListener('keydown', onKey);
+    ov.append(h('div', { class: 'lib sheet-pick' },
+      h('div', { class: 'lib-h' },
+        h('div', {}, h('h2', {}, replace ? 'Reemplazar con hoja de otro documento' : 'Añadir hoja de otro documento'),
+          h('div', { class: 'hint' }, replace ? `“${sheetName(target)}” quedará igual a la hoja que elijas (copia exacta).` : 'Se añade una copia exacta después de la hoja seleccionada.')),
+        h('button', { class: 'icon-btn', title: 'Cerrar', onclick: close }, '✕')),
+      h('div', { class: 'lib-bar' }, search),
+      h('div', { class: 'sp-body' }, docsCol, sheetsCol),
+      h('div', { class: 'sp-foot' }, h('button', { class: 'icon-btn', onclick: close }, 'Cancelar'), go)));
+    document.body.append(ov);
+    search.focus();
+    try { docs = (await native('libList') || []).filter(m => m.id !== pid).sort((a, b) => String(b.modified).localeCompare(String(a.modified))); } catch (e) { docs = []; }
+    drawDocs();
+  }
+
   // ================= library (Mis proyectos) =================
   // folders: productora › proyecto › documento (each document lists its versions)
   const libPath = [];
@@ -1202,6 +1292,8 @@
         }
       }, h('i', {}, p.icon), p.name)));
     });
+    pop.append(h('div', { class: 'pg' }, 'Otro documento'),
+      h('button', { onclick: () => { pop.classList.remove('open'); pickSheetFrom('add'); } }, h('i', {}, '⇆'), 'Desde otro documento…'));
     const r = e.currentTarget.getBoundingClientRect();
     pop.style.left = r.left + 'px';
     pop.style.bottom = (window.innerHeight - r.top + 8) + 'px';
